@@ -1,10 +1,12 @@
 import './App.css';
-import { Logo  , CogIcon} from './images/customIcons/customIcons';
+import TopBar from './components/navigation/TopBar';
+import SideBar from './components/navigation/SideBar';
 
 function App() {
   return (
-    <div className="App">
-      <Logo />
+    <div className="App main-container light-mode">
+      <SideBar />
+      <TopBar />
     </div>
   );
 }

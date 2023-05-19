@@ -70,17 +70,18 @@ export const Chatcon = () => {
 }
 
 export const CheckIcon = () => {
-    <svg width="39.4301806px" height="39.4301806px" viewBox="0 0 39.4301806 39.4301806" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-    <title>Check</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icons" transform="translate(-284.427650, -121.155788)" stroke="#979797" stroke-width="0.5">
-            <g id="Check" transform="translate(284.427650, 121.155788)">
-                <circle id="Oval" cx="19.7150903" cy="19.7150903" r="19.4650903"></circle>
-                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="13.277914 21.5639045 18.5807063 25.3995494 26.1522666 14.0306312"></polyline>
+    return(
+        <svg width="39.4301806px" height="39.4301806px" viewBox="0 0 39.4301806 39.4301806" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Icons" transform="translate(-284.427650, -121.155788)" stroke="#979797" stroke-width="0.5">
+                    <g id="Check" transform="translate(284.427650, 121.155788)">
+                        <circle id="Oval" cx="19.7150903" cy="19.7150903" r="19.4650903"></circle>
+                        <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="13.277914 21.5639045 18.5807063 25.3995494 26.1522666 14.0306312"></polyline>
+                    </g>
+                </g>
             </g>
-        </g>
-    </g>
-</svg>
+        </svg>
+    )
 }
 
 export const CloseIcon = () => {

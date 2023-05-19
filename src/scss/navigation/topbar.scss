@@ -1,0 +1,15 @@
+.top-bar{
+    background: $white;
+    height: 44px;
+    width: 100%;
+    position: fixed;
+
+    & , &-account , .icons{
+        display: flex;
+        align-items: center;
+    }
+
+    &-search{
+        width: 270.5px;
+    }
+}
