@@ -1,11 +1,11 @@
 .top-bar{
     background: $white;
     height: 44px;
-    width: calc(100% - 159px);
+    width: calc(100% - 163px);
     right: 0;
     justify-content: space-between;
     position: fixed;
-    padding: 16px;
+    padding: 16px 0px;
 
     & , &-account , .icons{
         align-items: center;

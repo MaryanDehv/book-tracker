@@ -59,18 +59,31 @@ table {
 
 .side-bar {
   position: fixed;
-  width: 159px;
-  padding: 20px;
+  width: 119px;
   height: 100vh;
+  padding: 0px 20px;
+  overflow-y: scroll;
+}
+.side-bar::-webkit-scrollbar {
+  display: none;
+}
+.side-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .side-bar-logo {
-  height: 10%;
+  height: 76px;
 }
 .side-bar-logo svg {
   width: 29px;
+  position: relative;
+  top: 20px;
 }
-.side-bar-list {
-  height: 80%;
+.side-bar-content {
+  height: calc(100% - 76px);
+  min-height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .side-bar-list li {
   border-radius: 6px;
@@ -79,24 +92,28 @@ table {
   gap: 8.4px;
   padding: 2.1px 1.2px;
   margin-bottom: 3px;
+  height: 23px;
+  width: 120px;
+  cursor: pointer;
+  position: relative;
+  top: 20px;
 }
 .side-bar-list li svg {
   width: 15.4px;
   height: fit-content;
 }
-.side-bar-mode-container {
-  height: 10%;
-}
-.side-bar-mode-container-mode {
+.side-bar-mode-container .side-bar-mode {
   width: 57px;
   height: 29px;
-  border-radius: 10pxpx;
+  border-radius: 20px;
+  position: relative;
+  bottom: 20px;
 }
-.side-bar-mode-container-mode > div {
+.side-bar-mode-container .side-bar-mode > div {
   height: 25.14px;
   width: 25.14px;
 }
-.side-bar-mode-container-mode svg {
+.side-bar-mode-container .side-bar-mode svg {
   width: 15px;
   height: 15px;
 }
@@ -104,11 +121,11 @@ table {
 .top-bar {
   background: #FFFFFF;
   height: 44px;
-  width: calc(100% - 159px);
+  width: calc(100% - 163px);
   right: 0;
   justify-content: space-between;
   position: fixed;
-  padding: 16px;
+  padding: 16px 0px;
 }
 .top-bar, .top-bar-account, .top-bar .icons {
   align-items: center;
@@ -157,7 +174,7 @@ table {
   color: #B2AEAE;
 }
 .light-mode .side-bar-mode {
-  background: #B2AEAE;
+  background: #F2F2F2;
 }
 .light-mode .side-bar-mode .selected {
   background: #FFFFFF;

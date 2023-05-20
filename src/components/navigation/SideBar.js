@@ -6,7 +6,7 @@ const SideBar = () => {
             <div className="side-bar-logo">
                 <Logo />
             </div>
-            <div className="side-bar-content">
+            <div className="side-bar-content flex">
                 <ul className="side-bar-list">
                     <li className="uppercase button flex v-center"><span><ClockIcon /></span><span>Ongoing</span></li>
                     <li className="uppercase button flex v-center"><span><CheckIcon /></span><span>Completed</span></li>
