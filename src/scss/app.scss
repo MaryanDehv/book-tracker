@@ -48,10 +48,11 @@ table {
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Ubuntu:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
 // utils
 @import '../scss/utils/colors.scss';
+@import '../scss/utils/font.scss';
 
 // navigation
 @import '../scss/navigation/sidebar.scss';
@@ -65,5 +66,36 @@ table {
 
 .main-container{
     height: 100vh;
+	font-family: "open sans" , sans-serif;
 }
 
+.flex{
+	display: flex;
+}
+
+.v-h-center{
+	place-content: center;
+	flex-wrap: wrap;
+}
+
+.v-center{
+	align-items: center;
+}
+
+.h-center{
+	justify-content: center;
+}
+
+.opacity{
+	opacity: 0.5;
+}
+
+strong{
+	font-weight: 500;
+}
+
+svg{
+	g{
+		stroke-width: 1px;
+	}
+}

@@ -1,5 +1,54 @@
 .side-bar{
-    position: absolute;
-    height: 100%;
+    position: fixed;
     width: 159px;
+    padding: 20px;
+    height: 100vh;
+
+    &-logo{
+        height: 10%;
+
+        svg{
+            width: 29px;
+        }
+    }
+
+    // &-content{
+    //     height:;
+    // }
+
+    &-list{
+        height: 80%;
+        li{
+            border-radius: 6px;
+            border: solid 1px rgba($gray , 0.1);
+            font-size: 10px;
+            gap:8.4px;
+            padding: 2.1px 1.2px;
+            margin-bottom: 3px;
+
+            svg{
+                width: 15.4px;
+                height: fit-content;
+            }
+        }
+    }
+
+    &-mode-container{
+        height: 10%;
+        &-mode{
+            width: 57px;
+            height: 29px;
+            border-radius: 10pxpx;
+    
+            >div{
+                height: 25.14px;
+                width: 25.14px;
+            }
+    
+            svg{
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
 }

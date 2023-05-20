@@ -1,15 +1,52 @@
 .top-bar{
     background: $white;
     height: 44px;
-    width: 100%;
+    width: calc(100% - 159px);
+    right: 0;
+    justify-content: space-between;
     position: fixed;
+    padding: 16px;
 
     & , &-account , .icons{
-        display: flex;
         align-items: center;
     }
 
     &-search{
         width: 270.5px;
+    }
+
+    &-account{
+        gap:20px;
+
+        p{
+            font-size: 14px;
+            gap:4px;
+    
+            svg{
+                g{
+                    stroke: $primaryRed;
+                }
+            }
+        }
+
+        .icons{
+            gap:13px;
+            >div{
+                width: 25px;
+            }
+
+            .user{
+                background: red;
+                height: 25px;
+                border-radius: 100%;
+                background-image:url('https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
+                background-size: cover;
+            }
+        }
+
+    }
+
+    svg{
+        width: 25px;
     }
 }

@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Ubuntu:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,24 +53,94 @@ table {
   border-spacing: 0;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .side-bar {
-  position: absolute;
-  height: 100%;
+  position: fixed;
   width: 159px;
+  padding: 20px;
+  height: 100vh;
+}
+.side-bar-logo {
+  height: 10%;
+}
+.side-bar-logo svg {
+  width: 29px;
+}
+.side-bar-list {
+  height: 80%;
+}
+.side-bar-list li {
+  border-radius: 6px;
+  border: solid 1px rgba(178, 174, 174, 0.1);
+  font-size: 10px;
+  gap: 8.4px;
+  padding: 2.1px 1.2px;
+  margin-bottom: 3px;
+}
+.side-bar-list li svg {
+  width: 15.4px;
+  height: fit-content;
+}
+.side-bar-mode-container {
+  height: 10%;
+}
+.side-bar-mode-container-mode {
+  width: 57px;
+  height: 29px;
+  border-radius: 10pxpx;
+}
+.side-bar-mode-container-mode > div {
+  height: 25.14px;
+  width: 25.14px;
+}
+.side-bar-mode-container-mode svg {
+  width: 15px;
+  height: 15px;
 }
 
 .top-bar {
   background: #FFFFFF;
   height: 44px;
-  width: 100%;
+  width: calc(100% - 159px);
+  right: 0;
+  justify-content: space-between;
   position: fixed;
+  padding: 16px;
 }
 .top-bar, .top-bar-account, .top-bar .icons {
-  display: flex;
   align-items: center;
 }
 .top-bar-search {
   width: 270.5px;
+}
+.top-bar-account {
+  gap: 20px;
+}
+.top-bar-account p {
+  font-size: 14px;
+  gap: 4px;
+}
+.top-bar-account p svg g {
+  stroke: #FF4C4C;
+}
+.top-bar-account .icons {
+  gap: 13px;
+}
+.top-bar-account .icons > div {
+  width: 25px;
+}
+.top-bar-account .icons .user {
+  background: red;
+  height: 25px;
+  border-radius: 100%;
+  background-image: url("https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80");
+  background-size: cover;
+}
+.top-bar svg {
+  width: 25px;
 }
 
 .dark-mode {
@@ -78,14 +148,54 @@ table {
 }
 
 .light-mode {
-  background: #F9F9F9;
+  background: #F2F2F2;
 }
 .light-mode .side-bar {
   background: #FFFFFF;
 }
+.light-mode .side-bar-list li {
+  color: #B2AEAE;
+}
+.light-mode .side-bar-mode {
+  background: #B2AEAE;
+}
+.light-mode .side-bar-mode .selected {
+  background: #FFFFFF;
+  border-radius: 100%;
+}
 
 .main-container {
   height: 100vh;
+  font-family: "open sans", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.v-h-center {
+  place-content: center;
+  flex-wrap: wrap;
+}
+
+.v-center {
+  align-items: center;
+}
+
+.h-center {
+  justify-content: center;
+}
+
+.opacity {
+  opacity: 0.5;
+}
+
+strong {
+  font-weight: 500;
+}
+
+svg g {
+  stroke-width: 1px;
 }
 
 /*# sourceMappingURL=App.css.map */

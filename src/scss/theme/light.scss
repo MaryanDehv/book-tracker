@@ -3,5 +3,21 @@
 
     .side-bar{
         background: $white;
+
+        &-list{
+            li{
+                color: $gray;
+            }
+        }
+
+        &-mode{
+            background: $gray;
+
+            .selected{
+                background: $white;
+                border-radius: 100%;
+            }
+        }
     }
+    
 }
