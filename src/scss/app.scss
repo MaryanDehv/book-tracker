@@ -53,6 +53,7 @@ table {
 // utils
 @import '../scss/utils/colors.scss';
 @import '../scss/utils/font.scss';
+@import '../scss/utils/form.scss';
 
 // navigation
 @import '../scss/navigation/sidebar.scss';
@@ -98,4 +99,8 @@ svg{
 	g{
 		stroke-width: 1px;
 	}
+}
+
+.container{
+	width: 936px;
 }

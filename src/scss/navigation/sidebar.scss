@@ -44,10 +44,15 @@
             cursor: pointer;
             position: relative;
             top: 20px;
+            font-weight: 600;
 
             svg{
                 width: 15.4px;
                 height: fit-content;
+            }
+
+            span{
+                color: $gray;
             }
         }
     }
@@ -63,6 +68,7 @@
             >div{
                 height: 25.14px;
                 width: 25.14px;
+                cursor: pointer;
             }
     
             svg{

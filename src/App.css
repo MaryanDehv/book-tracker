@@ -97,10 +97,14 @@ table {
   cursor: pointer;
   position: relative;
   top: 20px;
+  font-weight: 600;
 }
 .side-bar-list li svg {
   width: 15.4px;
   height: fit-content;
+}
+.side-bar-list li span {
+  color: #B2AEAE;
 }
 .side-bar-mode-container .side-bar-mode {
   width: 57px;
@@ -112,6 +116,7 @@ table {
 .side-bar-mode-container .side-bar-mode > div {
   height: 25.14px;
   width: 25.14px;
+  cursor: pointer;
 }
 .side-bar-mode-container .side-bar-mode svg {
   width: 15px;
@@ -127,11 +132,60 @@ table {
   position: fixed;
   padding: 16px 0px;
 }
-.top-bar, .top-bar-account, .top-bar .icons {
-  align-items: center;
+.top-bar .container {
+  justify-content: space-between;
 }
 .top-bar-search {
-  width: 270.5px;
+  background: #F2F2F2;
+  border: none;
+  border-radius: 15px;
+  height: 35px;
+  position: relative;
+}
+.top-bar-search .top-bar-search-container {
+  height: 100%;
+  min-width: 350px;
+  display: flex;
+}
+.top-bar-search input.search {
+  height: 100%;
+  padding-left: 40px;
+  width: calc(100% - 180px);
+  position: absolute;
+  background: inherit;
+  border: inherit;
+  border-radius: inherit;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto 0px;
+}
+.top-bar-search input.search:focus {
+  outline: none;
+}
+.top-bar-search input::placeholder {
+  font-size: 11px;
+  opacity: 0.8;
+}
+.top-bar-search .icon {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: inherit;
+}
+.top-bar-search .icon.search {
+  left: 18px;
+}
+.top-bar-search .icon.filter {
+  right: 18px;
+}
+.top-bar-search svg {
+  width: 16px !important;
+  height: fit-content;
+}
+.top-bar, .top-bar-account, .top-bar .icons {
+  align-items: center;
 }
 .top-bar-account {
   gap: 20px;
@@ -213,6 +267,10 @@ strong {
 
 svg g {
   stroke-width: 1px;
+}
+
+.container {
+  width: 936px;
 }
 
 /*# sourceMappingURL=App.css.map */
