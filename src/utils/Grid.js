@@ -3,7 +3,7 @@ const Grid = ({content}) => {
         <div className="grid-container">
             {
                 content.map((item) => (
-                    <div className="grid-item">
+                    <div className={`grid-item ${item.class}`}>
                         {
                             item.content.map(e => (
                                 (<item.component content={e} />)

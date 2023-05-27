@@ -1,9 +1,10 @@
 .grid-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2 , 270px);
 
     .grid-item{
         background: $white;
-        height: fit-content;
+        align-items: center;
     }
 }

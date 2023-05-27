@@ -16,6 +16,7 @@ function App() {
           content={[
             {
               component: BookCard,
+              class:"book-card-container flex",
               content:[{
                 image: "",
                 title: "testing",
@@ -34,6 +35,7 @@ function App() {
             },
             {
               component: BookProgress,
+              class:"book-progress-container",
               content:[{
                 title: "testing",
                 description: "lorem something somwthing blah blah"
@@ -48,6 +50,7 @@ function App() {
               }]
             },{
               component: BookGraph,
+              class:"book-graph-container",
               content:[{
                 title: "testing",
                 description: "lorem something somwthing blah blah"
@@ -55,6 +58,7 @@ function App() {
             },
             {
               component: BookList,
+              class:"book-list-container",
               content:[{
                 title: "testing",
                 description: "lorem something somwthing blah blah"
