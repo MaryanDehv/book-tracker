@@ -57,6 +57,15 @@ table {
   text-transform: uppercase;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-container .grid-item {
+  background: #FFFFFF;
+  height: fit-content;
+}
+
 .side-bar {
   position: fixed;
   width: 119px;
@@ -269,6 +278,7 @@ svg g {
 .main {
   height: calc(100% - 76px);
   width: calc(100% - 196px);
+  margin-top: 100px;
   position: absolute;
   bottom: 0;
   right: 0;
