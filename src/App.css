@@ -95,8 +95,6 @@ table {
   height: 23px;
   width: 120px;
   cursor: pointer;
-  position: relative;
-  top: 20px;
   font-weight: 600;
 }
 .side-bar-list li svg {
@@ -110,8 +108,6 @@ table {
   width: 57px;
   height: 29px;
   border-radius: 20px;
-  position: relative;
-  bottom: 20px;
 }
 .side-bar-mode-container .side-bar-mode > div {
   height: 25.14px;
@@ -135,54 +131,55 @@ table {
 .top-bar .container {
   justify-content: space-between;
 }
-.top-bar-search {
-  background: #F2F2F2;
-  border: none;
-  border-radius: 15px;
-  height: 35px;
+.top-bar-search-container {
   position: relative;
-}
-.top-bar-search .top-bar-search-container {
-  height: 100%;
-  min-width: 350px;
-  display: flex;
-}
-.top-bar-search input.search {
-  height: 100%;
-  padding-left: 40px;
-  width: calc(100% - 180px);
-  position: absolute;
-  background: inherit;
-  border: inherit;
-  border-radius: inherit;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto 0px;
-}
-.top-bar-search input.search:focus {
-  outline: none;
-}
-.top-bar-search input::placeholder {
-  font-size: 11px;
-  opacity: 0.8;
-}
-.top-bar-search .icon {
-  position: absolute;
-  top: 0;
+  background: #F2F2F2;
+  border-radius: 20px;
+  width: fit-content;
+  height: 35px;
+  min-width: 270px;
   display: flex;
   align-items: center;
-  height: inherit;
+  gap: 10px;
+  padding: 0px 20px;
 }
-.top-bar-search .icon.search {
-  left: 18px;
+.top-bar-search-container input {
+  border: none;
+  background: inherit;
+  width: 160px;
 }
-.top-bar-search .icon.filter {
-  right: 18px;
+.top-bar-search-container input::placeholder {
+  font-size: 12px;
 }
-.top-bar-search svg {
-  width: 16px !important;
+.top-bar-search-container input:focus {
+  outline: none;
+}
+.top-bar-search-container .filtered {
   height: fit-content;
+  display: flex;
+  gap: 5px;
+}
+.top-bar-search-container .filtered .filter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  background: #FF4C4C;
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 5px;
+}
+.top-bar-search-container .filtered .filter-item svg {
+  width: 15px;
+}
+.top-bar-search-container .filtered .filter-item svg line {
+  stroke: #FFFFFF;
+  stroke-width: 2px;
+}
+.top-bar-search-container svg {
+  width: 20px;
+  height: fit-content;
+  cursor: pointer;
 }
 .top-bar, .top-bar-account, .top-bar .icons {
   align-items: center;
@@ -210,7 +207,7 @@ table {
   background-image: url("https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80");
   background-size: cover;
 }
-.top-bar svg {
+.top-bar-account svg {
   width: 25px;
 }
 
@@ -270,7 +267,8 @@ svg g {
 }
 
 .container {
-  width: 936px;
+  width: 100%;
+  margin: 0px 20px;
 }
 
 /*# sourceMappingURL=App.css.map */

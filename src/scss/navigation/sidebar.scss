@@ -5,14 +5,14 @@
     padding: 0px 20px;
     overflow-y: scroll;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+        display: none;
+    }
   
-  & {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+    & {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 
     &-logo{
         height: 76px;
@@ -23,7 +23,8 @@
             top: 20px;
         }
     }
-
+    
+    // navigation and toggle container
     &-content{
         height: calc(100% - 76px);
         min-height:300px;
@@ -31,6 +32,7 @@
         justify-content: space-between;
     }
 
+    // navigation list
     &-list{
         li{
             border-radius: 6px;
@@ -42,8 +44,6 @@
             height: 23px;
             width: 120px;
             cursor: pointer;
-            position: relative;
-            top: 20px;
             font-weight: 600;
 
             svg{
@@ -57,13 +57,12 @@
         }
     }
 
+    // light dark toggle
     &-mode-container{
         .side-bar-mode{
             width: 57px;
             height: 29px;
             border-radius: 20px;
-            position: relative;
-            bottom: 20px;
     
             >div{
                 height: 25.14px;

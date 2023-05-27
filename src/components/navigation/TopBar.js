@@ -1,4 +1,4 @@
-import { BellIcon, Chatcon, ClockIcon, FilterIcon, SearchIcon } from "../../images/icons/customIcons";
+import { BellIcon, Chatcon, ClockIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
 
 const TopBar = () => {
     return(
@@ -8,10 +8,10 @@ const TopBar = () => {
                     <div className="top-bar-search-container">
                         <div className="search icon"><SearchIcon /></div>
                         <input className="search" type="text" placeholder="THE RIGHTEOUS MIND" />
-                        <div className="filter icon"><FilterIcon /></div>
                         <div className="filtered">
-                            <div className="filter-item"> Completed </div>
+                            <div className="filter-item"> Completed <TimesIcon /></div>
                         </div>
+                        <div className="filter icon"><FilterIcon /></div>
                     </div>
                 </div>
                 <div className="top-bar-account flex">
