@@ -65,13 +65,21 @@ table {
 @import '../scss/theme/light.scss';
 
 
-.main-container{
+body{
     height: 100vh;
 	font-family: "open sans" , sans-serif;
 }
 
 .flex{
 	display: flex;
+}
+
+.justify-sb{
+	justify-content: space-between;
+}
+
+.full-width{
+	width: 100%;
 }
 
 .v-h-center{
@@ -101,9 +109,18 @@ svg{
 	}
 }
 
+.main{
+	height: calc(100% - 76px);
+	width: calc(100% - 196px);
+	position: absolute;
+	bottom:0;
+	right: 0;
+}
 
+.margin-l-r-20{
+	margin: 0 20px;
+}
 
-.container{
-	width: 100%;
-	margin: 0px 20px;
+.padding-l-r-20{
+	padding: 0 20px;
 }

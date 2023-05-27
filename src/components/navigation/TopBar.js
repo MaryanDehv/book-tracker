@@ -3,15 +3,16 @@ import { BellIcon, Chatcon, ClockIcon, CloseIcon, FilterIcon, SearchIcon, TimesI
 const TopBar = () => {
     return(
         <div className="top-bar flex h-center">
-            <div className="container flex">
+            <div className="margin-l-r-20 justify-sb full-width flex">
                 <div className="top-bar-search">
-                    <div className="top-bar-search-container">
+                    <div className="top-bar-search-container flex v-center">
                         <div className="search icon"><SearchIcon /></div>
                         <input className="search" type="text" placeholder="THE RIGHTEOUS MIND" />
-                        <div className="filtered">
-                            <div className="filter-item"> Completed <TimesIcon /></div>
+                        <div className="filtered flex">
+                            <div className="filter-item flex v-center"> Completed <TimesIcon /></div>
                         </div>
                         <div className="filter icon"><FilterIcon /></div>
+                        <div className="close icon"><CloseIcon /></div>
                     </div>
                 </div>
                 <div className="top-bar-account flex">

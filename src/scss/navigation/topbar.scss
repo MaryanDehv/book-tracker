@@ -1,15 +1,13 @@
 .top-bar{
     background: $white;
     height: 44px;
-    width: calc(100% - 163px);
+    width: calc(100% - 156px);
     right: 0;
+    top: 0;
     justify-content: space-between;
     position: fixed;
     padding: 16px 0px;
 
-    .container{
-        justify-content: space-between;
-    }
 
     &-search-container{
         position: relative;
@@ -18,10 +16,8 @@
         width: fit-content;
         height: 35px;
         min-width: 270px;
-        display: flex;
-        align-items: center;
         gap:10px;
-        padding: 0px 20px;
+        padding: 0px 25px;
         
         input{
             border:none;
@@ -39,21 +35,17 @@
 
         .filtered{
             height: fit-content;
-            display: flex;
             gap:5px;
 
             .filter-item{
-                display: flex;
-                align-items: center;
                 justify-content: space-between;
                 font-size:13px;
                 background:$primaryRed;
                 color: $white;
                 border-radius: 20px;
-                padding: 5px;
+                padding: 5px 10px;
 
                 svg{
-                    width: 15px;
                     line{
                         stroke: $white;
                         stroke-width: 2px;
@@ -63,7 +55,6 @@
         }
 
         svg{
-            width: 20px;
             height: fit-content;
             cursor: pointer;
         }
@@ -75,7 +66,7 @@
 
 
     &-account{
-        gap:20px;
+        gap:45px;
 
         p{
             font-size: 14px;
@@ -89,7 +80,7 @@
         }
 
         .icons{
-            gap:13px;
+            gap:15px;
             >div{
                 width: 25px;
             }
@@ -101,12 +92,16 @@
                 background-image:url('https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
                 background-size: cover;
             }
+
+            svg{
+                width: 25px;
+            }
         }
 
-        svg{
-            width: 25px;
-        }
+    }
 
+    svg{
+        width: 15px;
     }
 }
 
