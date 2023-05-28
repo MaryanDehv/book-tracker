@@ -6,6 +6,7 @@ import BookCard from './components/BookCard';
 import BookProgress from './components/BookProgress';
 import BookList from './components/BookList';
 import BookGraph from './components/BookGraph';
+import { AnalyticsIcon, CheckIcon, ClockIcon, ListIcon } from './images/icons/customIcons';
 
 function App() {
   return (
@@ -16,13 +17,13 @@ function App() {
           content={[
             {
               component: BookCard,
-              class:"book-card-container flex",
-              content:[{
-                image: "",
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+              groupTitle:{
+                component: CheckIcon,
+                color: 'green',
+                name: 'completed'
               },
-              {
+              class:"book-card-container",
+              content:[{
                 image: "",
                 title: "testing",
                 description: "lorem something somwthing blah blah"
@@ -35,6 +36,11 @@ function App() {
             },
             {
               component: BookProgress,
+              groupTitle:{
+                component: ClockIcon,
+                color: 'red',
+                name: 'ongoing'
+              },
               class:"book-progress-container",
               content:[{
                 title: "testing",
@@ -50,6 +56,11 @@ function App() {
               }]
             },{
               component: BookGraph,
+              groupTitle:{
+                component: AnalyticsIcon,
+                color: 'orange',
+                name: 'reading trends'
+              },
               class:"book-graph-container",
               content:[{
                 title: "testing",
@@ -58,6 +69,11 @@ function App() {
             },
             {
               component: BookList,
+              groupTitle:{
+                component: ListIcon,
+                color: 'purple',
+                name: 'list'
+              },
               class:"book-list-container",
               content:[{
                 title: "testing",

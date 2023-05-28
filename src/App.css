@@ -59,31 +59,83 @@ table {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  grid-template-columns: 592px 331px;
   grid-template-rows: repeat(2, 270px);
+}
+.grid-container .grid-item-content {
+  height: 221px;
 }
 .grid-container .grid-item {
   background: #FFFFFF;
   align-items: center;
+  border-radius: 10px;
+  padding: 16px 30px;
+}
+.grid-container .grid-item .grid-item-title {
+  height: 50px;
+}
+.grid-container .grid-item .grid-item-title.green .grid-item-title-icon {
+  background: rgba(0, 218, 50, 0.1);
+}
+.grid-container .grid-item .grid-item-title.green .grid-item-title-icon g {
+  stroke: #00DA32;
+}
+.grid-container .grid-item .grid-item-title.red .grid-item-title-icon {
+  background: rgba(255, 76, 76, 0.1);
+}
+.grid-container .grid-item .grid-item-title.red .grid-item-title-icon g {
+  stroke: #FF4C4C;
+}
+.grid-container .grid-item .grid-item-title.purple .grid-item-title-icon {
+  background: rgba(164, 49, 249, 0.1);
+}
+.grid-container .grid-item .grid-item-title.purple .grid-item-title-icon g {
+  stroke: #A431F9;
+}
+.grid-container .grid-item .grid-item-title.orange .grid-item-title-icon {
+  background: rgba(249, 87, 49, 0.1);
+}
+.grid-container .grid-item .grid-item-title.orange .grid-item-title-icon g {
+  stroke: #F95731;
+}
+.grid-container .grid-item .grid-item-title-icon {
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+.grid-container .grid-item .grid-item-title-icon svg {
+  width: 20px;
 }
 
 .book-card-container {
   gap: 10px;
 }
-.book-card-container .book-card .book-card-image {
+.book-card-container .grid-item-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-card {
+  height: 196px;
+  width: 230px;
+}
+.book-card .book-card-image {
   height: 103px;
   width: 100%;
   border-radius: 5px;
-  background: #FF4C4C;
+  background-image: url("https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80");
+  background-size: cover;
+  background-position: center;
   margin-bottom: 18px;
 }
-.book-card-container .book-card .book-card-details h4 {
+.book-card .book-card-details h4 {
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
-.book-card-container .book-card .book-card-details p {
+.book-card .book-card-details p {
   color: rgba(17, 19, 21, 0.4);
 }
 
@@ -269,6 +321,10 @@ body {
 
 .full-width {
   width: 100%;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .v-h-center {
