@@ -11,32 +11,30 @@ const BookGraph = () => {
 
     return(
         <div className="graph">
-            <div className="graph_main-view">
-                <div className="graph_bars-container flex">
-                    {viewCount.map((bar , index) => (
-                        <div className="bar-container" key={index}>
-                            <div className="bar-increase"> 
-                                <div className="bar" style={bar}>
-                                    <div className="bar-data-popup">
-                                        <p className="date"> 24 September </p>
-                                        <div className="views flex"><div></div><span>20k</span></div>
-                                    </div>    
-                                </div>
+            <div className="graph_bars-container">
+                {viewCount.map((bar , index) => (
+                    <div className="bar-container" key={index}>
+                        <div className="bar-mask"> 
+                            <div className="bar" style={bar}>
+                                {/* <div className="bar-data-popup">
+                                    <p className="date"> 24 September </p>
+                                    <div className="views flex"><div></div><span>20k</span></div>
+                                </div>     */}
                             </div>
                         </div>
-                    ))}
-                </div>
-                <div className="graph-x-axis flex">
-                    <span> 22 </span>
-                    <span> 23 </span>
-                    <span> 24 </span>
-                    <span> 25 </span>
-                    <span> 26 </span>
-                    <span> 27 </span>
-                    <span> 28 </span>
-                </div>
+                    </div>
+                ))}
             </div>
-            <div className="graph-y-axis flex">
+            <div className="graph-x-axis">
+                <span> 22 </span>
+                <span> 23 </span>
+                <span> 24 </span>
+                <span> 25 </span>
+                <span> 26 </span>
+                <span> 27 </span>
+                <span> 28 </span>
+            </div>
+            <div className="graph-y-axis">
                 <span> 35 </span>
                 <span> 30 </span>
                 <span> 25 </span>

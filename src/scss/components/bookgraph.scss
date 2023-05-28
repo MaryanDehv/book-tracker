@@ -1,0 +1,87 @@
+// clean up css
+
+.graph{
+    height: calc(100%  - 50px);
+    width: 100%;
+    position: relative;
+
+    .graph_bars-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        gap: 5px;
+        position: relative;
+        z-index: 1;
+
+        .bar-container{
+            width: calc(100% / 7);
+            position: relative;
+
+            .bar-mask{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                animation: increase 0.5s forwards;
+            }
+
+
+            @keyframes increase {
+                0%{
+                    height: 0%;
+                }
+
+                100%{
+                    height: 100%;
+                }
+            }
+            
+
+            .bar{
+                background: $primaryRed;
+                border-radius: 8px;
+                position: absolute;
+                width: 45px;
+                left: 0;
+                right: 0;
+                margin: 0px auto;;
+                bottom: 0;
+            }
+        }
+    }
+
+    .graph-x-axis , .graph-y-axis{
+        color: $gray;
+    }
+
+    .graph-x-axis{       
+        position: absolute; 
+        bottom: -20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+
+        >span{
+            width: 100%;
+            display: flex;
+            justify-content: center
+        };
+    }
+
+    .graph-y-axis{
+        position: absolute;
+        width: calc(100% + 20px);
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: -20px;
+        height: 100%;
+        justify-content: space-between;
+        font-size: 10px;
+        z-index: 0;
+
+        span{
+            border-bottom: solid 1px $grayLight;
+        }
+    }
+}

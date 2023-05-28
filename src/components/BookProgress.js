@@ -2,12 +2,14 @@ import { ArrowIcon } from "../images/icons/customIcons";
 
 const BookProgress = () => {
     return(
-        <div className="book-progress">
-            <div className="book-progress-image">
-            </div>
-            <div className="book-progress-details">
-                <p> Title </p>
-                <div className="book-progress-bar"></div>
+        <div className="book-progress flex justify-sb">
+            <div className="book-progress-inner flex v-center">
+                <div className="book-progress-image">
+                </div>
+                <div className="book-progress-details">
+                    <p> The Righteous mind </p>
+                    <div className="book-progress-bar"><div className="progress"></div></div>
+                </div>
             </div>
             <ArrowIcon />
         </div>
