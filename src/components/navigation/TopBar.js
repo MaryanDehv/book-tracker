@@ -30,16 +30,18 @@ const TopBar = () => {
                                 <div className="section-list">
                                     <BookCard 
                                         content={{
-                                            image: "",
-                                            title: "testing",
-                                            description: "lorem something somwthing blah blah"
+                                            img: "https://cdn.pixabay.com/photo/2012/12/27/19/41/halloween-72939_960_720.jpg",
+                                            title: "Whispers of the Forgotten",
+                                            description: "Forgotten secrets revealed in town.",
+                                            author: "Jonathan Haidt"
                                         }}
                                     />
                                     <BookCard 
                                         content={{
-                                            image: "",
-                                            title: "testing",
-                                            description: "lorem something somwthing blah blah"
+                                            img: "https://cdn.pixabay.com/photo/2017/03/27/19/16/buckled-book-2180047_960_720.jpg",
+                                            title: "The Enigmatic Key",
+                                            description: "Global chase uncovers key's power.",
+                                            author: "Jonathan Haidt"
                                         }}
                                     />
                                 </div>
@@ -51,9 +53,8 @@ const TopBar = () => {
                                 <div className="section-list">
                                     <BookProgress 
                                         content={{
-                                            image: "",
-                                            title: "testing",
-                                            description: "lorem something somwthing blah blah"
+                                            img:"https://cdn.pixabay.com/photo/2017/03/27/19/16/buckled-book-2180047_960_720.jpg",
+                                            title: "the silent observer"
                                         }}
                                     />
                                 </div>

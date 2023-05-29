@@ -24,14 +24,14 @@ function App() {
               },
               class:"book-card-container",
               content:[{
-                image: "",
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                img: "https://cdn.pixabay.com/photo/2012/12/27/19/41/halloween-72939_960_720.jpg",
+                title: "Whispers of the Forgotten",
+                description: "Forgotten secrets revealed in town."
               },
               {
-                image: "",
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                img: "https://cdn.pixabay.com/photo/2017/03/27/19/16/buckled-book-2180047_960_720.jpg",
+                title: "The Enigmatic Key",
+                description: "Global chase uncovers key's power."
               }]
             },
             {
@@ -43,16 +43,16 @@ function App() {
               },
               class:"book-progress-container",
               content:[{
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                img:"https://cdn.pixabay.com/photo/2017/03/27/19/16/buckled-book-2180047_960_720.jpg",
+                title: "The Silent Observer"
               },
               {
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                img:"https://cdn.pixabay.com/photo/2022/09/05/12/17/geometric-pattern-7434039_960_720.jpg",
+                title: "Beneath the Crimson Veil"
               },
               {
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                img:"https://cdn.pixabay.com/photo/2016/09/01/13/52/steampunk-1636156_960_720.png",
+                title: "The Clockwork Alchemist"
               }]
             },{
               component: BookGraph,
@@ -76,16 +76,19 @@ function App() {
               },
               class:"book-list-container",
               content:[{
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                title: "Echoes of Eternity",
+                img:"https://cdn.pixabay.com/photo/2019/07/25/17/09/camp-4363073_960_720.png",
+                genres:['mys' , 'thr']
               },
               {
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                title: "The Clockwork Alchemist",
+                img:"https://cdn.pixabay.com/photo/2017/03/27/19/16/buckled-book-2180047_960_720.jpg",
+                genres:['fan' , 'adv']
               },
               {
-                title: "testing",
-                description: "lorem something somwthing blah blah"
+                title: "The Oracle's Prophecy",
+                img:"https://w.wallhaven.cc/full/9m/wallhaven-9m2e68.jpg",
+                genres:['stp' , 'fan']
               }]
             }
           ]}

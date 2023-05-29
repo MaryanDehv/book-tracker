@@ -1,15 +1,16 @@
 import { ArrowIcon } from "../images/icons/customIcons";
 
-const BookList = () => {
+const BookList = ({content}) => {
     return(
         <div className="book-list flex justify-sb">
             <div className="book-list-inner flex v-center">
-                <div className="book-list-image"></div>
+                <div className="book-list-image" style={{backgroundImage:`url(${content.img})`}}></div>
                 <div className="book-list-details">
-                    <h4> The Righteous Mind </h4>
+                    <h4> {content.title} </h4>
                     <div className="book-list-genres flex">
-                        <div className="filter-item"> Psych </div>
-                        <div className="filter-item"> Psych </div>
+                        {
+                            content.genres.map(genre => (<div className="filter-item"> {genre} </div>))
+                        }
                     </div>
                 </div>
             </div>

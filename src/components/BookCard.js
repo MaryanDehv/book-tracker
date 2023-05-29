@@ -1,17 +1,21 @@
 const BookCard = ({content}) => {
     return(
         <div className="book-card">      
-            <div className="book-card-image">
+            <div className="book-card-image" style={{backgroundImage:`url(${content.img})`}}>
             </div>
             <div className="book-card-details">
-                <div className="book-card-details-ratings">
-                </div>
-                <div className="book-card-details-description">
+                <div>
+                    <div className="book-card-details-ratings">
+                        ☆☆☆☆☆
+                    </div>
                     <h4>{content.title}</h4>
-                    <p>
-                        {content.description}
-                    </p>
                 </div>
+                <p className="book-description">
+                    {content.description}
+                </p>
+                <p className="book-author">
+                    Author: <strong> {content.author} </strong>
+                </p>
             </div>
         </div>
     );

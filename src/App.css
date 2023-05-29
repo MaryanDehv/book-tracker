@@ -102,6 +102,10 @@ table {
   background-position: center;
   margin-bottom: 18px;
 }
+.book-card .book-card-details-ratings {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
 .book-card .book-card-details h4 {
   font-size: 13px;
   margin-bottom: 5px;
@@ -110,12 +114,19 @@ table {
 .book-card .book-card-details p {
   color: rgba(17, 19, 21, 0.4);
 }
+.book-card .book-card-details .book-author {
+  display: none;
+}
 
 .top-bar-inner-search-dropdown .book-card {
   display: flex;
   width: 100%;
   gap: 10px;
   height: 56px;
+}
+.top-bar-inner-search-dropdown .book-card .book-card-details > div {
+  display: flex;
+  flex-direction: column-reverse;
 }
 .top-bar-inner-search-dropdown .book-card h4 {
   font-size: 11px;
@@ -126,6 +137,12 @@ table {
 .top-bar-inner-search-dropdown .book-card .book-card-image {
   height: 50px;
   width: 50px;
+}
+.top-bar-inner-search-dropdown .book-card .book-author {
+  display: block;
+}
+.top-bar-inner-search-dropdown .book-card .book-description {
+  display: none;
 }
 
 .book-list:not(:last-child) {
@@ -356,6 +373,9 @@ table {
   gap: 10px;
   padding: 0px 25px;
 }
+.top-bar-inner-search-container > div {
+  gap: 10px;
+}
 .top-bar-inner-search-container input {
   border: none;
   background: inherit;
@@ -375,6 +395,10 @@ table {
 .top-bar-inner-search-container .filtered .filter-item {
   background: #00DA32;
   color: #FFFFFF;
+}
+.top-bar-inner-search-container .filtered svg line {
+  stroke: #FFFFFF;
+  stroke-width: 2px;
 }
 .top-bar-inner-search-dropdown {
   position: absolute;

@@ -22,6 +22,12 @@
     }
 
     .book-card-details{
+
+        &-ratings{
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
         h4{
             font-size: 13px;
             margin-bottom: 5px;
@@ -31,6 +37,10 @@
         p{
             color: rgba($black , 0.4);
         }
+
+        .book-author{
+            display: none;
+        }
     }
 }
 
@@ -38,11 +48,19 @@
 
 // book card displayed under the search dropdown
 .top-bar-inner-search-dropdown{
+
     .book-card{
         display: flex;
         width: 100%;
         gap:10px;
         height: 56px;
+
+        .book-card-details{
+            >div{
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
     
         h4{
             font-size: 11px;
@@ -55,6 +73,14 @@
         .book-card-image{
             height: 50px;
             width: 50px;
+        }
+
+        .book-author{
+            display: block;
+        }
+
+        .book-description{
+            display: none;
         }
     }
 }
