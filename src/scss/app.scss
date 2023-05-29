@@ -142,6 +142,14 @@ svg{
 	padding: 3px 10px;
 	font-size: 10px;
 	text-transform: uppercase;
+
+	&.green{
+		background: $primaryGreen;
+	}
+
+	&.red{
+		background: $primaryRed;
+	}
 }
 
 .margin-l-r-20{

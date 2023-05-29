@@ -3,7 +3,7 @@ import {Logo , ClockIcon , AnalyticsIcon , ListIcon , CogIcon , AddIcon , CheckI
 const SideBar = () => {
     return(
         <div className="side-bar">
-            <div className="side-bar-logo">
+            <div className="side-bar-logo flex v-center">
                 <Logo />
             </div>
             <div className="side-bar-content flex">

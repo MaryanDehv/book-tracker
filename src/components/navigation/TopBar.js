@@ -6,13 +6,14 @@ const TopBar = () => {
     return(
         <div className="top-bar flex h-center">
             <div className="top-bar-inner margin-l-r-20 justify-sb flex">
-                <div className="top-bar-inner-search">
+                <div className="top-bar-inner-search filtered">
                     <div className="top-bar-inner-search-container flex v-center justify-sb">
                         <div className="flex v-center">
                             <div className="search icon"><SearchIcon /></div>
                             <input className="search" type="text" placeholder="THE RIGHTEOUS MIND" />
                             <div className="filtered flex">
-                                <div className="filter-item flex v-center"> Completed <TimesIcon /></div>
+                                <div className="filter-item flex v-center green"> Com <TimesIcon /></div>
+                                <div className="filter-item flex v-center red"> Ong <TimesIcon /></div>
                             </div>
                         </div>
 

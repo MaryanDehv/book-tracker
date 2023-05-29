@@ -1,5 +1,13 @@
 // clean up css
 
+
+.book-graph-container{
+    .grid-item-content{
+        position: relative;
+        z-index: 0;
+    }
+}
+
 .graph{
     height: calc(100% - 25px);
     width: 100%;
@@ -16,6 +24,29 @@
         .bar-container{
             width: calc(100% / 7);
             position: relative;
+
+            .bar-data-popup{
+                display: none;
+            }
+            
+            .bar-data-popup{
+                background: $grayLight;
+                border-radius: 5px;
+                padding: 10px;
+                position: absolute;
+                top: -70px;
+                z-index: 1;
+
+                ul{
+                    li{
+                        white-space: nowrap;
+                        font-size: 10px;
+                         &:not(:last-child){
+                            padding-bottom: 5px;
+                         }
+                    }
+                }
+            }
 
             .bar-mask{
                 position: absolute;
@@ -45,6 +76,12 @@
                 right: 0;
                 margin: 0px auto;;
                 bottom: 0;
+
+                &:hover{
+                    .bar-data-popup{
+                        display: block;
+                    }
+                }
             }
         }
     }

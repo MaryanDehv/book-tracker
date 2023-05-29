@@ -16,10 +16,13 @@ const BookGraph = () => {
                     <div className="bar-container" key={index}>
                         <div className="bar-mask"> 
                             <div className="bar" style={bar}>
-                                {/* <div className="bar-data-popup">
-                                    <p className="date"> 24 September </p>
-                                    <div className="views flex"><div></div><span>20k</span></div>
-                                </div>     */}
+                                <div className="bar-data-popup">
+                                    <ul>
+                                        <li> The silent observer </li>
+                                        <li> beneath the crimson veil </li>
+                                        <li> the clockwork alchemist </li>
+                                    </ul>
+                                </div>    
                             </div>
                         </div>
                     </div>

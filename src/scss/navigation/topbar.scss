@@ -16,6 +16,14 @@
             position: relative;
             left: 4px;
 
+            &.filtered{
+                .filter{
+                    g{
+                        stroke:$primaryBlue;
+                    }
+                }
+            }
+
             &-container{
                 position: relative;
                 background: #F2F2F2;
@@ -50,7 +58,6 @@
                     height: 25px;
 
                     .filter-item{
-                        background:$primaryGreen;
                         color: $white;
                     }
 
