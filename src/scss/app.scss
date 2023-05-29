@@ -128,11 +128,11 @@ svg{
 	right: 0;
 	overflow-y:scroll;
 
-	>div{
-		height: calc(100vh - 76px);
-		justify-content: center;
-		align-content: center;
-	}
+	// >div{
+	// 	height: calc(100vh - 76px);
+	// 	justify-content: center;
+	// 	align-content: center;
+	// }
 }
 
 .margin-l-r-20{
@@ -141,4 +141,66 @@ svg{
 
 .padding-l-r-20{
 	padding: 0 20px;
+}
+
+.side-bar-content , .top-bar-search , .section-title-icon , .book-progress , .book-list{
+	svg{
+		width: 15px;
+	}
+}
+
+.top-bar-account{
+	svg{
+		width: 20px;
+	}
+}
+
+.section-title{
+	height: 50px;
+	gap:5px;
+	text-transform: uppercase;
+	font-size: 10px;
+
+	&.green{
+		.section-title-icon{
+			background: rgba($primaryGreen , 0.1);
+
+			g{
+				stroke:$primaryGreen;
+			}
+		}
+	}
+
+	&.red{
+		.section-title-icon{
+			background: rgba($primaryRed, 0.1);
+			g{
+				stroke:$primaryRed;
+			}
+		}
+	}
+
+	&.purple{
+		.section-title-icon{
+			background: rgba($primaryPurple, 0.1);
+			g{
+				stroke:$primaryPurple;
+			}
+		}
+	}
+
+	&.orange{
+		.section-title-icon{
+			background: rgba($primaryOrange , 0.1);
+			g{
+				stroke:$primaryOrange;
+			}
+		}
+	}
+
+	&-icon{
+		border-radius: 5px;
+		width: 20px;
+		height: 20px;
+	}
 }

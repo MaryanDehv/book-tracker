@@ -1,9 +1,8 @@
 // clean up css
 
 .graph{
-    height: calc(100% - 35px);
-    width: 96%;
-    left: 25px;
+    height: calc(100% - 25px);
+    width: 100%;
     position: relative;
 
     .graph_bars-container{
@@ -71,7 +70,7 @@
 
     .graph-y-axis{
         position: absolute;
-        width: calc(100% + 20px);
+        width: 100%;
         display: flex;
         flex-direction: column;
         top: 0;

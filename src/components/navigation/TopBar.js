@@ -1,9 +1,11 @@
-import { BellIcon, Chatcon, ClockIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
+import { BellIcon, Chatcon, CheckIcon, ClockIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
+import BookCard from "../BookCard";
+import BookProgress from "../BookProgress";
 
 const TopBar = () => {
     return(
         <div className="top-bar flex h-center">
-            <div className="margin-l-r-20 justify-sb flex">
+            <div className="top-bar-inner margin-l-r-20 justify-sb flex">
                 <div className="top-bar-search">
                     <div className="top-bar-search-container flex v-center">
                         <div className="search icon"><SearchIcon /></div>
@@ -13,6 +15,52 @@ const TopBar = () => {
                         </div>
                         <div className="filter icon"><FilterIcon /></div>
                         <div className="close icon"><CloseIcon /></div>
+                    </div>
+                    <div className="top-bar-search-dropdown">
+                        <div className="top-bar-search-dropdown-inner">
+                            <div className="top-bar-search-dropdown-group">
+                                <div className={`section-title flex v-center green`}>
+                                    <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Completed </h3>
+                                </div>
+                                <div className="section-list">
+                                    <BookCard 
+                                        content={{
+                                            image: "",
+                                            title: "testing",
+                                            description: "lorem something somwthing blah blah"
+                                        }}
+                                    />
+                                    <BookCard 
+                                        content={{
+                                            image: "",
+                                            title: "testing",
+                                            description: "lorem something somwthing blah blah"
+                                        }}
+                                    />
+                                    <BookCard 
+                                        content={{
+                                            image: "",
+                                            title: "testing",
+                                            description: "lorem something somwthing blah blah"
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className="top-bar-search-dropdown-group grayed">
+                                <div className={`section-title flex v-center red`}>
+                                    <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Ongoing </h3>
+                                </div>
+                                <div className="section-list">
+                                    <BookProgress 
+                                        content={{
+                                            image: "",
+                                            title: "testing",
+                                            description: "lorem something somwthing blah blah"
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="top-bar-account flex">

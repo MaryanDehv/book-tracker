@@ -8,11 +8,55 @@
     position: fixed;
     padding: 16px 0px;
 
-    >div{
+    .top-bar-inner{
         width: 940px;
     }
 
+    &-search{
+        position: relative;
+        left: 13px;
+        &-dropdown{
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            width: 420px;
+            height: fit-content;
+            background: $white;
+            border-radius: 15px;
+            z-index: -1;
+            box-shadow: 8px 10px 15px rgba($gray , 0.2);
+            overflow-y: scroll;
+            max-height: 300px;
 
+            &-inner{
+                padding: 60px 20px 20px;
+                height: calc(100% - 60px);
+
+                .section-list{
+
+                    .book-card{
+                        display: flex;
+                        width: 100%;
+                        gap:10px;
+                        height: 56px;
+
+                        h4{
+                            font-size: 13px;
+                        }
+
+                        p{
+                            font-size: 12px;
+                        }
+
+                        .book-card-image{
+                            height: 50px;
+                            width: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
     &-search-container{
         position: relative;
         background: #F2F2F2;
@@ -40,6 +84,7 @@
         .filtered{
             height: fit-content;
             gap:5px;
+            height: 25px;
 
             .filter-item{
                 justify-content: space-between;
@@ -48,19 +93,7 @@
                 color: $white;
                 border-radius: 20px;
                 padding: 5px 10px;
-
-                svg{
-                    line{
-                        stroke: $white;
-                        stroke-width: 2px;
-                    }
-                }
             }
-        }
-
-        svg{
-            height: fit-content;
-            cursor: pointer;
         }
     }
 
@@ -75,12 +108,6 @@
         p{
             font-size: 14px;
             gap:4px;
-    
-            svg{
-                g{
-                    stroke: $primaryRed;
-                }
-            }
         }
 
         .icons{
@@ -96,16 +123,8 @@
                 background-image:url('https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
                 background-size: cover;
             }
-
-            svg{
-                width: 25px;
-            }
         }
 
-    }
-
-    svg{
-        width: 15px;
     }
 }
 

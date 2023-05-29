@@ -63,6 +63,13 @@ table {
   gap: 12px;
   grid-template-columns: 592px 331px;
   grid-template-rows: repeat(2, 270px);
+  width: fit-content;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  right: 0;
+  margin: auto;
+  height: fit-content;
 }
 .grid-container .grid-item-content {
   height: calc(100% - 50px);
@@ -72,44 +79,6 @@ table {
   align-items: center;
   border-radius: 10px;
   padding: 16px 30px;
-}
-.grid-container .grid-item .grid-item-title {
-  height: 50px;
-  gap: 5px;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-.grid-container .grid-item .grid-item-title.green .grid-item-title-icon {
-  background: rgba(0, 218, 50, 0.1);
-}
-.grid-container .grid-item .grid-item-title.green .grid-item-title-icon g {
-  stroke: #00DA32;
-}
-.grid-container .grid-item .grid-item-title.red .grid-item-title-icon {
-  background: rgba(255, 76, 76, 0.1);
-}
-.grid-container .grid-item .grid-item-title.red .grid-item-title-icon g {
-  stroke: #FF4C4C;
-}
-.grid-container .grid-item .grid-item-title.purple .grid-item-title-icon {
-  background: rgba(164, 49, 249, 0.1);
-}
-.grid-container .grid-item .grid-item-title.purple .grid-item-title-icon g {
-  stroke: #A431F9;
-}
-.grid-container .grid-item .grid-item-title.orange .grid-item-title-icon {
-  background: rgba(249, 87, 49, 0.1);
-}
-.grid-container .grid-item .grid-item-title.orange .grid-item-title-icon g {
-  stroke: #F95731;
-}
-.grid-container .grid-item .grid-item-title-icon {
-  border-radius: 5px;
-  width: 20px;
-  height: 20px;
-}
-.grid-container .grid-item .grid-item-title-icon svg {
-  width: 15px;
 }
 
 .book-card-container {
@@ -181,14 +150,10 @@ table {
   background: #F2F2F2;
   text-transform: uppercase;
 }
-.book-list svg {
-  width: 15px;
-}
 
 .graph {
-  height: calc(100% - 35px);
-  width: 96%;
-  left: 25px;
+  height: calc(100% - 25px);
+  width: 100%;
   position: relative;
 }
 .graph .graph_bars-container {
@@ -245,7 +210,7 @@ table {
 }
 .graph .graph-y-axis {
   position: absolute;
-  width: calc(100% + 20px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   top: 0;
@@ -301,9 +266,6 @@ table {
   height: 100%;
   background: #FF4C4C;
 }
-.book-progress svg {
-  width: 15px;
-}
 
 .side-bar {
   position: fixed;
@@ -321,11 +283,6 @@ table {
 }
 .side-bar-logo {
   height: 76px;
-}
-.side-bar-logo svg {
-  width: 29px;
-  position: relative;
-  top: 20px;
 }
 .side-bar-content {
   height: calc(100% - 76px);
@@ -345,10 +302,6 @@ table {
   cursor: pointer;
   font-weight: 600;
 }
-.side-bar-list li svg {
-  width: 15.4px;
-  height: fit-content;
-}
 .side-bar-list li span {
   color: #B2AEAE;
 }
@@ -362,10 +315,6 @@ table {
   width: 25.14px;
   cursor: pointer;
 }
-.side-bar-mode-container .side-bar-mode svg {
-  width: 15px;
-  height: 15px;
-}
 
 .top-bar {
   background: #FFFFFF;
@@ -377,8 +326,45 @@ table {
   position: fixed;
   padding: 16px 0px;
 }
-.top-bar > div {
+.top-bar .top-bar-inner {
   width: 940px;
+}
+.top-bar-search {
+  position: relative;
+  left: 13px;
+}
+.top-bar-search-dropdown {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: 420px;
+  height: fit-content;
+  background: #FFFFFF;
+  border-radius: 15px;
+  z-index: -1;
+  box-shadow: 8px 10px 15px rgba(178, 174, 174, 0.2);
+  overflow-y: scroll;
+  max-height: 300px;
+}
+.top-bar-search-dropdown-inner {
+  padding: 60px 20px 20px;
+  height: calc(100% - 60px);
+}
+.top-bar-search-dropdown-inner .section-list .book-card {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  height: 56px;
+}
+.top-bar-search-dropdown-inner .section-list .book-card h4 {
+  font-size: 13px;
+}
+.top-bar-search-dropdown-inner .section-list .book-card p {
+  font-size: 12px;
+}
+.top-bar-search-dropdown-inner .section-list .book-card .book-card-image {
+  height: 50px;
+  width: 50px;
 }
 .top-bar-search-container {
   position: relative;
@@ -404,6 +390,7 @@ table {
 .top-bar-search-container .filtered {
   height: fit-content;
   gap: 5px;
+  height: 25px;
 }
 .top-bar-search-container .filtered .filter-item {
   justify-content: space-between;
@@ -412,14 +399,6 @@ table {
   color: #FFFFFF;
   border-radius: 20px;
   padding: 5px 10px;
-}
-.top-bar-search-container .filtered .filter-item svg line {
-  stroke: #FFFFFF;
-  stroke-width: 2px;
-}
-.top-bar-search-container svg {
-  height: fit-content;
-  cursor: pointer;
 }
 .top-bar, .top-bar-account, .top-bar .icons {
   align-items: center;
@@ -430,9 +409,6 @@ table {
 .top-bar-account p {
   font-size: 14px;
   gap: 4px;
-}
-.top-bar-account p svg g {
-  stroke: #FF4C4C;
 }
 .top-bar-account .icons {
   gap: 15px;
@@ -446,12 +422,6 @@ table {
   border-radius: 100%;
   background-image: url("https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80");
   background-size: cover;
-}
-.top-bar-account .icons svg {
-  width: 25px;
-}
-.top-bar svg {
-  width: 15px;
 }
 
 .dark-mode .main {
@@ -529,11 +499,6 @@ svg g {
   right: 0;
   overflow-y: scroll;
 }
-.main > div {
-  height: calc(100vh - 76px);
-  justify-content: center;
-  align-content: center;
-}
 
 .margin-l-r-20 {
   margin: 0 20px;
@@ -541,6 +506,50 @@ svg g {
 
 .padding-l-r-20 {
   padding: 0 20px;
+}
+
+.side-bar-content svg, .top-bar-search svg, .section-title-icon svg, .book-progress svg, .book-list svg {
+  width: 15px;
+}
+
+.top-bar-account svg {
+  width: 20px;
+}
+
+.section-title {
+  height: 50px;
+  gap: 5px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.section-title.green .section-title-icon {
+  background: rgba(0, 218, 50, 0.1);
+}
+.section-title.green .section-title-icon g {
+  stroke: #00DA32;
+}
+.section-title.red .section-title-icon {
+  background: rgba(255, 76, 76, 0.1);
+}
+.section-title.red .section-title-icon g {
+  stroke: #FF4C4C;
+}
+.section-title.purple .section-title-icon {
+  background: rgba(164, 49, 249, 0.1);
+}
+.section-title.purple .section-title-icon g {
+  stroke: #A431F9;
+}
+.section-title.orange .section-title-icon {
+  background: rgba(249, 87, 49, 0.1);
+}
+.section-title.orange .section-title-icon g {
+  stroke: #F95731;
+}
+.section-title-icon {
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -1,12 +1,12 @@
 import './App.css';
 import TopBar from './components/navigation/TopBar';
 import SideBar from './components/navigation/SideBar';
-import Grid from './utils/Grid';
+import Grid from './components/utils/Grid';
 import BookCard from './components/BookCard';
 import BookProgress from './components/BookProgress';
 import BookList from './components/BookList';
 import BookGraph from './components/BookGraph';
-import { AnalyticsIcon, CheckIcon, ClockIcon, ListIcon } from './images/icons/customIcons';
+import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/customIcons';
 
 function App() {
   return (

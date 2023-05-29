@@ -6,9 +6,9 @@ const BookCard = ({content}) => {
             <div className="book-card-details">
                 <div className="book-card-details-ratings">
                 </div>
-                <div>
+                <div className="book-card-details-description">
                     <h4>{content.title}</h4>
-                    <p className="book-card-details-description">
+                    <p>
                         {content.description}
                     </p>
                 </div>
