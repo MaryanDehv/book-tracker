@@ -1,6 +1,7 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+/* 
+	http://meyerweb.com/eric/tools/css/reset/ 
+	v2.0 | 20110126
+	License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap");
 html, body, div, span, applet, object, iframe,
@@ -64,7 +65,7 @@ table {
   grid-template-rows: repeat(2, 270px);
 }
 .grid-container .grid-item-content {
-  height: 221px;
+  height: calc(100% - 50px);
 }
 .grid-container .grid-item {
   background: #FFFFFF;
@@ -74,6 +75,9 @@ table {
 }
 .grid-container .grid-item .grid-item-title {
   height: 50px;
+  gap: 5px;
+  text-transform: uppercase;
+  font-size: 10px;
 }
 .grid-container .grid-item .grid-item-title.green .grid-item-title-icon {
   background: rgba(0, 218, 50, 0.1);
@@ -101,11 +105,11 @@ table {
 }
 .grid-container .grid-item .grid-item-title-icon {
   border-radius: 5px;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 .grid-container .grid-item .grid-item-title-icon svg {
-  width: 20px;
+  width: 15px;
 }
 
 .book-card-container {
@@ -182,8 +186,9 @@ table {
 }
 
 .graph {
-  height: calc(100% - 50px);
-  width: 100%;
+  height: calc(100% - 35px);
+  width: 96%;
+  left: 25px;
   position: relative;
 }
 .graph .graph_bars-container {
@@ -372,6 +377,9 @@ table {
   position: fixed;
   padding: 16px 0px;
 }
+.top-bar > div {
+  width: 940px;
+}
 .top-bar-search-container {
   position: relative;
   background: #F2F2F2;
@@ -515,11 +523,16 @@ svg g {
 
 .main {
   height: calc(100% - 76px);
-  width: calc(100% - 196px);
-  margin-top: 100px;
+  width: calc(100% - 159px);
   position: absolute;
   bottom: 0;
   right: 0;
+  overflow-y: scroll;
+}
+.main > div {
+  height: calc(100vh - 76px);
+  justify-content: center;
+  align-content: center;
 }
 
 .margin-l-r-20 {

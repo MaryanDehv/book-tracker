@@ -3,7 +3,7 @@ import { BellIcon, Chatcon, ClockIcon, CloseIcon, FilterIcon, SearchIcon, TimesI
 const TopBar = () => {
     return(
         <div className="top-bar flex h-center">
-            <div className="margin-l-r-20 justify-sb full-width flex">
+            <div className="margin-l-r-20 justify-sb flex">
                 <div className="top-bar-search">
                     <div className="top-bar-search-container flex v-center">
                         <div className="search icon"><SearchIcon /></div>

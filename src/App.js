@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App light-mode">
       <SideBar />
-      <div className="main padding-l-r-20">
+      <div className="main padding-l-r-2">
         <Grid 
           content={[
             {
