@@ -1,130 +1,118 @@
 .top-bar{
     background: $white;
     height: 44px;
-    width: calc(100% - 156px);
+    width: calc(100% - 160px);
     right: 0;
     top: 0;
     justify-content: space-between;
     position: fixed;
     padding: 16px 0px;
+    border-left: solid 1px $grayLight;
 
-    .top-bar-inner{
+    &-inner{
         width: 940px;
-    }
 
-    &-search{
-        position: relative;
-        left: 13px;
-        &-dropdown{
-            position: absolute;
-            left: -10px;
-            top: -10px;
-            width: 420px;
-            height: fit-content;
-            background: $white;
-            border-radius: 15px;
-            z-index: -1;
-            box-shadow: 8px 10px 15px rgba($gray , 0.2);
-            overflow-y: scroll;
-            max-height: 300px;
+        &-search{
+            position: relative;
+            left: 4px;
 
-            &-inner{
-                padding: 60px 20px 20px;
-                height: calc(100% - 60px);
+            &-container{
+                position: relative;
+                background: #F2F2F2;
+                border-radius: 20px;
+                width: fit-content;
+                height: 35px;
+                min-width: 270px;
+                gap:10px;
+                padding: 0px 25px;
+                
+                input{
+                    border:none;
+                    background: inherit;
+                    width: 160px;
+        
+                    &::placeholder{
+                        font-size: 12px;
+                    }
+        
+                    &:focus{
+                        outline: none;
+                    }
+                }
+        
+                .filtered{
+                    height: fit-content;
+                    gap:5px;
+                    height: 25px;
 
-                .section-list{
+                    .filter-item{
+                        background:$primaryGreen;
+                        color: $white;
+                    }
+                }
+            }
 
-                    .book-card{
-                        display: flex;
-                        width: 100%;
-                        gap:10px;
-                        height: 56px;
+            &-dropdown{
+                position: absolute;
+                left: -10px;
+                top: -10px;
+                width: calc(100% + 20px);
+                background: $white;
+                border-radius: 15px;
+                padding-top: 65px;
+                height: fit-content;
+                z-index: -1;
+                box-shadow: 8px 10px 15px rgba($gray , 0.2);
 
-                        h4{
-                            font-size: 13px;
-                        }
+    
+                &-inner{
+                    position:relative;
+                    max-height: 300px;
+                    width: calc(100% - 40px);
+                    padding: 0px 20px 20px;
+                    overflow-y: scroll;
 
-                        p{
-                            font-size: 12px;
-                        }
-
-                        .book-card-image{
-                            height: 50px;
-                            width: 50px;
-                        }
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                  
+                    & {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
                     }
                 }
             }
         }
-    }
-    &-search-container{
-        position: relative;
-        background: #F2F2F2;
-        border-radius: 20px;
-        width: fit-content;
-        height: 35px;
-        min-width: 270px;
-        gap:10px;
-        padding: 0px 25px;
-        
-        input{
-            border:none;
-            background: inherit;
-            width: 160px;
 
-            &::placeholder{
-                font-size: 12px;
-            }
-
-            &:focus{
-                outline: none;
-            }
+        & , &-account , .icons{
+            align-items: center;
         }
-
-        .filtered{
-            height: fit-content;
-            gap:5px;
-            height: 25px;
-
-            .filter-item{
-                justify-content: space-between;
-                font-size:13px;
-                background:$primaryRed;
-                color: $white;
-                border-radius: 20px;
-                padding: 5px 10px;
+    
+    
+        &-account{
+            gap:45px;
+    
+            p{
+                font-size: 14px;
+                gap:4px;
             }
-        }
-    }
-
-    & , &-account , .icons{
-        align-items: center;
-    }
-
-
-    &-account{
-        gap:45px;
-
-        p{
-            font-size: 14px;
-            gap:4px;
-        }
-
-        .icons{
-            gap:15px;
-            >div{
-                width: 25px;
+    
+            .icons{
+                gap:15px;
+                >div{
+                    width: 25px;
+                }
+    
+                .user{
+                    background: red;
+                    height: 25px;
+                    border-radius: 100%;
+                    background-image:url('https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
+                    background-size: cover;
+                }
             }
-
-            .user{
-                background: red;
-                height: 25px;
-                border-radius: 100%;
-                background-image:url('https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
-                background-size: cover;
-            }
+    
         }
-
     }
 }
 

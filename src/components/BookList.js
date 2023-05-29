@@ -6,9 +6,8 @@ const BookList = () => {
             <div className="book-list-inner flex v-center">
                 <div className="book-list-image"></div>
                 <div className="book-list-details">
-                    <p> The Righteous Mind </p>
+                    <h4> The Righteous Mind </h4>
                     <div className="book-list-genres flex">
-                        <div className="filter-item"> Psych </div>
                         <div className="filter-item"> Psych </div>
                         <div className="filter-item"> Psych </div>
                     </div>

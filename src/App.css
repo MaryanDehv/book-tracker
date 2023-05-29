@@ -62,7 +62,7 @@ table {
   display: grid;
   gap: 12px;
   grid-template-columns: 592px 331px;
-  grid-template-rows: repeat(2, 270px);
+  grid-template-rows: repeat(2, minmax(270px, auto));
   width: fit-content;
   position: absolute;
   left: 0;
@@ -104,12 +104,28 @@ table {
 }
 .book-card .book-card-details h4 {
   font-size: 13px;
-  font-weight: 600;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
 .book-card .book-card-details p {
   color: rgba(17, 19, 21, 0.4);
+}
+
+.top-bar-inner-search-dropdown .book-card {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  height: 56px;
+}
+.top-bar-inner-search-dropdown .book-card h4 {
+  font-size: 11px;
+}
+.top-bar-inner-search-dropdown .book-card p {
+  font-size: 12px;
+}
+.top-bar-inner-search-dropdown .book-card .book-card-image {
+  height: 50px;
+  width: 50px;
 }
 
 .book-list:not(:last-child) {
@@ -126,7 +142,7 @@ table {
 .book-list-details {
   width: calc(100% - 50px);
 }
-.book-list-details p {
+.book-list-details h4 {
   width: 100px;
   font-size: 11px;
   text-transform: uppercase;
@@ -139,16 +155,12 @@ table {
   gap: 5px;
   flex-wrap: wrap;
   width: 129px;
+  margin-top: 5px;
 }
-.book-list .book-list-genres > div {
-  width: 60px;
-  font-size: 11px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  border: solid 1px #B2AEAE;
+.book-list .book-list-genres .filter-item {
   background: #F2F2F2;
-  text-transform: uppercase;
+  border: 1px solid #B2AEAE;
+  color: #111315;
 }
 
 .graph {
@@ -245,7 +257,7 @@ table {
 .book-progress-details {
   width: calc(100% - 50px);
 }
-.book-progress-details p {
+.book-progress-details h4 {
   width: 100px;
   font-size: 11px;
   text-transform: uppercase;
@@ -319,54 +331,22 @@ table {
 .top-bar {
   background: #FFFFFF;
   height: 44px;
-  width: calc(100% - 156px);
+  width: calc(100% - 160px);
   right: 0;
   top: 0;
   justify-content: space-between;
   position: fixed;
   padding: 16px 0px;
+  border-left: solid 1px #F2F2F2;
 }
-.top-bar .top-bar-inner {
+.top-bar-inner {
   width: 940px;
 }
-.top-bar-search {
+.top-bar-inner-search {
   position: relative;
-  left: 13px;
+  left: 4px;
 }
-.top-bar-search-dropdown {
-  position: absolute;
-  left: -10px;
-  top: -10px;
-  width: 420px;
-  height: fit-content;
-  background: #FFFFFF;
-  border-radius: 15px;
-  z-index: -1;
-  box-shadow: 8px 10px 15px rgba(178, 174, 174, 0.2);
-  overflow-y: scroll;
-  max-height: 300px;
-}
-.top-bar-search-dropdown-inner {
-  padding: 60px 20px 20px;
-  height: calc(100% - 60px);
-}
-.top-bar-search-dropdown-inner .section-list .book-card {
-  display: flex;
-  width: 100%;
-  gap: 10px;
-  height: 56px;
-}
-.top-bar-search-dropdown-inner .section-list .book-card h4 {
-  font-size: 13px;
-}
-.top-bar-search-dropdown-inner .section-list .book-card p {
-  font-size: 12px;
-}
-.top-bar-search-dropdown-inner .section-list .book-card .book-card-image {
-  height: 50px;
-  width: 50px;
-}
-.top-bar-search-container {
+.top-bar-inner-search-container {
   position: relative;
   background: #F2F2F2;
   border-radius: 20px;
@@ -376,47 +356,69 @@ table {
   gap: 10px;
   padding: 0px 25px;
 }
-.top-bar-search-container input {
+.top-bar-inner-search-container input {
   border: none;
   background: inherit;
   width: 160px;
 }
-.top-bar-search-container input::placeholder {
+.top-bar-inner-search-container input::placeholder {
   font-size: 12px;
 }
-.top-bar-search-container input:focus {
+.top-bar-inner-search-container input:focus {
   outline: none;
 }
-.top-bar-search-container .filtered {
+.top-bar-inner-search-container .filtered {
   height: fit-content;
   gap: 5px;
   height: 25px;
 }
-.top-bar-search-container .filtered .filter-item {
-  justify-content: space-between;
-  font-size: 13px;
-  background: #FF4C4C;
+.top-bar-inner-search-container .filtered .filter-item {
+  background: #00DA32;
   color: #FFFFFF;
-  border-radius: 20px;
-  padding: 5px 10px;
 }
-.top-bar, .top-bar-account, .top-bar .icons {
+.top-bar-inner-search-dropdown {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: calc(100% + 20px);
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding-top: 65px;
+  height: fit-content;
+  z-index: -1;
+  box-shadow: 8px 10px 15px rgba(178, 174, 174, 0.2);
+}
+.top-bar-inner-search-dropdown-inner {
+  position: relative;
+  max-height: 300px;
+  width: calc(100% - 40px);
+  padding: 0px 20px 20px;
+  overflow-y: scroll;
+}
+.top-bar-inner-search-dropdown-inner::-webkit-scrollbar {
+  display: none;
+}
+.top-bar-inner-search-dropdown-inner {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.top-bar-inner, .top-bar-inner-account, .top-bar-inner .icons {
   align-items: center;
 }
-.top-bar-account {
+.top-bar-inner-account {
   gap: 45px;
 }
-.top-bar-account p {
+.top-bar-inner-account p {
   font-size: 14px;
   gap: 4px;
 }
-.top-bar-account .icons {
+.top-bar-inner-account .icons {
   gap: 15px;
 }
-.top-bar-account .icons > div {
+.top-bar-inner-account .icons > div {
   width: 25px;
 }
-.top-bar-account .icons .user {
+.top-bar-inner-account .icons .user {
   background: red;
   height: 25px;
   border-radius: 100%;
@@ -448,6 +450,11 @@ table {
 body {
   height: 100vh;
   font-family: "open sans", sans-serif;
+}
+
+h4 {
+  font-weight: 600;
+  color: rgba(17, 19, 21, 0.8);
 }
 
 .flex {
@@ -500,6 +507,16 @@ svg g {
   overflow-y: scroll;
 }
 
+.filter-item {
+  justify-content: space-between;
+  font-size: 13px;
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
 .margin-l-r-20 {
   margin: 0 20px;
 }
@@ -508,11 +525,11 @@ svg g {
   padding: 0 20px;
 }
 
-.side-bar-content svg, .top-bar-search svg, .section-title-icon svg, .book-progress svg, .book-list svg {
+.side-bar-content svg, .top-bar-inner-search svg, .section-title-icon svg, .book-progress svg, .book-list svg {
   width: 15px;
 }
 
-.top-bar-account svg {
+.top-bar-inner-account svg {
   width: 20px;
 }
 

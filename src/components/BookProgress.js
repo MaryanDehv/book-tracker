@@ -7,7 +7,7 @@ const BookProgress = () => {
                 <div className="book-progress-image">
                 </div>
                 <div className="book-progress-details">
-                    <p> The Righteous mind </p>
+                    <h4> The Righteous mind </h4>
                     <div className="book-progress-bar"><div className="progress"></div></div>
                 </div>
             </div>

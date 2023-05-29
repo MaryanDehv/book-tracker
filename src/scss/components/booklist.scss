@@ -1,5 +1,4 @@
 .book-list{
-
     &:not(:last-child){
         margin-bottom: 5px;
     }
@@ -16,7 +15,7 @@
 
     &-details{
         width: calc(100% - 50px);
-        p{
+        h4{
             width: 100px;
             font-size: 11px;
             text-transform:  uppercase;
@@ -32,16 +31,12 @@
         gap:5px;
         flex-wrap: wrap;
         width: 129px;
+        margin-top: 5px;
 
-        >div{
-            width: 60px;
-            font-size: 11px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            border: solid 1px $gray;
-            background: $grayLight;
-            text-transform: uppercase;
+        .filter-item{
+            background:$grayLight;
+            border: 1px solid $gray;
+            color: $black;
         }
     }
 }
