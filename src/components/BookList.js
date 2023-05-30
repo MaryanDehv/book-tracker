@@ -9,7 +9,7 @@ const BookList = ({content}) => {
                     <h4> {content.title} </h4>
                     <div className="book-list-genres flex">
                         {
-                            content.genres.map(genre => (<div className="filter-item"> {genre} </div>))
+                            content.genres.map(genre => (<div className={`filter-item ${genre.color}-outline`}> {genre.title} </div>))
                         }
                     </div>
                 </div>

@@ -22,5 +22,67 @@
             }
         }
     }
+
+    .grid-item{
+        background: $white;
+    }
+
+    .book-graph-container{
+        .graph-y-axis{
+            span{
+                border-bottom: solid 1px rgba($gray, 0.1);
+            }
+        }
+    }
+
+    .top-bar{
+        background: $white;
+        border-left: solid 1px $grayLight;
+        
+        &-inner{
+            &-account{
+                p{
+                    color: $black;
+                }
+            }
+
+            &-search{
+                &-container{
+                    background: $grayLight;
+                }
+    
+                &-dropdown{
+                    background: $white;
+                    box-shadow: 8px 10px 15px rgba($gray , 0.2);
+                    color: $black;
+
+                    h4{
+                        color: $black;
+                    }
+
+                    svg{
+                        g{
+                            stroke: $grayLight;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .book-card{
+        p{
+            color: rgba($black , 0.4);
+        }
+    }
+
+    .bookList{
+        .filter-item{
+            color: $black;
+        }
+    }
+
+    .book-progress{
+    }
     
 }

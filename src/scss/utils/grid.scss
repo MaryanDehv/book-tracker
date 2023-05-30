@@ -16,9 +16,12 @@
     }
 
     .grid-item{
-        background: $white;
         align-items: center;
         border-radius: 10px;
         padding: 16px 30px;
+    }
+
+    @media only screen and (max-width: 1127px){
+        grid-template-columns: 1fr;
     }
 }

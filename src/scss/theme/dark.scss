@@ -1,5 +1,93 @@
 .dark-mode{
     .main{
+        background: $black;
+    }
+
+    .side-bar{
         background: $blackLight;
+
+        &-mode{
+            background: $black;
+
+            .selected{
+                background: $blackLight;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    .top-bar{
+        background: $blackLight;
+        border-left: solid 1px $black;
+        
+        &-inner{
+            &-account{
+                p{
+                    color: $white;
+                }
+            }
+
+            &-search{
+                &-container{
+                    background: $black;
+                }
+    
+                &-dropdown{
+                    background: $blackLight;
+                    box-shadow: 8px 10px 15px rgba($black , 0.9);
+                    color: $white;
+
+                    h4{
+                        color: $white;
+                    }
+
+                    svg{
+                        g{
+                            stroke: $white;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    .grid-item{
+        background: $blackLight;
+        color: $white;
+
+        h4{
+            color: $white;
+        }
+
+        svg{
+            g{
+                stroke:$white;
+            }
+        }
+    }
+
+    .book-graph-container{
+        .graph-y-axis{
+            span{
+                border-bottom: solid 1px rgba($gray, 0.1);
+            }
+        }
+    }
+
+    .book-progress{
+    }
+
+    .bookList{
+        .filter-item{
+            color: $white;
+        }
+    }
+
+
+    .book-card{
+        p{
+            color: rgba($white , 0.4);
+        }
     }
 }

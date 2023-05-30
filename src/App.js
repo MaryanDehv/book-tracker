@@ -10,7 +10,7 @@ import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/cust
 
 function App() {
   return (
-    <div className="App light-mode">
+    <div className="App dark-mode">
       <SideBar />
       <div className="main padding-l-r-2">
         <Grid 
@@ -78,17 +78,17 @@ function App() {
               content:[{
                 title: "Echoes of Eternity",
                 img:"https://cdn.pixabay.com/photo/2019/07/25/17/09/camp-4363073_960_720.png",
-                genres:['mys' , 'thr']
+                genres:[{color:'green' , title: 'mys'} , {color: 'red' , title: 'psy'}]
               },
               {
                 title: "The Clockwork Alchemist",
                 img:"https://cdn.pixabay.com/photo/2017/03/27/19/16/buckled-book-2180047_960_720.jpg",
-                genres:['fan' , 'adv']
+                genres:[{color:'purple' , title: 'adv'} , {color: 'orange' , title: 'thr'}]
               },
               {
                 title: "The Oracle's Prophecy",
                 img:"https://w.wallhaven.cc/full/9m/wallhaven-9m2e68.jpg",
-                genres:['stp' , 'fan']
+                genres:[{color:'red' , title: 'stp'} , {color: 'green' , title: 'fan'}]
               }]
             }
           ]}

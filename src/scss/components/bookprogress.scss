@@ -30,9 +30,9 @@
         }
 
         .book-progress-bar{
+            background: rgba($gray , 0.1);
             height: 10px;
             width: 100px;
-            background: $grayLight;
             border-radius: 1px;
             position: relative;
 

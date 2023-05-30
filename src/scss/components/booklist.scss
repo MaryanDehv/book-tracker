@@ -34,9 +34,17 @@
         margin-top: 5px;
 
         .filter-item{
-            background:$grayLight;
-            border: 1px solid $gray;
-            color: $black;
+            @mixin color($prop , $color){
+                &.#{$prop}{
+                    background: rgba($color , 0.3);
+                    border:solid 1px $color;
+                }
+            }
+
+            @include color('red-outline' , $primaryRed);
+            @include color('green-outline' , $primaryGreen);
+            @include color('purple-outline' , $primaryPurple);
+            @include color('orange-outline' , $primaryOrange);
         }
     }
 }
