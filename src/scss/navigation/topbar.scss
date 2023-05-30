@@ -7,10 +7,6 @@
     position: fixed;
     padding: 16px 0px;
 
-    @media only screen and (max-width:1024px){
-        width: calc(100% - 70px);
-    }
-
     &-inner{
         width: 940px;
 
@@ -122,6 +118,10 @@
                 >div{
                     width: 25px;
                 }
+
+                .hamburger-icon, .search-icon{
+                    display: none;
+                }
     
                 .user{
                     background: red;
@@ -131,8 +131,44 @@
                     background-size: cover;
                 }
             }
-    
+
+            @media only screen and (max-width:650px){
+
+                &,.icons{
+                    width: 100%;
+                }
+
+                .icons{
+                    justify-content: space-between;
+
+                    .hamburger-icon, .search-icon{
+                        display: block;
+                    }
+                }
+            }
         }
+
+        // @media only screen and (min-width: 320px) and (max-width:923px) {
+        //     &-search{
+        //         display: none;
+        //     }
+
+        //     &-account{
+        //         p, .user{
+        //             display: none;
+        //         }
+        //     }
+
+        // }
+    }
+
+    @media only screen and (max-width:1024px){
+        width: calc(100% - 70px);
+    }
+
+
+    @media only screen and (max-width:650px){
+        width: 100%;
     }
 }
 

@@ -1,4 +1,4 @@
-import { BellIcon, Chatcon, CheckIcon, ClockIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
+import { BellIcon, Chatcon, CheckIcon, ClockIcon, CloseIcon, FilterIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
 import BookCard from "../BookCard";
 import BookProgress from "../BookProgress";
 
@@ -66,6 +66,8 @@ const TopBar = () => {
                 <div className="top-bar-inner-account flex">
                     <p className="flex v-center"><ClockIcon /> <span className="opacity"> Read for </span> <strong> 50h 30m</strong> <span className="opacity">this week</span></p>
                     <div className="icons flex v-center">
+                        <div className="hamburger-icon"><HamburgerIcon/></div>
+                        <div className="search-icon"><SearchIcon /></div>
                         <div className="message"><Chatcon /></div>
                         <div className="notification"><BellIcon /></div>
                         <div className="user"></div>

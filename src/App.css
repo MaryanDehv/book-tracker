@@ -73,6 +73,7 @@ table {
 }
 .grid-container .grid-item-content {
   height: calc(100% - 50px);
+  flex-wrap: wrap;
 }
 .grid-container .grid-item {
   align-items: center;
@@ -96,7 +97,12 @@ table {
 
 .book-card {
   height: 196px;
-  width: 230px;
+  width: 45%;
+}
+@media only screen and (max-width: 650px) {
+  .book-card {
+    width: 100%;
+  }
 }
 .book-card .book-card-image {
   height: 103px;
@@ -402,6 +408,11 @@ table {
     width: 30px;
   }
 }
+@media only screen and (max-width: 650px) {
+  .side-bar {
+    display: none;
+  }
+}
 
 .top-bar {
   height: 44px;
@@ -411,11 +422,6 @@ table {
   justify-content: space-between;
   position: fixed;
   padding: 16px 0px;
-}
-@media only screen and (max-width: 1024px) {
-  .top-bar {
-    width: calc(100% - 70px);
-  }
 }
 .top-bar-inner {
   width: 940px;
@@ -505,12 +511,36 @@ table {
 .top-bar-inner-account .icons > div {
   width: 25px;
 }
+.top-bar-inner-account .icons .hamburger-icon, .top-bar-inner-account .icons .search-icon {
+  display: none;
+}
 .top-bar-inner-account .icons .user {
   background: red;
   height: 25px;
   border-radius: 100%;
   background-image: url("https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80");
   background-size: cover;
+}
+@media only screen and (max-width: 650px) {
+  .top-bar-inner-account, .top-bar-inner-account .icons {
+    width: 100%;
+  }
+  .top-bar-inner-account .icons {
+    justify-content: space-between;
+  }
+  .top-bar-inner-account .icons .hamburger-icon, .top-bar-inner-account .icons .search-icon {
+    display: block;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .top-bar {
+    width: calc(100% - 70px);
+  }
+}
+@media only screen and (max-width: 650px) {
+  .top-bar {
+    width: 100%;
+  }
 }
 
 .dark-mode .main {
@@ -678,6 +708,11 @@ svg g {
 @media only screen and (max-width: 1024px) {
   .main {
     width: calc(100% - 70px);
+  }
+}
+@media only screen and (max-width: 650px) {
+  .main {
+    width: 100%;
   }
 }
 
