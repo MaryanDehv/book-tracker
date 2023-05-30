@@ -63,12 +63,12 @@ table {
   gap: 12px;
   grid-template-columns: 592px 331px;
   grid-template-rows: repeat(2, minmax(270px, auto));
-  width: fit-content;
   position: absolute;
+  justify-content: center;
+  margin: 0px 16px;
   left: 0;
   top: 100px;
   right: 0;
-  margin: auto;
   height: fit-content;
 }
 .grid-container .grid-item-content {
@@ -78,6 +78,7 @@ table {
   align-items: center;
   border-radius: 10px;
   padding: 16px 30px;
+  min-height: 200px;
 }
 @media only screen and (max-width: 1127px) {
   .grid-container {
@@ -359,18 +360,30 @@ table {
   border: solid 1px rgba(178, 174, 174, 0.1);
   font-size: 10px;
   gap: 8.4px;
-  padding: 2.1px 1.2px;
+  padding: 5px;
   margin-bottom: 3px;
   height: 23px;
   width: 120px;
   cursor: pointer;
   font-weight: 600;
 }
+.side-bar-list li, .side-bar-list li svg {
+  height: fit-content;
+}
 .side-bar-list li span {
   color: #B2AEAE;
 }
+@media only screen and (max-width: 1024px) {
+  .side-bar-list li, .side-bar-list {
+    width: fit-content;
+  }
+  .side-bar-list .list-name {
+    display: none;
+  }
+}
 .side-bar-mode-container .side-bar-mode {
-  width: 57px;
+  width: fit-content;
+  padding: 0px 3px;
   height: 29px;
   border-radius: 20px;
 }
@@ -378,6 +391,16 @@ table {
   height: 25.14px;
   width: 25.14px;
   cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+  .side-bar-mode-container .side-bar-mode > div:not(.selected) {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .side-bar {
+    width: 30px;
+  }
 }
 
 .top-bar {
@@ -388,6 +411,11 @@ table {
   justify-content: space-between;
   position: fixed;
   padding: 16px 0px;
+}
+@media only screen and (max-width: 1024px) {
+  .top-bar {
+    width: calc(100% - 70px);
+  }
 }
 .top-bar-inner {
   width: 940px;
@@ -646,6 +674,11 @@ svg g {
   bottom: 0;
   right: 0;
   overflow-y: scroll;
+}
+@media only screen and (max-width: 1024px) {
+  .main {
+    width: calc(100% - 70px);
+  }
 }
 
 .filter-item {

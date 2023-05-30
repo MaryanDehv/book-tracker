@@ -7,6 +7,10 @@
     position: fixed;
     padding: 16px 0px;
 
+    @media only screen and (max-width:1024px){
+        width: calc(100% - 70px);
+    }
+
     &-inner{
         width: 940px;
 

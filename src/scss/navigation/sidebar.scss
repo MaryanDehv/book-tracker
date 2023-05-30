@@ -33,15 +33,31 @@
             border: solid 1px rgba($gray , 0.1);
             font-size: 10px;
             gap:8.4px;
-            padding: 2.1px 1.2px;
+            padding: 5px;
             margin-bottom: 3px;
             height: 23px;
             width: 120px;
             cursor: pointer;
             font-weight: 600;
 
+            & , svg{
+                height: fit-content;
+            }
+
             span{
                 color: $gray;
+            }
+        }
+
+
+        @media only screen and (max-width:1024px){
+
+            li , &{
+                width: fit-content;
+            }
+
+            .list-name{
+                display: none;
             }
         }
     }
@@ -49,7 +65,8 @@
     // light dark toggle
     &-mode-container{
         .side-bar-mode{
-            width: 57px;
+            width: fit-content;
+            padding: 0px 3px;
             height: 29px;
             border-radius: 20px;
     
@@ -57,7 +74,17 @@
                 height: 25.14px;
                 width: 25.14px;
                 cursor: pointer;
+
+                @media only screen and (max-width:1024px){
+                    &:not(.selected){
+                        display: none;
+                    }
+                }
             }
         }
+    }
+
+    @media only screen and (max-width:1024px){
+        width: 30px;
     }
 }

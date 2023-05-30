@@ -6,13 +6,13 @@ const SideBar = () => {
             <div className="side-bar-logo flex v-center">
                 <Logo />
             </div>
-            <div className="side-bar-content flex">
+            <div className="side-bar-content flex v-center">
                 <ul className="side-bar-list">
-                    <li className="uppercase button flex v-center"><span><ClockIcon /></span><span>Ongoing</span></li>
-                    <li className="uppercase button flex v-center"><span><CheckIcon /></span><span>Completed</span></li>
-                    <li className="uppercase button flex v-center"><span><ListIcon /></span><span>List</span></li>
-                    <li className="uppercase button flex v-center"><span><CogIcon /></span><span>Setitngs</span></li>
-                    <li className="uppercase button flex v-center"><span><AddIcon /></span><span>Add Book</span></li>
+                    <li className="uppercase button flex v-center"><span><ClockIcon /></span><span className="list-name">Ongoing</span></li>
+                    <li className="uppercase button flex v-center"><span><CheckIcon /></span><span className="list-name">Completed</span></li>
+                    <li className="uppercase button flex v-center"><span><ListIcon /></span><span className="list-name">List</span></li>
+                    <li className="uppercase button flex v-center"><span><CogIcon /></span><span className="list-name">Setitngs</span></li>
+                    <li className="uppercase button flex v-center"><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">

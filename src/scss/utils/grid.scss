@@ -3,12 +3,12 @@
     gap: 12px;
     grid-template-columns: 592px 331px;
     grid-template-rows: repeat(2 , minmax(270px , auto));
-    width: fit-content;
     position: absolute;
+    justify-content: center;
+    margin: 0px 16px;
     left: 0;
     top: 100px;
     right: 0;
-    margin: auto;
     height: fit-content;
 
     .grid-item-content{
@@ -19,6 +19,7 @@
         align-items: center;
         border-radius: 10px;
         padding: 16px 30px;
+        min-height: 200px;
     }
 
     @media only screen and (max-width: 1127px){
