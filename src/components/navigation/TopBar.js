@@ -6,25 +6,41 @@ import {useState} from 'react'
 const TopBar = () => {
     const [searchDropdown , setSearchDropdown] = useState(true)
     const [filterDropdown , setFilterDropdown] = useState(true)
+    const [searchInput , setSearchInput] = useState("")
 
     function removeFilters(el){
         // functionality - should remove and reset search based on filter removed
         el.currentTarget.parentNode.remove()
     }
 
-    function toggleFilter(){
-        console.log('toggling')
+    function handleChange(e){
+        if(e.target.value){
+            setSearchInput(e.target.value)
+            setSearchDropdown(true)
+        } else {
+            resetSearch()
+        }
+    }
+
+    function toggleFilter(el){
         setFilterDropdown(!filterDropdown)
+        if(!searchDropdown) setSearchDropdown(true)
+    }
+
+    function resetSearch(){
+        setSearchDropdown(false)
+        setFilterDropdown(false)
+        setSearchInput("")
     }
     
     return(
         <div className="top-bar flex h-center">
             <div className="top-bar-inner margin-l-r-20 justify-sb flex">
-                <div className={`top-bar-inner-search ${filterDropdown ? 'filter-panel' : ''} ${searchDropdown ? 'searched' : ''}`}>
+                <div className={`top-bar-inner-search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
                     <div className="top-bar-inner-search-container flex v-center justify-sb">
                         <div className="flex v-center">
                             <div className="search icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
-                            <input className="search" type="text" placeholder="THE RIGHTEOUS MIND" />
+                            <input className="search" type="text" placeholder="Search your library..." value={searchInput}  onChange={handleChange} />
                             <div className="filtered flex">
                                 <div className="filter-item flex v-center green"> Com <TimesIcon func={removeFilters}/></div>
                                 <div className="filter-item flex v-center red"> Ong <TimesIcon func={removeFilters}/></div>
@@ -32,11 +48,11 @@ const TopBar = () => {
                         </div>
 
                         <div className="flex v-center">
-                            <div className="filter icon"><FilterIcon func={toggleFilter} /></div>
-                            <div className="close icon"><CloseIcon func={() => setSearchDropdown(!searchDropdown)}/></div>
+                            <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilter} /></div>
+                            <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={resetSearch}/></div>
                         </div>
                     </div>
-                    <div className="top-bar-inner-search-dropdown">
+                    <div className={`top-bar-inner-search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
                         <div className="top-bar-inner-search-dropdown-inner search-results">
                             <div className="top-bar-inner-search-dropdown-inner-group">
                                 <div className={`section-title flex v-center green`}>

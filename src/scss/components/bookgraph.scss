@@ -28,21 +28,38 @@
             .bar-data-popup{
                 display: none;
             }
+
+
+            &:first-child{
+                .bar-data-popup{
+                    left: 0;
+                }
+            }
             
             .bar-data-popup{
-                background: $grayLight;
+                width: fit-content;
                 border-radius: 5px;
                 padding: 10px;
                 position: absolute;
                 top: -70px;
+                right: 0;
                 z-index: 1;
 
                 ul{
                     li{
                         white-space: nowrap;
                         font-size: 10px;
+                        gap:5px;
+
                          &:not(:last-child){
                             padding-bottom: 5px;
+                         }
+
+                         >div{
+                            width: 5px;
+                            height: 5px;
+                            background: $primaryRed;
+                            border-radius: 1px;
                          }
                     }
                 }

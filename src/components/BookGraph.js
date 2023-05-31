@@ -18,9 +18,9 @@ const BookGraph = () => {
                             <div className="bar" style={bar}>
                                 <div className="bar-data-popup">
                                     <ul>
-                                        <li> The silent observer </li>
-                                        <li> beneath the crimson veil </li>
-                                        <li> the clockwork alchemist </li>
+                                        <li className="flex v-center"> <div></div> The silent observer </li>
+                                        <li className="flex v-center"> <div></div> beneath the crimson veil </li>
+                                        <li className="flex v-center"> <div></div> the clockwork alchemist </li>
                                     </ul>
                                 </div>    
                             </div>
