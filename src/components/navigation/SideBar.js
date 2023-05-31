@@ -1,6 +1,22 @@
 import {Logo , ClockIcon , AnalyticsIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../images/icons/customIcons'
 
-const SideBar = () => {
+const SideBar = ({toggle}) => {
+
+    const themeOptions = [
+        {
+            name: 'light',
+            icon: SunIcon
+        } ,
+        {
+            name: 'dark',
+            icon: MoonIcon,
+        }
+    ]
+
+    function themeMode(theme){
+        toggle.func(theme)
+    }
+
     return(
         <div className="side-bar">
             <div className="side-bar-logo flex v-center">
@@ -16,8 +32,11 @@ const SideBar = () => {
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">
-                        <div className="side-bar-light flex v-h-center selected"><SunIcon /></div>
-                        <div className="side-bar-dark flex v-h-center"><MoonIcon /></div>
+                        {themeOptions.map(theme => (
+                            <div className={`side-bar-light flex v-h-center ${toggle.theme == theme.name ? 'selected' : ''}`} onClick={() => themeMode(theme.name)}><theme.icon /></div>
+                        ))}
+                        {/* <div className="side-bar-light flex v-h-center selected"><SunIcon /></div>
+                        <div className="side-bar-dark flex v-h-center"><MoonIcon /></div> */}
                     </div>
                 </div>
             </div>

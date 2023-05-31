@@ -84,9 +84,9 @@ export const CheckIcon = () => {
     )
 }
 
-export const CloseIcon = () => {
+export const CloseIcon = ({func}) => {
     return(
-        <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Icons" transform="translate(-441.234604, -187.921474)" stroke="#979797" stroke-width="0.5">
                     <g id="Close---cirlce" transform="translate(441.234604, 187.921474)">
@@ -231,9 +231,9 @@ export const MoonIcon = () => {
     )
 }
 
-export const SearchIcon = () => {
+export const SearchIcon = ({func}) => {
     return(
-        <svg width="39.6277134px" height="38.9673106px" viewBox="0 0 39.6277134 38.9673106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} width="39.6277134px" height="38.9673106px" viewBox="0 0 39.6277134 38.9673106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Icons" transform="translate(-48.698725, -187.453415)" stroke="#979797" stroke-width="0.5">
                     <g id="Search" transform="translate(48.698725, 187.453415)">
@@ -246,9 +246,9 @@ export const SearchIcon = () => {
     )
 }
 
-export const FilterIcon = () => {
+export const FilterIcon = ({func}) => {
     return(
-        <svg width="15px" height="11px" viewBox="0 0 15 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} width="15px" height="11px" viewBox="0 0 15 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Filter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Group" transform="translate(-0.000000, -0.174623)" stroke="#979797" stroke-width="0.5">
                     <line x1="5.83913476" y1="1.70154965" x2="14.5460206" y2="1.70154965" id="Path-13" stroke-linecap="round" stroke-linejoin="round"></line>
@@ -263,9 +263,9 @@ export const FilterIcon = () => {
     )
 }
 
-export const ClockIcon = () => {
+export const ClockIcon = ({func}) => {
     return(
-        <svg width="39.4301806px" height="39.4301806px" viewBox="0 0 39.4301806 39.4301806" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} width="39.4301806px" height="39.4301806px" viewBox="0 0 39.4301806 39.4301806" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Icons" transform="translate(-363.614505, -121.155788)" stroke="#979797" stroke-width="0.5">
                     <g id="Time" transform="translate(363.614505, 121.155788)">
@@ -278,9 +278,9 @@ export const ClockIcon = () => {
     )
 }
 
-export const TimesIcon = () => {
+export const TimesIcon = ({func}) => {
     return(
-        <svg width="43.0250768px" height="43.0250768px" viewBox="0 0 43.0250768 43.0250768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} width="43.0250768px" height="43.0250768px" viewBox="0 0 43.0250768 43.0250768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                 <g id="Icons" transform="translate(-121.190957, -256.026736)" stroke-width="0.5">
                     <g id="Times" transform="translate(121.544511, 256.380289)">

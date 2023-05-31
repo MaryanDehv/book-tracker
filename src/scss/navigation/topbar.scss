@@ -21,6 +21,93 @@
                     }
                 }
             }
+        
+            &.filter-panel{
+                .search-results{
+                    display: none;
+                }
+
+                .filter-group{
+                    display: block;
+                    >div{
+                    gap:10px;
+                        .filter-check{
+                            gap:5px;
+                            
+                            >div{
+                                width: 10px;
+                                height:10px;
+                                border-radius:2px;
+                            }
+
+                            p{
+                                text-transform: uppercase;
+                                font-size: 12px;
+                            }
+
+
+                        }
+
+                        @mixin color($prop , $color){
+                            .#{$prop}{
+                                background: rgba($color , 0.3);
+                                border:solid 1px $color;
+                            }
+                        }
+
+                        @include color('filter-check > div.red' , $primaryRed);
+                        @include color('filter-check > div.green' , $primaryGreen);
+                        @include color('filter-check > div.orange' , $primaryOrange);
+                    }
+                }
+            }
+
+            &.searched &:not(.filter-panel){
+                .search-results{
+                    display: block;
+                }
+
+                .filter-group{
+                    display: none;
+                }
+            }
+
+            &:not(.searched){
+                .top-bar-inner-search-dropdown{
+                    display: none;
+                }
+            }
+            
+            // dropdown design
+            .top-bar-inner-search-dropdown{
+                position: absolute;
+                left: -10px;
+                top: -10px;
+                width: calc(100% + 20px);
+                background: $white;
+                border-radius: 15px;
+                padding-top: 65px;
+                height: fit-content;
+                z-index: -1;
+                box-shadow: 8px 10px 15px rgba($gray , 0.2);
+    
+                &-inner{
+                    position:relative;
+                    max-height: 300px;
+                    width: calc(100% - 40px);
+                    padding: 0px 20px 20px;
+                    overflow-y: scroll;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                    
+                    & {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                    }
+                }
+            }
 
             &-container{
                 position: relative;
@@ -68,69 +155,8 @@
                 }
             }
 
-            &-dropdown{
-                position: absolute;
-                left: -10px;
-                top: -10px;
-                width: calc(100% + 20px);
-                background: $white;
-                border-radius: 15px;
-                padding-top: 65px;
-                height: fit-content;
-                z-index: -1;
-                box-shadow: 8px 10px 15px rgba($gray , 0.2);
-
-    
-                &-inner{
-                    position:relative;
-                    max-height: 300px;
-                    width: calc(100% - 40px);
-                    padding: 0px 20px 20px;
-                    overflow-y: scroll;
-
-                    &::-webkit-scrollbar {
-                        display: none;
-                    }
-                  
-                    & {
-                        -ms-overflow-style: none;
-                        scrollbar-width: none;
-                    }
-
-                    // clean up - pronto
-                    &.filter-group{
-                       >div{
-                        gap:10px;
-                            .filter-check{
-                                gap:5px;
-                                
-                                >div{
-                                    width: 10px;
-                                    height:10px;
-                                    border-radius:2px;
-                                }
-
-                                p{
-                                    text-transform: uppercase;
-                                    font-size: 12px;
-                                }
-
-
-                            }
-
-                            @mixin color($prop , $color){
-                                .#{$prop}{
-                                    background: rgba($color , 0.3);
-                                    border:solid 1px $color;
-                                }
-                            }
-
-                            @include color('filter-check > div.red' , $primaryRed);
-                            @include color('filter-check > div.green' , $primaryGreen);
-                            @include color('filter-check > div.orange' , $primaryOrange);
-                       }
-                    }
-                }
+            svg{
+                cursor: pointer;
             }
         }
 
@@ -164,11 +190,15 @@
                     background-image:url('https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
                     background-size: cover;
                 }
+
+                svg , .user{
+                    cursor: pointer;
+                }
             }
 
             @media only screen and (min-width: 320px) and (max-width:923px){
 
-                &,.icons{
+                & , .icons{
                     width: 100%;
                 }
 

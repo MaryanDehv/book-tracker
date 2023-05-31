@@ -7,11 +7,15 @@ import BookProgress from './components/BookProgress';
 import BookList from './components/BookList';
 import BookGraph from './components/BookGraph';
 import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/customIcons';
+import { useState } from "react";
 
 function App() {
+
+  const [theme , setTheme] = useState('light')
+
   return (
-    <div className="App light-mode">
-      <SideBar />
+    <div className={`App ${theme}-mode`}>
+      <SideBar toggle={{theme: theme , func: setTheme}}/>
       <div className="main padding-l-r-2">
         <Grid 
           content={[

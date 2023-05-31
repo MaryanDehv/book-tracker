@@ -356,7 +356,8 @@ table {
   height: 76px;
 }
 .side-bar-content {
-  height: calc(100% - 76px);
+  height: calc(100% - 116px);
+  padding: 20px 0px;
   min-height: 300px;
   flex-direction: column;
   justify-content: space-between;
@@ -433,6 +434,74 @@ table {
 .top-bar-inner-search.filtered .filter g {
   stroke: #359EFF;
 }
+.top-bar-inner-search.filter-panel .search-results {
+  display: none;
+}
+.top-bar-inner-search.filter-panel .filter-group {
+  display: block;
+}
+.top-bar-inner-search.filter-panel .filter-group > div {
+  gap: 10px;
+}
+.top-bar-inner-search.filter-panel .filter-group > div .filter-check {
+  gap: 5px;
+}
+.top-bar-inner-search.filter-panel .filter-group > div .filter-check > div {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.top-bar-inner-search.filter-panel .filter-group > div .filter-check p {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.top-bar-inner-search.filter-panel .filter-group > div .filter-check > div.red {
+  background: rgba(255, 76, 76, 0.3);
+  border: solid 1px #FF4C4C;
+}
+.top-bar-inner-search.filter-panel .filter-group > div .filter-check > div.green {
+  background: rgba(0, 218, 50, 0.3);
+  border: solid 1px #00DA32;
+}
+.top-bar-inner-search.filter-panel .filter-group > div .filter-check > div.orange {
+  background: rgba(249, 87, 49, 0.3);
+  border: solid 1px #F95731;
+}
+.top-bar-inner-search.searched .top-bar-inner-search:not(.filter-panel) .search-results {
+  display: block;
+}
+.top-bar-inner-search.searched .top-bar-inner-search:not(.filter-panel) .filter-group {
+  display: none;
+}
+.top-bar-inner-search:not(.searched) .top-bar-inner-search-dropdown {
+  display: none;
+}
+.top-bar-inner-search .top-bar-inner-search-dropdown {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: calc(100% + 20px);
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding-top: 65px;
+  height: fit-content;
+  z-index: -1;
+  box-shadow: 8px 10px 15px rgba(178, 174, 174, 0.2);
+}
+.top-bar-inner-search .top-bar-inner-search-dropdown-inner {
+  position: relative;
+  max-height: 300px;
+  width: calc(100% - 40px);
+  padding: 0px 20px 20px;
+  overflow-y: scroll;
+}
+.top-bar-inner-search .top-bar-inner-search-dropdown-inner::-webkit-scrollbar {
+  display: none;
+}
+.top-bar-inner-search .top-bar-inner-search-dropdown-inner {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .top-bar-inner-search-container {
   position: relative;
   background: #F2F2F2;
@@ -469,58 +538,8 @@ table {
   stroke: #FFFFFF;
   stroke-width: 2px;
 }
-.top-bar-inner-search-dropdown {
-  position: absolute;
-  left: -10px;
-  top: -10px;
-  width: calc(100% + 20px);
-  background: #FFFFFF;
-  border-radius: 15px;
-  padding-top: 65px;
-  height: fit-content;
-  z-index: -1;
-  box-shadow: 8px 10px 15px rgba(178, 174, 174, 0.2);
-}
-.top-bar-inner-search-dropdown-inner {
-  position: relative;
-  max-height: 300px;
-  width: calc(100% - 40px);
-  padding: 0px 20px 20px;
-  overflow-y: scroll;
-}
-.top-bar-inner-search-dropdown-inner::-webkit-scrollbar {
-  display: none;
-}
-.top-bar-inner-search-dropdown-inner {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div {
-  gap: 10px;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div .filter-check {
-  gap: 5px;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div .filter-check > div {
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div .filter-check p {
-  text-transform: uppercase;
-  font-size: 12px;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div .filter-check > div.red {
-  background: rgba(255, 76, 76, 0.3);
-  border: solid 1px #FF4C4C;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div .filter-check > div.green {
-  background: rgba(0, 218, 50, 0.3);
-  border: solid 1px #00DA32;
-}
-.top-bar-inner-search-dropdown-inner.filter-group > div .filter-check > div.orange {
-  background: rgba(249, 87, 49, 0.3);
-  border: solid 1px #F95731;
+.top-bar-inner-search svg {
+  cursor: pointer;
 }
 .top-bar-inner, .top-bar-inner-account, .top-bar-inner .icons {
   align-items: center;
@@ -547,6 +566,9 @@ table {
   border-radius: 100%;
   background-image: url("https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80");
   background-size: cover;
+}
+.top-bar-inner-account .icons svg, .top-bar-inner-account .icons .user {
+  cursor: pointer;
 }
 @media only screen and (min-width: 320px) and (max-width: 923px) {
   .top-bar-inner-account, .top-bar-inner-account .icons {

@@ -1,29 +1,43 @@
 import { BellIcon, Chatcon, CheckIcon, ClockIcon, CloseIcon, FilterIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
 import BookCard from "../BookCard";
 import BookProgress from "../BookProgress";
+import {useState} from 'react'
 
 const TopBar = () => {
+    const [searchDropdown , setSearchDropdown] = useState(true)
+    const [filterDropdown , setFilterDropdown] = useState(true)
+
+    function removeFilters(el){
+        // functionality - should remove and reset search based on filter removed
+        el.currentTarget.parentNode.remove()
+    }
+
+    function toggleFilter(){
+        console.log('toggling')
+        setFilterDropdown(!filterDropdown)
+    }
+    
     return(
         <div className="top-bar flex h-center">
             <div className="top-bar-inner margin-l-r-20 justify-sb flex">
-                <div className="top-bar-inner-search filtered">
+                <div className={`top-bar-inner-search ${filterDropdown ? 'filter-panel' : ''} ${searchDropdown ? 'searched' : ''}`}>
                     <div className="top-bar-inner-search-container flex v-center justify-sb">
                         <div className="flex v-center">
-                            <div className="search icon"><SearchIcon /></div>
+                            <div className="search icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
                             <input className="search" type="text" placeholder="THE RIGHTEOUS MIND" />
                             <div className="filtered flex">
-                                <div className="filter-item flex v-center green"> Com <TimesIcon /></div>
-                                <div className="filter-item flex v-center red"> Ong <TimesIcon /></div>
+                                <div className="filter-item flex v-center green"> Com <TimesIcon func={removeFilters}/></div>
+                                <div className="filter-item flex v-center red"> Ong <TimesIcon func={removeFilters}/></div>
                             </div>
                         </div>
 
                         <div className="flex v-center">
-                            <div className="filter icon"><FilterIcon /></div>
-                            <div className="close icon"><CloseIcon /></div>
+                            <div className="filter icon"><FilterIcon func={toggleFilter} /></div>
+                            <div className="close icon"><CloseIcon func={() => setSearchDropdown(!searchDropdown)}/></div>
                         </div>
                     </div>
                     <div className="top-bar-inner-search-dropdown">
-                        <div className="top-bar-inner-search-dropdown-inner search-results hidden">
+                        <div className="top-bar-inner-search-dropdown-inner search-results">
                             <div className="top-bar-inner-search-dropdown-inner-group">
                                 <div className={`section-title flex v-center green`}>
                                     <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Completed </h3>

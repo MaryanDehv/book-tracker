@@ -20,7 +20,8 @@
     
     // navigation and toggle container
     &-content{
-        height: calc(100% - 76px);
+        height: calc(100% - 116px);
+        padding: 20px 0px;
         min-height:300px;
         flex-direction: column;
         justify-content: space-between;
