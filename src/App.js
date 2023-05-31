@@ -10,7 +10,7 @@ import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/cust
 
 function App() {
   return (
-    <div className="App dark-mode">
+    <div className="App light-mode">
       <SideBar />
       <div className="main padding-l-r-2">
         <Grid 

@@ -23,7 +23,7 @@ const TopBar = () => {
                         </div>
                     </div>
                     <div className="top-bar-inner-search-dropdown">
-                        <div className="top-bar-inner-search-dropdown-inner">
+                        <div className="top-bar-inner-search-dropdown-inner search-results hidden">
                             <div className="top-bar-inner-search-dropdown-inner-group">
                                 <div className={`section-title flex v-center green`}>
                                     <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Completed </h3>
@@ -58,6 +58,22 @@ const TopBar = () => {
                                             title: "the silent observer"
                                         }}
                                     />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="top-bar-inner-search-dropdown-inner filter-group">
+                            <div className="top-bar-inner-search-dropdown-inner-group flex justify-sb">
+                                <div className="filter-check flex v-center">
+                                    <div className="green"></div>
+                                    <p> Completed </p>
+                                </div>
+                                <div className="filter-check flex v-center">
+                                    <div className="red"></div>
+                                    <p> ongoing </p>
+                                </div>
+                                <div className="filter-check flex v-center">
+                                    <div className="orange"></div>
+                                    <p> reading trends </p>
                                 </div>
                             </div>
                         </div>

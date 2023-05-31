@@ -96,6 +96,40 @@
                         -ms-overflow-style: none;
                         scrollbar-width: none;
                     }
+
+                    // clean up - pronto
+                    &.filter-group{
+                       >div{
+                        gap:10px;
+                            .filter-check{
+                                gap:5px;
+                                
+                                >div{
+                                    width: 10px;
+                                    height:10px;
+                                    border-radius:2px;
+                                }
+
+                                p{
+                                    text-transform: uppercase;
+                                    font-size: 12px;
+                                }
+
+
+                            }
+
+                            @mixin color($prop , $color){
+                                .#{$prop}{
+                                    background: rgba($color , 0.3);
+                                    border:solid 1px $color;
+                                }
+                            }
+
+                            @include color('filter-check > div.red' , $primaryRed);
+                            @include color('filter-check > div.green' , $primaryGreen);
+                            @include color('filter-check > div.orange' , $primaryOrange);
+                       }
+                    }
                 }
             }
         }
@@ -132,7 +166,7 @@
                 }
             }
 
-            @media only screen and (max-width:650px){
+            @media only screen and (min-width: 320px) and (max-width:923px){
 
                 &,.icons{
                     width: 100%;
@@ -148,26 +182,24 @@
             }
         }
 
-        // @media only screen and (min-width: 320px) and (max-width:923px) {
-        //     &-search{
-        //         display: none;
-        //     }
+        @media only screen and (min-width: 320px) and (max-width:923px) {
+            &-search{
+                display: none;
+            }
 
-        //     &-account{
-        //         p, .user{
-        //             display: none;
-        //         }
-        //     }
-
-        // }
+            &-account{
+                p, .user{
+                    display: none;
+                }
+            }
+        }
     }
 
     @media only screen and (max-width:1024px){
         width: calc(100% - 70px);
     }
 
-
-    @media only screen and (max-width:650px){
+    @media only screen and (min-width: 320px) and (max-width:923px){
         width: 100%;
     }
 }
