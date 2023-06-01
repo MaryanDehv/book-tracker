@@ -420,12 +420,32 @@ table {
     width: 30px;
   }
 }
+
 @media only screen and (min-width: 320px) and (max-width: 923px) {
   .side-bar {
     display: none;
   }
+  .mobile-nav .side-bar {
+    display: block;
+    position: absolute;
+    width: calc(100% - 40px);
+    height: calc(100% - 100px);
+    bottom: 0;
+    z-index: 1;
+    border-radius: 10px 10px 0px 0px;
+  }
+  .mobile-nav .side-bar .side-bar-list {
+    width: 100%;
+  }
+  .mobile-nav .side-bar .side-bar-list li {
+    width: 100%;
+  }
+  .mobile-nav .side-bar .side-bar-list li .list-name {
+    display: block;
+    width: calc(100% - 63.4px);
+    text-align: center;
+  }
 }
-
 .top-bar {
   height: 44px;
   width: calc(100% - 160px);
@@ -555,6 +575,13 @@ table {
 .top-bar-inner-account p {
   font-size: 14px;
   gap: 4px;
+}
+.top-bar-inner-account p svg {
+  width: 15px;
+}
+.top-bar-inner-account p svg g {
+  stroke: #FF4C4C;
+  stroke-width: 3px;
 }
 .top-bar-inner-account .icons {
   gap: 15px;
@@ -764,6 +791,9 @@ strong {
   font-weight: 500;
 }
 
+svg {
+  overflow: visible;
+}
 svg g {
   stroke-width: 1px;
 }

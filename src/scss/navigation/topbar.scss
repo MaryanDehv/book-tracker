@@ -166,6 +166,14 @@
             p{
                 font-size: 14px;
                 gap:4px;
+
+                svg{
+                    width: 15px;
+                    g{
+                        stroke: $primaryRed;
+                        stroke-width: 3px;
+                    }
+                }
             }
     
             .icons{

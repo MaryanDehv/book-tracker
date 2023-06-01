@@ -3,9 +3,9 @@ import BookCard from "../BookCard";
 import BookProgress from "../BookProgress";
 import {useState} from 'react'
 
-const TopBar = () => {
+const TopBar = ({toggleNav}) => {
     const [searchDropdown , setSearchDropdown] = useState(true)
-    const [filterDropdown , setFilterDropdown] = useState(true)
+    const [filterDropdown , setFilterDropdown] = useState(true);
     const [searchInput , setSearchInput] = useState("")
 
     function removeFilters(el){
@@ -31,6 +31,10 @@ const TopBar = () => {
         setSearchDropdown(false)
         setFilterDropdown(false)
         setSearchInput("")
+    }
+
+    function toggleMobileNav(){
+        toggleNav.func(!toggleNav.data)
     }
     
     return(
@@ -112,7 +116,7 @@ const TopBar = () => {
                 <div className="top-bar-inner-account flex">
                     <p className="flex v-center"><ClockIcon /> <span className="opacity"> Read for </span> <strong> 50h 30m</strong> <span className="opacity">this week</span></p>
                     <div className="icons flex v-center">
-                        <div className="hamburger-icon"><HamburgerIcon/></div>
+                        <div className="hamburger-icon"><HamburgerIcon func={toggleMobileNav}/></div>
                         <div className="search-icon"><SearchIcon /></div>
                         <div className="message"><Chatcon /></div>
                         <div className="notification"><BellIcon /></div>

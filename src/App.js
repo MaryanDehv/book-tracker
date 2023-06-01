@@ -12,9 +12,10 @@ import { useState } from "react";
 function App() {
 
   const [theme , setTheme] = useState('light')
+  const [mobileNav , setMobileNav] = useState(false);
 
   return (
-    <div className={`App ${theme}-mode`}>
+    <div className={`App ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
       <SideBar toggle={{theme: theme , func: setTheme}}/>
       <div className="main padding-l-r-2">
         <Grid 
@@ -98,7 +99,7 @@ function App() {
           ]}
         />
       </div>
-      <TopBar />
+      <TopBar toggleNav={{data: mobileNav , func: setMobileNav}} />
     </div>
   );
 }
