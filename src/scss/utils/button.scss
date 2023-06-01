@@ -1,0 +1,13 @@
+.red-button{
+    background: $primaryRed;
+    
+    *{
+        color: $white !important;
+    }
+
+    svg{
+        g{
+            stroke: $white;
+        }
+    }
+}
