@@ -28,7 +28,7 @@
                }
             }
         
-            .filter-group{
+            .filter-selection-group{
                 >div{
                 gap:10px;
                     .filter-check{
@@ -44,20 +44,12 @@
                             text-transform: uppercase;
                             font-size: 12px;
                         }
-
-
                     }
 
-                    @mixin color($prop , $color){
-                        .#{$prop}{
-                            background: rgba($color , 0.3);
-                            border:solid 1px $color;
-                        }
-                    }
 
-                    @include color('filter-check > div.red' , $primaryRed);
-                    @include color('filter-check > div.green' , $primaryGreen);
-                    @include color('filter-check > div.orange' , $primaryOrange);
+                    @include semiTransparentColouredBorderBox('.filter-check > div.red' , $primaryRed);
+                    @include semiTransparentColouredBorderBox('.filter-check > div.green' , $primaryGreen);
+                    @include semiTransparentColouredBorderBox('.filter-check > div.orange' , $primaryOrange);
                 }
             }
 
@@ -75,20 +67,6 @@
                 >div{
                     gap:10px;
                 }
-                
-                input{
-                    border:none;
-                    background: inherit;
-                    width: 160px;
-        
-                    &::placeholder{
-                        font-size: 12px;
-                    }
-        
-                    &:focus{
-                        outline: none;
-                    }
-                }
         
                 .filtered{
                     height: fit-content;
@@ -96,6 +74,9 @@
                     height: 25px;
 
                     .filter-item{
+                        @include tag;
+                        @include filteredTag('&.green' , $primaryGreen);
+                        @include filteredTag('&.red' , $primaryRed);
                         color: $white;
                     }
 
@@ -127,7 +108,7 @@
                 }
 
                 &:not(.filter-panel){
-                    .filter-group{
+                    .filter-selection-group{
                         display: none;
                     }   
                 }

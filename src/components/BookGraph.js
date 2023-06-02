@@ -28,7 +28,7 @@ const BookGraph = () => {
                     </div>
                 ))}
             </div>
-            <div className="graph-x-axis">
+            <div className="graph-x-axis flex">
                 <span> 22 </span>
                 <span> 23 </span>
                 <span> 24 </span>
@@ -37,7 +37,7 @@ const BookGraph = () => {
                 <span> 27 </span>
                 <span> 28 </span>
             </div>
-            <div className="graph-y-axis">
+            <div className="graph-y-axis flex">
                 <span> 35 </span>
                 <span> 30 </span>
                 <span> 25 </span>

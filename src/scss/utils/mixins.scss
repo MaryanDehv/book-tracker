@@ -1,0 +1,24 @@
+// background transparent with solid no opacity border
+@mixin semiTransparentColouredBorderBox($prop , $color){
+    #{$prop}{
+        background: rgba($color , 0.3);
+        border:solid 1px $color;
+    }
+}
+
+
+@mixin filteredTag($prop , $color){
+    #{$prop}{
+        background: $color;
+    }
+}
+
+
+@mixin tag{
+    justify-content: space-between;
+	font-size:13px;
+	border-radius: 20px;
+	padding: 3px 10px;
+	font-size: 10px;
+	text-transform: uppercase;
+}

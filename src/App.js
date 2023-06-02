@@ -13,10 +13,11 @@ function App() {
 
   const [theme , setTheme] = useState('light')
   const [mobileNav , setMobileNav] = useState(false);
+  const [mobileSearch , setMobileSearch] = useState(false);
 
   return (
-    <div className={`App ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
-      <SideBar toggle={{theme: theme , func: setTheme}}/>
+    <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
+      <SideBar toggle={{theme: theme , func: setTheme}} toggleSearch={mobileSearch}/>
       <div className="main padding-l-r-2">
         <Grid 
           content={[
@@ -99,7 +100,7 @@ function App() {
           ]}
         />
       </div>
-      <TopBar toggleNav={{data: mobileNav , func: setMobileNav}} />
+      <TopBar toggleNav={{data: mobileNav , func: setMobileNav}} toggleSearch={{data: mobileSearch , func: setMobileSearch}} />
     </div>
   );
 }

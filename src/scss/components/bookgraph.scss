@@ -1,6 +1,4 @@
-// clean up css
-
-
+// might need more cleaning idk
 .book-graph-container{
     .grid-item-content{
         position: relative;
@@ -13,17 +11,31 @@
     width: 100%;
     position: relative;
 
+    // relative
+    .graph_bars-container ,
+    .bar-container
+    {
+        position: relative;
+    }
+    // absolute
+    .bar-data-popup,
+    .bar-mask,
+    .bar,
+    .graph-x-axis , 
+    .graph-y-axis
+    {
+        position: absolute;
+    }
+
     .graph_bars-container{
         height: 100%;
         width: 100%;
         display: flex;
         gap: 5px;
-        position: relative;
         z-index: 1;
 
         .bar-container{
             width: calc(100% / 7);
-            position: relative;
 
             .bar-data-popup{
                 display: none;
@@ -40,7 +52,6 @@
                 width: fit-content;
                 border-radius: 5px;
                 padding: 10px;
-                position: absolute;
                 top: -70px;
                 right: 0;
                 z-index: 1;
@@ -66,7 +77,6 @@
             }
 
             .bar-mask{
-                position: absolute;
                 bottom: 0;
                 width: 100%;
                 animation: increase 0.5s forwards;
@@ -87,12 +97,11 @@
             .bar{
                 background: $primaryRed;
                 border-radius: 8px;
-                position: absolute;
                 width: 45px;
                 left: 0;
                 right: 0;
-                margin: 0px auto;;
                 bottom: 0;
+                margin: 0px auto;
 
                 &:hover{
                     .bar-data-popup{
@@ -105,33 +114,26 @@
 
     .graph-x-axis , .graph-y-axis{
         color: $gray;
+        width: 100%;
+        font-size: 10px;
+        justify-content: space-between;
     }
 
     .graph-x-axis{       
-        position: absolute; 
         bottom: -20px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        font-size: 10px;
 
         >span{
             width: 100%;
             display: flex;
-            justify-content: center
+            justify-content: center;
         };
     }
 
     .graph-y-axis{
-        position: absolute;
-        width: 100%;
-        display: flex;
         flex-direction: column;
         top: 0;
         left: -20px;
         height: 100%;
-        justify-content: space-between;
-        font-size: 10px;
         z-index: 0;
     }
 }

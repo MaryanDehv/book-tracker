@@ -142,7 +142,7 @@ export const ArrowIcon = () => {
 
 export const HamburgerIcon = ({func}) => {
     return(
-        <svg onClick={func} width="42.2789436px" height="25px" viewBox="0 0 42.2789436 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="hamburger" onClick={func} width="42.2789436px" height="25px" viewBox="0 0 42.2789436 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Icons" transform="translate(-521.333333, -194.622101)">
                     <g id="Hamburger-Icon" transform="translate(521.333333, 194.622101)">
@@ -280,7 +280,7 @@ export const ClockIcon = ({func}) => {
 
 export const TimesIcon = ({func}) => {
     return(
-        <svg onClick={func} width="43.0250768px" height="43.0250768px" viewBox="0 0 43.0250768 43.0250768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="close" onClick={func} width="43.0250768px" height="43.0250768px" viewBox="0 0 43.0250768 43.0250768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                 <g id="Icons" transform="translate(-121.190957, -256.026736)" stroke-width="0.5">
                     <g id="Times" transform="translate(121.544511, 256.380289)">

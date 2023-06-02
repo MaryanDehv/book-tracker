@@ -99,9 +99,24 @@
         display: none;
     }
 
+    .hamburger{
+        display: block;
+    }
+
+    .close{
+        display: none;
+    }
+
 
     // clean up this
     .mobile-nav{
+        .hamburger{
+            display: none;
+        }
+
+        .close{
+            display: block;
+        }
         .side-bar{
             display: flex;
             flex-direction: column;
