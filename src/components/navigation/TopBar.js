@@ -2,7 +2,7 @@ import { BellIcon, Chatcon, CheckIcon, ClockIcon, CloseIcon, FilterIcon, Hamburg
 import BookCard from "../BookCard";
 import BookProgress from "../BookProgress";
 import {useState} from 'react'
-import Search from "../Search";
+import Search from "./components/Search";
 
 const TopBar = ({toggleNav , toggleSearch}) => {
 

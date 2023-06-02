@@ -1,6 +1,6 @@
-import { CheckIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../images/icons/customIcons";
-import BookCard from "./BookCard";
-import BookProgress from "./BookProgress";
+import { CheckIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../../images/icons/customIcons";
+import BookCard from "../../BookCard";
+import BookProgress from "../../BookProgress";
 import { useState } from "react";
 
 const Search = ({section}) => {

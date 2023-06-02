@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
-      <SideBar toggle={{theme: theme , func: setTheme}} toggleSearch={mobileSearch}/>
+      <SideBar themeToggle={{theme: theme , func: setTheme}} toggleSearch={mobileSearch}/>
       <div className="main padding-l-r-2">
         <Grid 
           content={[
