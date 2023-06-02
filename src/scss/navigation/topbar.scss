@@ -10,132 +10,6 @@
     &-inner{
         width: 940px;
 
-        &-search{
-            position: relative;
-            left: 4px;
-
-            &.filtered{
-                .filter{
-                    g{
-                        stroke:$primaryBlue;
-                    }
-                }
-            }
-
-            &:not(.search-dropdown-panel){
-               .top-bar-inner-search-dropdown{
-                display: none;
-               }
-            }
-        
-            .filter-selection-group{
-                >div{
-                gap:10px;
-                    .filter-check{
-                        gap:5px;
-                        
-                        >div{
-                            width: 10px;
-                            height:10px;
-                            border-radius:2px;
-                        }
-
-                        p{
-                            text-transform: uppercase;
-                            font-size: 12px;
-                        }
-                    }
-
-
-                    @include semiTransparentColouredBorderBox('.filter-check > div.red' , $primaryRed);
-                    @include semiTransparentColouredBorderBox('.filter-check > div.green' , $primaryGreen);
-                    @include semiTransparentColouredBorderBox('.filter-check > div.orange' , $primaryOrange);
-                }
-            }
-
-
-            &-container{
-                position: relative;
-                background: #F2F2F2;
-                border-radius: 20px;
-                width: fit-content;
-                height: 35px;
-                min-width: 270px;
-                gap:10px;
-                padding: 0px 25px;
-
-                >div{
-                    gap:10px;
-                }
-        
-                .filtered{
-                    height: fit-content;
-                    gap:5px;
-                    height: 25px;
-
-                    .filter-item{
-                        @include tag;
-                        @include filteredTag('&.green' , $primaryGreen);
-                        @include filteredTag('&.red' , $primaryRed);
-                        color: $white;
-                    }
-
-                    svg{
-                        line{
-                            stroke: $white;
-                            stroke-width: 2px;
-                        }
-                    }
-                }
-            }
-
-            &-dropdown{
-                position: absolute;
-                left: -10px;
-                top: -10px;
-                width: calc(100% + 20px);
-                background: $white;
-                border-radius: 15px;
-                padding-top: 65px;
-                height: fit-content;
-                z-index: -1;
-                box-shadow: 8px 10px 15px rgba($gray , 0.2);
-
-                &.filter-panel{
-                    .search-results{
-                        display: none;
-                    }   
-                }
-
-                &:not(.filter-panel){
-                    .filter-selection-group{
-                        display: none;
-                    }   
-                }
-    
-                &-inner{
-                    position:relative;
-                    max-height: 300px;
-                    width: calc(100% - 40px);
-                    padding: 0px 20px 20px;
-                    overflow-y: scroll;
-
-                    &::-webkit-scrollbar {
-                        display: none;
-                    }
-                    
-                    & {
-                        -ms-overflow-style: none;
-                        scrollbar-width: none;
-                    }
-                }
-            }
-
-            svg{
-                cursor: pointer;
-            }
-        }
-
         & , &-account , .icons{
             align-items: center;
         }
@@ -197,7 +71,7 @@
         }
 
         @media only screen and (min-width: 320px) and (max-width:923px) {
-            &-search{
+            .search{
                 display: none;
             }
 
@@ -218,3 +92,10 @@
     }
 }
 
+.mobile-search{
+    .search-icon{
+        g{
+            stroke: $primaryBlue
+        }
+    }
+}

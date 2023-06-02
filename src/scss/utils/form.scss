@@ -1,16 +1,13 @@
-.top-bar{
-    input{
-        border:none;
-        background: inherit;
-        width: 160px;
+input{
+    border:none;
+    background: inherit;
+    width: 160px;
 
-        &::placeholder{
-            font-size: 12px;
-        }
+    &::placeholder{
+        font-size: 12px;
+    }
 
-        &:focus{
-            outline: none;
-        }
+    &:focus{
+        outline: none;
     }
 }
-

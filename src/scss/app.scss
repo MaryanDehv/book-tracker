@@ -59,6 +59,7 @@ table {
 @import '../scss/utils/form.scss';
 @import '../scss/utils/grid.scss';
 @import '../scss/utils/mixins.scss';
+@import '../scss/utils/search.scss';
 
 // components
 @import '../scss/components/bookcard.scss';
@@ -167,7 +168,7 @@ svg{
 	padding: 0 20px;
 }
 
-.side-bar-content , .top-bar-inner-search , .section-title-icon , .book-progress , .book-list{
+.side-bar-content , .search , .section-title-icon , .book-progress , .book-list{
 	svg{
 		width: 15px;
 	}

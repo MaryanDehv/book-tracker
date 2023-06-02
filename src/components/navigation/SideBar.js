@@ -1,10 +1,10 @@
 import Search from './components/Search';
 import Navigation from './components/Navigation';
-const SideBar = ({themeToggle}) => {
+const SideBar = ({themeToggle , toggleSearch}) => {
 
     function searchMobile(){
         return(
-            <Search />
+            <Search section={'side-bar-inner'}/>
         )
     }
 
@@ -16,7 +16,9 @@ const SideBar = ({themeToggle}) => {
 
     return(
         <div className="side-bar">
-            {mobileNav()}
+            {toggleSearch 
+            ? searchMobile()
+            : mobileNav()}
         </div>
     )
 }

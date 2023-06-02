@@ -26,33 +26,33 @@
                     color: $white;
                 }
             }
+        }
+    }
 
-            &-search{
-                input{
-                    color: $white;
-                }
+    .search{
+        input{
+            color: $white;
+        }
 
-                &-container{
-                    background: $black;
-                }
-    
-                &-dropdown{
-                    background: $blackLight;
-                    box-shadow: 8px 10px 15px rgba($black , 0.9);
-                    color: $white;
+        &-container{
+            background: $black;
+        }
 
-                    h4{
-                        color: $white;
-                    }
+        &-dropdown{
+            background: $blackLight;
+            box-shadow: 8px 10px 15px rgba($black , 0.9);
+            color: $white;
 
-                    svg{
-                        g{
-                            stroke: $white;
-                        }
-                    }
+            h4{
+                color: $white;
+            }
 
+            svg{
+                g{
+                    stroke: $white;
                 }
             }
+
         }
     }
 

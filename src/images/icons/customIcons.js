@@ -233,7 +233,7 @@ export const MoonIcon = () => {
 
 export const SearchIcon = ({func}) => {
     return(
-        <svg onClick={func} width="39.6277134px" height="38.9673106px" viewBox="0 0 39.6277134 38.9673106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="search-icon" onClick={func} width="39.6277134px" height="38.9673106px" viewBox="0 0 39.6277134 38.9673106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Icons" transform="translate(-48.698725, -187.453415)" stroke="#979797" stroke-width="0.5">
                     <g id="Search" transform="translate(48.698725, 187.453415)">

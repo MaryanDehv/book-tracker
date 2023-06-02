@@ -34,11 +34,11 @@ const Search = ({section}) => {
     }
 
     return(
-        <div className={`${section}-search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
-                    <div className={`${section}-search-container flex v-center justify-sb`}>
+        <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
+                    <div className={`search-container flex v-center justify-sb`}>
                         <div className="flex v-center">
-                            <div className="search icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
-                            <input className="search" type="text" placeholder="Search your library..." value={searchInput}  onChange={handleChange} />
+                            <div className="icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
+                            <input type="text" placeholder="Search your library..." value={searchInput}  onChange={handleChange} />
                             <div className="filtered flex">
                                 <div className="filter-item flex v-center green"> Com <TimesIcon func={removeFilters}/></div>
                                 <div className="filter-item flex v-center red"> Ong <TimesIcon func={removeFilters}/></div>
@@ -50,9 +50,9 @@ const Search = ({section}) => {
                             <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={resetSearch}/></div>
                         </div>
                     </div>
-                    <div className={`${section}-search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
-                        <div className={`${section}-search-dropdown-inner search-results`}>
-                            <div className={`${section}-search-dropdown-inner-group`}>
+                    <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
+                        <div className={`search-dropdown-inner search-results`}>
+                            <div className={`search-dropdown-inner-group`}>
                                 <div className={`section-title flex v-center green`}>
                                     <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Completed </h3>
                                 </div>
@@ -75,7 +75,7 @@ const Search = ({section}) => {
                                     />
                                 </div>
                             </div>
-                            <div className={`${section}-search-dropdown-inner-group grayed`}>
+                            <div className={`search-dropdown-inner-group grayed`}>
                                 <div className={`section-title flex v-center red`}>
                                     <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Ongoing </h3>
                                 </div>
@@ -89,8 +89,8 @@ const Search = ({section}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`${section}-search-dropdown-inner filter-selection-group`}>
-                            <div className={`${section}-search-dropdown-inner-group flex justify-sb`}>
+                        <div className={`search-dropdown-inner filter-selection-group`}>
+                            <div className={`search-dropdown-inner-group flex justify-sb`}>
                                 <div className="filter-check flex v-center">
                                     <div className="green"></div>
                                     <p> Completed </p>

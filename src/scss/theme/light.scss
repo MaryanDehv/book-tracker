@@ -50,26 +50,26 @@
                     color: $black;
                 }
             }
+        }
+    }
 
-            &-search{
-                &-container{
-                    background: $grayLight;
-                }
-    
-                &-dropdown{
-                    background: $white;
-                    box-shadow: 8px 10px 15px rgba($gray , 0.2);
-                    color: $black;
+    .search{
+        &-container{
+            background: $grayLight;
+        }
 
-                    h4{
-                        color: $black;
-                    }
+        &-dropdown{
+            background: $white;
+            box-shadow: 8px 10px 15px rgba($gray , 0.2);
+            color: $black;
 
-                    svg{
-                        g{
-                            stroke: $grayLight;
-                        }
-                    }
+            h4{
+                color: $black;
+            }
+
+            svg{
+                g{
+                    stroke: $grayLight;
                 }
             }
         }
