@@ -25,6 +25,7 @@ const Search = ({section}) => {
     function toggleFilter(el){
         setFilterDropdown(!filterDropdown)
         if(!searchDropdown) setSearchDropdown(true)
+        console.log(filterDropdown)
     }
 
     function resetSearch(){
@@ -39,10 +40,6 @@ const Search = ({section}) => {
                         <div className="flex v-center">
                             <div className="icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
                             <input type="text" placeholder="Search your library..." value={searchInput}  onChange={handleChange} />
-                            <div className="filtered flex">
-                                <div className="filter-item flex v-center green"> Com <TimesIcon func={removeFilters}/></div>
-                                <div className="filter-item flex v-center red"> Ong <TimesIcon func={removeFilters}/></div>
-                            </div>
                         </div>
 
                         <div className="flex v-center">
@@ -51,6 +48,13 @@ const Search = ({section}) => {
                         </div>
                     </div>
                     <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
+                        <div className="filtered">
+                            <p> Filtered </p>
+                            <div className="flex">
+                                <div className="filter-item flex v-center green"> Com <TimesIcon func={removeFilters}/></div>
+                                <div className="filter-item flex v-center red"> Ong <TimesIcon func={removeFilters}/></div>
+                            </div>
+                        </div>
                         <div className={`search-dropdown-inner search-results`}>
                             <div className={`search-dropdown-inner-group`}>
                                 <div className={`section-title flex v-center green`}>

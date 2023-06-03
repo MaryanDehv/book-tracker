@@ -116,6 +116,12 @@ input:focus {
 .search.filtered .filter g {
   stroke: #359EFF;
 }
+.search-dropdown.filter-panel .search-results {
+  display: none;
+}
+.search-dropdown:not(.filter-panel) .filter-selection-group {
+  display: none;
+}
 .search:not(.search-dropdown-panel) .search-dropdown {
   display: none;
 }
@@ -159,53 +165,62 @@ input:focus {
 .search-container > div {
   gap: 10px;
 }
-.search-container .filtered {
-  height: fit-content;
-  gap: 5px;
-  height: 25px;
+.search svg {
+  cursor: pointer;
 }
-.search-container .filtered .filter-item {
+.search .filtered {
+  height: fit-content;
+}
+.search .filtered p {
+  border-bottom: solid 0.5px rgba(178, 174, 174, 0.5);
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  color: #B2AEAE;
+  font-size: 13px;
+}
+.search .filtered > div {
+  gap: 5px;
+}
+.search .filtered .filter-item {
   justify-content: space-between;
   font-size: 13px;
   border-radius: 20px;
   padding: 3px 10px;
   font-size: 10px;
   text-transform: uppercase;
+  height: 15px;
   color: #FFFFFF;
 }
-.search-container .filtered .filter-item.green {
+.search .filtered .filter-item.green {
   background: #00DA32;
 }
-.search-container .filtered .filter-item.red {
+.search .filtered .filter-item.red {
   background: #FF4C4C;
 }
-.search-container .filtered svg line {
+.search .filtered svg line {
   stroke: #FFFFFF;
   stroke-width: 2px;
-}
-.search svg {
-  cursor: pointer;
 }
 
 .mobile-search .search {
   position: absolute;
   top: 50px;
-  min-width: 320px;
+  width: calc(100% - 40px);
   max-width: 450px;
   left: 0;
   right: 0;
   margin: 0px auto;
-  padding: 0px 20px;
 }
 .mobile-search .search-container {
-  min-width: 100% !important;
-  padding: 0px;
+  min-width: calc(100% - 40px);
 }
-.mobile-search .search-container > div {
-  gap: 0px;
+.mobile-search .search .filtered {
+  padding-bottom: 20px;
 }
 .mobile-search .search .search-dropdown {
   box-shadow: none !important;
+  margin-top: 20px;
+  padding: 0px 20px;
 }
 
 .top-bar .search-dropdown {
@@ -220,11 +235,8 @@ input:focus {
   z-index: -1;
   box-shadow: 8px 10px 15px rgba(178, 174, 174, 0.2);
 }
-.top-bar .search-dropdown.filter-panel .search-results {
-  display: none;
-}
-.top-bar .search-dropdown:not(.filter-panel) .filter-selection-group {
-  display: none;
+.top-bar .search-dropdown .filtered {
+  padding: 0px 20px 20px;
 }
 .top-bar .search-dropdown-inner {
   position: relative;
