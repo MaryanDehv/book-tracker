@@ -1,16 +1,34 @@
 import { CheckIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../../images/icons/customIcons";
 import BookCard from "../../BookCard";
 import BookProgress from "../../BookProgress";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
 const Search = ({section}) => {
     const [searchDropdown , setSearchDropdown] = useState(true)
     const [filterDropdown , setFilterDropdown] = useState(true);
     const [searchInput , setSearchInput] = useState("")
+    // clean up structure for filter data
+    const [isFiltered , setIsFiltered] = useState();
 
-    function removeFilters(el){
+    const tag = [
+        {
+            tag: "Com",
+            color: "green"
+        },{
+            tag: "Ong",
+            color: "red"
+        }
+    ]
+
+    useEffect(() => {
+        setIsFiltered(tag)
+    } , [])
+
+    function removeFilters(index){
+        isFiltered.splice(index , 1)
+        console.log(isFiltered)
         // functionality - should remove and reset search based on filter removed
-        el.currentTarget.parentNode.remove()
+        // el.currentTarget.parentNode.remove()
     }
 
     function handleChange(e){
@@ -25,7 +43,6 @@ const Search = ({section}) => {
     function toggleFilter(el){
         setFilterDropdown(!filterDropdown)
         if(!searchDropdown) setSearchDropdown(true)
-        console.log(filterDropdown)
     }
 
     function resetSearch(){
@@ -48,13 +65,20 @@ const Search = ({section}) => {
                         </div>
                     </div>
                     <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
-                        <div className="filtered">
-                            <p> Filtered </p>
-                            <div className="flex">
-                                <div className="filter-item flex v-center green"> Com <TimesIcon func={removeFilters}/></div>
-                                <div className="filter-item flex v-center red"> Ong <TimesIcon func={removeFilters}/></div>
-                            </div>
-                        </div>
+                        {
+                            isFiltered ? 
+                            (
+                                <div className="filtered">
+                                    <p> Filtered </p>
+                                    <div className="flex">
+                                        {
+                                            isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`}> {tag.tag} <TimesIcon func={() => removeFilters(index)}/></div>))
+                                        }
+                                    </div>
+                                </div>
+                            ) :
+                            ""
+                        }
                         <div className={`search-dropdown-inner search-results`}>
                             <div className={`search-dropdown-inner-group`}>
                                 <div className={`section-title flex v-center green`}>
