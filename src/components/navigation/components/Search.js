@@ -7,28 +7,32 @@ const Search = ({section}) => {
     const [searchDropdown , setSearchDropdown] = useState(true)
     const [filterDropdown , setFilterDropdown] = useState(true);
     const [searchInput , setSearchInput] = useState("")
-    // clean up structure for filter data
-    const [isFiltered , setIsFiltered] = useState();
 
-    const tag = [
+    // temp tag list
+    const tagOpt = [
         {
-            tag: "Com",
+            name: "Completed",
             color: "green"
         },{
-            tag: "Ong",
+            name: "Ongoing",
             color: "red"
+        },{
+            name: "Reading Trends",
+            color: "orange"
         }
     ]
 
+
+    const [isFiltered , setIsFiltered] = useState([]);
+
+
     useEffect(() => {
-        setIsFiltered(tag)
-    } , [])
+        console.log(isFiltered)
+    } , [isFiltered])
 
     function removeFilters(index){
-        isFiltered.splice(index , 1)
-        console.log(isFiltered)
-        // functionality - should remove and reset search based on filter removed
-        // el.currentTarget.parentNode.remove()
+        const filter = isFiltered.filter((item , itemindex) => index != itemindex);
+        setIsFiltered(filter);
     }
 
     function handleChange(e){
@@ -37,6 +41,16 @@ const Search = ({section}) => {
             setSearchDropdown(true)
         } else {
             resetSearch()
+        }
+    }
+
+    function filter(el , index){
+        const current = el.currentTarget.classList;
+        if(!current.contains("checked")){
+            current.add("checked")
+            setIsFiltered([...isFiltered , tagOpt[index]]);
+        } else if(current.contains("checked")){
+            current.remove("checked")
         }
     }
 
@@ -66,13 +80,13 @@ const Search = ({section}) => {
                     </div>
                     <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
                         {
-                            isFiltered ? 
+                            isFiltered.length >= 1 ? 
                             (
                                 <div className="filtered">
                                     <p> Filtered </p>
                                     <div className="flex">
                                         {
-                                            isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`}> {tag.tag} <TimesIcon func={() => removeFilters(index)}/></div>))
+                                            isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`}> {tag.name} <TimesIcon func={() => removeFilters(index)}/></div>))
                                         }
                                     </div>
                                 </div>
@@ -119,18 +133,14 @@ const Search = ({section}) => {
                         </div>
                         <div className={`search-dropdown-inner filter-selection-group`}>
                             <div className={`search-dropdown-inner-group flex justify-sb`}>
-                                <div className="filter-check flex v-center">
-                                    <div className="green"></div>
-                                    <p> Completed </p>
-                                </div>
-                                <div className="filter-check flex v-center">
-                                    <div className="red"></div>
-                                    <p> ongoing </p>
-                                </div>
-                                <div className="filter-check flex v-center">
-                                    <div className="orange"></div>
-                                    <p> reading trends </p>
-                                </div>
+                                {
+                                    tagOpt.map((tag , index) => (
+                                        <div className="filter-check flex v-center" onClick={(el) => filter(el , index)}>
+                                            <div className={`${tag.color}`}></div>
+                                            <p> {tag.name} </p>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>

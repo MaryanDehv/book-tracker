@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* 
 	http://meyerweb.com/eric/tools/css/reset/ 
 	v2.0 | 20110126
@@ -132,6 +133,7 @@ input:focus {
   gap: 5px;
 }
 .search .filter-selection-group > div .filter-check > div {
+  position: relative;
   width: 10px;
   height: 10px;
   border-radius: 2px;
@@ -140,17 +142,29 @@ input:focus {
   text-transform: uppercase;
   font-size: 12px;
 }
+.search .filter-selection-group > div .filter-check.checked div::after {
+  content: "✓";
+  position: absolute;
+  font-size: 11px;
+  width: fit-content;
+  margin: auto;
+  inset: 0;
+  line-height: 0.9;
+}
 .search .filter-selection-group > div .filter-check > div.red {
   background: rgba(255, 76, 76, 0.3);
   border: solid 1px #FF4C4C;
+  color: #FF4C4C;
 }
 .search .filter-selection-group > div .filter-check > div.green {
   background: rgba(0, 218, 50, 0.3);
   border: solid 1px #00DA32;
+  color: #00DA32;
 }
 .search .filter-selection-group > div .filter-check > div.orange {
   background: rgba(249, 87, 49, 0.3);
   border: solid 1px #F95731;
+  color: #F95731;
 }
 .search-container {
   position: relative;
@@ -196,6 +210,9 @@ input:focus {
 }
 .search .filtered .filter-item.red {
   background: #FF4C4C;
+}
+.search .filtered .filter-item.orange {
+  background: #F95731;
 }
 .search .filtered svg line {
   stroke: #FFFFFF;
@@ -359,18 +376,22 @@ input:focus {
 .book-list .book-list-genres .filter-item.red-outline {
   background: rgba(255, 76, 76, 0.3);
   border: solid 1px #FF4C4C;
+  color: #FF4C4C;
 }
 .book-list .book-list-genres .filter-item.green-outline {
   background: rgba(0, 218, 50, 0.3);
   border: solid 1px #00DA32;
+  color: #00DA32;
 }
 .book-list .book-list-genres .filter-item.purple-outline {
   background: rgba(164, 49, 249, 0.3);
   border: solid 1px #A431F9;
+  color: #A431F9;
 }
 .book-list .book-list-genres .filter-item.orange-outline {
   background: rgba(249, 87, 49, 0.3);
   border: solid 1px #F95731;
+  color: #F95731;
 }
 
 .book-graph-container .grid-item-content {
