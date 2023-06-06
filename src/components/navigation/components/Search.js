@@ -1,41 +1,40 @@
 import { CheckIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../../images/icons/customIcons";
 import BookCard from "../../BookCard";
 import BookProgress from "../../BookProgress";
-import { useState , useEffect } from "react";
+import { useState} from "react";
+// import bookData from "../../../data/data";
+// import { sortData } from "../../../functions/helper";
 
 const Search = ({section}) => {
-    const [searchDropdown , setSearchDropdown] = useState(true)
-    const [filterDropdown , setFilterDropdown] = useState(true);
+    const [searchDropdown , setSearchDropdown] = useState(false)
+    const [filterDropdown , setFilterDropdown] = useState(false);
     const [searchInput , setSearchInput] = useState("")
-
-    // temp tag list
-    const tagOpt = [
+    const [filterOpt , setFilterOpt] = useState([
         {
             name: "Completed",
-            color: "green"
+            color: "green",
+            checked: false,
         },{
             name: "Ongoing",
-            color: "red"
+            color: "red",
+            checked: false,
         },{
             name: "Reading Trends",
-            color: "orange"
+            color: "orange",
+            checked: false,
         }
-    ]
+    ])
 
 
     const [isFiltered , setIsFiltered] = useState([]);
 
-
-    useEffect(() => {
-        console.log(isFiltered)
-    } , [isFiltered])
-
-    function removeFilters(index){
-        const filter = isFiltered.filter((item , itemindex) => index != itemindex);
-        setIsFiltered(filter);
+    function removeFilters(el , index){
+        setIsFiltered(isFiltered.filter((item , isFilteredIndex) => index != isFilteredIndex));
+        uncheck(el)
     }
 
     function handleChange(e){
+        // todo - set up searching
         if(e.target.value){
             setSearchInput(e.target.value)
             setSearchDropdown(true)
@@ -44,26 +43,45 @@ const Search = ({section}) => {
         }
     }
 
-    function filter(el , index){
-        const current = el.currentTarget.classList;
-        if(!current.contains("checked")){
-            current.add("checked")
-            setIsFiltered([...isFiltered , tagOpt[index]]);
-        } else if(current.contains("checked")){
-            current.remove("checked")
+
+    // filter
+
+        // uncheck currently selected checkboxes
+        function uncheck(tag){
+            let currentFilterOptList = filterOpt;
+            const getIndex = currentFilterOptList.findIndex(item => item.name.toLowerCase() == tag.name.toLowerCase());
+            currentFilterOptList[getIndex].checked = false;
+            setFilterOpt([...currentFilterOptList]);
         }
-    }
 
-    function toggleFilter(el){
-        setFilterDropdown(!filterDropdown)
-        if(!searchDropdown) setSearchDropdown(true)
-    }
+        // when checkboxes are checked -> update filter tags
+        function check(index , tag){
+            const currentFilterOptList = filterOpt;
+            const checkState = !currentFilterOptList[index].checked;
 
-    function resetSearch(){
-        setSearchDropdown(false)
-        setFilterDropdown(false)
-        setSearchInput("")
-    }
+            if(checkState){
+                if(!isFiltered.find(item => item.name == filterOpt[index].name)) setIsFiltered([...isFiltered , filterOpt[index]]);
+            } else {
+                setIsFiltered([...isFiltered.filter(item => item.name != filterOpt[index].name)]);
+            }
+
+            currentFilterOptList[index].checked = checkState;
+            setFilterOpt([...currentFilterOptList])
+        }
+
+
+    // searchbox contents
+
+        function toggleFilter(el){
+            setFilterDropdown(!filterDropdown)
+            if(!searchDropdown) setSearchDropdown(true)
+        }
+
+        function resetSearch(){
+            setSearchDropdown(false)
+            setFilterDropdown(false)
+            setSearchInput("")
+        }
 
     return(
         <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
@@ -86,7 +104,7 @@ const Search = ({section}) => {
                                     <p> Filtered </p>
                                     <div className="flex">
                                         {
-                                            isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`}> {tag.name} <TimesIcon func={() => removeFilters(index)}/></div>))
+                                            isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`} data-tag={tag.name.toLowerCase()}> {tag.name} <TimesIcon func={() => removeFilters(tag , index)}/></div>))
                                         }
                                     </div>
                                 </div>
@@ -134,8 +152,8 @@ const Search = ({section}) => {
                         <div className={`search-dropdown-inner filter-selection-group`}>
                             <div className={`search-dropdown-inner-group flex justify-sb`}>
                                 {
-                                    tagOpt.map((tag , index) => (
-                                        <div className="filter-check flex v-center" onClick={(el) => filter(el , index)}>
+                                    filterOpt.map((tag , index) => (
+                                        <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , tag)} data-check={tag.name.toLowerCase()}>
                                             <div className={`${tag.color}`}></div>
                                             <p> {tag.name} </p>
                                         </div>

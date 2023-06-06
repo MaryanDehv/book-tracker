@@ -1,7 +1,7 @@
 const BookCard = ({content}) => {
     return(
         <div className="book-card">      
-            <div className="book-card-image" style={{backgroundImage:`url(${content.img})`}}>
+            <div className="book-card-image" style={{backgroundImage:`url(${content.image})`}}>
             </div>
             <div className="book-card-details">
                 <div>

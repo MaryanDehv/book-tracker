@@ -197,10 +197,9 @@ input:focus {
 }
 .search .filtered .filter-item {
   justify-content: space-between;
-  font-size: 13px;
   border-radius: 20px;
   padding: 3px 10px;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   height: 15px;
   color: #FFFFFF;
@@ -367,10 +366,9 @@ input:focus {
 }
 .book-list .book-list-genres .filter-item {
   justify-content: space-between;
-  font-size: 13px;
   border-radius: 20px;
   padding: 3px 10px;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
 }
 .book-list .book-list-genres .filter-item.red-outline {
