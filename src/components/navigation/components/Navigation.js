@@ -1,4 +1,5 @@
 import {Logo , ClockIcon , AnalyticsIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../../images/icons/customIcons'
+import { themeMode } from '../../../functions/helper'
 
 const Navigation = ({themeToggle}) => {
     
@@ -12,11 +13,6 @@ const Navigation = ({themeToggle}) => {
             icon: MoonIcon,
         }
     ]
-
-    function themeMode(theme){
-        themeToggle.func(theme)
-    }
-
 
     return(
         <>
@@ -39,7 +35,7 @@ const Navigation = ({themeToggle}) => {
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">
                         {themeOptions.map(theme => (
-                            <div className={`side-bar-light flex v-h-center ${themeToggle.theme == theme.name ? 'selected' : ''}`} onClick={() => themeMode(theme.name)}><theme.icon /></div>
+                            <div className={`side-bar-light flex v-h-center ${themeToggle.theme == theme.name ? 'selected' : ''}`} onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
                         ))}
                     </div>
                 </div>

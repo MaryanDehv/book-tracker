@@ -1,37 +1,60 @@
-import { CheckIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon } from "../../../images/icons/customIcons";
+import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon} from "../../../images/icons/customIcons";
 import BookCard from "../../BookCard";
 import BookProgress from "../../BookProgress";
 import { useState} from "react";
+import { search } from "../../../functions/helper";
 // import bookData from "../../../data/data";
 // import { sortData } from "../../../functions/helper";
+
+
+const initialFilterState = [
+    {
+        name: "Completed",
+        color: "green",
+        checked: false,
+    },{
+        name: "Ongoing",
+        color: "red",
+        checked: false,
+    },{
+        name: "Reading Trends",
+        color: "orange",
+        checked: false,
+    }
+]
 
 const Search = ({section}) => {
     const [searchDropdown , setSearchDropdown] = useState(false)
     const [filterDropdown , setFilterDropdown] = useState(false);
     const [searchInput , setSearchInput] = useState("")
-    const [filterOpt , setFilterOpt] = useState([
-        {
-            name: "Completed",
-            color: "green",
-            checked: false,
-        },{
-            name: "Ongoing",
-            color: "red",
-            checked: false,
-        },{
-            name: "Reading Trends",
-            color: "orange",
-            checked: false,
-        }
-    ])
-
-
+    const [filterOpt , setFilterOpt] = useState(initialFilterState);
     const [isFiltered , setIsFiltered] = useState([]);
 
-    function removeFilters(el , index){
-        setIsFiltered(isFiltered.filter((item , isFilteredIndex) => index != isFilteredIndex));
-        uncheck(el)
+
+    const states = {
+        searchDropdown: {
+            variable: searchDropdown ,
+            set: setSearchDropdown
+        } , 
+        filterDropdown: {
+            variable: filterDropdown ,
+            set: setFilterDropdown
+        }, 
+        searchInput: {
+            variable: searchInput ,
+            set: setSearchInput
+        }, 
+        filterOpt: {
+            variable: filterOpt ,
+            set: setFilterOpt
+        }, 
+        isFiltered: {
+            variable: isFiltered ,
+            set: setIsFiltered
+        }
     }
+
+    const {removeFilters , check , toggleFilter , resetSearch} = search(states);
 
     function handleChange(e){
         // todo - set up searching
@@ -42,46 +65,6 @@ const Search = ({section}) => {
             resetSearch()
         }
     }
-
-
-    // filter
-
-        // uncheck currently selected checkboxes
-        function uncheck(tag){
-            let currentFilterOptList = filterOpt;
-            const getIndex = currentFilterOptList.findIndex(item => item.name.toLowerCase() == tag.name.toLowerCase());
-            currentFilterOptList[getIndex].checked = false;
-            setFilterOpt([...currentFilterOptList]);
-        }
-
-        // when checkboxes are checked -> update filter tags
-        function check(index , tag){
-            const currentFilterOptList = filterOpt;
-            const checkState = !currentFilterOptList[index].checked;
-
-            if(checkState){
-                if(!isFiltered.find(item => item.name == filterOpt[index].name)) setIsFiltered([...isFiltered , filterOpt[index]]);
-            } else {
-                setIsFiltered([...isFiltered.filter(item => item.name != filterOpt[index].name)]);
-            }
-
-            currentFilterOptList[index].checked = checkState;
-            setFilterOpt([...currentFilterOptList])
-        }
-
-
-    // searchbox contents
-
-        function toggleFilter(el){
-            setFilterDropdown(!filterDropdown)
-            if(!searchDropdown) setSearchDropdown(true)
-        }
-
-        function resetSearch(){
-            setSearchDropdown(false)
-            setFilterDropdown(false)
-            setSearchInput("")
-        }
 
     return(
         <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
@@ -154,7 +137,9 @@ const Search = ({section}) => {
                                 {
                                     filterOpt.map((tag , index) => (
                                         <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , tag)} data-check={tag.name.toLowerCase()}>
-                                            <div className={`${tag.color}`}></div>
+                                            <div className={`${tag.color}`}>
+                                                <CheckMark />
+                                            </div>
                                             <p> {tag.name} </p>
                                         </div>
                                     ))

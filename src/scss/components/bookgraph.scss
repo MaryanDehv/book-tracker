@@ -34,6 +34,14 @@
         gap: 5px;
         z-index: 1;
 
+        @for $i from 1 through length($barGraph) {
+            .bar-container:nth-child(#{length($barGraph)}n+#{$i}) {
+                .bar{
+                    background: nth($barGraph, $i) !important;
+                }
+            }
+        }
+
         .bar-container{
             width: calc(100% / 7);
 
@@ -95,7 +103,6 @@
             
 
             .bar{
-                background: $primaryRed;
                 border-radius: 8px;
                 width: 45px;
                 left: 0;

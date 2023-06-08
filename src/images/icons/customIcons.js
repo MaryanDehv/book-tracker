@@ -297,5 +297,15 @@ export const TimesIcon = ({func}) => {
     )
 }
 
+export const CheckMark = () => {
+    return(
+        <svg className="check-mark" width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            <g id="Tick" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <polyline id="Path" stroke="#979797" stroke-width="0.5" points="0.174286966 9.60400984 6.20903465 13.9690967 14.825713 1.0309033"></polyline>
+            </g>
+        </svg>
+    )
+}
+
 
 

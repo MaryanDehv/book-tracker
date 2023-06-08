@@ -8,7 +8,7 @@ const BookProgress = ({content}) => {
                 </div>
                 <div className="book-progress-details">
                     <h4> {content.title} </h4>
-                    <div className="book-progress-bar"><div className="progress"></div></div>
+                    <div className="book-progress-bar"><div className="progress" style={{width:content.progress , background:content.color}}></div></div>
                 </div>
             </div>
             <ArrowIcon />

@@ -3,7 +3,12 @@
     #{$prop}{
         background: rgba($color , 0.3);
         border:solid 1px $color;
-        color: $color;
+
+        svg{
+            polyline{
+                stroke: $color;
+            }
+        }
     }
 }
 
