@@ -269,8 +269,25 @@ input:focus {
   position: relative;
   max-height: 300px;
   width: calc(100% - 40px);
-  padding: 0px 20px 20px;
+  padding: 0px 20px 10px;
   overflow-y: scroll;
+}
+.top-bar .search-dropdown-inner-group {
+  padding-bottom: 15px;
+}
+.top-bar .search-dropdown-inner .grayed {
+  position: relative;
+}
+.top-bar .search-dropdown-inner .grayed::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: calc(100% + 20px);
+  top: 0;
+  left: -10px;
+  border-radius: 10px;
+  background: rgba(178, 174, 174, 0.1);
+  z-index: -1;
 }
 .top-bar .search-dropdown-inner::-webkit-scrollbar {
   display: none;

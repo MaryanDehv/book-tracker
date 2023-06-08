@@ -26,6 +26,7 @@ const bookData = {
             "description" : "Forgotten secrets revealed in town.",
             "progress" : "60%",
             "genre" : ["thriller" , "adventure"],
+            "status" : "ongoing",
             "color" : "#359EFF"
         },
         {
@@ -34,6 +35,7 @@ const bookData = {
             "description" : "Global chase uncovers key's power.",
             "progress" : "40%",
             "genre" : ["fantasy" , "steampunk"],
+            "status" : "ongoing",
             "color" : "#359EFF"
         },
         {
@@ -42,6 +44,7 @@ const bookData = {
             "description" : "Global chase uncovers key's power.",
             "progress" : "80%",
             "genre" : ["mystery" , "steampunk"],
+            "status" : "list",
             "color" : "#A431F9"
         }
         
