@@ -1,10 +1,10 @@
-import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon} from "../../../images/icons/customIcons";
+import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon , ClockIcon, ListIcon} from "../../../images/icons/customIcons";
 import BookCard from "../../BookCard";
 import BookProgress from "../../BookProgress";
-import { useState} from "react";
+import BookList from "../../BookList";
+import { useEffect, useState} from "react";
 import { search } from "../../../functions/helper";
 import bookData from "../../../data/data";
-import { sortData } from "../../../functions/helper";
 
 
 const initialFilterState = [
@@ -23,12 +23,10 @@ const initialFilterState = [
     }
 ]
 
-const Search = ({section}) => {
-
-    // review variable names
+const Search = () => {
     const [searchDropdown , setSearchDropdown] = useState(false)
     const [searchInput , setSearchInput] = useState("")
-    const [searchedData , setSearchedData] = useState(bookData.books);
+    const [searchedData , setSearchedData] = useState("");
     const [filterDropdown , setFilterDropdown] = useState(false);
     const [filterOpt , setFilterOpt] = useState(initialFilterState);
     const [isFiltered , setIsFiltered] = useState([]);
@@ -54,38 +52,79 @@ const Search = ({section}) => {
         isFiltered: {
             variable: isFiltered ,
             set: setIsFiltered
+        },
+        searchedData: {
+            variable: searchedData,
+            set: setSearchedData
         }
     }
 
-    const {removeFilters , check , toggleFilter , resetSearch} = search(states);
-
-    function handleChange(e){
-        // todo - set up searching
-        if(e.target.value){
-            setSearchInput(e.target.value)
-            setSearchDropdown(true)
-            setSearchedData(filterData(searchInput))
-        } else {
-            resetSearch()
-        }
-    }
+    const {removeFilter , check , toggleFilterPanel , resetSearch , updateSearch} = search(states);
 
 
-    function filterData(searchphrase){
-        return bookData.books.filter(book => book.title.toLowerCase().includes(searchphrase.toLowerCase()))
-    }
+    // highlight the parts that are being matched
 
-    function returnSearched(status){
-        let data = []
+    useEffect(() => {
+        setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
+    } , [searchInput])
 
-        searchedData.forEach(item => {
-            if(item.status == status){
-                data.push(item)
+    function filterBooks(searchPhrase){
+      const books = bookData.books;
+      let data = [];
+      if(searchPhrase != ""){
+        books.forEach((book) => {
+            const {title} = book;
+            if(title.toLowerCase().includes(searchPhrase)){
+                data.push(book);
             }
         })
-        console.log(data)
+      }
 
-        return data;
+      return constructSearchResults(data)
+    }
+
+    function constructSearchResults(data){
+        let obj = {};
+
+        const initProps = () => {
+            const jsx = ({component: Component , contents , itemStatus}) => (
+            <div className={`search-dropdown-inner-group ${itemStatus == "ongoing" ? "grayed" : ""}`}>
+                <div className={`section-title flex v-center red`}>
+                    <div className="section-title-icon flex v-h-center"> {itemStatus == "completed" ? <CheckIcon /> : itemStatus == "ongoing" ? <ClockIcon /> : <ListIcon />} </div> <h3> {itemStatus} </h3>
+                </div>
+                <div className="section-list">
+                    {
+                        data.map(test => test.status == itemStatus ? <Component content={test} /> : "")
+                    }
+                </div>
+            </div>)
+
+            data.forEach(book => {
+                const {status} = book; 
+                if(!obj[status]){
+                    obj[status] = jsx({
+                        component: getComponent(status),
+                        itemStatus: book.status,
+                    });   
+                }
+            })
+        }
+
+        initProps();
+        
+        let arr = [];
+
+        for(const key in obj){
+            arr.push(obj[key])
+        }
+
+        return arr;
+    }
+
+    function getComponent(status){
+        if(status == 'completed') return BookCard
+        if(status == 'ongoing') return BookProgress
+        if(status == 'list') return BookList
     }
 
 
@@ -94,103 +133,55 @@ const Search = ({section}) => {
                     <div className={`search-container flex v-center justify-sb`}>
                         <div className="flex v-center">
                             <div className="icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
-                            <input type="text" placeholder="Search your library..." value={searchInput}  onChange={handleChange} />
+                            <input type="text" placeholder="Search your library..." value={searchInput}  onChange={updateSearch} />
                         </div>
 
                         <div className="flex v-center">
-                            <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilter} /></div>
+                            <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
                             <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={resetSearch}/></div>
                         </div>
                     </div>
+                <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
                     {
-                        searchedData ?
+                        isFiltered.length >= 1 ? 
                         (
-                            <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
-                                {
-                                    isFiltered.length >= 1 ? 
-                                    (
-                                        <div className="filtered">
-                                            <p> Filtered </p>
-                                            <div className="flex">
-                                                {
-                                                    isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`} data-tag={tag.name.toLowerCase()}> {tag.name} <TimesIcon func={() => removeFilters(tag , index)}/></div>))
-                                                }
-                                            </div>
-                                        </div>
-                                    ) :
-                                    ""
-                                }
-                                <div className={`search-dropdown-inner search-results`}>
-                                {
-                                    returnSearched("completed") ? (
-                                            <div className={`search-dropdown-inner-group`}>
-                                                <div className={`section-title flex v-center green`}>
-                                                    <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Completed </h3>
-                                                </div>
-                                                <div className="section-list">
-                                                    {
-                                                        returnSearched("ongoing").map(book => (
-                                                            <BookCard
-                                                                content={{
-                                                                    image:  book.image,
-                                                                    title: book.title,
-                                                                    description: book.description,
-                                                                    author: book.author
-                                                                }}
-                                                            />
-                                                        ))
-                                                    }
-                                                </div>
-                                            </div>
-                                    ) :
-                                    ""
-                                }
-
-                                {
-                                    returnSearched("ongoining") ?(
-                                        <div className={`search-dropdown-inner-group grayed`}>
-                                            <div className={`section-title flex v-center red`}>
-                                                <div className="section-title-icon flex v-h-center"> <CheckIcon /> </div> <h3> Ongoing </h3>
-                                            </div>
-                                            <div className="section-list">
-                                                {
-                                                    returnSearched("ongoing").map(book => (
-                                                        <BookProgress 
-                                                            content={{
-                                                                image: book.image,
-                                                                title: book.title
-                                                            }}
-                                                        />
-                                                    ))
-                                                }
-                                            </div>
-                                        </div>
-                                    ) :
-                                    ""
-                                }
-                                </div>
-
-
-
-                                <div className={`search-dropdown-inner filter-selection-group`}>
-                                    <div className={`search-dropdown-inner-group flex justify-sb`}>
-                                        {
-                                            filterOpt.map((tag , index) => (
-                                                <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , tag)} data-check={tag.name.toLowerCase()}>
-                                                    <div className={`${tag.color}`}>
-                                                        <CheckMark />
-                                                    </div>
-                                                    <p> {tag.name} </p>
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
+                            <div className="filtered">
+                                <p> Filtered </p>
+                                <div className="flex">
+                                    {
+                                        isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`} data-tag={tag.name.toLowerCase()}> {tag.name} <TimesIcon func={() => removeFilter(tag , index)}/></div>))
+                                    }
                                 </div>
                             </div>
-                        )
-                        :""
+                        ) :
+                        ""
                     }
+                    <div className={`search-dropdown-inner search-results`}>
+                        {
+                            searchedData.length >= 1 ?
+                            searchedData.map(item => (item))
+                            : searchInput == "" ? "" : (<div className="no-results"> Nothing found for <span className="search-input">{searchInput}</span></div>)
+                        }
+                    </div>
+
+
+
+                    <div className={`search-dropdown-inner filter-selection-group`}>
+                        <div className={`search-dropdown-inner-group flex justify-sb`}>
+                            {
+                                filterOpt.map((tag , index) => (
+                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , tag)} data-check={tag.name.toLowerCase()}>
+                                        <div className={`${tag.color}`}>
+                                            <CheckMark />
+                                        </div>
+                                        <p> {tag.name} </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
+        </div>
     )
 }
 

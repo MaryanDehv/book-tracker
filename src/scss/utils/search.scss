@@ -102,7 +102,7 @@
         height: fit-content;
 
         p{
-            border-bottom: solid 0.5px rgba($gray , 0.5);
+            border-bottom: solid 0.5px rgba($gray , 0.2);
             margin-bottom: 15px;
             padding-bottom: 5px;
             color: $gray;
@@ -129,11 +129,19 @@
             }
         }
     }
+
+
+    .no-results{
+        padding-bottom: 10px;
+        .search-input{
+            color: $primaryRed;
+            font-weight: 600;
+        }
+    }
 }
 
 // when search on mobile clicked
 .mobile-search{
-
     .search{
         position: absolute;
         top:50px;

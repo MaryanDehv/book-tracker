@@ -1,3 +1,4 @@
+
 // data sorting
 export function sortData(statusType , source){
   // use location -> app.js
@@ -19,7 +20,7 @@ export function themeMode(theme , cb){
 // search
 export function search(state){  
   // used location  -> search.js
-  function getSingleState(keyword){
+  function getState(keyword){
     const {variable , set} = state[keyword];
     return {
       variable,
@@ -27,26 +28,21 @@ export function search(state){
     }
   }
 
-
   function getMultipleStates(array){
     let data = {};
     array.forEach(item => {
-      data[item] = getSingleState(item)
+      data[item] = getState(item)
     })
     return data;
   }
 
-
-  getMultipleStates(["searchDropdown" , "isFiltered"])
-
-
-  function removeFilters(el , index){
+  function removeFilter(el , index){
     // removed filter then unchecks corresponding checkbox
-    getSingleState("isFiltered").set(getSingleState("isFiltered").variable.filter((item , isFilteredIndex) => index != isFilteredIndex));
+    getState("isFiltered").set(getState("isFiltered").variable.filter((_ , isFilteredIndex) => index != isFilteredIndex));
     uncheck(el)
   }
 
-  function check(index , tag){
+  function check(index){
     // adds check mark to filter checkboxes
     const {filterOpt , isFiltered} = getMultipleStates(["filterOpt" , "isFiltered"])
     const checkState = !filterOpt.variable[index].checked;
@@ -64,14 +60,14 @@ export function search(state){
 
   function uncheck(tag){
     // remoed checkmark from specific checkbox
-    const stateVariable = getSingleState("filterOpt").variable;
-    const stateAction = getSingleState("filterOpt").set;
+    const stateVariable = getState("filterOpt").variable;
+    const stateAction = getState("filterOpt").set;
     const getIndex = stateVariable.findIndex(item => item.name.toLowerCase() == tag.name.toLowerCase());
     stateVariable[getIndex].checked = false;
     stateAction([...stateVariable]);
   }
 
-  function toggleFilter(el){
+  function toggleFilterPanel(el){
     // toggle whether the filter panel in the search panel shows or not
     const {filterDropdown , searchDropdown} = getMultipleStates(["filterDropdown" , "searchDropdown"])
     filterDropdown.set(!filterDropdown.variable)
@@ -83,13 +79,25 @@ export function search(state){
     searchDropdown.set(false)
     filterDropdown.set(false)
     searchInput.set("")
-}
+  }
+
+  function updateSearch(e){
+    const {searchDropdown , searchInput} = getMultipleStates(["searchInput" , "searchDropdown" , "searchedData"])
+    if(e.target.value != ""){
+        searchInput.set(e.target.value)
+        searchDropdown.set(true)
+    } else {
+        resetSearch()
+    }
+  }
+
 
 
   return{
-    removeFilters,
+    removeFilter,
     check,
-    toggleFilter,
-    resetSearch
+    toggleFilterPanel,
+    resetSearch,
+    updateSearch
   }
 }

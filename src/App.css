@@ -197,7 +197,7 @@ input:focus {
   height: fit-content;
 }
 .search .filtered p {
-  border-bottom: solid 0.5px rgba(178, 174, 174, 0.5);
+  border-bottom: solid 0.5px rgba(178, 174, 174, 0.2);
   margin-bottom: 15px;
   padding-bottom: 5px;
   color: #B2AEAE;
@@ -227,6 +227,13 @@ input:focus {
 .search .filtered svg line {
   stroke: #FFFFFF;
   stroke-width: 2px;
+}
+.search .no-results {
+  padding-bottom: 10px;
+}
+.search .no-results .search-input {
+  color: #FF4C4C;
+  font-weight: 600;
 }
 
 .mobile-search .search {
@@ -972,7 +979,7 @@ input:focus {
   color: #111315;
 }
 .light-mode .search-dropdown svg g {
-  stroke: #F2F2F2;
+  stroke: #B2AEAE;
 }
 .light-mode .book-card p {
   color: rgba(17, 19, 21, 0.4);
