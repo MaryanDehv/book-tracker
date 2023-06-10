@@ -113,7 +113,7 @@ input:focus {
   position: relative;
   left: 4px;
 }
-.search.filtered .filter g {
+.search .filter-active g {
   stroke: #359EFF;
 }
 .search-dropdown.filter-panel .search-results {
@@ -126,6 +126,7 @@ input:focus {
   display: none;
 }
 .search .filter-selection-group > div {
+  flex-wrap: wrap;
   gap: 10px;
 }
 .search .filter-selection-group > div .filter-check {

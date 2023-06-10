@@ -6,6 +6,7 @@ import { useEffect, useState} from "react";
 import { search } from "../../../functions/helper";
 import bookData from "../../../data/data";
 
+// refactor all this code
 
 const initialFilterState = [
     {
@@ -61,33 +62,30 @@ const Search = () => {
 
     const {removeFilter , check , toggleFilterPanel , resetSearch , updateSearch} = search(states);
 
-
-    // highlight the parts that are being matched
-
     useEffect(() => {
         setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
-    } , [searchInput])
+    } , [searchInput , filterOpt])
+    
 
     function filterBooks(searchPhrase){
       const books = bookData.books;
       let data = [];
-      if(searchPhrase != ""){
-        books.forEach((book) => {
-            const {title} = book;
-            if(title.toLowerCase().includes(searchPhrase)){
-                data.push(book);
-            }
-        })
-      }
+      books.forEach((book) => {
+        const {title} = book;
+        if(title.toLowerCase().includes(searchPhrase)){
+            data.push(book);
+        }
+      })
 
       return constructSearchResults(data)
     }
 
     function constructSearchResults(data){
+        const filterData = [];
         let obj = {};
 
         const initProps = () => {
-            const jsx = ({component: Component , contents , itemStatus}) => (
+            const jsx = ({component: Component , itemStatus}) => (
             <div className={`search-dropdown-inner-group ${itemStatus == "ongoing" ? "grayed" : ""}`}>
                 <div className={`section-title flex v-center red`}>
                     <div className="section-title-icon flex v-h-center"> {itemStatus == "completed" ? <CheckIcon /> : itemStatus == "ongoing" ? <ClockIcon /> : <ListIcon />} </div> <h3> {itemStatus} </h3>
@@ -99,13 +97,26 @@ const Search = () => {
                 </div>
             </div>)
 
+            const setObeject = (status , arrItem) => {
+                obj[status] = jsx({
+                    component: getComponent(status),
+                    itemStatus: arrItem.status,
+                }); 
+            }
+
+            const options = filterOpt.filter(tag => tag.checked == true);
+            options.forEach(({name}) => filterData.push(name.toLowerCase()))
+
             data.forEach(book => {
-                const {status} = book; 
+                const {status} = book;
                 if(!obj[status]){
-                    obj[status] = jsx({
-                        component: getComponent(status),
-                        itemStatus: book.status,
-                    });   
+                    if(filterData.length >= 1){
+                        filterData.forEach(item => {
+                            if(status == item) setObeject(status , book)
+                        })
+                    } else {
+                        setObeject(status , book)
+                    }
                 }
             })
         }

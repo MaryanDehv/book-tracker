@@ -2,11 +2,9 @@
     position: relative;
     left: 4px;
 
-    &.filtered{
-        .filter{
-            g{
-                stroke:$primaryBlue;
-            }
+    .filter-active{
+        g{
+            stroke:$primaryBlue;
         }
     }
 
@@ -34,6 +32,7 @@
 
     .filter-selection-group{
         >div{
+        flex-wrap: wrap;
         gap:10px;
             .filter-check{
                 gap:5px;
