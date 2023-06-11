@@ -147,6 +147,12 @@ input:focus {
   border: solid 1px #B2AEAE;
   cursor: pointer;
 }
+.grid-container .habit-tracker-container .grid-item-content .habit-blocks.yesterday {
+  opacity: 0.2;
+}
+.grid-container .habit-tracker-container .grid-item-content .habit-blocks.read {
+  background: #FF4C4C;
+}
 @media only screen and (max-width: 1127px) {
   .grid-container {
     grid-template-columns: 1fr;

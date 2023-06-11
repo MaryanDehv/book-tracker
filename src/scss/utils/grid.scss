@@ -38,6 +38,14 @@
                 background: rgba($gray , 0.2);
                 border: solid 1px $gray;
                 cursor: pointer;
+
+                &.yesterday{
+                    opacity: 0.2;
+                }
+            
+                &.read{
+                    background: $primaryRed;
+                }
             }
         }
     }
