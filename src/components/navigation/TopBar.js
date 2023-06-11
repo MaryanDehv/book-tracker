@@ -1,5 +1,5 @@
 import { BellIcon, Chatcon,ClockIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
-import Search from "./components/Search";
+import Search from "./Search";
 
 const TopBar = ({toggleNav , toggleSearch}) => {
 

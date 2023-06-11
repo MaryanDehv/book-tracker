@@ -9,7 +9,9 @@ const bookData = {
             "genre" : ["steampunk" , "fantasy" , "adventure"],
             "progress" : "30%",
             "status" : "completed",
-            "color" : "#F95731"
+            "color" : "#F95731",
+            "rating" : 5,
+            "author" : "Test Ing"
         },
         {
             "title" : "Echoes of Eternity",
@@ -18,7 +20,9 @@ const bookData = {
             "genre" : ["mystery" , "psychology"],
             "progress" : "70%",
             "status" : "completed",
-            "color" : "#359EFF"
+            "rating" : 3,
+            "color" : "#359EFF",
+            "author" : "Test Ing"
         },
         {
             "title" : "The Clockwork Alchemist",
@@ -27,7 +31,8 @@ const bookData = {
             "progress" : "60%",
             "genre" : ["thriller" , "adventure"],
             "status" : "ongoing",
-            "color" : "#359EFF"
+            "color" : "#359EFF",
+            "author" : "Test Ing"
         },
         {
             "title" : "The Oracle's Prophecy",
@@ -36,7 +41,8 @@ const bookData = {
             "progress" : "40%",
             "genre" : ["fantasy" , "steampunk"],
             "status" : "ongoing",
-            "color" : "#359EFF"
+            "color" : "#359EFF",
+            "author" : "Test Ing"
         },
         {
             "title" : "The Silent Observer",
@@ -45,7 +51,8 @@ const bookData = {
             "progress" : "80%",
             "genre" : ["mystery" , "steampunk"],
             "status" : "list",
-            "color" : "#A431F9"
+            "color" : "#A431F9",
+            "author" : "Test Ing"
         }
         
     ],

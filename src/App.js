@@ -1,21 +1,21 @@
 import './App.css';
 import TopBar from './components/navigation/TopBar';
 import SideBar from './components/navigation/SideBar';
-import Grid from './components/utils/Grid';
-import BookCard from './components/BookCard';
-import BookProgress from './components/BookProgress';
-import BookList from './components/BookList';
-import BookGraph from './components/BookGraph';
+import Grid from "./utils/Grid"
+import BookCard from './components/cards/BookCard';
+import BookProgress from './components/cards/BookProgress';
+import BookList from './components/cards/BookList';
+import BookGraph from './components/cards/BookGraph';
 import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/customIcons';
 import { useState } from "react";
-import { sortData } from './functions/helper';
+import { sortData } from './functions/_helper';
 
 // placeholder content until database is set up
 import bookData from "./data/data";
 
 function App() {
 
-  const [theme , setTheme] = useState('light')
+  const [theme , setTheme] = useState('dark')
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
 

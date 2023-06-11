@@ -1,5 +1,3 @@
-import { CheckIcon } from "../../images/icons/customIcons";
-
 const Grid = ({content}) => {
     return(
         <div className="grid-container">

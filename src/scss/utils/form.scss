@@ -3,9 +3,6 @@ input{
     background: inherit;
     width: 160px;
 
-    &::placeholder{
-        font-size: 12px;
-    }
 
     &:focus{
         outline: none;

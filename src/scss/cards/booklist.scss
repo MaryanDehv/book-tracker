@@ -17,7 +17,6 @@
         width: calc(100% - 50px);
         h4{
             width: 100px;
-            font-size: 11px;
             text-transform:  uppercase;
         }
     }
@@ -31,7 +30,7 @@
         gap:5px;
         flex-wrap: wrap;
         width: 129px;
-        margin-top: 5px;
+        margin-top: 10px;
 
         .filter-item{
             @include tag;

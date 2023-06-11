@@ -48,7 +48,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+// 
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
@@ -59,17 +59,17 @@ table {
 @import '../scss/utils/form.scss';
 @import '../scss/utils/grid.scss';
 @import '../scss/utils/mixins.scss';
-@import '../scss/utils/search.scss';
 
 // components
-@import '../scss/components/bookcard.scss';
-@import '../scss/components/booklist.scss';
-@import '../scss/components/bookgraph.scss';
-@import '../scss/components/bookprogress.scss';
+@import '../scss/cards/bookcard.scss';
+@import '../scss/cards/booklist.scss';
+@import '../scss/cards/bookgraph.scss';
+@import '../scss/cards/bookprogress.scss';
 
 // navigation
 @import '../scss/navigation/sidebar.scss';
 @import '../scss/navigation/topbar.scss';
+@import '../scss/navigation/search.scss';
 
 // themes
 @import '../scss/theme/dark.scss';
@@ -80,10 +80,13 @@ body{
 	font-family: "open sans" , sans-serif;
 }
 
-h4{
-	font-weight: 600;
-	color: rgba($black , 0.8);
+.star-icon{
+	path{
+		stroke: #FFDD73;
+		fill:#FFDD73;
+	}
 }
+
 
 .flex{
 	display: flex;
@@ -184,8 +187,6 @@ svg{
 	height: 50px;
 	gap:5px;
 	text-transform: uppercase;
-	font-size: 10px;
-
 	&.green{
 		.section-title-icon{
 			background: rgba($primaryGreen , 0.1);

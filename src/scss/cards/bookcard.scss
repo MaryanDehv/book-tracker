@@ -29,11 +29,9 @@
 
         &-ratings{
             margin-bottom: 5px;
-            font-size: 13px;
         }
 
         h4{
-            font-size: 13px;
             margin-bottom: 5px;
             text-transform: uppercase;
         }
@@ -60,14 +58,6 @@
                 display: flex;
                 flex-direction: column-reverse;
             }
-        }
-    
-        h4{
-            font-size: 11px;
-        }
-    
-        p{
-            font-size: 12px;
         }
     
         .book-card-image{

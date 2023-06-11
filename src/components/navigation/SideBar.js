@@ -1,5 +1,5 @@
-import Search from './components/Search';
-import Navigation from './components/Navigation';
+import Search from './Search';
+import Navigation from './Navigation';
 const SideBar = ({themeToggle , toggleSearch}) => {
 
     function searchMobile(){

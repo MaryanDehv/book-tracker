@@ -47,7 +47,6 @@
 
                 p{
                     text-transform: uppercase;
-                    font-size: 12px;
                 }
 
                 svg{
@@ -74,6 +73,7 @@
             @include semiTransparentColouredBorderBox('.filter-check > div.red' , $primaryRed);
             @include semiTransparentColouredBorderBox('.filter-check > div.green' , $primaryGreen);
             @include semiTransparentColouredBorderBox('.filter-check > div.orange' , $primaryOrange);
+            @include semiTransparentColouredBorderBox('.filter-check > div.purple' , $primaryPurple);
         }
     }
 
@@ -105,7 +105,6 @@
             margin-bottom: 15px;
             padding-bottom: 5px;
             color: $gray;
-            font-size: 13px;
         }
 
         >div{
@@ -117,6 +116,7 @@
             @include filteredTag('&.green' , $primaryGreen);
             @include filteredTag('&.red' , $primaryRed);
             @include filteredTag('&.orange' , $primaryOrange);
+            @include filteredTag('&.purple' , $primaryPurple);
             height: 15px;
             color: $white;
         }

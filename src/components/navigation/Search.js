@@ -1,10 +1,10 @@
-import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon , ClockIcon, ListIcon} from "../../../images/icons/customIcons";
-import BookCard from "../../BookCard";
-import BookProgress from "../../BookProgress";
-import BookList from "../../BookList";
+import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon , ClockIcon, ListIcon} from "../../images/icons/customIcons";
+import BookCard from "../cards/BookCard";
+import BookProgress from "../cards/BookProgress";
+import BookList from "../cards/BookList";
 import { useEffect, useState} from "react";
-import { search } from "../../../functions/helper";
-import bookData from "../../../data/data";
+import { search } from "../../functions/_search";
+import bookData from "../../data/data";
 
 // refactor all this code
 
@@ -17,9 +17,9 @@ const initialFilterState = [
         name: "Ongoing",
         color: "red",
         checked: false,
-    },{
-        name: "Reading Trends",
-        color: "orange",
+    } ,{
+        name: "List",
+        color: "purple",
         checked: false,
     }
 ]
@@ -60,85 +60,12 @@ const Search = () => {
         }
     }
 
-    const {removeFilter , check , toggleFilterPanel , resetSearch , updateSearch} = search(states);
+    const {removeFilter , check , toggleFilterPanel , resetSearch , updateSearch , filterBooks} = search(states , {BookCard , BookProgress , BookList, CheckIcon , ListIcon, ClockIcon , bookData});
 
     useEffect(() => {
         setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
     } , [searchInput , filterOpt])
     
-
-    function filterBooks(searchPhrase){
-      const books = bookData.books;
-      let data = [];
-      books.forEach((book) => {
-        const {title} = book;
-        if(title.toLowerCase().includes(searchPhrase)){
-            data.push(book);
-        }
-      })
-
-      return constructSearchResults(data)
-    }
-
-    function constructSearchResults(data){
-        const filterData = [];
-        let obj = {};
-
-        const initProps = () => {
-            const jsx = ({component: Component , itemStatus}) => (
-            <div className={`search-dropdown-inner-group ${itemStatus == "ongoing" ? "grayed" : ""}`}>
-                <div className={`section-title flex v-center red`}>
-                    <div className="section-title-icon flex v-h-center"> {itemStatus == "completed" ? <CheckIcon /> : itemStatus == "ongoing" ? <ClockIcon /> : <ListIcon />} </div> <h3> {itemStatus} </h3>
-                </div>
-                <div className="section-list">
-                    {
-                        data.map(test => test.status == itemStatus ? <Component content={test} /> : "")
-                    }
-                </div>
-            </div>)
-
-            const setObeject = (status , arrItem) => {
-                obj[status] = jsx({
-                    component: getComponent(status),
-                    itemStatus: arrItem.status,
-                }); 
-            }
-
-            const options = filterOpt.filter(tag => tag.checked == true);
-            options.forEach(({name}) => filterData.push(name.toLowerCase()))
-
-            data.forEach(book => {
-                const {status} = book;
-                if(!obj[status]){
-                    if(filterData.length >= 1){
-                        filterData.forEach(item => {
-                            if(status == item) setObeject(status , book)
-                        })
-                    } else {
-                        setObeject(status , book)
-                    }
-                }
-            })
-        }
-
-        initProps();
-        
-        let arr = [];
-
-        for(const key in obj){
-            arr.push(obj[key])
-        }
-
-        return arr;
-    }
-
-    function getComponent(status){
-        if(status == 'completed') return BookCard
-        if(status == 'ongoing') return BookProgress
-        if(status == 'list') return BookList
-    }
-
-
     return(
         <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
                     <div className={`search-container flex v-center justify-sb`}>
@@ -178,7 +105,7 @@ const Search = () => {
 
 
                     <div className={`search-dropdown-inner filter-selection-group`}>
-                        <div className={`search-dropdown-inner-group flex justify-sb`}>
+                        <div className={`search-dropdown-inner-group flex`}>
                             {
                                 filterOpt.map((tag , index) => (
                                     <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , tag)} data-check={tag.name.toLowerCase()}>

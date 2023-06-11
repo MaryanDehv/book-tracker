@@ -1,5 +1,5 @@
-import {Logo , ClockIcon , AnalyticsIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../../images/icons/customIcons'
-import { themeMode } from '../../../functions/helper'
+import {Logo , ClockIcon , AnalyticsIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../images/icons/customIcons'
+import { themeMode } from '../../functions/_theme'
 
 const Navigation = ({themeToggle}) => {
     
