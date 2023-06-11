@@ -6,6 +6,7 @@ import BookCard from './components/cards/BookCard';
 import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
 import BookGraph from './components/cards/BookGraph';
+import HabitTracker from './components/cards/HabitTracker';
 import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/customIcons';
 import { useState } from "react";
 import { sortData } from './functions/_helper';
@@ -52,10 +53,7 @@ function App() {
                 name: 'reading trends'
               },
               class:"book-graph-container",
-              content:[{
-                title: "testing",
-                description: "lorem something somwthing blah blah"
-              }]
+              content:[{}]
             },
             {
               component: BookList,
@@ -66,6 +64,16 @@ function App() {
               },
               class:"book-list-container",
               content:sortData(bookData.status.list , bookData)
+            },
+            {
+              component: HabitTracker,
+              groupTitle:{
+                component: ListIcon,
+                color: "red",
+                name: "habit tracker"
+              },
+              class:"habit-tracker-container",
+              content:[{}]
             }
           ]}
         />

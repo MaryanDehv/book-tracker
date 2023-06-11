@@ -1,7 +1,6 @@
 import { StarIcon } from "../../images/icons/customIcons";
 
 const BookCard = ({content}) => {
-    console.log(content.rating)
     return(
         <div className="book-card">      
             <div className="book-card-image" style={{backgroundImage:`url(${content.image})`}}>

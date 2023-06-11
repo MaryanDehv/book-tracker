@@ -32,48 +32,60 @@
 
     .filter-selection-group{
         >div{
-        flex-wrap: wrap;
-        gap:10px;
-            .filter-check{
-                gap:5px;
-                cursor: pointer;
-                
-                >div{
-                    position: relative;
-                    width: 10px;
-                    height:10px;
-                    border-radius:2px;
-                }
+            flex-wrap: wrap;
+            gap:10px;
+                .filter-check{
+                    gap:5px;
+                    cursor: pointer;
+                    
+                    >div{
+                        position: relative;
+                        width: 10px;
+                        height:10px;
+                        border-radius:2px;
+                    }
 
-                p{
-                    text-transform: uppercase;
-                }
+                    p{
+                        text-transform: uppercase;
+                    }
 
-                svg{
-                    display: none;
-                }
+                    svg{
+                        display: none;
+                    }
 
-                &.checked{
-                    .check-mark{
-                        display: block;
-                        position: absolute;
-                        width: 6px;
-                        margin: auto;
-                        inset: 0;
-                        line-height: 0.9;
+                    &.checked{
+                        .check-mark{
+                            display: block;
+                            position: absolute;
+                            width: 6px;
+                            margin: auto;
+                            inset: 0;
+                            line-height: 0.9;
 
-                        polyline{
-                            stroke-width: 2px;
+                            polyline{
+                                stroke-width: 2px;
+                            }
                         }
                     }
                 }
-            }
 
 
             @include semiTransparentColouredBorderBox('.filter-check > div.red' , $primaryRed);
             @include semiTransparentColouredBorderBox('.filter-check > div.green' , $primaryGreen);
             @include semiTransparentColouredBorderBox('.filter-check > div.orange' , $primaryOrange);
             @include semiTransparentColouredBorderBox('.filter-check > div.purple' , $primaryPurple);
+        }
+    }
+
+    &.search-dropdown-panel{
+        .search-container{
+            border: solid 1px $primaryBlue;
+
+            .search-icon{
+                g{
+                    stroke: $primaryBlue;
+                }
+            }
         }
     }
 
@@ -152,6 +164,10 @@
 
         &-container{
             min-width:calc(100% - 40px);
+
+            .search-icon{
+                display: none;
+            }
         }
 
         .filtered{

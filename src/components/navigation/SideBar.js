@@ -4,7 +4,7 @@ const SideBar = ({themeToggle , toggleSearch}) => {
 
     function searchMobile(){
         return(
-            <Search section={'side-bar-inner'}/>
+            <Search mobileDropdown={true}/>
         )
     }
 

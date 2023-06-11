@@ -1,5 +1,4 @@
 // location -> search.js
-// todo -> refactor at some point
 export function search(state , _){ 
     const {BookCard , BookList , BookProgress, CheckIcon , ListIcon , ClockIcon , bookData} = _;
   
@@ -11,32 +10,17 @@ export function search(state , _){
       return data;
     }
   
-    function removeFilter(el , index){
-      const {isFiltered} = getState(["isFiltered"])
-      isFiltered.set(isFiltered.variable.filter((_ , isFilteredIndex) => index != isFilteredIndex));
-      uncheck(el)
+    function removeFilter(el){
+      const {filterOpt} = getState(["filterOpt"])
+      const targetIndex = filterOpt.variable.findIndex(tag => tag.name == el.name);
+      filterOpt.variable[targetIndex].checked = false;
+      filterOpt.set([...filterOpt.variable])
     }
   
     function check(index){
-      const {filterOpt , isFiltered} = getState(["filterOpt" , "isFiltered"])
-      const checkState = !filterOpt.variable[index].checked;
-      const currentFilterOptList = filterOpt.variable;
-  
-      if(checkState){
-          if(!isFiltered.variable.find(item => item.name == filterOpt.variable[index].name)) isFiltered.set([...isFiltered.variable , filterOpt.variable[index]]);
-      } else {
-          isFiltered.set([...isFiltered.variable.filter(item => item.name != filterOpt.variable[index].name)]);
-      }
-  
-      currentFilterOptList[index].checked = checkState;
-      filterOpt.set([...currentFilterOptList])
-    }
-  
-    function uncheck(tag){
       const {filterOpt} = getState(["filterOpt"])
-      const getIndex = filterOpt.variable.findIndex(item => item.name.toLowerCase() == tag.name.toLowerCase());
-      filterOpt.variable[getIndex].checked = false;
-      filterOpt.set([...filterOpt.variable]);
+      filterOpt.variable[index].checked = !filterOpt.variable[index].checked;
+      filterOpt.set([...filterOpt.variable])
     }
   
     function toggleFilterPanel(el){
@@ -54,12 +38,8 @@ export function search(state , _){
   
     function updateSearch(e){
       const {searchDropdown , searchInput} = getState(["searchInput" , "searchDropdown" , "searchedData"])
-      if(e.target.value != ""){
-          searchInput.set(e.target.value)
-          searchDropdown.set(true)
-      } else {
-          resetSearch()
-      }
+      searchInput.set(e.target.value)
+      searchDropdown.set(true)
     }
   
     function filterBooks(searchPhrase){

@@ -24,14 +24,12 @@ const initialFilterState = [
     }
 ]
 
-const Search = () => {
-    const [searchDropdown , setSearchDropdown] = useState(false)
+const Search = ({mobileDropdown}) => {
+    const [searchDropdown , setSearchDropdown] = useState(mobileDropdown ? true : false)
     const [searchInput , setSearchInput] = useState("")
     const [searchedData , setSearchedData] = useState("");
     const [filterDropdown , setFilterDropdown] = useState(false);
     const [filterOpt , setFilterOpt] = useState(initialFilterState);
-    const [isFiltered , setIsFiltered] = useState([]);
-
 
     const states = {
         searchDropdown: {
@@ -49,10 +47,6 @@ const Search = () => {
         filterOpt: {
             variable: filterOpt ,
             set: setFilterOpt
-        }, 
-        isFiltered: {
-            variable: isFiltered ,
-            set: setIsFiltered
         },
         searchedData: {
             variable: searchedData,
@@ -66,6 +60,10 @@ const Search = () => {
         setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
     } , [searchInput , filterOpt])
     
+    function getChecked(){
+        return filterOpt.filter(tag => tag.checked == true);
+    }
+
     return(
         <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
                     <div className={`search-container flex v-center justify-sb`}>
@@ -81,18 +79,18 @@ const Search = () => {
                     </div>
                 <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
                     {
-                        isFiltered.length >= 1 ? 
+                        getChecked().length >= 1 ?
                         (
                             <div className="filtered">
                                 <p> Filtered </p>
                                 <div className="flex">
                                     {
-                                        isFiltered.map((tag , index) => (<div key={index} className={`filter-item flex v-center ${tag.color}`} data-tag={tag.name.toLowerCase()}> {tag.name} <TimesIcon func={() => removeFilter(tag , index)}/></div>))
+                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => removeFilter(tagName)}/></div>))
                                     }
                                 </div>
                             </div>
-                        ) :
-                        ""
+                        )
+                        : ""
                     }
                     <div className={`search-dropdown-inner search-results`}>
                         {
