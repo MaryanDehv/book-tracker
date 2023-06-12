@@ -1,4 +1,4 @@
-import { BellIcon, Chatcon,ClockIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
+import { BellIcon, BoardIcon, Chatcon,ClockIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
 import Search from "./Search";
 
 const TopBar = ({toggleNav , toggleSearch}) => {
@@ -24,8 +24,7 @@ const TopBar = ({toggleNav , toggleSearch}) => {
                     <div className="icons flex v-center">
                         <div className="hamburger-icon"><HamburgerIcon func={mobileNav}/><TimesIcon func={mobileNav}/></div>
                         <div className="search-icon"><SearchIcon func={search} /></div>
-                        <div className="message"><Chatcon /></div>
-                        <div className="notification"><BellIcon /></div>
+                        <div className="board"><BoardIcon /></div>
                         <div className="user"></div>
                     </div>
                 </div>

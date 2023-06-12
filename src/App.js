@@ -14,6 +14,9 @@ import { sortData } from './functions/_helper';
 // placeholder content until database is set up
 import bookData from "./data/data";
 
+
+// ability to restructure page layouts
+
 function App() {
 
   const [theme , setTheme] = useState('dark')
