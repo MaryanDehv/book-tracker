@@ -8,7 +8,7 @@ import BookList from './components/cards/BookList';
 import BookGraph from './components/cards/BookGraph';
 import HabitTracker from './components/cards/HabitTracker';
 import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/customIcons';
-import { useState } from "react";
+import { useState , useRef, useEffect } from "react";
 import { sortData } from './functions/_helper';
 
 // placeholder content until database is set up
@@ -76,43 +76,59 @@ function App() {
   const [mobileSearch , setMobileSearch] = useState(false);
   const [startRestructure , setStartRestructure] = useState(true);
   const [gridLayout , setGridLayout] = useState(gridConfig);
+  const [selection , setSelection] = useState()
 
-  let dragged;
-  let draggedTo;
+  useEffect(() => {
+    console.log(selection)
+  } , [selection]) 
+
+  let from;
+  let to;
 
   function draggedItem(index){
-    dragged = index;
+    from = index;
   }
 
-  function draggedOver(index){
-    draggedTo = index;
+  function draggedOver(index, type){
+    to = index;
   }
 
   function draggedStopped(index){
-   rearrage()
+   rearrage(from , to)
   }
 
-  function rearrage(){
-    console.log(dragged, draggedTo)
+  function rearrage(a , b){
     let arr = []
-    const from = gridLayout[dragged];
-    const to = gridLayout[draggedTo];
+
     for(let i =  0 ; i < gridLayout.length ; i++){
-      if(i != dragged && i != draggedTo){
+      if(i != a && i != b){
         arr.push(gridLayout[i])
       } else {
         arr.push(false)
       }
     }
 
-    arr[dragged] = to;
-    arr[draggedTo] = from
+    arr[a] = gridLayout[b];
+    arr[b] = gridLayout[a];
   
    setGridLayout([...arr])
+
+   from = ""
+   to = ""
   }
 
 
-
+  function touch(el , i){
+    if(!from){
+      from = {element: el , index: i}
+    }
+    
+    if(from && (el != from.element) && (i != from.index)){
+      to = {index: i};
+    }
+    
+    if(from && to) rearrage(from.index , to.index)
+  }
 
   return (
     <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
@@ -127,6 +143,7 @@ function App() {
                   <div
                     key={index} 
                     draggable="true"
+                    onTouchStart={(e) => touch(e , index)}
                     onDragStart={(e) => draggedItem(index)} 
                     onDragOver={(e) => draggedOver(index)} 
                     onDragEnd={draggedStopped}
