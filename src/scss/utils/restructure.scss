@@ -1,0 +1,69 @@
+.restructure{
+    &-backdrop{
+        position: fixed;
+        top:76px;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+
+        &  , &::after{
+            height: 100%;
+            width: calc(100% - 160px);
+
+            @media only screen and (max-width:1024px) {
+                width: calc(100% - 70px);
+            
+            }
+    
+            @media only screen and (max-width:923px) {
+                width: 100%;
+            }
+               
+        }
+
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+        }
+
+        &-inner{
+            width: 500px;
+            height: 400px;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 60% auto;
+            gap: 5px;
+
+            // @include semiTransparentColouredBorderBox('&.red-outline' , $primaryRed);
+
+            >div{
+                display: flex;
+                flex-wrap: wrap;
+                place-content: center;
+                background: $white;
+                border-radius: 5px;
+
+                @include structureBlock("&.red" , $primaryRed);
+                @include structureBlock("&.purple" , $primaryPurple);
+                @include structureBlock("&.orange" , $primaryOrange);
+                @include structureBlock("&.green" , $primaryGreen);
+
+                >div{
+                    gap:10px;
+                    color: $white;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                }
+
+                svg{
+                    g{
+                        stroke: $white;
+                    }
+                }
+            }
+        }
+    }
+}

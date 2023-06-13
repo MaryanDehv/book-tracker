@@ -320,9 +320,9 @@ export const StarIcon = () => {
 }
 
 
-export const BoardIcon = () => {
+export const BoardIcon = ({func}) => {
     return(
-        <svg className="board-icon"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} className="board-icon"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="board" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <rect id="Rectangle" stroke="#979797" stroke-width="0.5" x="0.25" y="0.25" width="7.02941176" height="15.5" rx="1"></rect>
                 <rect id="Rectangle-Copy-3" stroke="#979797" stroke-width="0.5" x="8.72058824" y="0.25" width="7.02941176" height="7.2670168" rx="1"></rect>

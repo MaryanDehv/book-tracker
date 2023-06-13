@@ -53,12 +53,13 @@ table {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
 // utils
+@import '../scss/utils/mixins.scss';
 @import '../scss/utils/colors.scss';
 @import '../scss/utils/button.scss';
 @import '../scss/utils/font.scss';
 @import '../scss/utils/form.scss';
 @import '../scss/utils/grid.scss';
-@import '../scss/utils/mixins.scss';
+@import '../scss/utils/restructure.scss';
 
 // components
 @import '../scss/cards/bookcard.scss';
@@ -129,6 +130,14 @@ svg{
 	overflow: visible;
 	g{
 		stroke-width: 1px;
+	}
+}
+
+.selected{
+	svg{
+		g , rect{
+			stroke:$primaryBlue;
+		}
 	}
 }
 

@@ -19,6 +19,12 @@
     }
 }
 
+@mixin structureBlock($prop , $color){
+    #{$prop}{
+        background: rgba($color , 0.9);
+    }
+}
+
 
 @mixin tag{
     justify-content: space-between;

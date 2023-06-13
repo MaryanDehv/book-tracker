@@ -162,6 +162,71 @@ input:focus {
   }
 }
 
+.restructure-backdrop {
+  position: fixed;
+  top: 76px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+}
+.restructure-backdrop, .restructure-backdrop::after {
+  height: 100%;
+  width: calc(100% - 160px);
+}
+@media only screen and (max-width: 1024px) {
+  .restructure-backdrop, .restructure-backdrop::after {
+    width: calc(100% - 70px);
+  }
+}
+@media only screen and (max-width: 923px) {
+  .restructure-backdrop, .restructure-backdrop::after {
+    width: 100%;
+  }
+}
+.restructure-backdrop::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+}
+.restructure-backdrop-inner {
+  width: 500px;
+  height: 400px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 60% auto;
+  gap: 5px;
+}
+.restructure-backdrop-inner > div {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+.restructure-backdrop-inner > div.red {
+  background: rgba(255, 76, 76, 0.9);
+}
+.restructure-backdrop-inner > div.purple {
+  background: rgba(164, 49, 249, 0.9);
+}
+.restructure-backdrop-inner > div.orange {
+  background: rgba(249, 87, 49, 0.9);
+}
+.restructure-backdrop-inner > div.green {
+  background: rgba(0, 218, 50, 0.9);
+}
+.restructure-backdrop-inner > div > div {
+  gap: 10px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.restructure-backdrop-inner > div svg g {
+  stroke: #FFFFFF;
+}
+
 .book-card-container {
   gap: 10px;
 }
@@ -1097,6 +1162,10 @@ svg {
 }
 svg g {
   stroke-width: 1px;
+}
+
+.selected svg g, .selected svg rect {
+  stroke: #359EFF;
 }
 
 .main {
