@@ -21,17 +21,16 @@ function App() {
 
   const gridConfig = [
     {
-      blockWidth: 2,
-      component: BookCard,
+      blockWidth:3,
+      component: HabitTracker,
       groupTitle:{
-        component: CheckIcon,
-        color: 'green',
-        name: 'completed'
+        component: ListIcon,
+        color: "red",
+        name: "habit tracker"
       },
-      class:"book-card-container",
-      content: sortData(bookData.status.completed , bookData)
-    },
-    {
+      class:"habit-tracker-container",
+      content:[{}]
+    },{
       blockWidth:1,
       component: BookProgress,
       groupTitle:{
@@ -64,15 +63,15 @@ function App() {
       content:sortData(bookData.status.list , bookData)
     },
     {
-      blockWidth:3,
-      component: HabitTracker,
+      blockWidth: 2,
+      component: BookCard,
       groupTitle:{
-        component: ListIcon,
-        color: "red",
-        name: "habit tracker"
+        component: CheckIcon,
+        color: 'green',
+        name: 'completed'
       },
-      class:"habit-tracker-container",
-      content:[{}]
+      class:"book-card-container",
+      content: sortData(bookData.status.completed , bookData)
     }
   ]
 
@@ -126,7 +125,7 @@ function App() {
 
   return (
     <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
-      <SideBar themeToggle={{theme: theme , func: setTheme}} toggleSearch={mobileSearch}/>
+      <SideBar themeToggle={{theme: theme , func: setTheme}} toggleSearch={setMobileSearch}/>
       <div className="main padding-l-r-2">
         { startRestructure 
           ? (<div className="restructure-backdrop">

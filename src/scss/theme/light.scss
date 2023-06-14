@@ -25,6 +25,10 @@
 
     .grid-item{
         background: $white;
+
+        .choose-block-width{
+            background: $white;
+        }
     }
 
     .book-graph-container{
@@ -86,10 +90,6 @@
             color: $black;
         }
     }
-
-    .book-progress{
-    }
-    
 
     .side-bar-mobile-nav-user-details{
         color: $black;

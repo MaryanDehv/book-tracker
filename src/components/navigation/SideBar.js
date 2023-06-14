@@ -1,24 +1,13 @@
 import Search from './Search';
 import Navigation from './Navigation';
 const SideBar = ({themeToggle , toggleSearch}) => {
-
-    function searchMobile(){
-        return(
-            <Search mobileDropdown={true}/>
-        )
-    }
-
-    function mobileNav(){
-        return(
-            <Navigation themeToggle={themeToggle}/>
-        )
-    }
+    
+    // mobile dropdown?
 
     return(
-        <div className="side-bar">
-            {toggleSearch 
-            ? searchMobile()
-            : mobileNav()}
+        <div className={`side-bar`}>
+                <Search mobileDropdown={true} toggleMobileSearch={toggleSearch}/>
+                <Navigation themeToggle={themeToggle}/>
         </div>
     )
 }

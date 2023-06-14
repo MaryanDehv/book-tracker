@@ -2,11 +2,6 @@
     position: relative;
     left: 4px;
 
-    .filter-active{
-        g{
-            stroke:$primaryBlue;
-        }
-    }
 
     &-dropdown{
         &.filter-panel{
@@ -20,15 +15,43 @@
                 display: none;
             }   
         }
-    }
 
+        &-panel{
+            .search-container{
+                border: solid 1px $primaryBlue;
     
-
-    &:not(.search-dropdown-panel){
-       .search-dropdown{
-        display: none;
-       }
+                .search-icon{
+                    g{
+                        stroke: $primaryBlue;
+                    }
+                }
+            }
+        }
     }
+
+    // show/hide search dropdown panel
+    &:not(.search-dropdown-panel){
+        .search-dropdown{
+         display: none;
+        }
+    }
+ 
+
+    &-container{
+        position: relative;
+        background: #F2F2F2;
+        border-radius: 20px;
+        width: fit-content;
+        height: 35px;
+        min-width: 270px;
+        gap:10px;
+        padding: 0px 25px;
+
+        >div{
+            gap:10px;
+        }
+    }
+
 
     .filter-selection-group{
         >div{
@@ -77,37 +100,6 @@
         }
     }
 
-    &.search-dropdown-panel{
-        .search-container{
-            border: solid 1px $primaryBlue;
-
-            .search-icon{
-                g{
-                    stroke: $primaryBlue;
-                }
-            }
-        }
-    }
-
-
-    &-container{
-        position: relative;
-        background: #F2F2F2;
-        border-radius: 20px;
-        width: fit-content;
-        height: 35px;
-        min-width: 270px;
-        gap:10px;
-        padding: 0px 25px;
-
-        >div{
-            gap:10px;
-        }
-    }
-
-    svg{
-        cursor: pointer;
-    }
 
     .filtered{
         height: fit-content;
@@ -141,6 +133,11 @@
         }
     }
 
+    .filter-active{
+        g{
+            stroke:$primaryBlue;
+        }
+    }
 
     .no-results{
         padding-bottom: 10px;
@@ -151,33 +148,51 @@
     }
 }
 
-// when search on mobile clicked
-.mobile-search{
-    .search{
-        position: absolute;
-        top:50px;
-        width:  calc(100%  - 40px);
-        max-width: 450px;
-        left: 0;
-        right: 0;
-        margin: 0px auto;
 
-        &-container{
-            min-width:calc(100% - 40px);
 
-            .search-icon{
-                display: none;
+
+.mobile-nav{
+    
+    &:not(.mobile-search){
+        .search{
+            display: none;
+        }
+    }
+
+    &.mobile-search{
+        // hide all side bar nav items
+        .side-bar-logo ,
+        .side-bar-mobile-nav-user-details,
+        .side-bar-content{
+            display: none;
+        }
+
+        .search{
+            position: absolute;
+            top:50px;
+            width:  calc(100%  - 40px);
+            max-width: 450px;
+            left: 0;
+            right: 0;
+            margin: 0px auto;
+
+            &-container{
+                min-width:calc(100% - 40px);
+
+                .search-icon{
+                    display: none;
+                }
             }
-        }
 
-        .filtered{
-            padding-bottom: 20px;
-        }
+            .filtered{
+                padding-bottom: 20px;
+            }
 
-        .search-dropdown{
-            box-shadow: none !important;
-            margin-top: 20px;
-            padding: 0px 20px;
+            .search-dropdown{
+                box-shadow: none !important;
+                margin-top: 20px;
+                padding: 0px 20px;
+            }
         }
     }
 }
@@ -213,28 +228,62 @@
 
             .grayed{
                 position: relative;
+
+                &::after{
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    width: calc(100% + 20px);
+                    top:0;
+                    left: -10px;
+                    border-radius: 10px;
+                    background: rgba($gray , 0.1);
+                    z-index: -1;
+                }
             }
 
-            .grayed::after{
-                content: '';
-                position: absolute;
-                height: 100%;
-                width: calc(100% + 20px);
-                top:0;
-                left: -10px;
-                border-radius: 10px;
-                background: rgba($gray , 0.1);
-                z-index: -1;
-            }
+            @include hideScroll('&')
+        }
+    }
+}
 
-            &::-webkit-scrollbar {
+.search-dropdown{
+    .book{
+        &-card{
+            display: flex;
+            width: 100%;
+            gap:10px;
+            height: 56px;
+    
+            &-details{
+                >div{
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+            }
+        
+            &-image{
+                height: 50px;
+                width: 50px;
+            }
+    
+            .book-author{
+                display: block;
+            }
+    
+            .book-description{
                 display: none;
             }
-            
-            & {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
+        }
+    }
+}
+
+
+// hide search bar in nav on tablet and desktop
+@media only screen and (min-width: 924px){
+    .side-bar{
+        .search{
+            display: none;
         }
     }
 }

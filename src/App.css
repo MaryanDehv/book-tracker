@@ -85,7 +85,7 @@ p {
 }
 
 li {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .graph, .filter-item {
@@ -131,7 +131,6 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   place-content: center;
-  background: #1A1D1F;
   border-radius: inherit;
 }
 .grid-container .choose-block-width-inner {
@@ -143,11 +142,11 @@ input:focus {
   gap: 10px;
 }
 .grid-container .choose-block-width-inner > div {
-  background: rgba(178, 174, 174, 0.5);
-  border: solid 1px #B2AEAE;
   border-radius: inherit;
   position: relative;
   cursor: pointer;
+  background: rgba(242, 242, 242, 0.5);
+  border: solid 1px #B2AEAE;
 }
 .grid-container .choose-block-width-inner > div::after {
   position: absolute;
@@ -161,19 +160,19 @@ input:focus {
   grid-column: 1/4;
 }
 .grid-container .choose-block-width-inner [data-width="3"]::after {
-  content: "full width";
+  content: "100%";
 }
 .grid-container .choose-block-width-inner [data-width="2"] {
   grid-column: 1/3;
 }
 .grid-container .choose-block-width-inner [data-width="2"]::after {
-  content: "half width";
+  content: "70%";
 }
 .grid-container .choose-block-width-inner [data-width="1"] {
   grid-column: 1/2;
 }
 .grid-container .choose-block-width-inner [data-width="1"]::after {
-  content: "block";
+  content: "30%";
 }
 .grid-container .grid-item-content {
   height: calc(100% - 50px);
@@ -225,13 +224,13 @@ input:focus {
 
 .restructure-backdrop {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   place-content: center;
 }
 .restructure-backdrop, .restructure-backdrop::after {
-  height: 100%;
+  height: calc(100% - 76px);
   width: calc(100% - 160px);
 }
 @media only screen and (max-width: 1024px) {
@@ -251,9 +250,8 @@ input:focus {
   top: 0;
 }
 .restructure-backdrop-inner {
-  width: 500px;
+  max-width: 500px;
   min-width: 320px;
-  height: 400px;
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -263,6 +261,8 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   place-content: center;
+  height: 100px;
+  padding: 10px 0px;
   background: #FFFFFF;
   border-radius: 5px;
   cursor: pointer;
@@ -290,17 +290,17 @@ input:focus {
   background: #B2AEAE;
 }
 .restructure-backdrop-inner > div.move-here::after {
-  content: "Move panel to this slot";
+  content: "Move here";
   position: absolute;
   font-size: 10px;
-  bottom: 15px;
+  bottom: 11px;
   opacity: 0.3;
 }
 .restructure-backdrop-inner > div > div {
   gap: 10px;
   color: #FFFFFF;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   pointer-events: none;
 }
 .restructure-backdrop-inner > div svg g {
@@ -319,7 +319,6 @@ input:focus {
   display: flex;
   justify-content: space-between;
 }
-
 .book-card {
   height: 196px;
   width: 45%;
@@ -329,7 +328,7 @@ input:focus {
     width: 100%;
   }
 }
-.book-card .book-card-image {
+.book-card-image {
   height: 103px;
   width: 100%;
   border-radius: 5px;
@@ -338,35 +337,14 @@ input:focus {
   background-position: center;
   margin-bottom: 18px;
 }
-.book-card .book-card-details-ratings {
+.book-card-details-ratings {
   margin-bottom: 5px;
 }
-.book-card .book-card-details h4 {
+.book-card-details h4 {
   margin-bottom: 5px;
   text-transform: uppercase;
 }
-.book-card .book-card-details .book-author {
-  display: none;
-}
-
-.search-dropdown .book-card {
-  display: flex;
-  width: 100%;
-  gap: 10px;
-  height: 56px;
-}
-.search-dropdown .book-card .book-card-details > div {
-  display: flex;
-  flex-direction: column-reverse;
-}
-.search-dropdown .book-card .book-card-image {
-  height: 50px;
-  width: 50px;
-}
-.search-dropdown .book-card .book-author {
-  display: block;
-}
-.search-dropdown .book-card .book-description {
+.book-card-details .book-author {
   display: none;
 }
 
@@ -546,7 +524,6 @@ input:focus {
 .graph .graph-y-axis {
   flex-direction: column;
   top: 0;
-  left: -20px;
   height: 100%;
   z-index: 0;
 }
@@ -691,7 +668,7 @@ input:focus {
     width: calc(100% - 40px);
     height: calc(100% - 100px);
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     border-radius: 10px 10px 0px 0px;
   }
   .mobile-nav .side-bar .side-bar-mobile-nav-user-details {
@@ -792,6 +769,9 @@ input:focus {
   position: fixed;
   padding: 16px 0px;
 }
+.top-bar .selected svg g, .top-bar .selected svg rect {
+  stroke: #359EFF;
+}
 .top-bar-inner {
   width: 940px;
 }
@@ -868,17 +848,33 @@ input:focus {
   position: relative;
   left: 4px;
 }
-.search .filter-active g {
-  stroke: #359EFF;
-}
 .search-dropdown.filter-panel .search-results {
   display: none;
 }
 .search-dropdown:not(.filter-panel) .filter-selection-group {
   display: none;
 }
+.search-dropdown-panel .search-container {
+  border: solid 1px #359EFF;
+}
+.search-dropdown-panel .search-container .search-icon g {
+  stroke: #359EFF;
+}
 .search:not(.search-dropdown-panel) .search-dropdown {
   display: none;
+}
+.search-container {
+  position: relative;
+  background: #F2F2F2;
+  border-radius: 20px;
+  width: fit-content;
+  height: 35px;
+  min-width: 270px;
+  gap: 10px;
+  padding: 0px 25px;
+}
+.search-container > div {
+  gap: 10px;
 }
 .search .filter-selection-group > div {
   flex-wrap: wrap;
@@ -939,28 +935,6 @@ input:focus {
 .search .filter-selection-group > div .filter-check > div.purple svg polyline {
   stroke: #A431F9;
 }
-.search.search-dropdown-panel .search-container {
-  border: solid 1px #359EFF;
-}
-.search.search-dropdown-panel .search-container .search-icon g {
-  stroke: #359EFF;
-}
-.search-container {
-  position: relative;
-  background: #F2F2F2;
-  border-radius: 20px;
-  width: fit-content;
-  height: 35px;
-  min-width: 270px;
-  gap: 10px;
-  padding: 0px 25px;
-}
-.search-container > div {
-  gap: 10px;
-}
-.search svg {
-  cursor: pointer;
-}
 .search .filtered {
   height: fit-content;
 }
@@ -997,6 +971,9 @@ input:focus {
   stroke: #FFFFFF;
   stroke-width: 2px;
 }
+.search .filter-active g {
+  stroke: #359EFF;
+}
 .search .no-results {
   padding-bottom: 10px;
 }
@@ -1005,7 +982,15 @@ input:focus {
   font-weight: 600;
 }
 
-.mobile-search .search {
+.mobile-nav:not(.mobile-search) .search {
+  display: none;
+}
+.mobile-nav.mobile-search .side-bar-logo,
+.mobile-nav.mobile-search .side-bar-mobile-nav-user-details,
+.mobile-nav.mobile-search .side-bar-content {
+  display: none;
+}
+.mobile-nav.mobile-search .search {
   position: absolute;
   top: 50px;
   width: calc(100% - 40px);
@@ -1014,16 +999,16 @@ input:focus {
   right: 0;
   margin: 0px auto;
 }
-.mobile-search .search-container {
+.mobile-nav.mobile-search .search-container {
   min-width: calc(100% - 40px);
 }
-.mobile-search .search-container .search-icon {
+.mobile-nav.mobile-search .search-container .search-icon {
   display: none;
 }
-.mobile-search .search .filtered {
+.mobile-nav.mobile-search .search .filtered {
   padding-bottom: 20px;
 }
-.mobile-search .search .search-dropdown {
+.mobile-nav.mobile-search .search .search-dropdown {
   box-shadow: none !important;
   margin-top: 20px;
   padding: 0px 20px;
@@ -1076,6 +1061,32 @@ input:focus {
   scrollbar-width: none;
 }
 
+.search-dropdown .book-card {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  height: 56px;
+}
+.search-dropdown .book-card-details > div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.search-dropdown .book-card-image {
+  height: 50px;
+  width: 50px;
+}
+.search-dropdown .book-card .book-author {
+  display: block;
+}
+.search-dropdown .book-card .book-description {
+  display: none;
+}
+
+@media only screen and (min-width: 924px) {
+  .side-bar .search {
+    display: none;
+  }
+}
 .dark-mode .main {
   background: #111315;
 }
@@ -1123,6 +1134,9 @@ input:focus {
 .dark-mode .grid-item svg g {
   stroke: #FFFFFF;
 }
+.dark-mode .grid-item .choose-block-width {
+  background: #1A1D1F;
+}
 .dark-mode .book-graph-container .bar-data-popup {
   background: #111315;
 }
@@ -1156,6 +1170,9 @@ input:focus {
   border-radius: 100%;
 }
 .light-mode .grid-item {
+  background: #FFFFFF;
+}
+.light-mode .grid-item .choose-block-width {
   background: #FFFFFF;
 }
 .light-mode .book-graph-container .bar-data-popup {
@@ -1247,10 +1264,6 @@ svg {
 }
 svg g {
   stroke-width: 1px;
-}
-
-.selected svg g, .selected svg rect {
-  stroke: #359EFF;
 }
 
 .main {

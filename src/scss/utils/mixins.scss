@@ -32,3 +32,15 @@
 	padding: 3px 10px;
 	text-transform: uppercase;
 }
+
+
+@mixin hideScroll($prop){
+    #{$prop}::-webkit-scrollbar {
+        display: none;
+    }
+    
+    #{$prop}{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}

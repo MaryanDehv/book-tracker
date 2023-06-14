@@ -133,14 +133,6 @@ svg{
 	}
 }
 
-.selected{
-	svg{
-		g , rect{
-			stroke:$primaryBlue;
-		}
-	}
-}
-
 .main{
 	height: calc(100% - 76px);
 	width: calc(100% - 159px);
@@ -149,15 +141,7 @@ svg{
 	right: 0;
 	overflow-y:scroll;
 
-	&::-webkit-scrollbar {
-        display: none;
-    }
-  
-    & {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
+	@include hideScroll('&');
 
 	@media only screen and (max-width:1024px){
         width: calc(100% - 70px);

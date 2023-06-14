@@ -1,12 +1,10 @@
 import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon , ClockIcon, ListIcon} from "../../images/icons/customIcons";
+import { useEffect, useState} from "react";
+import { search } from "../../functions/_search";
 import BookCard from "../cards/BookCard";
 import BookProgress from "../cards/BookProgress";
 import BookList from "../cards/BookList";
-import { useEffect, useState} from "react";
-import { search } from "../../functions/_search";
 import bookData from "../../data/data";
-
-// refactor all this code
 
 const initialFilterState = [
     {
@@ -24,7 +22,7 @@ const initialFilterState = [
     }
 ]
 
-const Search = ({mobileDropdown}) => {
+const Search = ({mobileDropdown , toggleMobileSearch}) => {
     const [searchDropdown , setSearchDropdown] = useState(mobileDropdown ? true : false)
     const [searchInput , setSearchInput] = useState("")
     const [searchedData , setSearchedData] = useState("");
@@ -74,10 +72,10 @@ const Search = ({mobileDropdown}) => {
 
                         <div className="flex v-center">
                             <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
-                            <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={resetSearch}/></div>
+                            <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => resetSearch(toggleMobileSearch)}/></div>
                         </div>
                     </div>
-                <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : ''}`}>
+                <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : 'search-content-panel'}`}>
                     {
                         getChecked().length >= 1 ?
                         (

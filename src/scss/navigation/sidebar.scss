@@ -5,14 +5,7 @@
     padding: 0px 20px;
     overflow-y: scroll;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
-  
-    & {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
+    @include hideScroll('&');
 
     &-logo{
         height: 76px;
@@ -123,7 +116,7 @@
             width: calc(100% - 40px);
             height: calc(100% - 100px);
             bottom: 0;
-            z-index: 1;
+            z-index: 2;
             border-radius: 10px 10px 0px 0px;
 
             .side-bar-mobile-nav-user-details{

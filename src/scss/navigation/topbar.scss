@@ -6,7 +6,15 @@
     justify-content: space-between;
     position: fixed;
     padding: 16px 0px;
-
+    
+    .selected{
+        svg{
+            g , rect{
+                stroke:$primaryBlue;
+            }
+        }
+    }
+    
     &-inner{
         width: 940px;
 

@@ -69,6 +69,10 @@
                 stroke:$white;
             }
         }
+
+        .choose-block-width{
+            background:$blackLight;
+        }
     }
 
     .book-graph-container{
@@ -82,8 +86,6 @@
         }
     }
 
-    .book-progress{
-    }
 
     .bookList{
         .filter-item{

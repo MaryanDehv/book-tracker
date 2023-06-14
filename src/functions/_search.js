@@ -29,11 +29,12 @@ export function search(state , _){
       if(!searchDropdown.variable) searchDropdown.set(true)
     }
   
-    function resetSearch(){
+    function resetSearch(mobileSearch){
       const {searchDropdown ,filterDropdown , searchInput} = getState(["searchDropdown" , "filterDropdown" , "searchInput"])
       searchDropdown.set(false)
       filterDropdown.set(false)
       searchInput.set("")
+      if(mobileSearch) mobileSearch(false)
     }
   
     function updateSearch(e){
