@@ -1,7 +1,6 @@
 .restructure{
     &-backdrop{
         position: fixed;
-        top:76px;
         z-index: 1;
         display: flex;
         flex-wrap: wrap;
@@ -35,10 +34,8 @@
             height: 400px;
             z-index: 2;
             display: grid;
-            grid-template-columns: 60% auto;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 5px;
-
-            // @include semiTransparentColouredBorderBox('&.red-outline' , $primaryRed);
 
             >div{
                 display: flex;
@@ -47,6 +44,7 @@
                 background: $white;
                 border-radius: 5px;
                 cursor: pointer;
+
 
                 @include structureBlock("&.red" , $primaryRed);
                 @include structureBlock("&.purple" , $primaryPurple);
@@ -79,6 +77,12 @@
                 svg{
                     g{
                         stroke: $white;
+                    }
+                }
+
+                @media only screen and (max-width: 1127px){
+                    &{
+                        grid-column: auto / span 3 !important;
                     }
                 }
             }

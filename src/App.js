@@ -21,6 +21,7 @@ function App() {
 
   const gridConfig = [
     {
+      blockWidth: 2,
       component: BookCard,
       groupTitle:{
         component: CheckIcon,
@@ -31,6 +32,7 @@ function App() {
       content: sortData(bookData.status.completed , bookData)
     },
     {
+      blockWidth:1,
       component: BookProgress,
       groupTitle:{
         component: ClockIcon,
@@ -40,6 +42,7 @@ function App() {
       class:"book-progress-container",
       content:sortData(bookData.status.ongoing , bookData)
     },{
+      blockWidth:2,
       component: BookGraph,
       groupTitle:{
         component: AnalyticsIcon,
@@ -50,6 +53,7 @@ function App() {
       content:[{}]
     },
     {
+      blockWidth: 1,
       component: BookList,
       groupTitle:{
         component: ListIcon,
@@ -60,6 +64,7 @@ function App() {
       content:sortData(bookData.status.list , bookData)
     },
     {
+      blockWidth:3,
       component: HabitTracker,
       groupTitle:{
         component: ListIcon,
@@ -76,12 +81,20 @@ function App() {
   const [mobileSearch , setMobileSearch] = useState(false);
   const [startRestructure , setStartRestructure] = useState(true);
   const [gridLayout , setGridLayout] = useState(gridConfig);
+  const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
 
   useEffect(() => {
     if(selection.length == 2) rearrage({from:selection[0] , to:selection[1]})
   } , [selection]) 
 
+  useEffect(() => {
+    if(selectedWidth){
+      const grid = gridLayout;
+      grid[selectedWidth.parent].blockWidth = selectedWidth.width;
+      setGridLayout([...grid])
+    }
+  } , [selectedWidth])
 
   function rearrage({from , to}){
     let arr = []
@@ -124,9 +137,9 @@ function App() {
                   (
                     <div
                       key={index} 
-                      draggable="true"
                       onClick={() => touch(_, index)}
-                      className={`restructure-block-color ${_.groupTitle.color} ${selection.length > 0 ? index == selection[0] ? "from-selected" : index == selection[1] ? "to-selected" : "move-here": ""}`}
+                      style={{gridColumn: _.blockWidth ? `auto / span ${_.blockWidth}` : "auto"}}
+                      className={`${_.size ? _.size : ""} restructure-block-color ${_.groupTitle.color} ${selection.length > 0 ? index == selection[0] ? "from-selected" : index == selection[1] ? "to-selected" : "move-here": ""}`}
                     >
                       <div className="flex flex-column v-center">
                         <_.groupTitle.component/>
@@ -141,9 +154,14 @@ function App() {
           </div>)
           : ""
         }
-        <Grid 
-          content={gridLayout}
-        />
+        {
+          gridLayout ?
+            <Grid 
+              content={gridLayout}
+              setWidth={setSelectedWidth}
+            /> 
+          : ""
+        }
       </div>
       <TopBar toggleNav={{data: mobileNav , func: setMobileNav}} toggleSearch={{data: mobileSearch , func: setMobileSearch}} toggleStructureBoard={{data: startRestructure , func: setStartRestructure}} />
     </div>
