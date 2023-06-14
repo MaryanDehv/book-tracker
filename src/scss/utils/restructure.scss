@@ -31,6 +31,7 @@
 
         &-inner{
             width: 500px;
+            min-width: 320px;
             height: 400px;
             z-index: 2;
             display: grid;
@@ -45,11 +46,27 @@
                 place-content: center;
                 background: $white;
                 border-radius: 5px;
+                cursor: pointer;
 
                 @include structureBlock("&.red" , $primaryRed);
                 @include structureBlock("&.purple" , $primaryPurple);
                 @include structureBlock("&.orange" , $primaryOrange);
                 @include structureBlock("&.green" , $primaryGreen);
+
+                @include structureBlock("&.from-selected" , $primaryBlue);
+                @include structureBlock("&.to-selected" , $primaryBlue);
+
+                &.move-here{
+                    position: relative;
+                    &::after{
+                        content: "Move panel to this slot";
+                        position: absolute;
+                        font-size: 10px;
+                        bottom: 15px;
+                        opacity: 0.3;
+                    }
+                    background:$gray;
+                }
 
                 >div{
                     gap:10px;

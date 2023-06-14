@@ -192,6 +192,7 @@ input:focus {
 }
 .restructure-backdrop-inner {
   width: 500px;
+  min-width: 320px;
   height: 400px;
   z-index: 2;
   display: grid;
@@ -204,6 +205,7 @@ input:focus {
   place-content: center;
   background: #FFFFFF;
   border-radius: 5px;
+  cursor: pointer;
 }
 .restructure-backdrop-inner > div.red {
   background: rgba(255, 76, 76, 0.9);
@@ -216,6 +218,23 @@ input:focus {
 }
 .restructure-backdrop-inner > div.green {
   background: rgba(0, 218, 50, 0.9);
+}
+.restructure-backdrop-inner > div.from-selected {
+  background: rgba(53, 158, 255, 0.9);
+}
+.restructure-backdrop-inner > div.to-selected {
+  background: rgba(53, 158, 255, 0.9);
+}
+.restructure-backdrop-inner > div.move-here {
+  position: relative;
+  background: #B2AEAE;
+}
+.restructure-backdrop-inner > div.move-here::after {
+  content: "Move panel to this slot";
+  position: absolute;
+  font-size: 10px;
+  bottom: 15px;
+  opacity: 0.3;
 }
 .restructure-backdrop-inner > div > div {
   gap: 10px;

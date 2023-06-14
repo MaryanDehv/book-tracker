@@ -76,58 +76,39 @@ function App() {
   const [mobileSearch , setMobileSearch] = useState(false);
   const [startRestructure , setStartRestructure] = useState(true);
   const [gridLayout , setGridLayout] = useState(gridConfig);
-  const [selection , setSelection] = useState()
+  const [selection , setSelection] = useState([])
 
   useEffect(() => {
-    console.log(selection)
+    if(selection.length == 2) rearrage({from:selection[0] , to:selection[1]})
   } , [selection]) 
 
-  let from;
-  let to;
 
-  function draggedItem(index){
-    from = index;
-  }
-
-  function draggedOver(index, type){
-    to = index;
-  }
-
-  function draggedStopped(index){
-   rearrage(from , to)
-  }
-
-  function rearrage(a , b){
+  function rearrage({from , to}){
     let arr = []
 
     for(let i =  0 ; i < gridLayout.length ; i++){
-      if(i != a && i != b){
+      if(i != from && i != to){
         arr.push(gridLayout[i])
       } else {
         arr.push(false)
       }
     }
 
-    arr[a] = gridLayout[b];
-    arr[b] = gridLayout[a];
+    arr[from] = gridLayout[to];
+    arr[to] = gridLayout[from];
   
    setGridLayout([...arr])
-
-   from = ""
-   to = ""
+   setTimeout(() => {
+    setSelection([])
+   } , 200) 
   }
 
-
   function touch(el , i){
-    if(!from){
-      from = {element: el , index: i}
+    if(selection.length == 0){
+      setSelection([i])
+    } else if(selection.length < 2 && selection.length > 0){
+      setSelection([...selection , i]);
     }
-    
-    if(from && (el != from.element) && (i != from.index)){
-      to = {index: i};
-    }
-    
-    if(from && to) rearrage(from.index , to.index)
   }
 
   return (
@@ -138,24 +119,23 @@ function App() {
           ? (<div className="restructure-backdrop">
 
             <div className="restructure-backdrop-inner">
-              {gridLayout.map((_ , index) =>
-                (
-                  <div
-                    key={index} 
-                    draggable="true"
-                    onTouchStart={(e) => touch(e , index)}
-                    onDragStart={(e) => draggedItem(index)} 
-                    onDragOver={(e) => draggedOver(index)} 
-                    onDragEnd={draggedStopped}
-                    className={`restructure-block-color ${_.groupTitle.color}`}
-                  >
-                    <div className="flex flex-column v-center">
-                      <_.groupTitle.component/>
-                      <div>{_.groupTitle.name}</div>
+              {
+                gridLayout.map((_ , index) =>
+                  (
+                    <div
+                      key={index} 
+                      draggable="true"
+                      onClick={() => touch(_, index)}
+                      className={`restructure-block-color ${_.groupTitle.color} ${selection.length > 0 ? index == selection[0] ? "from-selected" : index == selection[1] ? "to-selected" : "move-here": ""}`}
+                    >
+                      <div className="flex flex-column v-center">
+                        <_.groupTitle.component/>
+                        <div>{_.groupTitle.name}</div>
+                      </div>
                     </div>
-                  </div>
+                  )
                 )
-              )}
+              }
             </div>
 
           </div>)
