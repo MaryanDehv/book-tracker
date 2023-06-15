@@ -17,7 +17,7 @@ const Navigation = ({themeToggle}) => {
     return(
         <>
             <div className="side-bar-logo flex v-center">
-                <Logo />
+                <a href={process.env.PUBLIC_URL + "/"}><Logo /></a>
             </div>
             <div className="side-bar-mobile-nav-user-details flex v-center">
                 <div className="side-bar-avatar"><div className="side-bar-avatar-designs"></div></div>
@@ -26,11 +26,11 @@ const Navigation = ({themeToggle}) => {
             </div>
             <div className="side-bar-content flex v-center">
                 <ul className="side-bar-list">
-                    <li className="uppercase button flex v-center"><span><ClockIcon /></span><span className="list-name">Ongoing</span></li>
-                    <li className="uppercase button flex v-center"><span><CheckIcon /></span><span className="list-name">Completed</span></li>
-                    <li className="uppercase button flex v-center"><span><ListIcon /></span><span className="list-name">List</span></li>
-                    <li className="uppercase button flex v-center"><span><CogIcon /></span><span className="list-name">Setitngs</span></li>
-                    <li className="uppercase button flex v-center red-button"><span><AddIcon /></span><span className="list-name">Add Book</span></li>
+                    <a href={process.env.PUBLIC_URL + "/#/books?filter=ongoing"}><li className="uppercase button flex v-center"><span><ClockIcon /></span><span className="list-name">Ongoing</span></li></a>
+                    <a href={process.env.PUBLIC_URL + "/#/books?filter=completed"}><li className="uppercase button flex v-center"><span><CheckIcon /></span><span className="list-name">Completed</span></li></a>
+                    <a href={process.env.PUBLIC_URL + "/#/books?filter=list"}><li className="uppercase button flex v-center"><span><ListIcon /></span><span className="list-name">List</span></li></a>
+                    <a href={process.env.PUBLIC_URL + "/#/books"}><li className="uppercase button flex v-center"><span><CogIcon /></span><span className="list-name">Setitngs</span></li></a>
+                    <a href={process.env.PUBLIC_URL + "/"}><li className="uppercase button flex v-center red-button"><span><AddIcon /></span><span className="list-name">Add Book</span></li></a>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">

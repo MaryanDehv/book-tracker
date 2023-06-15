@@ -66,6 +66,7 @@ table {
 @import '../scss/cards/booklist.scss';
 @import '../scss/cards/bookgraph.scss';
 @import '../scss/cards/bookprogress.scss';
+@import '../scss/cards/bookpagecard.scss';
 
 // navigation
 @import '../scss/navigation/sidebar.scss';
@@ -184,28 +185,6 @@ svg{
 		gap:5px;
 	}
 
-	.more{
-		position: relative;
-		flex-direction: column;
-		gap: 2px;
-		height: 100%;
-		cursor: pointer;
-		height: 20px;
-		width: 20px;
-		background: rgba($gray , 0.2);
-		display: flex;
-		flex-wrap: wrap;
-		place-content: center;
-		border-radius: 100%;
-
-		div{
-			width: 2px;
-			height: 2px;
-			border-radius: 100%;
-			background: $gray;
-		}
-	}
-
 	@include sectionTitle("green" , $primaryGreen);
 	@include sectionTitle("red" , $primaryRed);
 	@include sectionTitle("purple" , $primaryPurple);
@@ -216,5 +195,27 @@ svg{
 		border-radius: 5px;
 		width: 20px;
 		height: 20px;
+	}
+}
+
+.more{
+	position: relative;
+	flex-direction: column;
+	gap: 2px;
+	height: 100%;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	background: rgba($gray , 0.2);
+	display: flex;
+	flex-wrap: wrap;
+	place-content: center;
+	border-radius: 100%;
+
+	div{
+		width: 2px;
+		height: 2px;
+		border-radius: 100%;
+		background: $gray;
 	}
 }

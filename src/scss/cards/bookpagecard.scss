@@ -1,0 +1,89 @@
+.books-page-container{
+    max-width: 946px;
+    margin: auto;
+    padding: 0px 20px;
+
+    .books-container{
+        gap:10px;
+    }
+}
+
+.more{
+    margin-right:20px;
+}
+
+.book-page-card{
+    width:100%;
+    height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    &-inner{
+        height: 100%;
+        gap: 10px;
+    }
+
+   &-category-indicator{
+        width: 10px;
+        height: 100%;
+        background: $primaryGreen;
+   }
+
+   &-contents-container{
+    height: 60px;
+
+    .details-container{
+        gap: 10px;
+    }
+
+    &{
+        gap: 20px;
+    }
+
+    .details-container{
+        height: 100%;
+
+        .book-title{
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .author-tag , .author-name{
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+
+    .details{
+        justify-content: space-between;
+        height: 80%;
+    }
+
+    .image{
+        width: 70px;
+        height: 100%;
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center;
+        background-image:url("https://images.unsplash.com/photo-1685475860105-80a4ea08804a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80");
+    }
+   }
+
+   .book-page-card-contents-progress{
+
+    border-left: solid 1px rgba($gray , 0.1);
+    padding-left: 15px;
+
+    .percentage-amount{
+        font-weight: 600;
+    }
+
+    .percent-sign{
+        font-size: 11px;
+    }
+
+    .percentage-amount{
+        font-size: 40px;
+    }
+   }
+}

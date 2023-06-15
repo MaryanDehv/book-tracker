@@ -26,6 +26,9 @@
 
     // navigation list
     &-list{
+        a{
+            text-decoration: none;
+        }
         li{
             border-radius: 6px;
             border: solid 1px rgba($gray , 0.1);
