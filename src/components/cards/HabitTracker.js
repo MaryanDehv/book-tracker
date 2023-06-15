@@ -1,5 +1,12 @@
 const HabitTracker = () => {
     // will need to start based on when the user makes account - for now will start from 11/6
+
+    const trackedDays = [
+        "2023-06-13T23:00:00.034Z",
+        "2023-06-11T23:00:00.034Z",
+        "2023-06-14T23:00:00.034Z"
+    ];
+
     function getBlocks(amount){
         let html = []
 
@@ -19,17 +26,21 @@ const HabitTracker = () => {
             return arr;
         }
 
-        const dates = getDates(new Date("2023-06-10T19:28:02.034Z") , (new Date()).addDays(amount))
+        const dates = getDates(new Date("2023-06-10T23:00:00.034Z") , (new Date()).addDays(amount))
 
         for(let i = 0 ; i < amount ; i++){
-            html.push(<div className={`habit-blocks ${(new Date(dates[i].isoString)) < (new Date()) ? "yesterday" : "new"}`} onClick={colorBlock} date-date={dates[i].isoString}></div>)
+            html.push(<div className={`habit-blocks ${(trackedDays.find((day => day == dates[i].isoString))) ? "tracked" : (new Date(dates[i].isoString)) < (new Date()) ? "missed-day" : ""} ${(new Date(dates[i].isoString)) < (new Date()) ? "trackable" : "not-trackable"}`} onClick={colorBlock} date-fulldate={dates[i].isoString}></div>)
         }
 
         return html;
     }
 
     function colorBlock(block){
-        block.currentTarget.classList.add("read")
+        // if(!block.curentTarget.classList.contains('read')){
+        //     block.currentTarget.classList.add("read")
+        // } else {
+        //     block.currentTarget.classList.remove("read")
+        // }
     }
 
     return(

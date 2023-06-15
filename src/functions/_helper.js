@@ -8,3 +8,7 @@ export function sortData(statusType , source){
   })
   return data;
 }
+
+export function toggle(parent){
+  parent.func(!parent.data)
+}

@@ -1,36 +1,37 @@
 // might need more cleaning idk
 .book-graph-container{
     .grid-item-content{
-        position: relative;
         z-index: 0;
     }
 }
 
-.graph{
-    height: calc(100% - 25px);
-    width: 100%;
+// relative
+.graph_bars-container ,
+.bar-container,
+.graph,
+.book-graph-container .grid-item-content
+{
     position: relative;
 
-    // relative
-    .graph_bars-container ,
-    .bar-container
-    {
-        position: relative;
-    }
-    // absolute
-    .bar-data-popup,
-    .bar-mask,
-    .bar,
-    .graph-x-axis , 
-    .graph-y-axis
-    {
-        position: absolute;
-    }
+}
+// absolute
+.bar-data-popup,
+.bar-mask,
+.bar,
+.graph-x-axis , 
+.graph-y-axis
+{
+    position: absolute;
+}
+
+.graph{
+    height: calc(100% - 25px);
+    width: 98%;
+    left: 2%;
 
     .graph_bars-container{
         height: 100%;
         width: 100%;
-        display: flex;
         gap: 5px;
         z-index: 1;
 
@@ -139,5 +140,6 @@
         top: 0;
         height: 100%;
         z-index: 0;
+        left: -2%;
     }
 }

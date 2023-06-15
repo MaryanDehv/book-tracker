@@ -65,7 +65,7 @@ export function search(state , _){
   
         const jsx = ({component: Component , status}) => (
         <div className={`search-dropdown-inner-group ${status == "ongoing" ? "grayed" : ""}`}>
-            <div className={`section-title flex v-center red`}>
+            <div className={`section-title flex v-center ${status == "completed" ? 'green' : status == "list" ? "purple" : "orange" }`}>
                 <div className="section-title-icon flex v-h-center"> {status == "completed" ? <CheckIcon /> : status == "ongoing" ? <ClockIcon /> : <ListIcon />} </div> <h3> {status} </h3>
             </div>
             <div className="section-list">

@@ -109,11 +109,15 @@
                 border: solid 1px $gray;
                 cursor: pointer;
 
-                &.yesterday{
+                &.not-trackable{
                     opacity: 0.2;
                 }
+
+                &.missed-day{
+                    background: $white;
+                }
             
-                &.read{
+                &.tracked{
                     background: $primaryRed;
                 }
             }

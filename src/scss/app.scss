@@ -206,42 +206,11 @@ svg{
 		}
 	}
 
-	&.green{
-		.section-title-icon{
-			background: rgba($primaryGreen , 0.1);
+	@include sectionTitle("green" , $primaryGreen);
+	@include sectionTitle("red" , $primaryRed);
+	@include sectionTitle("purple" , $primaryPurple);
+	@include sectionTitle("orange" , $primaryOrange);
 
-			g{
-				stroke:$primaryGreen;
-			}
-		}
-	}
-
-	&.red{
-		.section-title-icon{
-			background: rgba($primaryRed, 0.1);
-			g{
-				stroke:$primaryRed;
-			}
-		}
-	}
-
-	&.purple{
-		.section-title-icon{
-			background: rgba($primaryPurple, 0.1);
-			g{
-				stroke:$primaryPurple;
-			}
-		}
-	}
-
-	&.orange{
-		.section-title-icon{
-			background: rgba($primaryOrange , 0.1);
-			g{
-				stroke:$primaryOrange;
-			}
-		}
-	}
 
 	&-icon{
 		border-radius: 5px;

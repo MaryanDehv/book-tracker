@@ -11,7 +11,7 @@ const BookGraph = () => {
 
     return(
         <div className="graph">
-            <div className="graph_bars-container">
+            <div className="graph_bars-container flex">
                 {viewCount.map((bar , index) => (
                     <div className="bar-container" key={index}>
                         <div className="bar-mask"> 

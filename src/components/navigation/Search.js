@@ -23,11 +23,14 @@ const initialFilterState = [
 ]
 
 const Search = ({mobileDropdown , toggleMobileSearch}) => {
+    // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
     const [searchDropdown , setSearchDropdown] = useState(mobileDropdown ? true : false)
-    const [searchInput , setSearchInput] = useState("")
-    const [searchedData , setSearchedData] = useState("");
-    const [filterDropdown , setFilterDropdown] = useState(false);
-    const [filterOpt , setFilterOpt] = useState(initialFilterState);
+    // these states are being passed to external file functions/_search.js
+    const [searchInput , setSearchInput] = useState("") // contains user search input
+    const [searchedData , setSearchedData] = useState(""); // contains books dependant on filter and search input
+    const [filterDropdown , setFilterDropdown] = useState(false); // controls whether to show filter checkbox in dropdown
+    const [filterOpt , setFilterOpt] = useState(initialFilterState); // contains all possible filter options and their checked state
+
 
     const states = {
         searchDropdown: {
@@ -52,30 +55,49 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
         }
     }
 
-    const {removeFilter , check , toggleFilterPanel , resetSearch , updateSearch , filterBooks} = search(states , {BookCard , BookProgress , BookList, CheckIcon , ListIcon, ClockIcon , bookData});
+    const { removeFilter, check, toggleFilterPanel, resetSearch, updateSearch, filterBooks } = 
+        search(
+            states,
+            {
+                BookCard,
+                BookProgress,
+                BookList,
+                CheckIcon,
+                ListIcon,
+                ClockIcon,
+                bookData
+        });
 
     useEffect(() => {
+        // only update search results either when a filter options is selected or new search input added
         setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
     } , [searchInput , filterOpt])
     
     function getChecked(){
+        // only return filter indicators for those that are checked
         return filterOpt.filter(tag => tag.checked == true);
     }
 
     return(
         <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
-                    <div className={`search-container flex v-center justify-sb`}>
-                        <div className="flex v-center">
-                            <div className="icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
-                            <input type="text" placeholder="Search your library..." value={searchInput}  onChange={updateSearch} />
-                        </div>
-
-                        <div className="flex v-center">
-                            <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
-                            <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => resetSearch(toggleMobileSearch)}/></div>
-                        </div>
+                
+                {/* search input block */}
+                <div className={`search-box-container flex v-center justify-sb`}>
+                    <div className="flex v-center">
+                        <div className="icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
+                        <input type="text" placeholder="Search your library..." value={searchInput}  onChange={updateSearch} />
                     </div>
+
+                    <div className="flex v-center">
+                        <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
+                        <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => resetSearch(toggleMobileSearch)}/></div>
+                    </div>
+                </div>
+                
+                {/* dropdown section */}
                 <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : 'search-content-panel'}`}>
+                    
+                    {/* currently active filters */}
                     {
                         getChecked().length >= 1 ?
                         (
@@ -90,6 +112,8 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                         )
                         : ""
                     }
+                    
+                    {/* search results */}
                     <div className={`search-dropdown-inner search-results`}>
                         {
                             searchedData.length >= 1 ?
@@ -99,7 +123,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                     </div>
 
 
-
+                    {/* filter options */}
                     <div className={`search-dropdown-inner filter-selection-group`}>
                         <div className={`search-dropdown-inner-group flex`}>
                             {
@@ -114,6 +138,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                             }
                         </div>
                     </div>
+
                 </div>
         </div>
     )

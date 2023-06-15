@@ -101,13 +101,6 @@
     
     // clean up this
     .mobile-nav{
-        .hamburger{
-            display: none;
-        }
-
-        .close{
-            display: block;
-        }
         .side-bar{
             display: flex;
             flex-direction: column;
@@ -119,7 +112,7 @@
             z-index: 2;
             border-radius: 10px 10px 0px 0px;
 
-            .side-bar-mobile-nav-user-details{
+            &-mobile-nav-user-details{
                 display: flex;
                 flex-direction: column;
 
@@ -201,6 +194,8 @@
                 }
             }
 
+
+
             .side-bar-content{
                 width: 100%;
                 max-width: 300px;
@@ -208,20 +203,28 @@
                 .side-bar-mode > div:not(.selected){
                     display: flex;
                 }
-            }
-            
-            .side-bar-list{
-                width: 100%;
-                li{
-                    width: 100%;
 
-                    .list-name{
-                        display: block;
-                        width: calc(100% - 63.4px);
-                        text-align: center;
+                .side-bar-list{
+                    width: 100%;
+                    li{
+                        width: 100%;
+    
+                        .list-name{
+                            display: block;
+                            width: calc(100% - 63.4px);
+                            text-align: center;
+                        }
                     }
                 }
             }
+        }
+
+        .hamburger{
+            display: none;
+        }
+
+        .close{
+            display: block;
         }
     }
 }

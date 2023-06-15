@@ -33,6 +33,25 @@
 	text-transform: uppercase;
 }
 
+@mixin cardVerticalSpacing($prop , $spacing){
+    #{$prop}:not(:last-child){
+        margin-bottom: $spacing;
+    }
+}
+
+
+@mixin sectionTitle($class , $color){
+    &.#{$class}{
+		.section-title-icon{
+			background: rgba($color , 0.1);
+
+			g{
+				stroke:$color;
+			}
+		}
+	}
+}
+
 
 @mixin hideScroll($prop){
     #{$prop}::-webkit-scrollbar {

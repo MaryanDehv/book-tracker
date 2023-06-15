@@ -8,7 +8,7 @@ import BookList from './components/cards/BookList';
 import BookGraph from './components/cards/BookGraph';
 import HabitTracker from './components/cards/HabitTracker';
 import {AnalyticsIcon, CheckIcon, ClockIcon, ListIcon} from './images/icons/customIcons';
-import { useState , useRef, useEffect } from "react";
+import { useState , useEffect } from "react";
 import { sortData } from './functions/_helper';
 
 // placeholder content until database is set up
@@ -78,7 +78,7 @@ function App() {
   const [theme , setTheme] = useState('dark')
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
-  const [startRestructure , setStartRestructure] = useState(true);
+  const [startRestructure , setStartRestructure] = useState(false);
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])

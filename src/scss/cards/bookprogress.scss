@@ -2,9 +2,7 @@
     height: 50px;
     width: 100%;
 
-    &:not(:last-child){
-        margin-bottom: 15px;
-    }
+    @include cardVerticalSpacing('&' , 15px);
 
     &-inner{
         gap:10px;

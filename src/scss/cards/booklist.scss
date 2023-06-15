@@ -1,8 +1,6 @@
 .book-list{
-    &:not(:last-child){
-        margin-bottom: 15px;
-    }
-
+    
+    @include cardVerticalSpacing('&' , 15px);
 
     &-image{
         width: 50px;
