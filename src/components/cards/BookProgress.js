@@ -8,7 +8,7 @@ const BookProgress = ({content}) => {
                 </div>
                 <div className="book-progress-details">
                     <h5 className="uppercase"> {content.title.substring(0 , 15)}<span className="opacity">...</span></h5>
-                    <div className="book-progress-bar"><div className="progress" style={{width:content.progress , background:content.color}}></div></div>
+                    <div className="book-progress-bar"><div className="progress" style={{width:content.progress + "%" , background:content.color}}></div></div>
                 </div>
             </div>
             <ArrowIcon />

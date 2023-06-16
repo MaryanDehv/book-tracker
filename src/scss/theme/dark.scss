@@ -113,4 +113,14 @@
     .section-title{
         color: $white;
     }
+
+    .modal-container{
+        background: $blackLight;
+        box-shadow: 0px 0px 20px $black;
+    }
+
+    .input-block-container{
+        background: $black;
+        color: $white;
+    }
 }

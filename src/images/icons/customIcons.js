@@ -122,7 +122,7 @@ export const CogIcon = () => {
 
 export const ArrowIcon = () => {
     return(
-        <svg width="38.4012555px" height="38.4012555px" viewBox="0 0 38.4012555 38.4012555" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="arrow-icon" width="38.4012555px" height="38.4012555px" viewBox="0 0 38.4012555 38.4012555" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Icons" transform="translate(-364.267197, -187.921474)" stroke="#979797" stroke-width="0.5">
                     <g id="Group-14" transform="translate(364.267197, 187.921474)">

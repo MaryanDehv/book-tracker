@@ -26,17 +26,24 @@
    &-category-indicator{
         width: 10px;
         height: 100%;
-        background: $primaryGreen;
+        
+        &.red{
+            background: $primaryRed ;
+        }
+
+        &.green{
+            background: $primaryGreen;
+        }
+
+        &.purple{
+            background: $primaryPurple;
+        }
    }
 
    &-contents-container{
     height: 60px;
 
-    .details-container{
-        gap: 10px;
-    }
-
-    &{
+    &, .details-container{
         gap: 20px;
     }
 

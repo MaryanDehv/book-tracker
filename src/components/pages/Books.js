@@ -1,17 +1,20 @@
 import {StackedBooksIcon } from "../../images/icons/customIcons";
 import BookPageCard from "../cards/BookPageCard";
+import bookData from "../../data/data";
+import SectionTitle from "../SectionTitle";
+import { useOutletContext } from "react-router-dom";
 
-const Books = () => {
+const Books = ({}) => {
+    const[modal , setModal] = useOutletContext()
     return(
         <div className="books-page-container">
-            <div className={`section-title flex v-center justify-sb red`}>
-                <div className="flex h-center"><div className="section-title-icon flex v-h-center"> <StackedBooksIcon /> </div> <h3> All Books </h3></div>
-            </div>
+            <SectionTitle icon={StackedBooksIcon} toggleModal={{data: modal , func: setModal}} title={"All Books"} filter={true}/>
             <div className="books-container flex flex-column">
-                <BookPageCard />
-                <BookPageCard />
-                <BookPageCard />
-                <BookPageCard />
+                {
+                    bookData.books.map(book => (
+                        <BookPageCard category={book.status} progress={book.progress} author={book.author}/>
+                    ))
+                }
             </div>
         </div>
     );

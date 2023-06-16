@@ -1,7 +1,8 @@
 import {Logo , ClockIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../images/icons/customIcons'
 import { themeMode } from '../../functions/_theme'
+import { toggle } from '../../functions/_helper'
 
-const Navigation = ({themeToggle}) => {
+const Navigation = ({themeToggle , toggleModal}) => {
     
     const themeOptions = [
         {
@@ -30,7 +31,7 @@ const Navigation = ({themeToggle}) => {
                     <a href={process.env.PUBLIC_URL + "/#/books?filter=completed"}><li className="uppercase button flex v-center"><span><CheckIcon /></span><span className="list-name">Completed</span></li></a>
                     <a href={process.env.PUBLIC_URL + "/#/books?filter=list"}><li className="uppercase button flex v-center"><span><ListIcon /></span><span className="list-name">List</span></li></a>
                     <a href={process.env.PUBLIC_URL + "/#/books"}><li className="uppercase button flex v-center"><span><CogIcon /></span><span className="list-name">Setitngs</span></li></a>
-                    <a href={process.env.PUBLIC_URL + "/"}><li className="uppercase button flex v-center red-button"><span><AddIcon /></span><span className="list-name">Add Book</span></li></a>
+                    <li className="uppercase button flex v-center red-button" onClick={() => toggle(toggleModal)}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">

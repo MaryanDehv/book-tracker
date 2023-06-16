@@ -8,3 +8,36 @@ input{
         outline: none;
     }
 }
+
+.input-block-container{
+    border-radius: 5px;
+    min-height: 30px;
+    position: relative;
+    padding: 10px;
+
+    label{
+        font-size: 10px;
+    }
+
+    textarea{
+        background: inherit;
+        max-width: calc(100%  - 10px);
+        border: 0;
+        color: inherit;
+        min-height: inherit;
+
+        @include hideScroll('&');
+        
+        &:focus{
+            outline: none;
+        }
+    }
+
+    input{
+        position: absolute;
+        width: calc(100%  - 20px);
+        bottom: 8px;
+        padding-left:0;
+        color: inherit;
+    }
+}
