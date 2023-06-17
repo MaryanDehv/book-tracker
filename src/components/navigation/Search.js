@@ -1,10 +1,12 @@
 import { CheckIcon, CheckMark, CloseIcon, FilterIcon, SearchIcon, TimesIcon , ClockIcon, ListIcon} from "../../images/icons/customIcons";
-import { useEffect, useState} from "react";
+import { useContext, useEffect, useState} from "react";
 import { search } from "../../functions/_search";
 import BookCard from "../cards/BookCard";
 import BookProgress from "../cards/BookProgress";
 import BookList from "../cards/BookList";
 import bookData from "../../data/data";
+import {DataContext} from "../../App"
+import { check } from "../../functions/_helper";
 
 const initialFilterState = [
     {
@@ -29,8 +31,8 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     const [searchInput , setSearchInput] = useState("") // contains user search input
     const [searchedData , setSearchedData] = useState(""); // contains books dependant on filter and search input
     const [filterDropdown , setFilterDropdown] = useState(false); // controls whether to show filter checkbox in dropdown
-    const [filterOpt , setFilterOpt] = useState(initialFilterState); // contains all possible filter options and their checked state
-
+    // const [filterOpt , setFilterOpt] = useState(initialFilterState); // contains all possible filter options and their checked state
+    const {filterOpt} = useContext(DataContext)
 
     const states = {
         searchDropdown: {
@@ -46,8 +48,8 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
             set: setSearchInput
         }, 
         filterOpt: {
-            variable: filterOpt ,
-            set: setFilterOpt
+            variable: filterOpt.variable ,
+            set: filterOpt.set
         },
         searchedData: {
             variable: searchedData,
@@ -55,7 +57,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
         }
     }
 
-    const { removeFilter, check, toggleFilterPanel, resetSearch, updateSearch, filterBooks } = 
+    const { removeFilter, toggleFilterPanel, resetSearch, updateSearch, filterBooks } = 
         search(
             states,
             {
@@ -71,11 +73,11 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added
         setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
-    } , [searchInput , filterOpt])
+    } , [searchInput , filterOpt.variable])
     
     function getChecked(){
         // only return filter indicators for those that are checked
-        return filterOpt.filter(tag => tag.checked == true);
+        return filterOpt.variable.filter(tag => tag.checked == true);
     }
 
     return(
@@ -90,7 +92,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
 
                     <div className="flex v-center">
                         <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
-                        <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => resetSearch(toggleMobileSearch)}/></div>
+                        <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => resetSearch(toggleMobileSearch ? toggleMobileSearch.set : false)}/></div>
                     </div>
                 </div>
                 
@@ -127,8 +129,8 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                     <div className={`search-dropdown-inner filter-selection-group`}>
                         <div className={`search-dropdown-inner-group flex`}>
                             {
-                                filterOpt.map((tag , index) => (
-                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , tag)} data-check={tag.name.toLowerCase()}>
+                                filterOpt.variable.map((tag , index) => (
+                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , filterOpt)} data-check={tag.name.toLowerCase()}>
                                         <div className={`${tag.color}`}>
                                             <CheckMark />
                                         </div>

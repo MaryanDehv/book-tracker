@@ -1,8 +1,12 @@
 import {Logo , ClockIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../images/icons/customIcons'
 import { themeMode } from '../../functions/_theme'
 import { toggle } from '../../functions/_helper'
+import { useContext } from 'react'
+import { DataContext } from '../../App'
+import AddBook from '../AddBook'
 
-const Navigation = ({themeToggle , toggleModal}) => {
+const Navigation = ({toggleModal}) => {
+    const {modalType , modal , themeToggle} = useContext(DataContext)
     
     const themeOptions = [
         {
@@ -14,6 +18,11 @@ const Navigation = ({themeToggle , toggleModal}) => {
             icon: MoonIcon,
         }
     ]
+
+    function setModal(){
+        toggle(modal);
+        modalType.set({component: AddBook})
+    }
 
     return(
         <>
@@ -31,12 +40,12 @@ const Navigation = ({themeToggle , toggleModal}) => {
                     <a href={process.env.PUBLIC_URL + "/#/books?filter=completed"}><li className="uppercase button flex v-center"><span><CheckIcon /></span><span className="list-name">Completed</span></li></a>
                     <a href={process.env.PUBLIC_URL + "/#/books?filter=list"}><li className="uppercase button flex v-center"><span><ListIcon /></span><span className="list-name">List</span></li></a>
                     <a href={process.env.PUBLIC_URL + "/#/books"}><li className="uppercase button flex v-center"><span><CogIcon /></span><span className="list-name">Setitngs</span></li></a>
-                    <li className="uppercase button flex v-center red-button" onClick={() => toggle(toggleModal)}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
+                    <li className="uppercase button flex v-center red-button" onClick={setModal}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">
                         {themeOptions.map(theme => (
-                            <div className={`side-bar-light flex v-h-center ${themeToggle.theme == theme.name ? 'selected' : ''}`} onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
+                            <div className={`side-bar-light flex v-h-center ${themeToggle.variable == theme.name ? 'selected' : ''}`} onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
                         ))}
                     </div>
                 </div>

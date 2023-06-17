@@ -16,12 +16,7 @@ export function search(state , _){
       filterOpt.variable[targetIndex].checked = false;
       filterOpt.set([...filterOpt.variable])
     }
-  
-    function check(index){
-      const {filterOpt} = getState(["filterOpt"])
-      filterOpt.variable[index].checked = !filterOpt.variable[index].checked;
-      filterOpt.set([...filterOpt.variable])
-    }
+
   
     function toggleFilterPanel(el){
       const {filterDropdown , searchDropdown} = getState(["filterDropdown" , "searchDropdown"])
@@ -115,7 +110,6 @@ export function search(state , _){
   
     return{
       removeFilter,
-      check,
       toggleFilterPanel,
       resetSearch,
       updateSearch,

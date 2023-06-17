@@ -10,5 +10,11 @@ export function sortData(statusType , source){
 }
 
 export function toggle(parent){
-  parent.func(!parent.data)
+  parent.set(!parent.variable)
+}
+
+
+export function check(index , state){
+  state.variable[index].checked = !state.variable[index].checked;
+  state.set([...state.variable])
 }

@@ -52,55 +52,6 @@
         }
     }
 
-
-    .filter-selection-group{
-        >div{
-            flex-wrap: wrap;
-            gap:10px;
-                .filter-check{
-                    gap:5px;
-                    cursor: pointer;
-                    
-                    >div{
-                        position: relative;
-                        width: 10px;
-                        height:10px;
-                        border-radius:2px;
-                    }
-
-                    p{
-                        text-transform: uppercase;
-                    }
-
-                    svg{
-                        display: none;
-                    }
-
-                    &.checked{
-                        .check-mark{
-                            display: block;
-                            position: absolute;
-                            width: 6px;
-                            margin: auto;
-                            inset: 0;
-                            line-height: 0.9;
-
-                            polyline{
-                                stroke-width: 2px;
-                            }
-                        }
-                    }
-                }
-
-
-            @include semiTransparentColouredBorderBox('.filter-check > div.red' , $primaryRed);
-            @include semiTransparentColouredBorderBox('.filter-check > div.green' , $primaryGreen);
-            @include semiTransparentColouredBorderBox('.filter-check > div.orange' , $primaryOrange);
-            @include semiTransparentColouredBorderBox('.filter-check > div.purple' , $primaryPurple);
-        }
-    }
-
-
     .filtered{
         height: fit-content;
 
@@ -116,14 +67,10 @@
         }
 
         .filter-item{
-            @include tag;
-            @include filteredTag('&.green' , $primaryGreen);
-            @include filteredTag('&.red' , $primaryRed);
-            @include filteredTag('&.orange' , $primaryOrange);
-            @include filteredTag('&.purple' , $primaryPurple);
             height: 15px;
             color: $white;
         }
+        
 
         svg{
             line{
@@ -147,8 +94,6 @@
         }
     }
 }
-
-
 
 
 .mobile-nav{

@@ -113,4 +113,13 @@
         background: $grayLight;
         color: $black;
     }
+
+    .filter-books{
+        gap:40px;
+        color: $black;
+
+        .filter-books-group-title{
+            color: $gray;
+        }
+    }
 }

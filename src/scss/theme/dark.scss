@@ -123,4 +123,13 @@
         background: $black;
         color: $white;
     }
+
+    .filter-books{
+        gap:40px;
+        color: $white;
+
+        .filter-books-group-title{
+            opacity: 0.8;
+        }
+    }
 }

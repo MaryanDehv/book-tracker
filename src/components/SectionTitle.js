@@ -1,7 +1,15 @@
+import { useContext } from "react";
 import { toggle } from "../functions/_helper";
-import { AddIcon, CheckIcon, FilterIcon, TimesIcon } from "../images/icons/customIcons";
+import {FilterIcon, TimesIcon} from "../images/icons/customIcons";
+import { DataContext } from "../App";
+import FilterBooks from "./FilterBooks";
 
-const SectionTitle = ({modal , toggleModal , title , icon: Icon , filter}) => {
+const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
+    const {modalType , modal} = useContext(DataContext);
+    function setModal(){
+        toggle(modal);
+        modalType.set({component: FilterBooks})
+    }
     return(
         <div className={`section-title flex v-center justify-sb red`}>
             <div className="flex h-center">
@@ -9,14 +17,14 @@ const SectionTitle = ({modal , toggleModal , title , icon: Icon , filter}) => {
                 <Icon /> </div> <h3> {title} </h3>
             </div>
             {
-                modal ?
+                modalPanel ?
                 (
                     <div className="filter-close-icon">
-                        <TimesIcon func={() => toggle(toggleModal)}/>
+                        <TimesIcon func={() => toggle(modal)}/>
                     </div>
                 ) : filter ?
                     (
-                        <FilterIcon func={() => toggle(toggleModal)} />
+                        <FilterIcon func={setModal} />
                     ) :
                     (
                         <div className="more flex h-center">

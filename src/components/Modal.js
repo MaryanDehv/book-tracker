@@ -1,14 +1,13 @@
 import { AddIcon } from "../images/icons/customIcons";
-import AddBook from "./AddBook";
 import SectionTitle from "./SectionTitle";
 
-const Modal = ({toggleModal}) => {
+const Modal = ({modalType: ModalType}) => {
     return(
         <div className="modal-container">
             <div className="modal-container-inner">
-                <SectionTitle modal={true} toggleModal={toggleModal} icon={AddIcon} title={"Add Book"}/>
+                <SectionTitle modalPanel={true} icon={AddIcon} title={"Add Book"}/>
                 <div className="modal-container-content">
-                    <AddBook />
+                    <ModalType.component />
                 </div>
             </div>
         </div>

@@ -355,6 +355,95 @@ input:focus {
   }
 }
 
+.modal-container {
+  height: fit-content;
+  max-width: 400px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px 20px;
+  overflow-y: scroll;
+}
+.modal-container::-webkit-scrollbar {
+  display: none;
+}
+.modal-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+@media only screen and (max-width: 924px) {
+  .modal-container {
+    position: fixed;
+    top: 0;
+    max-width: 100%;
+    height: 100%;
+    left: 0;
+  }
+}
+.modal-container-inner {
+  height: 100%;
+}
+.modal-container-content form {
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.modal-container .close {
+  width: 30px;
+  display: block;
+}
+.modal-container .red-button {
+  height: 40px;
+}
+.modal-container .red-button .arrow-icon {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 20px;
+  height: inherit;
+}
+
+.filter-books {
+  gap: 40px;
+  color: #FFFFFF;
+}
+.filter-books .filter-books-group {
+  height: 50px;
+}
+.filter-books .filter-books-group .filter-books-group-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.filter-books .filter-books-group .percentage-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(178, 174, 174, 0.1);
+  border-radius: 5px;
+  position: relative;
+}
+.filter-books .filter-books-group .percentage-bar .slider-button {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #FF4C4C;
+  border-radius: 100%;
+  top: 0;
+  bottom: 0;
+  left: 45%;
+  margin: auto 0px;
+  cursor: pointer;
+}
+.filter-books .filter-books-group .percentage-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: rgba(255, 76, 76, 0.5);
+  border-radius: inherit;
+}
+
 .book-card-container {
   gap: 10px;
 }
@@ -1004,65 +1093,6 @@ input:focus {
 .search-box-container > div {
   gap: 10px;
 }
-.search .filter-selection-group > div {
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.search .filter-selection-group > div .filter-check {
-  gap: 5px;
-  cursor: pointer;
-}
-.search .filter-selection-group > div .filter-check > div {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-}
-.search .filter-selection-group > div .filter-check p {
-  text-transform: uppercase;
-}
-.search .filter-selection-group > div .filter-check svg {
-  display: none;
-}
-.search .filter-selection-group > div .filter-check.checked .check-mark {
-  display: block;
-  position: absolute;
-  width: 6px;
-  margin: auto;
-  inset: 0;
-  line-height: 0.9;
-}
-.search .filter-selection-group > div .filter-check.checked .check-mark polyline {
-  stroke-width: 2px;
-}
-.search .filter-selection-group > div .filter-check > div.red {
-  background: rgba(255, 76, 76, 0.3);
-  border: solid 1px #FF4C4C;
-}
-.search .filter-selection-group > div .filter-check > div.red svg polyline {
-  stroke: #FF4C4C;
-}
-.search .filter-selection-group > div .filter-check > div.green {
-  background: rgba(0, 218, 50, 0.3);
-  border: solid 1px #00DA32;
-}
-.search .filter-selection-group > div .filter-check > div.green svg polyline {
-  stroke: #00DA32;
-}
-.search .filter-selection-group > div .filter-check > div.orange {
-  background: rgba(249, 87, 49, 0.3);
-  border: solid 1px #F95731;
-}
-.search .filter-selection-group > div .filter-check > div.orange svg polyline {
-  stroke: #F95731;
-}
-.search .filter-selection-group > div .filter-check > div.purple {
-  background: rgba(164, 49, 249, 0.3);
-  border: solid 1px #A431F9;
-}
-.search .filter-selection-group > div .filter-check > div.purple svg polyline {
-  stroke: #A431F9;
-}
 .search .filtered {
   height: fit-content;
 }
@@ -1076,24 +1106,8 @@ input:focus {
   gap: 5px;
 }
 .search .filtered .filter-item {
-  justify-content: space-between;
-  border-radius: 20px;
-  padding: 3px 10px;
-  text-transform: uppercase;
   height: 15px;
   color: #FFFFFF;
-}
-.search .filtered .filter-item.green {
-  background: #00DA32;
-}
-.search .filtered .filter-item.red {
-  background: #FF4C4C;
-}
-.search .filtered .filter-item.orange {
-  background: #F95731;
-}
-.search .filtered .filter-item.purple {
-  background: #A431F9;
 }
 .search .filtered svg line {
   stroke: #FFFFFF;
@@ -1295,6 +1309,13 @@ input:focus {
   background: #111315;
   color: #FFFFFF;
 }
+.dark-mode .filter-books {
+  gap: 40px;
+  color: #FFFFFF;
+}
+.dark-mode .filter-books .filter-books-group-title {
+  opacity: 0.8;
+}
 
 .light-mode .main {
   background: #F2F2F2;
@@ -1368,6 +1389,13 @@ input:focus {
 .light-mode .input-block-container {
   background: #F2F2F2;
   color: #111315;
+}
+.light-mode .filter-books {
+  gap: 40px;
+  color: #111315;
+}
+.light-mode .filter-books .filter-books-group-title {
+  color: #B2AEAE;
 }
 
 body {
@@ -1528,53 +1556,83 @@ svg g {
   background: #B2AEAE;
 }
 
-.modal-container {
-  height: fit-content;
-  max-width: 400px;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  z-index: 1;
-  border-radius: 5px;
-  padding: 10px 20px;
-  overflow-y: scroll;
+.filter-item {
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 3px 10px;
+  text-transform: uppercase;
 }
-.modal-container::-webkit-scrollbar {
+.filter-item.green {
+  background: #00DA32;
+}
+.filter-item.red {
+  background: #FF4C4C;
+}
+.filter-item.orange {
+  background: #F95731;
+}
+.filter-item.purple {
+  background: #A431F9;
+}
+
+.filter-selection-group > div {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.filter-selection-group > div .filter-check {
+  gap: 5px;
+  cursor: pointer;
+}
+.filter-selection-group > div .filter-check > div {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.filter-selection-group > div .filter-check p {
+  text-transform: uppercase;
+}
+.filter-selection-group > div .filter-check svg {
   display: none;
 }
-.modal-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-@media only screen and (max-width: 924px) {
-  .modal-container {
-    position: fixed;
-    top: 0;
-    max-width: 100%;
-    height: 100%;
-    left: 0;
-  }
-}
-.modal-container-inner {
-  height: 100%;
-}
-.modal-container-content form {
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.modal-container .close {
-  width: 30px;
+.filter-selection-group > div .filter-check.checked .check-mark {
   display: block;
-}
-.modal-container .red-button {
-  height: 40px;
-}
-.modal-container .red-button .arrow-icon {
   position: absolute;
-  top: 0;
-  right: 10px;
-  width: 20px;
-  height: inherit;
+  width: 6px;
+  margin: auto;
+  inset: 0;
+  line-height: 0.9;
+}
+.filter-selection-group > div .filter-check.checked .check-mark polyline {
+  stroke-width: 2px;
+}
+.filter-selection-group > div .filter-check > div.red {
+  background: rgba(255, 76, 76, 0.3);
+  border: solid 1px #FF4C4C;
+}
+.filter-selection-group > div .filter-check > div.red svg polyline {
+  stroke: #FF4C4C;
+}
+.filter-selection-group > div .filter-check > div.green {
+  background: rgba(0, 218, 50, 0.3);
+  border: solid 1px #00DA32;
+}
+.filter-selection-group > div .filter-check > div.green svg polyline {
+  stroke: #00DA32;
+}
+.filter-selection-group > div .filter-check > div.orange {
+  background: rgba(249, 87, 49, 0.3);
+  border: solid 1px #F95731;
+}
+.filter-selection-group > div .filter-check > div.orange svg polyline {
+  stroke: #F95731;
+}
+.filter-selection-group > div .filter-check > div.purple {
+  background: rgba(164, 49, 249, 0.3);
+  border: solid 1px #A431F9;
+}
+.filter-selection-group > div .filter-check > div.purple svg polyline {
+  stroke: #A431F9;
 }
 
 /*# sourceMappingURL=App.css.map */
