@@ -16,14 +16,16 @@ const FilterBooks = () => {
 
     let ogRight;
 
-    function clickedButton(){
+    function clickedButton(el){
+      console.log(el)
       ogRight = progressBarRef.current.getBoundingClientRect().right - progressBarRef.current.getBoundingClientRect().left;
       trackMoving = true;
     }
 
     function currentPos(el){
+      console.log(el)
       if(trackMoving){
-        const percent = Math.round(((el.clientX - progressBarRef.current.getBoundingClientRect().left) * 100) / ogRight);
+        const percent = Math.round((((el.touches ? el.touches[0].clientX : el.clientX) - progressBarRef.current.getBoundingClientRect().left) * 100) / ogRight);
         if(percent >= 0 && percent <= 100){
           progressBarPercentage.current.innerHTML = percent+ "%"
           progressBarLength.current.style.width = percent + "%"
