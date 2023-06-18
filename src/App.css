@@ -405,36 +405,49 @@ input:focus {
 }
 
 .filter-books {
-  gap: 40px;
+  gap: 20px;
   color: #FFFFFF;
 }
 .filter-books .filter-books-group {
-  height: 50px;
+  gap: 20px;
+  padding: 10px 0px;
+}
+.filter-books .filter-books-group.authors .filter-books-group-inner {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.filter-books .filter-books-group.authors .filter-books-group-inner .filter-item {
+  white-space: nowrap;
+  gap: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.filter-books .filter-books-group.authors .filter-books-group-inner .filter-item svg {
+  width: 10px;
+}
+.filter-books .filter-books-group.authors .filter-books-group-inner .filter-item svg polyline {
+  stroke: #FFFFFF;
+  stroke-width: 1.5px;
+}
+.filter-books .filter-books-group.authors .filter-books-group-inner .filter-item:not(.checked) {
+  background: transparent;
+  border: solid 1px #FFFFFF;
+}
+.filter-books .filter-books-group.authors .filter-books-group-inner .filter-item:not(.checked) svg {
+  display: none;
 }
 .filter-books .filter-books-group .filter-books-group-title {
   font-size: 14px;
   font-weight: 600;
 }
-.filter-books .filter-books-group .percentage-bar {
+.filter-books .filter-books-group .percentage-bar-container {
   width: 100%;
   height: 10px;
   background: rgba(178, 174, 174, 0.1);
   border-radius: 5px;
   position: relative;
 }
-.filter-books .filter-books-group .percentage-bar .slider-button {
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  background: #FF4C4C;
-  border-radius: 100%;
-  top: 0;
-  bottom: 0;
-  left: 45%;
-  margin: auto 0px;
-  cursor: pointer;
-}
-.filter-books .filter-books-group .percentage-bar::after {
+.filter-books .filter-books-group .percentage-bar-container .progress-bar {
   content: "";
   position: absolute;
   top: 0;
@@ -442,6 +455,25 @@ input:focus {
   width: 50%;
   background: rgba(255, 76, 76, 0.5);
   border-radius: inherit;
+}
+.filter-books .filter-books-group .percentage-bar-container .progress-bar .slider-button {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #FF4C4C;
+  border-radius: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0px;
+  cursor: pointer;
+}
+.filter-books .filter-books-group .star-icon {
+  cursor: pointer;
+}
+.filter-books .filter-books-group .star-icon.gray path {
+  fill: #B2AEAE;
+  stroke: #B2AEAE;
 }
 
 .book-card-container {
@@ -1310,7 +1342,6 @@ input:focus {
   color: #FFFFFF;
 }
 .dark-mode .filter-books {
-  gap: 40px;
   color: #FFFFFF;
 }
 .dark-mode .filter-books .filter-books-group-title {
@@ -1391,7 +1422,6 @@ input:focus {
   color: #111315;
 }
 .light-mode .filter-books {
-  gap: 40px;
   color: #111315;
 }
 .light-mode .filter-books .filter-books-group-title {

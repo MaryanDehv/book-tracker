@@ -83,6 +83,7 @@ function App() {
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
   const [modalType , setModalType] = useState({component:AddBook})
+  const [authorFilterOpt , setAuthorFilterOpt] = useState(bookData.authors)
   const [filterOpt , setFilterOpt] = useState([
     {
         name: "Completed",
@@ -149,7 +150,8 @@ function App() {
       filterOpt: {variable: filterOpt , set: setFilterOpt},
       toggleSearch:{variable: mobileSearch , set: setMobileSearch},
       themeToggle: {variable: theme , set: setTheme},
-      toggleNav: {variable: mobileNav , set: setMobileNav}
+      toggleNav: {variable: mobileNav , set: setMobileNav},
+      authorFilterOpt: {variable: authorFilterOpt , set: setAuthorFilterOpt}
     }
   
   return (
