@@ -7,6 +7,7 @@ import BookList from "../cards/BookList";
 import bookData from "../../data/data";
 import {DataContext} from "../../App"
 import { check } from "../../functions/_helper";
+import { filter } from "../../functions/_filtering";
 
 const initialFilterState = [
     {
@@ -47,17 +48,14 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
             variable: searchInput ,
             set: setSearchInput
         }, 
-        filterOpt: {
-            variable: filterOpt.variable ,
-            set: filterOpt.set
-        },
+        filterOpt: filterOpt,
         searchedData: {
             variable: searchedData,
             set: setSearchedData
         }
     }
 
-    const { removeFilter, toggleFilterPanel, resetSearch, updateSearch, filterBooks } = 
+    const {toggleFilterPanel, resetSearch, updateSearch, getBooks } = 
         search(
             states,
             {
@@ -72,7 +70,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
 
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added
-        setSearchedData(filterBooks(searchInput.toLowerCase().trim("")))
+        setSearchedData(getBooks(searchInput.toLowerCase().trim("") , bookData.books))
     } , [searchInput , filterOpt.variable])
     
     function getChecked(){
@@ -107,7 +105,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                                 <p> Filtered </p>
                                 <div className="flex">
                                     {
-                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => removeFilter(tagName)}/></div>))
+                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => filter().removeChecked(tagName , states.filterOpt)}/></div>))
                                     }
                                 </div>
                             </div>

@@ -1,31 +1,17 @@
+import { filter } from "./_filtering";
+
 // location -> search.js
 export function search(state , _){ 
-    const {BookCard , BookList , BookProgress, CheckIcon , ListIcon , ClockIcon , bookData} = _;
-  
-    function getState(array){
-      let data = {};
-      array.forEach(item => {
-        data[item] = state[item]
-      })
-      return data;
-    }
-  
-    function removeFilter(el){
-      const {filterOpt} = getState(["filterOpt"])
-      const targetIndex = filterOpt.variable.findIndex(tag => tag.name == el.name);
-      filterOpt.variable[targetIndex].checked = false;
-      filterOpt.set([...filterOpt.variable])
-    }
-
-  
+    const {BookCard , BookList , BookProgress, CheckIcon , ListIcon , ClockIcon} = _;
+   
     function toggleFilterPanel(el){
-      const {filterDropdown , searchDropdown} = getState(["filterDropdown" , "searchDropdown"])
+      const {filterDropdown , searchDropdown} = state;
       filterDropdown.set(!filterDropdown.variable)
       if(!searchDropdown.variable) searchDropdown.set(true)
     }
   
     function resetSearch(mobileSearch){
-      const {searchDropdown ,filterDropdown , searchInput} = getState(["searchDropdown" , "filterDropdown" , "searchInput"])
+      const {searchDropdown ,filterDropdown , searchInput} = state;
       searchDropdown.set(false)
       filterDropdown.set(false)
       searchInput.set("")
@@ -33,26 +19,17 @@ export function search(state , _){
     }
   
     function updateSearch(e){
-      const {searchDropdown , searchInput} = getState(["searchInput" , "searchDropdown" , "searchedData"])
+      const {searchDropdown , searchInput} = state;
       searchInput.set(e.target.value)
       searchDropdown.set(true)
     }
-  
-    function filterBooks(searchPhrase){
-      const books = bookData.books;
-      let data = [];
-      books.forEach((book) => {
-        const {title} = book;
-        if(title.toLowerCase().includes(searchPhrase)){
-            data.push(book);
-        }
-      })
-  
-      return constructSearchResults(data)
+
+    function getBooks(searchPhrase , data){
+      return constructSearchResults(filter().filterBooksByName(searchPhrase , data))
     }
   
     function constructSearchResults(searchData){
-        const {filterOpt} = getState(["filterOpt"])
+        const {filterOpt} = state;
         const filterData = [];
         const selectedFilterOptions = filterOpt.variable.filter(tag => tag.checked == true);
         let sortedSearchData = {};
@@ -65,7 +42,7 @@ export function search(state , _){
             </div>
             <div className="section-list">
                 {
-                    searchData.map(result => result.status == status ? <Component content={result} /> : "")
+                    searchData.map((result , index)  => result.status == status ? <Component key={index} content={result} /> : "")
                 }
             </div>
         </div>)
@@ -109,10 +86,9 @@ export function search(state , _){
   
   
     return{
-      removeFilter,
       toggleFilterPanel,
       resetSearch,
       updateSearch,
-      filterBooks
+      getBooks
     }
   }

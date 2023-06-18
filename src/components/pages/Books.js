@@ -12,8 +12,8 @@ const Books = ({}) => {
             <SectionTitle icon={StackedBooksIcon} toggleModal={modal} title={"All Books"} filter={true}/>
             <div className="books-container flex flex-column">
                 {
-                    bookData.books.map(book => (
-                        <BookPageCard category={book.status} progress={book.progress} author={book.author}/>
+                    bookData.books.map((book , index) => (
+                        <BookPageCard key={index} name={book.title} category={book.status} progress={book.progress} author={book.author}/>
                     ))
                 }
             </div>

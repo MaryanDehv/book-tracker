@@ -1,43 +1,27 @@
 import { ArrowIcon, CheckMark, StarIcon} from "../images/icons/customIcons";
 import { check } from "../functions/_helper";
-import { useContext, useState , useRef, useEffect } from "react";
+import { useContext, useRef} from "react";
 import {DataContext} from '../App';
+import { filter } from "../functions/_filtering";
 import bookData from "../data/data";
 
 const FilterBooks = () => {
-    const {filterOpt , authorFilterOpt} = useContext(DataContext);
-    const [progressBar , setProgressBar] = useState(50);
-    const [starFIlter , setStarFilter] = useState(0)
+    const {filterOpt , authorFilterOpt , progressBar , ratings , modal} = useContext(DataContext);
     const progressBarRef = useRef()
     const progressBarLength = useRef()
     const progressBarPercentage = useRef()
+
+    const refs = {
+      progressBarRef: progressBarRef,
+      progressBarLength: progressBarLength,
+      progressBarPercentage: progressBarPercentage
+    }
+
+    const states = {filterOpt , authorFilterOpt , progressBar , modal , ratings};
+    const {currentPos , stopTracking , clickedButton } = filter(refs ,states).slider()
+    const {collectiveFilterData} = filter("" , states , bookData)
     
-    let trackMoving;
-
-    let ogRight;
-
-    function clickedButton(el){
-      console.log(el)
-      ogRight = progressBarRef.current.getBoundingClientRect().right - progressBarRef.current.getBoundingClientRect().left;
-      trackMoving = true;
-    }
-
-    function currentPos(el){
-      console.log(el)
-      if(trackMoving){
-        const percent = Math.round((((el.touches ? el.touches[0].clientX : el.clientX) - progressBarRef.current.getBoundingClientRect().left) * 100) / ogRight);
-        if(percent >= 0 && percent <= 100){
-          progressBarPercentage.current.innerHTML = percent+ "%"
-          progressBarLength.current.style.width = percent + "%"
-        }
-      }
-    }
-
-    function stopTracking(){
-      trackMoving = false;
-    }
-
-
+    
     return(
         <div className="filter-books flex flex-column">
           <div className="filter-books-group flex flex-column justify-sb">
@@ -60,9 +44,9 @@ const FilterBooks = () => {
             </div>
           </div>
           <div className="filter-books-group flex flex-column justify-sb">
-            <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Progress </div><div ref={progressBarPercentage}>{progressBar}%</div></div>
+            <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Progress </div><div ref={progressBarPercentage}></div></div>
             <div className="filter-books-group-inner" onMouseUp={stopTracking} onTouchEnd={stopTracking} onMouseLeave={stopTracking}>
-              <div className="percentage-bar-container" ref={progressBarRef} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ref={progressBarLength} ><div className="slider-button" onTouchStart={clickedButton} onMouseDown={clickedButton}></div></div></div>
+              <div className="percentage-bar-container" ref={progressBarRef} onTouchStart={clickedButton} onMouseDown={clickedButton} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ref={progressBarLength} ><div className="slider-button"></div></div></div>
             </div>
           </div>
           <div className="filter-books-group flex flex-column justify-sb authors">
@@ -77,11 +61,11 @@ const FilterBooks = () => {
             <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Ratings</div></div>
             <div className="filter-books-group-inner">
             {
-              [...Array(5)].map((star , index) => <StarIcon name={starFIlter < index + 1 ? "gray" : "yellow"} func={() => setStarFilter(index+1)}/>)
+              [...Array(5)].map((star , index) => <StarIcon name={ratings.variable < index + 1 ? "gray" : "yellow"} func={() => ratings.set(index+1)}/>)
             }
             </div>
           </div>
-          <button className="red-button full-width"> <span className="uppercase"> Show Results </span><ArrowIcon /> </button>
+          <button onClick={collectiveFilterData} className="red-button full-width"> <span className="uppercase"> Show Results </span><ArrowIcon /> </button>
         </div>
     )
 }

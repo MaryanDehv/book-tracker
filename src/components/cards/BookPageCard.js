@@ -1,6 +1,6 @@
 import { StarIcon } from "../../images/icons/customIcons";
 
-const BookPageCard = ({category , progress , author}) => {
+const BookPageCard = ({category , progress , author , name}) => {
     return(
         <div className="book-page-card flex justify-sb v-center">
             <div className="book-page-card-inner flex v-center">
@@ -9,7 +9,7 @@ const BookPageCard = ({category , progress , author}) => {
                     <div className="flex details-container v-center">
                         <div className="image"></div>
                         <div className="details flex flex-column uppercase">
-                            <p className="book-title"> Some book title </p>
+                            <p className="book-title"> {name} </p>
                             <div><StarIcon /> <StarIcon /></div>
                             <div><span className="author-tag opacity">author:</span> <span className="author-name">{author}</span></div>
                         </div>

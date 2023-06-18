@@ -8,7 +8,7 @@ const BookCard = ({content}) => {
             <div className="book-card-details">
                 <div>
                     <div className="book-card-details-ratings">
-                        {[...Array(content.rating)].map(item => <StarIcon />)}
+                        {[...Array(content.rating)].map((item , index) => <StarIcon key={index} />)}
                     </div>
                     <h4>{content.title.substring(0, 15)}<span className="opacity">...</span></h4>
                 </div>

@@ -1,19 +1,21 @@
 import './App.css';
 import TopBar from './components/navigation/TopBar';
 import SideBar from './components/navigation/SideBar';
-import React, { useEffect, useState} from "react";
-import { Outlet } from 'react-router-dom';
 import Modal from './components/Modal';
 import BookCard from './components/cards/BookCard';
 import HabitTracker from './components/cards/HabitTracker';
 import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
 import BookGraph from './components/cards/BookGraph';
-import { sortData } from './functions/_helper';
 import bookData from './data/data';
-import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon } from './images/icons/customIcons';
 import AddBook from './components/AddBook';
+import React, { useEffect, useState} from "react";
+import { Outlet } from 'react-router-dom';
+import { filter } from './functions/_filtering';
+import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon } from './images/icons/customIcons';
+
 export const DataContext = React.createContext()
+const {sortBooksBasedOnStatus} = filter()
 
 const gridConfig = [
   {
@@ -35,7 +37,7 @@ const gridConfig = [
       name: 'ongoing'
     },
     class:"book-progress-container",
-    content:sortData(bookData.status.ongoing , bookData)
+    content:sortBooksBasedOnStatus("ongoing" , bookData)
   },{
     blockWidth:2,
     component: BookGraph,
@@ -56,7 +58,7 @@ const gridConfig = [
       name: 'list'
     },
     class:"book-list-container",
-    content:sortData(bookData.status.list , bookData)
+    content:sortBooksBasedOnStatus("list" , bookData)
   },
   {
     blockWidth: 2,
@@ -67,7 +69,7 @@ const gridConfig = [
       name: 'completed'
     },
     class:"book-card-container",
-    content: sortData(bookData.status.completed , bookData)
+    content: sortBooksBasedOnStatus("completed", bookData)
   }
 ]
 
@@ -82,56 +84,44 @@ function App() {
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
+  const [progressBar , setProgressBar] = useState(50);
+  const [starFIlter , setStarFilter] = useState(0)
   const [modalType , setModalType] = useState({component:AddBook})
   const [authorFilterOpt , setAuthorFilterOpt] = useState(bookData.authors)
-  const [filterOpt , setFilterOpt] = useState([
-    {
-        name: "Completed",
-        color: "green",
-        checked: false,
-    },{
-        name: "Ongoing",
-        color: "red",
-        checked: false,
-    } ,{
-        name: "List",
-        color: "purple",
-        checked: false,
-    }
-]); // contains all possible filter options and their checked state
+  const [filterOpt , setFilterOpt] = useState(bookData.categories); // contains all possible filter options and their checked state
 
 
     useEffect(() => {
         if(selection.length == 2) rearrage({from:selection[0] , to:selection[1]})
-      } , [selection]) 
+    } , [selection]) 
     
-      useEffect(() => {
-        if(selectedWidth){
-          const grid = gridLayout;
-          grid[selectedWidth.parent].blockWidth = selectedWidth.width;
-          setGridLayout([...grid])
-        }
-      } , [selectedWidth])
-    
-      function rearrage({from , to}){
-        let arr = []
-    
-        for(let i =  0 ; i < gridLayout.length ; i++){
-          if(i != from && i != to){
-            arr.push(gridLayout[i])
-          } else {
-            arr.push(false)
-          }
-        }
-    
-        arr[from] = gridLayout[to];
-        arr[to] = gridLayout[from];
-      
-       setGridLayout([...arr])
-       setTimeout(() => {
-        setSelection([])
-       } , 200) 
+    useEffect(() => {
+      if(selectedWidth){
+        const grid = gridLayout;
+        grid[selectedWidth.parent].blockWidth = selectedWidth.width;
+        setGridLayout([...grid])
       }
+    } , [selectedWidth])
+  
+    function rearrage({from , to}){
+      let arr = []
+  
+      for(let i =  0 ; i < gridLayout.length ; i++){
+        if(i != from && i != to){
+          arr.push(gridLayout[i])
+        } else {
+          arr.push(false)
+        }
+      }
+  
+      arr[from] = gridLayout[to];
+      arr[to] = gridLayout[from];
+    
+      setGridLayout([...arr])
+      setTimeout(() => {
+      setSelection([])
+      } , 200) 
+    }
 
     function touch(el , i){
       if(selection.length == 0){
@@ -150,8 +140,10 @@ function App() {
       filterOpt: {variable: filterOpt , set: setFilterOpt},
       toggleSearch:{variable: mobileSearch , set: setMobileSearch},
       themeToggle: {variable: theme , set: setTheme},
+      ratings: {variable: starFIlter , set: setStarFilter},
       toggleNav: {variable: mobileNav , set: setMobileNav},
-      authorFilterOpt: {variable: authorFilterOpt , set: setAuthorFilterOpt}
+      authorFilterOpt: {variable: authorFilterOpt , set: setAuthorFilterOpt},
+      progressBar: {variable: progressBar , set: setProgressBar}
     }
   
   return (
