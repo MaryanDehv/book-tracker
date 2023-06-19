@@ -44,7 +44,7 @@ const FilterBooks = () => {
             </div>
           </div>
           <div className="filter-books-group flex flex-column justify-sb">
-            <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Progress </div><div ref={progressBarPercentage}></div></div>
+            <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Progress </div><div ref={progressBarPercentage}>{progressBar.variable ? progressBar.variable : ""}%</div></div>
             <div className="filter-books-group-inner" onMouseUp={stopTracking} onTouchEnd={stopTracking} onMouseLeave={stopTracking}>
               <div className="percentage-bar-container" ref={progressBarRef} onTouchStart={clickedButton} onMouseDown={clickedButton} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ref={progressBarLength} ><div className="slider-button"></div></div></div>
             </div>

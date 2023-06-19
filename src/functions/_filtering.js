@@ -1,3 +1,6 @@
+import bookData from "../data/data";
+import { resetChecked } from "./_helper";
+
 export function filter(refs , states , data){
 
     function slider(){
@@ -59,14 +62,33 @@ export function filter(refs , states , data){
 
     function collectiveFilterData(){
         const {modal , ratings, progressBar , authorFilterOpt , filterOpt} = states;
-        const authors = authorFilterOpt.variable.filter(author => author.checked);
-        const filters = filterOpt.variable.filter(filter => filter.checked);
-        // console.log(ratings.variable , progressBar.variable , authorFilterOpt.variable , filterOpt.variable)
-        // const r = data.books.filter((book) => {
-        //     const authors = authorFilterOpt.variable.filter(author => author.checked);
-        //     const filters = filterOpt.variable.filter(filter => filter.checked);
-        // })
-        modal.set(false)
+        const filter = filterOpt.variable.filter(item => item.checked);
+        const authors = authorFilterOpt.variable.filter(item => item.checked);
+
+        let searchArr = {};
+
+        if(filter.length) searchArr['status'] = filter.map(({name}) => name.toLowerCase());
+        if(authors.length) searchArr['author'] = authors.map(({name}) => name);
+        if(progressBar.variable > 0) searchArr['progress'] =  [progressBar.variable]
+        if(ratings.variable > 0) searchArr['rating'] = [ratings.variable]
+        checkBooks(searchArr)
+    }
+
+    function checkBooks(search){
+        const searchProperties = Object.keys(search);
+        let arr = [];
+        data.books.forEach(book => {
+            let counter = 0;
+            searchProperties.forEach(prop => {
+                // books return must meet all the filter criteria. Add one to counter for each met
+                if(search[prop].includes(book[prop])) counter++
+            })
+
+            // if count = searchProperties meaning book meets the criteria
+            if(counter == searchProperties.length) arr.push(book)
+        })
+
+       return arr
     }
 
     return{

@@ -84,7 +84,7 @@ function App() {
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
-  const [progressBar , setProgressBar] = useState(50);
+  const [progressBar , setProgressBar] = useState('0');
   const [starFIlter , setStarFilter] = useState(0)
   const [modalType , setModalType] = useState({component:AddBook})
   const [authorFilterOpt , setAuthorFilterOpt] = useState(bookData.authors)
