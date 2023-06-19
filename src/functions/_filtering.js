@@ -49,6 +49,8 @@ export function filter(refs , states , data){
         return data;
     }
 
+    console.log('test')
+
     
     function removeChecked(targetElement , state){
         const targetIndex = state.variable.findIndex(tag => tag.name == targetElement.name);
