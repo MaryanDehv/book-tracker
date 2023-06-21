@@ -29,7 +29,7 @@ const HabitTracker = () => {
         const dates = getDates(new Date("2023-06-10T23:00:00.034Z") , (new Date()).addDays(amount))
 
         for(let i = 0 ; i < amount ; i++){
-            html.push(<div className={`habit-blocks ${(trackedDays.find((day => day == dates[i].isoString))) ? "tracked" : (new Date(dates[i].isoString)) < (new Date()) ? "missed-day" : ""} ${(new Date(dates[i].isoString)) < (new Date()) ? "trackable" : "not-trackable"}`} onClick={colorBlock} date-fulldate={dates[i].isoString}></div>)
+            html.push(<div data-clickable="true" className={`habit-blocks ${(trackedDays.find((day => day == dates[i].isoString))) ? "tracked" : (new Date(dates[i].isoString)) < (new Date()) ? "missed-day" : ""} ${(new Date(dates[i].isoString)) < (new Date()) ? "trackable" : "not-trackable"}`} onClick={colorBlock} date-fulldate={dates[i].isoString}></div>)
         }
 
         return html;

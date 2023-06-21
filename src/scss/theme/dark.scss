@@ -127,6 +127,29 @@
     .filter-books{
         color: $white;
 
+        .back-to-selection{
+            background: $black;
+            color: $white;
+
+            svg{
+                g{
+                    stroke: $white;
+                }
+            }
+
+            border: $gray solid 0.5px;
+        }
+
+        .filter-item:not(.checked){
+            border:solid 0.5px $white;
+        }
+
+
+        .choose-filter{
+            color: rgba($white , 0.5);
+            border-bottom: solid 1px rgba($white , 0.2);
+        }
+
         .filter-books-group-title{
             opacity: 0.8;
         }

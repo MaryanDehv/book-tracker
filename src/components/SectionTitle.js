@@ -11,7 +11,7 @@ const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
         modalType.set({component: FilterBooks})
     }
     return(
-        <div className={`section-title flex v-center justify-sb red`}>
+        <div className={`section-title full-width flex v-center justify-sb red`}>
             <div className="flex h-center">
                 <div className="section-title-icon flex v-h-center"> 
                 <Icon /> </div> <h3> {title} </h3>

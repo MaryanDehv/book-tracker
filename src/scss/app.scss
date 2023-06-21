@@ -181,7 +181,6 @@ svg{
 }
 
 .section-title{
-	height: 50px;
 	text-transform: uppercase;
 
 	& div:nth-child(1){
@@ -206,7 +205,6 @@ svg{
 	flex-direction: column;
 	gap: 2px;
 	height: 100%;
-	cursor: pointer;
 	height: 20px;
 	width: 20px;
 	background: rgba($gray , 0.2);
@@ -231,14 +229,17 @@ svg{
     @include filteredTag('&.purple' , $primaryPurple);
 }
 
+[data-clickable="true"]{
+	cursor: pointer;
+}
+
 .check-boxes-container{
 	flex-wrap: wrap;
-	gap:10px;
+	gap:20px;
 }
 
 .filter-check{
 	gap:5px;
-	cursor: pointer;
 	
 	>div{
 		position: relative;

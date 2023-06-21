@@ -23,7 +23,7 @@ const BookPageCard = ({category , progress , author , name}) => {
                     </div>
                 </div>
             </div>
-            <div className="more flex h-center" ><div></div><div></div><div></div></div>
+            <div data-clickable="true" className="more flex h-center" ><div></div><div></div><div></div></div>
         </div>
     );
 }

@@ -21,7 +21,7 @@ const Grid = ({content , setWidth}) => {
         <div className="grid-container">
             {
                 content.map((item, index) => (
-                    <div key={index} className={`grid-item ${item.class} ${item.size ? item.size : ""}`} style={{gridColumn:item.blockWidth ? `auto / span ${item.blockWidth}` : "auto"}}>
+                    <div key={index} className={`grid-item flex ${item.class} ${item.size ? item.size : ""}`} style={{gridColumn:item.blockWidth ? `auto / span ${item.blockWidth}` : "auto"}}>
                             {
                                 blockWidth != 'close' ?
                                 blockWidth == index ?
@@ -29,7 +29,7 @@ const Grid = ({content , setWidth}) => {
                                     <div className="choose-block-width">
                                         <div className="choose-block-width-inner">
                                             {
-                                                gridOptions.map(block => (<div data-width={block} onClick={() => getWidth(block , index)}></div>))
+                                                gridOptions.map(block => (<div data-clickable="true" data-width={block} onClick={() => getWidth(block , index)}></div>))
                                             }
                                         </div>
                                     </div>
@@ -37,8 +37,8 @@ const Grid = ({content , setWidth}) => {
                                 ""
                                 : ""
                             }
-                            <div className={`section-title flex v-center justify-sb ${item.groupTitle.color}`}>
-                                <div className="flex h-center"><div className="section-title-icon flex v-h-center"> <item.groupTitle.component /> </div> <h3> {item.groupTitle.name} </h3></div><div className="more flex h-center" onClick={() => toggle(index)}><div></div><div></div><div></div></div>
+                            <div className={`section-title full-width flex v-center justify-sb ${item.groupTitle.color}`}>
+                                <div className="flex h-center"><div className="section-title-icon flex v-h-center"> <item.groupTitle.component /> </div> <h3> {item.groupTitle.name} </h3></div><div data-clickable="true" className="more flex h-center" onClick={() => toggle(index)}><div></div><div></div><div></div></div>
                             </div>
                             <div className="grid-item-content">
                                 {

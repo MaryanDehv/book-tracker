@@ -8,15 +8,16 @@
     }
 }
 
-.more{
-    margin-right:20px;
-}
 
 .book-page-card{
     width:100%;
     height: 80px;
     border-radius: 5px;
     overflow: hidden;
+
+    .more{
+        margin-right:20px;
+    }
 
     &-inner{
         height: 100%;

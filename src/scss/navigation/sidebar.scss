@@ -37,7 +37,6 @@
             margin-bottom: 3px;
             height: 23px;
             width: 120px;
-            cursor: pointer;
             font-weight: 600;
 
             & , svg{
@@ -73,7 +72,6 @@
             >div{
                 height: 25.14px;
                 width: 25.14px;
-                cursor: pointer;
 
                 @media only screen and (max-width:1024px){
                     &:not(.selected){

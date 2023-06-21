@@ -45,7 +45,7 @@ const Navigation = ({toggleModal}) => {
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center">
                         {themeOptions.map((theme , index) => (
-                            <div key={index} className={`side-bar-light flex v-h-center ${themeToggle.variable == theme.name ? 'selected' : ''}`} onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
+                            <div key={index} className={`side-bar-light flex v-h-center ${themeToggle.variable == theme.name ? 'selected' : ''}`} data-clickable="true" onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
                         ))}
                     </div>
                 </div>

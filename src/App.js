@@ -138,6 +138,7 @@ function App() {
                     gridLayout.map((_ , index) =>
                       (
                         <div
+                          data-clickable="true"
                           key={index} 
                           onClick={() => touch(_, index)}
                           style={{gridColumn: _.blockWidth ? `auto / span ${_.blockWidth}` : "auto"}}

@@ -86,7 +86,7 @@ export const CheckIcon = () => {
 
 export const CloseIcon = ({func}) => {
     return(
-        <svg onClick={func} width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg data-clickable="true" onClick={func} width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Icons" transform="translate(-441.234604, -187.921474)" stroke="#979797" strokeWidth="0.5">
                     <g id="Close---cirlce" transform="translate(441.234604, 187.921474)">
@@ -142,7 +142,7 @@ export const ArrowIcon = () => {
 
 export const HamburgerIcon = ({func}) => {
     return(
-        <svg className="hamburger" onClick={func} width="42.2789436px" height="25px" viewBox="0 0 42.2789436 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg data-clickable="true" className="hamburger" onClick={func} width="42.2789436px" height="25px" viewBox="0 0 42.2789436 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Icons" transform="translate(-521.333333, -194.622101)">
                     <g id="Hamburger-Icon" transform="translate(521.333333, 194.622101)">
@@ -248,7 +248,7 @@ export const SearchIcon = ({func}) => {
 
 export const FilterIcon = ({func}) => {
     return(
-        <svg onClick={func} width="15px" height="11px" viewBox="0 0 15 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg data-clickable="true" className="filter-icon" onClick={func} width="15px" height="11px" viewBox="0 0 15 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Filter" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Group" transform="translate(-0.000000, -0.174623)" stroke="#979797" strokeWidth="0.5">
                     <line x1="5.83913476" y1="1.70154965" x2="14.5460206" y2="1.70154965" id="Path-13" strokeLinecap="round" strokeLinejoin="round"></line>
@@ -280,7 +280,7 @@ export const ClockIcon = ({func}) => {
 
 export const TimesIcon = ({func}) => {
     return(
-        <svg className="close" onClick={func} width="43.0250768px" height="43.0250768px" viewBox="0 0 43.0250768 43.0250768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg data-clickable="true" className="close" onClick={func} width="43.0250768px" height="43.0250768px" viewBox="0 0 43.0250768 43.0250768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
                 <g id="Icons" transform="translate(-121.190957, -256.026736)" strokeWidth="0.5">
                     <g id="Times" transform="translate(121.544511, 256.380289)">
@@ -310,7 +310,7 @@ export const CheckMark = () => {
 
 export const StarIcon = ({func , name}) => {
     return(
-        <svg onClick={func} className={`star-icon ${name}`} width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg data-clickable="true" onClick={func} className={`star-icon ${name}`} width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <title>star</title>
             <g id="star" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinejoin="round">
                 <path d="M7.7951182,0.506487868 L5.67764644,6.26807085 C5.64872162,6.34677452 5.57377328,6.39907946 5.48992274,6.39907946 L0.876673269,6.39907946 C0.766216318,6.39907946 0.676673266,6.48862251 0.676673266,6.59907946 C0.676673266,6.65538484 0.700407173,6.70908201 0.742046051,6.74698319 L4.48739278,10.1561306 C4.54734449,10.2107008 4.56842404,10.2960636 4.54076592,10.3722682 L2.69901352,15.4467258 C2.66132897,15.5505556 2.71495024,15.6652755 2.81877997,15.7029601 C2.87718686,15.7241586 2.94212882,15.717007 2.99452309,15.6836066 L7.87466048,12.5726111 C7.939769,12.5311057 8.02295387,12.530786 8.08837949,12.5717898 L13.0869126,15.7044902 C13.1805073,15.7631482 13.3039325,15.7348265 13.3625906,15.6412318 C13.394285,15.5906602 13.401738,15.5285763 13.3829135,15.47194 L11.6858158,10.3659748 C11.6615156,10.2928642 11.6813704,10.2122958 11.7368589,10.1588478 L15.2829869,6.74312456 C15.3625408,6.66649615 15.3649124,6.53988536 15.288284,6.46033145 C15.2505844,6.42119258 15.1985814,6.39907946 15.1442389,6.39907946 L10.5117851,6.39907946 C10.428337,6.39907946 10.3536595,6.34726808 10.3244434,6.26910158 L8.17018358,0.505457134 C8.13151142,0.401991185 8.01628572,0.349465434 7.91281977,0.388137587 C7.85821226,0.408548073 7.81522824,0.451768994 7.7951182,0.506487868 Z" id="Path-21" stroke="#979797" strokeWidth="0.5" fill="#979797"></path>
@@ -322,7 +322,7 @@ export const StarIcon = ({func , name}) => {
 
 export const BoardIcon = ({func}) => {
     return(
-        <svg onClick={func} className="board-icon"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg data-clickable="true" onClick={func} className="board-icon"  width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="board" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <rect id="Rectangle" stroke="#979797" strokeWidth="0.5" x="0.25" y="0.25" width="7.02941176" height="15.5" rx="1"></rect>
                 <rect id="Rectangle-Copy-3" stroke="#979797" strokeWidth="0.5" x="8.72058824" y="0.25" width="7.02941176" height="7.2670168" rx="1"></rect>
@@ -340,6 +340,22 @@ export const StackedBooksIcon = ({func}) => {
                 <g id="Group" transform="translate(1.256695, 1.328090)" stroke="#979797" strokeWidth="0.5">
                     <path d="M4.60547239,11.7803126 C4.52076417,11.469811 4.20038326,11.2867692 3.8898816,11.3714774 C3.88945048,11.371595 3.8890195,11.3717131 3.88858866,11.3718317 L3.5199659,11.4733077 C3.00886379,11.614006 2.48047518,11.3137343 2.33977692,10.8026322 C2.33919685,10.800525 2.33862398,10.7984159 2.33805832,10.7963048 L0.258819045,3.03647819 C0.115877234,2.50301208 0.432459723,1.95467513 0.965925826,1.81173332 L7.16904798,0.149611744 C7.4777664,0.0668908936 7.79525352,0.249382086 7.87915663,0.55778129 C7.96304563,0.866128644 8.28056015,1.04851384 8.58917893,0.965628951 L8.96466311,0.864786211 C9.48006534,0.726366073 10.0100931,1.03197044 10.1485132,1.54737267 C10.1485614,1.54755201 10.1486095,1.54773136 10.1486576,1.54791073 L12.227791,9.30734228 C12.3707328,9.84080838 12.0541503,10.3891453 11.5206842,10.5320872 L5.32340194,12.1926439 C5.01139109,12.276247 4.69048812,12.0919415 4.60547239,11.7803126 Z" id="Path-6"></path>
                     <path d="M4.80572326,2.01385832 L3.16637903,2.43117727 C2.63116389,2.56742408 2.30773615,3.11175155 2.44398296,3.64696669 C2.44618247,3.65560695 2.44849742,3.66421741 2.45092721,3.67279575 L2.92266754,5.33826875 L2.92266754,5.33826875" id="Path-7" strokeLinecap="round" strokeLinejoin="round"></path>
+                </g>
+            </g>
+        </svg>
+    )
+}
+
+
+export const ArrowPlain = ({func}) => {
+    return(
+        <svg width="8.65274828px" height="7.8471701px" viewBox="0 0 8.65274828 7.8471701" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            <g id="Symbols" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <g id="Arrow---no-cirlce" transform="translate(-0.1736, -0.5764)" stroke="#979797" strokeWidth="0.5">
+                    <g id="Group-12-Copy" transform="translate(4.5, 4.5) rotate(-180) translate(-4.5, -4.5)translate(0.4236, 0.8264)">
+                        <line x1="0" y1="3.61604169" x2="8.15274822" y2="3.61604169" id="Path-4"></line>
+                        <polyline id="Path-5" points="4.07637411 0 8.15274822 3.61604169 4.07637411 7.34716581"></polyline>
+                    </g>
                 </g>
             </g>
         </svg>
