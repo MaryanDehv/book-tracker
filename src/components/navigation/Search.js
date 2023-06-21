@@ -32,8 +32,8 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     const [searchInput , setSearchInput] = useState("") // contains user search input
     const [searchedData , setSearchedData] = useState(""); // contains books dependant on filter and search input
     const [filterDropdown , setFilterDropdown] = useState(false); // controls whether to show filter checkbox in dropdown
-    // const [filterOpt , setFilterOpt] = useState(initialFilterState); // contains all possible filter options and their checked state
-    const {filterOpt} = useContext(DataContext)
+    // const [status , setFilterOpt] = useState(initialFilterState); // contains all possible filter options and their checked state
+    const {status} = useContext(DataContext)
 
     const states = {
         searchDropdown: {
@@ -48,7 +48,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
             variable: searchInput ,
             set: setSearchInput
         }, 
-        filterOpt: filterOpt,
+        status: status,
         searchedData: {
             variable: searchedData,
             set: setSearchedData
@@ -71,11 +71,11 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added
         setSearchedData(getBooks(searchInput.toLowerCase().trim("") , bookData.books))
-    } , [searchInput , filterOpt.variable])
+    } , [searchInput , status.variable])
     
     function getChecked(){
         // only return filter indicators for those that are checked
-        return filterOpt.variable.filter(tag => tag.checked == true);
+        return status.variable.filter(tag => tag.checked == true);
     }
 
     return(
@@ -105,7 +105,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                                 <p> Filtered </p>
                                 <div className="flex">
                                     {
-                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => filter().removeChecked(tagName , states.filterOpt)}/></div>))
+                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => filter().removeChecked(tagName , states.status)}/></div>))
                                     }
                                 </div>
                             </div>
@@ -125,10 +125,10 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
 
                     {/* filter options */}
                     <div className={`search-dropdown-inner filter-selection-group`}>
-                        <div className={`search-dropdown-inner-group flex`}>
+                        <div className={`search-dropdown-inner-group flex check-boxes-container`}>
                             {
-                                filterOpt.variable.map((tag , index) => (
-                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , filterOpt)} data-check={tag.name.toLowerCase()}>
+                                status.variable.map((tag , index) => (
+                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , status)} data-check={tag.name.toLowerCase()}>
                                         <div className={`${tag.color}`}>
                                             <CheckMark />
                                         </div>

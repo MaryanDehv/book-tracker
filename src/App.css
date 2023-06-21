@@ -1604,27 +1604,28 @@ svg g {
   background: #A431F9;
 }
 
-.filter-selection-group > div {
+.check-boxes-container {
   flex-wrap: wrap;
   gap: 10px;
 }
-.filter-selection-group > div .filter-check {
+
+.filter-check {
   gap: 5px;
   cursor: pointer;
 }
-.filter-selection-group > div .filter-check > div {
+.filter-check > div {
   position: relative;
   width: 10px;
   height: 10px;
   border-radius: 2px;
 }
-.filter-selection-group > div .filter-check p {
+.filter-check p {
   text-transform: uppercase;
 }
-.filter-selection-group > div .filter-check svg {
+.filter-check svg {
   display: none;
 }
-.filter-selection-group > div .filter-check.checked .check-mark {
+.filter-check.checked .check-mark {
   display: block;
   position: absolute;
   width: 6px;
@@ -1632,36 +1633,43 @@ svg g {
   inset: 0;
   line-height: 0.9;
 }
-.filter-selection-group > div .filter-check.checked .check-mark polyline {
+.filter-check.checked .check-mark polyline {
   stroke-width: 2px;
 }
-.filter-selection-group > div .filter-check > div.red {
+.filter-check > div.red {
   background: rgba(255, 76, 76, 0.3);
   border: solid 1px #FF4C4C;
 }
-.filter-selection-group > div .filter-check > div.red svg polyline {
+.filter-check > div.red svg polyline {
   stroke: #FF4C4C;
 }
-.filter-selection-group > div .filter-check > div.green {
+.filter-check > div.green {
   background: rgba(0, 218, 50, 0.3);
   border: solid 1px #00DA32;
 }
-.filter-selection-group > div .filter-check > div.green svg polyline {
+.filter-check > div.green svg polyline {
   stroke: #00DA32;
 }
-.filter-selection-group > div .filter-check > div.orange {
+.filter-check > div.orange {
   background: rgba(249, 87, 49, 0.3);
   border: solid 1px #F95731;
 }
-.filter-selection-group > div .filter-check > div.orange svg polyline {
+.filter-check > div.orange svg polyline {
   stroke: #F95731;
 }
-.filter-selection-group > div .filter-check > div.purple {
+.filter-check > div.purple {
   background: rgba(164, 49, 249, 0.3);
   border: solid 1px #A431F9;
 }
-.filter-selection-group > div .filter-check > div.purple svg polyline {
+.filter-check > div.purple svg polyline {
   stroke: #A431F9;
+}
+.filter-check > div.gray {
+  background: rgba(178, 174, 174, 0.3);
+  border: solid 1px #B2AEAE;
+}
+.filter-check > div.gray svg polyline {
+  stroke: #B2AEAE;
 }
 
 /*# sourceMappingURL=App.css.map */

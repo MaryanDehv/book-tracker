@@ -111,32 +111,30 @@ const bookData = {
         thriller: "purple"
     },
     authors: [
-        { name: "Sophia Montgomery", checked: false },
-        { name: "Ethan Ramirez", checked: false },
-        { name: "Isabella Patel", checked: false },
-        { name: "Noah Collins", checked: false },
-        { name: "Ava Barnes", checked: false },
-        { name: "Liam Thompson", checked: false },
-        { name: "Mia Johnson", checked: false },
-        { name: "Benjamin Lee", checked: false },
-        { name: "Charlotte Davis", checked: false },
-        { name: "Oliver Mitchell", checked: false }
+        { name: "Sophia Montgomery"},
+        { name: "Ethan Ramirez"},
+        { name: "Isabella Patel"},
+        { name: "Noah Collins"},
+        { name: "Ava Barnes"},
+        { name: "Liam Thompson"},
+        { name: "Mia Johnson"},
+        { name: "Benjamin Lee"},
+        { name: "Charlotte Davis"},
+        { name: "Oliver Mitchell"}
     ],
-    categories: [
+    status: [
         {
             name: "Completed",
-            color: "green",
-            checked: false,
+            color: "green"
         },{
             name: "Ongoing",
-            color: "red",
-            checked: false,
+            color: "red"
         } ,{
             name: "List",
-            color: "purple",
-            checked: false,
+            color: "purple"
         }
     ]
+
 }
 
 export default bookData;

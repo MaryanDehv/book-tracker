@@ -29,9 +29,9 @@ export function search(state , _){
     }
   
     function constructSearchResults(searchData){
-        const {filterOpt} = state;
+        const {status} = state;
         const filterData = [];
-        const selectedFilterOptions = filterOpt.variable.filter(tag => tag.checked == true);
+        const selectedFilterOptions = status.variable.filter(tag => tag.checked == true);
         let sortedSearchData = {};
         selectedFilterOptions.forEach(({name}) => filterData.push(name.toLowerCase()))
   

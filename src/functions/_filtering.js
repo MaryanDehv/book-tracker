@@ -1,6 +1,3 @@
-import bookData from "../data/data";
-import { resetChecked } from "./_helper";
-
 export function filter(refs , states , data){
 
     function slider(){
@@ -49,7 +46,15 @@ export function filter(refs , states , data){
         return data;
     }
 
-    console.log('test')
+    function getBookCategories(){
+        const obj = []
+        const bookCategories = Object.keys(data.books[0]);
+        bookCategories.forEach(cat => {
+            if(!['title' , 'image' , 'color' , 'description'].includes(cat)) obj.push({name: cat})
+        })
+        return obj;
+    }
+
 
     
     function removeChecked(targetElement , state){
@@ -63,14 +68,14 @@ export function filter(refs , states , data){
     }
 
     function collectiveFilterData(){
-        const {modal , ratings, progressBar , authorFilterOpt , filterOpt} = states;
-        const filter = filterOpt.variable.filter(item => item.checked);
-        const authors = authorFilterOpt.variable.filter(item => item.checked);
+        const {modal , ratings, progressBar , authors  , status} = states;
+        const filter = status.variable.filter(item => item.checked);
+        const filteredAuthors = authors.variable.filter(item => item.checked);
 
         let searchArr = {};
 
         if(filter.length) searchArr['status'] = filter.map(({name}) => name.toLowerCase());
-        if(authors.length) searchArr['author'] = authors.map(({name}) => name);
+        if(filteredAuthors.length) searchArr['author'] = filteredAuthors.map(({name}) => name);
         if(progressBar.variable > 0) searchArr['progress'] =  [progressBar.variable]
         if(ratings.variable > 0) searchArr['rating'] = [ratings.variable]
         checkBooks(searchArr)
@@ -98,6 +103,7 @@ export function filter(refs , states , data){
         filterBooksByName,
         removeChecked,
         sortBooksBasedOnStatus,
-        collectiveFilterData
+        collectiveFilterData,
+        getBookCategories
     }
 }

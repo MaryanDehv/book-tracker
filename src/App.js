@@ -13,9 +13,10 @@ import React, { useEffect, useState} from "react";
 import { Outlet } from 'react-router-dom';
 import { filter } from './functions/_filtering';
 import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon } from './images/icons/customIcons';
+import { restructure } from './functions/_restructure';
 
 export const DataContext = React.createContext()
-const {sortBooksBasedOnStatus} = filter()
+const {sortBooksBasedOnStatus , getBookCategories} = filter("" , "" , bookData)
 
 const gridConfig = [
   {
@@ -87,64 +88,40 @@ function App() {
   const [progressBar , setProgressBar] = useState('0');
   const [starFIlter , setStarFilter] = useState(0)
   const [modalType , setModalType] = useState({component:AddBook})
-  const [authorFilterOpt , setAuthorFilterOpt] = useState(bookData.authors)
-  const [filterOpt , setFilterOpt] = useState(bookData.categories); // contains all possible filter options and their checked state
+  const [authors , setAuthors] = useState(bookData.authors)
+  const [status , setStatus] = useState(bookData.status); // contains all possible filter options and their checked state
+  const [bookCategories , setBookCategories] = useState(getBookCategories());
 
 
-    useEffect(() => {
-        if(selection.length == 2) rearrage({from:selection[0] , to:selection[1]})
-    } , [selection]) 
-    
-    useEffect(() => {
-      if(selectedWidth){
-        const grid = gridLayout;
-        grid[selectedWidth.parent].blockWidth = selectedWidth.width;
-        setGridLayout([...grid])
-      }
-    } , [selectedWidth])
+  useEffect(() => {
+      if(selection.length == 2) rearrage({from:selection[0] , to:selection[1]})
+  } , [selection]) 
   
-    function rearrage({from , to}){
-      let arr = []
-  
-      for(let i =  0 ; i < gridLayout.length ; i++){
-        if(i != from && i != to){
-          arr.push(gridLayout[i])
-        } else {
-          arr.push(false)
-        }
-      }
-  
-      arr[from] = gridLayout[to];
-      arr[to] = gridLayout[from];
-    
-      setGridLayout([...arr])
-      setTimeout(() => {
-      setSelection([])
-      } , 200) 
+  useEffect(() => {
+    if(selectedWidth){
+      gridLayout[selectedWidth.parent].blockWidth = selectedWidth.width;
+      setGridLayout([...gridLayout])
     }
+  } , [selectedWidth])
 
-    function touch(el , i){
-      if(selection.length == 0){
-        setSelection([i])
-      } else if(selection.length < 2 && selection.length > 0){
-        setSelection([...selection , i]);
-      }
-    }
+  const contextData = {
+    modal:{variable: modal , set: setModal} , 
+    restructureBoard: {variable: startRestructure , set: setStartRestructure},
+    gridLayout: {variable: gridLayout , set: setGridLayout},
+    selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
+    modalType: {set: setModalType},
+    status: {variable: status , set: setStatus},
+    toggleSearch:{variable: mobileSearch , set: setMobileSearch},
+    themeToggle: {variable: theme , set: setTheme},
+    ratings: {variable: starFIlter , set: setStarFilter},
+    toggleNav: {variable: mobileNav , set: setMobileNav},
+    authors: {variable: authors , set: setAuthors},
+    selection: {variable: selection , set: setSelection},
+    progressBar: {variable: progressBar , set: setProgressBar},
+    bookCategories: {variable: bookCategories, set: setBookCategories}
+  }
 
-    const contextData = {
-      modal:{variable: modal , set: setModal} , 
-      restructureBoard: {variable: startRestructure , set: setStartRestructure},
-      gridLayout: {variable: gridLayout , set: setGridLayout},
-      selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
-      modalType: {set: setModalType},
-      filterOpt: {variable: filterOpt , set: setFilterOpt},
-      toggleSearch:{variable: mobileSearch , set: setMobileSearch},
-      themeToggle: {variable: theme , set: setTheme},
-      ratings: {variable: starFIlter , set: setStarFilter},
-      toggleNav: {variable: mobileNav , set: setMobileNav},
-      authorFilterOpt: {variable: authorFilterOpt , set: setAuthorFilterOpt},
-      progressBar: {variable: progressBar , set: setProgressBar}
-    }
+    const {rearrage , touch} = restructure(contextData)
   
   return (
      <DataContext.Provider value={contextData}>
