@@ -12,8 +12,9 @@ import AddBook from './components/AddBook';
 import React, { useEffect, useState} from "react";
 import { Outlet } from 'react-router-dom';
 import { filter } from './functions/_filtering';
-import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon } from './images/icons/customIcons';
+import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
 import { restructure } from './functions/_restructure';
+import { toggle } from './functions/_helper';
 
 export const DataContext = React.createContext()
 const {sortBooksBasedOnStatus , getBookCategories} = filter("" , "" , bookData)
@@ -80,7 +81,7 @@ function App() {
   const [theme , setTheme] = useState('dark')
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
-  const [startRestructure , setStartRestructure] = useState(false);
+  const [startRestructure , setStartRestructure] = useState(true);
   const [modal , setModal] = useState(false)
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
@@ -91,6 +92,7 @@ function App() {
   const [authors , setAuthors] = useState(bookData.authors)
   const [status , setStatus] = useState(bookData.status); // contains all possible filter options and their checked state
   const [bookCategories , setBookCategories] = useState(getBookCategories());
+  const [changeWidth , setChangeWidth] = useState()
 
 
   useEffect(() => {
@@ -121,7 +123,17 @@ function App() {
     bookCategories: {variable: bookCategories, set: setBookCategories}
   }
 
-    const {rearrage , touch} = restructure(contextData)
+  const {rearrage , touch} = restructure(contextData)
+
+
+  const gridOptions = [
+      3, 2, 1
+  ]
+
+  function getWidth(width , parentIndex){
+    setSelectedWidth({width:width, parent: parentIndex})
+  }
+
   
   return (
      <DataContext.Provider value={contextData}>
@@ -140,13 +152,28 @@ function App() {
                         <div
                           data-clickable="true"
                           key={index} 
-                          onClick={() => touch(_, index)}
                           style={{gridColumn: _.blockWidth ? `auto / span ${_.blockWidth}` : "auto"}}
-                          className={`${_.size ? _.size : ""} restructure-block-color ${_.groupTitle.color} ${selection.length > 0 ? index == selection[0] ? "from-selected" : index == selection[1] ? "to-selected" : "move-here": ""}`}
+                          className={`${_.size ? _.size : ""} restructure-block-color flex flex-column ${_.groupTitle.color} ${selection.length > 0 ? index == selection[0] ? "from-selected" : index == selection[1] ? "to-selected" : "move-here": ""}`}
                         >
-                          <div className="flex flex-column v-center">
+                          {
+                            changeWidth == index ?
+                            <div className="restructure-board-widths">
+                              <TimesIcon func={() => setChangeWidth()} />
+                              <div className="restructure-board-widths-inner">
+                                {
+                                  gridOptions.map(block => (<div data-clickable="true" data-width={block} onClick={() => getWidth(block , index)}></div>))
+                                }
+                              </div>
+                            </div> :
+                            ""
+                          }
+                          <div className="flex flex-column v-center restructure-backdrop-inner-content">
                             <_.groupTitle.component/>
                             <div>{_.groupTitle.name}</div>
+                          </div>
+                          <div className="flex uppercase restructure-options">
+                            <div className="flex v-h-center" data-clickable="true" data-options="order" onClick={(el) => {touch(el, index); setChangeWidth()}}></div>
+                            <div className="flex v-h-center" data-clickable="true" data-options="width" onClick={() => setChangeWidth(index)}></div>
                           </div>
                         </div>
                       )

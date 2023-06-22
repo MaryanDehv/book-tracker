@@ -21,6 +21,7 @@ export function restructure(states){
     }
 
     function touch(el , i){
+        const target = el.target;
         if(selection.variable.length == 0){
             selection.set([i])
         } else if(selection.variable.length < 2 && selection.variable.length > 0){
