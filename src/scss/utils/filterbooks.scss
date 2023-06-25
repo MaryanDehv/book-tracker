@@ -17,6 +17,43 @@
         margin-bottom: 5px;
     }
 
+    .progress-number-line{
+        width: 95%;
+        height: 10px;
+        margin: 0px auto;
+        padding-top: 10px;
+        border-top: 0.5px solid rgba($white , 0.5);
+        
+        >div{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            font-size: 13px;
+
+            &::after{
+                content: "";
+                position: absolute;
+                height: 10px;
+                width: 0.5px;
+                display: block;
+                top:-10px;
+                background: rgba($white , 0.5);
+            }
+
+            &:first-child , &:last-child{
+                position: relative;
+            }
+
+            &:first-child{
+                left: -9px;
+            }
+
+            &:last-child{
+                right: -16px;
+            }
+        }
+    }
+
 
     .filter-books-group{
         gap:20px;
@@ -68,24 +105,32 @@
             position: relative;
 
             .progress-bar{
-                content:"";
-                position: absolute;
-                top:0;
-                height: 100%;
-                width: 50%;
-                background: rgba($primaryRed , 0.5);
                 border-radius: inherit;
+                .slider-bar{
 
-                .slider-button{
+                    &[style="width: 0%;"]{
+                        .slider-button{
+                            left: 0;
+                        }
+                    }
+
                     position: absolute;
-                    height: 20px;
-                    width: 20px;
-                    background: $primaryRed;
-                    border-radius: 100%;
                     top:0;
-                    bottom: 0;
-                    right: 0;
-                    margin: auto 0px;
+                    height: 100%;
+                    background: rgba($primaryRed , 0.5);
+                    border-radius: inherit;
+
+                    .slider-button{
+                        position: absolute;
+                        height: 20px;
+                        width: 20px;
+                        background: $primaryRed;
+                        border-radius: 100%;
+                        top:0;
+                        bottom: 0;
+                        right: 0;
+                        margin: auto 0px;
+                    }
                 }
             }
         }

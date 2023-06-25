@@ -153,11 +153,9 @@ input:focus {
   gap: 12px;
   grid-template-columns: repeat(3, 307.6px);
   grid-template-rows: repeat(2, minmax(270px, auto));
-  position: absolute;
   justify-content: center;
-  margin: 0px 16px;
+  margin: 20px;
   left: 0;
-  top: 30px;
   right: 0;
   height: fit-content;
 }
@@ -226,9 +224,6 @@ input:focus {
     height: calc(100% - 76px);
     overflow-y: scroll;
   }
-  .restructure-backdrop-inner {
-    height: 100%;
-  }
 }
 .restructure-backdrop, .restructure-backdrop::after {
   height: calc(100% - 76px);
@@ -245,8 +240,10 @@ input:focus {
   }
 }
 .restructure-backdrop .restructure-options {
+  position: absolute;
   width: 100%;
   height: 30px;
+  bottom: 0;
 }
 .restructure-backdrop .restructure-options > div {
   width: 50%;
@@ -267,14 +264,24 @@ input:focus {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 5px;
 }
-.restructure-backdrop-inner .restructure-block-color {
+.restructure-backdrop-inner-content {
+  height: calc(100% - 30px);
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
   display: flex;
-  flex-wrap: wrap;
+  place-content: center;
+}
+.restructure-backdrop-inner .restructure-block-color {
   place-content: center;
   background: #FFFFFF;
   border-radius: 5px;
-  gap: 20px;
-  padding-top: 20px;
+  height: 120px;
+}
+.restructure-backdrop-inner .restructure-block-color .restructure-board-widths .current-width {
+  border: solid 1px #FFFFFF;
+  background: inherit;
 }
 .restructure-backdrop-inner .restructure-block-color .restructure-board-widths .close {
   position: absolute;
@@ -330,8 +337,8 @@ input:focus {
   content: "From";
 }
 .restructure-backdrop-inner .restructure-block-color.move-here [data-options=order] {
-  background: #FF4C4C;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #B2AEAE;
 }
 .restructure-backdrop-inner .restructure-block-color.move-here [data-options=order]::after {
   content: "To";
@@ -534,6 +541,37 @@ input:focus {
   border-bottom: solid 1px rgba(17, 19, 21, 0.2);
   margin-bottom: 5px;
 }
+.filter-books .progress-number-line {
+  width: 95%;
+  height: 10px;
+  margin: 0px auto;
+  padding-top: 10px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+}
+.filter-books .progress-number-line > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+}
+.filter-books .progress-number-line > div::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 0.5px;
+  display: block;
+  top: -10px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.filter-books .progress-number-line > div:first-child, .filter-books .progress-number-line > div:last-child {
+  position: relative;
+}
+.filter-books .progress-number-line > div:first-child {
+  left: -9px;
+}
+.filter-books .progress-number-line > div:last-child {
+  right: -16px;
+}
 .filter-books .filter-books-group {
   gap: 20px;
   padding: 10px 0px;
@@ -575,15 +613,19 @@ input:focus {
   position: relative;
 }
 .filter-books .filter-books-group .percentage-bar-container .progress-bar {
-  content: "";
+  border-radius: inherit;
+}
+.filter-books .filter-books-group .percentage-bar-container .progress-bar .slider-bar {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 50%;
   background: rgba(255, 76, 76, 0.5);
   border-radius: inherit;
 }
-.filter-books .filter-books-group .percentage-bar-container .progress-bar .slider-button {
+.filter-books .filter-books-group .percentage-bar-container .progress-bar .slider-bar[style="width: 0%;"] .slider-button {
+  left: 0;
+}
+.filter-books .filter-books-group .percentage-bar-container .progress-bar .slider-bar .slider-button {
   position: absolute;
   height: 20px;
   width: 20px;
@@ -861,12 +903,17 @@ input:focus {
 }
 
 .books-page-container {
+  margin: 20px;
+}
+.books-page-container > div {
   max-width: 946px;
   margin: auto;
-  padding: 0px 20px;
 }
 .books-page-container .books-container {
   gap: 10px;
+}
+.books-page-container .section-title {
+  padding: 20px 0px;
 }
 
 .book-page-card {

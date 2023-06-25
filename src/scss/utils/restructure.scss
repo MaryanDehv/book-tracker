@@ -9,10 +9,6 @@
         @media only screen and (max-width: 1127px){
             height: calc(100% - 76px);
             overflow-y: scroll;
-
-            &-inner{
-                height: 100%;
-            }
         }
 
         &  , &::after{
@@ -31,8 +27,10 @@
         }
 
         .restructure-options{
+            position: absolute;
             width: 100%;
             height: 30px;
+            bottom: 0;
 
             >div{
                 width: 50%;
@@ -56,17 +54,30 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 5px;
 
-            .restructure-block-color{
+            &-content{
+                height: calc(100% - 30px);
+                position: absolute;
+                top: 0px;
+                left: 0;
+                right: 0;
                 display: flex;
-                flex-wrap: wrap;
+                place-content: center;
+            }
+
+            .restructure-block-color{
                 place-content: center;
                 background: $white;
                 border-radius: 5px;
-                gap: 20px;
-                padding-top: 20px;
+                height: 120px;
                 
 
                 .restructure-board-widths{
+
+                    .current-width{
+                        border: solid 1px $white;
+                        background: inherit;
+                    }
+
                     .close{
                         position: absolute;
                         right: 5px;
@@ -121,8 +132,8 @@
 
                 &.move-here{
                     [data-options="order"]{
-                        background: $primaryRed;
-                        color: $white;
+                        background: $white;
+                        color: $gray;
             
                         &::after{
                             content: "To";

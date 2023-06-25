@@ -1,10 +1,17 @@
 .books-page-container{
-    max-width: 946px;
-    margin: auto;
-    padding: 0px 20px;
+    margin: 20px;
+
+    >div{
+        max-width: 946px;
+        margin: auto;
+    }
 
     .books-container{
         gap:10px;
+    }
+
+    .section-title{
+        padding: 20px 0px;
     }
 }
 

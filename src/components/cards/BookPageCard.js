@@ -1,6 +1,6 @@
 import { StarIcon } from "../../images/icons/customIcons";
 
-const BookPageCard = ({category , progress , author , name}) => {
+const BookPageCard = ({category , progress , author , name , rating}) => {
     return(
         <div className="book-page-card flex justify-sb v-center">
             <div className="book-page-card-inner flex v-center">
@@ -17,7 +17,11 @@ const BookPageCard = ({category , progress , author , name}) => {
                         <div className="image"></div>
                         <div className="details flex flex-column uppercase">
                             <p className="book-title"> {name} </p>
-                            <div><StarIcon /> <StarIcon /></div>
+                            <div>
+                                {
+                                    [...Array(rating)].map(star => <StarIcon />)
+                                }
+                            </div>
                             <div><span className="author-tag opacity">author:</span> <span className="author-name">{author}</span></div>
                         </div>
                     </div>

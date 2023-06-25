@@ -9,30 +9,12 @@ import {DataContext} from "../../App"
 import { check } from "../../functions/_helper";
 import { filter } from "../../functions/_filtering";
 
-const initialFilterState = [
-    {
-        name: "Completed",
-        color: "green",
-        checked: false,
-    },{
-        name: "Ongoing",
-        color: "red",
-        checked: false,
-    } ,{
-        name: "List",
-        color: "purple",
-        checked: false,
-    }
-]
-
 const Search = ({mobileDropdown , toggleMobileSearch}) => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
     const [searchDropdown , setSearchDropdown] = useState(mobileDropdown ? true : false)
-    // these states are being passed to external file functions/_search.js
-    const [searchInput , setSearchInput] = useState("") // contains user search input
-    const [searchedData , setSearchedData] = useState(""); // contains books dependant on filter and search input
-    const [filterDropdown , setFilterDropdown] = useState(false); // controls whether to show filter checkbox in dropdown
-    // const [status , setFilterOpt] = useState(initialFilterState); // contains all possible filter options and their checked state
+    const [searchInput , setSearchInput] = useState("")
+    const [searchedData , setSearchedData] = useState("");
+    const [filterDropdown , setFilterDropdown] = useState(false);
     const {status} = useContext(DataContext)
 
     const states = {

@@ -14,10 +14,9 @@ import { Outlet } from 'react-router-dom';
 import { filter } from './functions/_filtering';
 import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
 import { restructure } from './functions/_restructure';
-import { toggle } from './functions/_helper';
 
 export const DataContext = React.createContext()
-const {sortBooksBasedOnStatus , getBookCategories} = filter("" , "" , bookData)
+const {sortBooksBasedOnStatus , getData} = filter("" , "" , bookData)
 
 const gridConfig = [
   {
@@ -81,18 +80,20 @@ function App() {
   const [theme , setTheme] = useState('dark')
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
-  const [startRestructure , setStartRestructure] = useState(true);
+  const [startRestructure , setStartRestructure] = useState(false);
   const [modal , setModal] = useState(false)
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
-  const [progressBar , setProgressBar] = useState('0');
+  const [progressBar , setProgressBar] = useState(0);
   const [starFIlter , setStarFilter] = useState(0)
   const [modalType , setModalType] = useState({component:AddBook})
   const [authors , setAuthors] = useState(bookData.authors)
   const [status , setStatus] = useState(bookData.status); // contains all possible filter options and their checked state
-  const [bookCategories , setBookCategories] = useState(getBookCategories());
+  const [bookCategories , setBookCategories] = useState(getData(bookData.books[0],['title' , 'image' , 'color' , 'description']));
+  const [genres , setGenres] = useState(getData(bookData.genre))
   const [changeWidth , setChangeWidth] = useState()
+  const [filteredBooks, setFilteredBooks] = useState(bookData.books)
 
 
   useEffect(() => {
@@ -120,7 +121,9 @@ function App() {
     authors: {variable: authors , set: setAuthors},
     selection: {variable: selection , set: setSelection},
     progressBar: {variable: progressBar , set: setProgressBar},
-    bookCategories: {variable: bookCategories, set: setBookCategories}
+    bookCategories: {variable: bookCategories, set: setBookCategories},
+    genres: {variable: genres, set: setGenres},
+    filteredBooks: {variable: filteredBooks, set: setFilteredBooks}
   }
 
   const {rearrage , touch} = restructure(contextData)
@@ -133,6 +136,8 @@ function App() {
   function getWidth(width , parentIndex){
     setSelectedWidth({width:width, parent: parentIndex})
   }
+
+  // apply the width of the block you're moving to
 
   
   return (
@@ -161,7 +166,7 @@ function App() {
                               <TimesIcon func={() => setChangeWidth()} />
                               <div className="restructure-board-widths-inner">
                                 {
-                                  gridOptions.map(block => (<div data-clickable="true" data-width={block} onClick={() => getWidth(block , index)}></div>))
+                                  gridOptions.map(block => (<div className={_.blockWidth == block ? "current-width" : ""} data-clickable="true" data-width={block} onClick={() => getWidth(block , index)}></div>))
                                 }
                               </div>
                             </div> :

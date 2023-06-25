@@ -46,16 +46,14 @@ export function filter(refs , states , data){
         return data;
     }
 
-    function getBookCategories(){
+    function getData(source , exclude){
         const obj = []
-        const bookCategories = Object.keys(data.books[0]);
-        bookCategories.forEach(cat => {
-            if(!['title' , 'image' , 'color' , 'description'].includes(cat)) obj.push({name: cat})
+        const sourceData = Object.keys(source);
+        sourceData.forEach(cat => {
+            if(exclude ? !exclude.includes(cat) : true) obj.push({name: cat})
         })
         return obj;
     }
-
-
     
     function removeChecked(targetElement , state){
         const targetIndex = state.variable.findIndex(tag => tag.name == targetElement.name);
@@ -68,34 +66,40 @@ export function filter(refs , states , data){
     }
 
     function collectiveFilterData(){
-        const {modal , ratings, progressBar , authors  , status} = states;
-        const filter = status.variable.filter(item => item.checked);
-        const filteredAuthors = authors.variable.filter(item => item.checked);
+        const {ratings, progressBar , authors  , status , genres}  = states;
+        const selectedStatus = status.variable.filter(item => item.checked);
+        const selectedAuthors = authors.variable.filter(item => item.checked);
+        const selectedGenres = genres.variable.filter(item => item.checked)
 
         let searchArr = {};
 
-        if(filter.length) searchArr['status'] = filter.map(({name}) => name.toLowerCase());
-        if(filteredAuthors.length) searchArr['author'] = filteredAuthors.map(({name}) => name);
+        if(selectedStatus.length) searchArr['status'] = selectedStatus.map(({name}) => name.toLowerCase());
+        if(selectedGenres.length) searchArr['genre'] = selectedGenres.map(({name}) => name);
+        if(selectedAuthors.length) searchArr['author'] = selectedAuthors.map(({name}) => name);
         if(progressBar.variable > 0) searchArr['progress'] =  [progressBar.variable]
         if(ratings.variable > 0) searchArr['rating'] = [ratings.variable]
+
         checkBooks(searchArr)
     }
 
     function checkBooks(search){
+        const {filteredBooks}  = states;
         const searchProperties = Object.keys(search);
         let arr = [];
         data.books.forEach(book => {
             let counter = 0;
             searchProperties.forEach(prop => {
                 // books return must meet all the filter criteria. Add one to counter for each met
-                if(search[prop].includes(book[prop])) counter++
+                if(prop == 'genre' ? book[prop].some(el => search[prop].find(item => el == item)) : search[prop].includes(book[prop])) counter++
             })
 
             // if count = searchProperties meaning book meets the criteria
             if(counter == searchProperties.length) arr.push(book)
+
+            filteredBooks.set(arr)
         })
 
-       return arr
+       
     }
 
     return{
@@ -104,6 +108,6 @@ export function filter(refs , states , data){
         removeChecked,
         sortBooksBasedOnStatus,
         collectiveFilterData,
-        getBookCategories
+        getData
     }
 }
