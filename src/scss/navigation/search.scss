@@ -3,6 +3,7 @@
     left: 4px;
 
 
+
     &-dropdown{
         &.filter-panel{
             .search-results{
@@ -25,6 +26,16 @@
                         stroke: $primaryBlue;
                     }
                 }
+            }
+        }
+
+        .section-title{
+            margin: 10px 0px;
+        }
+
+        .section-list{
+            >div{
+                @include cardVerticalSpacing('&' , 10px);
             }
         }
 

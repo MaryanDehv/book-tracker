@@ -118,7 +118,6 @@ function App() {
     toggleSearch:{variable: mobileSearch , set: setMobileSearch},
     themeToggle: {variable: theme , set: setTheme},
     ratings: {variable: starFIlter , set: setStarFilter},
-    toggleNav: {variable: mobileNav , set: setMobileNav},
     authors: {variable: authors , set: setAuthors},
     selection: {variable: selection , set: setSelection},
     progressBar: {variable: progressBar , set: setProgressBar},

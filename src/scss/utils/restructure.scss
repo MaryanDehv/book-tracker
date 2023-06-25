@@ -48,7 +48,7 @@
 
         &-inner{
             max-width: 500px;
-            min-width: 320px;
+            min-width: 280px;
             z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -108,7 +108,14 @@
                     &::after{
                         content: "Order";
                     }
+
+                    @media only screen and (max-width: 1127px){
+                        &{
+                            width: 100%;
+                        }
+                    }
                 }
+                
         
                 [data-options="width"]{
                     background: rgba($white , 0.3);
@@ -116,6 +123,12 @@
         
                     &::after{
                         content: "Width";
+                    }
+
+                    @media only screen and (max-width: 1127px){
+                        &{
+                            display: none;
+                        }
                     }
                 }
 

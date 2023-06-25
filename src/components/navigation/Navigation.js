@@ -24,7 +24,32 @@ const Navigation = ({toggleModal}) => {
         modalType.set({component: AddBook})
     }
 
-    
+    const navigation = [
+        {
+            name:"Ongoing",
+            link: process.env.PUBLIC_URL + "/#/books?filter=ongoing",
+            icon: ClockIcon
+        },{
+            name:"Completed",
+            link: process.env.PUBLIC_URL + "/#/books?filter=completed",
+            icon: CheckIcon
+        },{
+            name:"List",
+            link: process.env.PUBLIC_URL + "/#/books?filter=list",
+            icon: ListIcon
+        },{
+            name:"Ongoing",
+            link: process.env.PUBLIC_URL + "/#/books?filter=ongoing",
+            icon: ClockIcon
+        },{
+            name:"Setting",
+            icon: CogIcon
+        },
+    ]
+
+    function resetMobileNav(){
+        if(mobileNav.variable) mobileNav.set(false)
+    }
 
     return(
         <>
@@ -38,11 +63,9 @@ const Navigation = ({toggleModal}) => {
             </div>
             <div className="side-bar-content flex v-center">
                 <ul className="side-bar-list">
-                    {/* use map and only one onClick */}
-                    <a onClick={() => toggle(mobileNav)} href={process.env.PUBLIC_URL + "/#/books?filter=ongoing"}><li className="uppercase button flex v-center"><span><ClockIcon /></span><span className="list-name">Ongoing</span></li></a>
-                    <a onClick={() => toggle(mobileNav)} href={process.env.PUBLIC_URL + "/#/books?filter=completed"}><li className="uppercase button flex v-center"><span><CheckIcon /></span><span className="list-name">Completed</span></li></a>
-                    <a onClick={() => toggle(mobileNav)} href={process.env.PUBLIC_URL + "/#/books?filter=list"}><li className="uppercase button flex v-center"><span><ListIcon /></span><span className="list-name">List</span></li></a>
-                    <a onClick={() => toggle(mobileNav)} href={process.env.PUBLIC_URL + "/#/books"}><li className="uppercase button flex v-center"><span><CogIcon /></span><span className="list-name">Setitngs</span></li></a>
+                    {
+                        navigation.map(item => ( <a onClick={resetMobileNav} data-clickable="true" href={item.link}><li className="uppercase button flex v-center"><span><item.icon /></span><span className="list-name">{item.name}</span></li></a>))
+                    }
                     <li className="uppercase button flex v-center red-button" onClick={setModal}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">

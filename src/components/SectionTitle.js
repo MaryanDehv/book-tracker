@@ -25,14 +25,7 @@ const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
                 ) : filter ?
                     (
                         <FilterIcon func={setModal} />
-                    ) :
-                    (
-                        <div className="more flex h-center">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    )
+                    ) : <TimesIcon />
              }
         </div>
     )
