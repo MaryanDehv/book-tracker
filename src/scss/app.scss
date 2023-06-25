@@ -223,10 +223,10 @@ svg{
 
 .filter-item{
     @include tag;
-    @include filteredTag('&.green' , $primaryGreen);
-    @include filteredTag('&.red' , $primaryRed);
-    @include filteredTag('&.orange' , $primaryOrange);
-    @include filteredTag('&.purple' , $primaryPurple);
+    @include solidBackground('&.green' , $primaryGreen);
+    @include solidBackground('&.red' , $primaryRed);
+    @include solidBackground('&.orange' , $primaryOrange);
+    @include solidBackground('&.purple' , $primaryPurple);
 }
 
 [data-clickable="true"]{

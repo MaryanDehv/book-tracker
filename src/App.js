@@ -110,6 +110,7 @@ function App() {
   const contextData = {
     modal:{variable: modal , set: setModal} , 
     restructureBoard: {variable: startRestructure , set: setStartRestructure},
+    mobileNav: {variable: mobileNav , set: setMobileNav},
     gridLayout: {variable: gridLayout , set: setGridLayout},
     selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
     modalType: {set: setModalType},

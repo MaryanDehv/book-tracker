@@ -929,18 +929,27 @@ input:focus {
   height: 100%;
   gap: 20px;
 }
-.book-page-card-category-indicator {
-  min-width: 100px;
-  height: 100%;
-}
-.book-page-card-category-indicator.red {
+.book-page-card.red .book-page-card-category-indicator {
   background: #FF4C4C;
 }
-.book-page-card-category-indicator.green {
+.book-page-card.green .book-page-card-category-indicator {
   background: #00DA32;
 }
-.book-page-card-category-indicator.purple {
+.book-page-card.purple .book-page-card-category-indicator {
   background: #A431F9;
+}
+.book-page-card.red .image > div {
+  background: rgba(255, 76, 76, 0.5);
+}
+.book-page-card.green .image > div {
+  background: rgba(0, 218, 50, 0.5);
+}
+.book-page-card.purple .image > div {
+  background: rgba(164, 49, 249, 0.5);
+}
+.book-page-card-category-indicator {
+  width: 5px;
+  height: 100%;
 }
 .book-page-card-contents-container {
   height: 60px;
@@ -963,6 +972,9 @@ input:focus {
   justify-content: space-between;
   height: 80%;
 }
+.book-page-card-contents-container .details .book-rating {
+  gap: 5px;
+}
 .book-page-card-contents-container .image {
   width: 70px;
   height: 100%;
@@ -971,17 +983,16 @@ input:focus {
   background-position: center;
   background-image: url("https://images.unsplash.com/photo-1685475860105-80a4ea08804a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80");
 }
-.book-page-card .book-page-card-contents-progress {
-  border-left: solid 1px rgba(178, 174, 174, 0.1);
-}
-.book-page-card .book-page-card-contents-progress .percentage-amount {
+.book-page-card-contents-container .image > div {
+  border-radius: inherit;
+  display: flex;
+  height: 100%;
+  place-content: center;
+  flex-wrap: wrap;
   font-weight: 600;
 }
-.book-page-card .book-page-card-contents-progress .percent-sign {
-  font-size: 11px;
-}
-.book-page-card .book-page-card-contents-progress .percentage-amount {
-  font-size: 40px;
+.book-page-card .book-page-card-contents-progress {
+  border-left: solid 1px rgba(178, 174, 174, 0.1);
 }
 
 .side-bar {
@@ -1271,6 +1282,9 @@ input:focus {
 }
 .search-dropdown-panel .search-box-container .search-icon g {
   stroke: #359EFF;
+}
+.search-dropdown-inner {
+  gap: 10px;
 }
 .search:not(.search-dropdown-panel) .search-dropdown {
   display: none;

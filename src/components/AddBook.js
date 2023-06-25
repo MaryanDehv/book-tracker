@@ -1,6 +1,11 @@
 import { ArrowIcon } from "../images/icons/customIcons";
+import { DataContext } from "../App";
+import { useContext, useEffect } from "react";
 
 const AddBook = () => {
+
+    const {modal} = useContext(DataContext);
+
     return(
         <>
             <form className="flex flex-column">
@@ -23,7 +28,7 @@ const AddBook = () => {
                     </textarea>
                 </div>
             </form>
-            <button className="red-button full-width"> <span className="uppercase"> Add Book </span>  <ArrowIcon /></button>
+            <button className="red-button full-width" onClick={() => modal.set(false)}> <span className="uppercase"> Add Book </span>  <ArrowIcon /></button>
         </>
     )
 }

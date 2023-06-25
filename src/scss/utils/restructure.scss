@@ -93,13 +93,13 @@
                 }
 
 
-                @include structureBlock("&.red" , $primaryRed);
-                @include structureBlock("&.purple" , $primaryPurple);
-                @include structureBlock("&.orange" , $primaryOrange);
-                @include structureBlock("&.green" , $primaryGreen);
-                @include structureBlock("&.from-selected" , $primaryBlue);
-                @include structureBlock("&.move-here" , $gray);
-                @include structureBlock("&.to-selected" , $primaryBlue);
+                @include transparentBackground("&.red" , $primaryRed , 0.9);
+                @include transparentBackground("&.purple" , $primaryPurple , 0.9);
+                @include transparentBackground("&.orange" , $primaryOrange , 0.9);
+                @include transparentBackground("&.green" , $primaryGreen , 0.9);
+                @include transparentBackground("&.from-selected" , $primaryBlue , 0.9);
+                @include transparentBackground("&.move-here" , $gray , 0.9);
+                @include transparentBackground("&.to-selected" , $primaryBlue , 0.9);
                 
                 [data-options="order"]{
                     border-bottom-left-radius: 5px;

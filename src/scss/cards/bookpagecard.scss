@@ -31,22 +31,17 @@
         gap: 20px;
     }
 
+    @include solidBackground("&.red .book-page-card-category-indicator" , $primaryRed);
+    @include solidBackground("&.green .book-page-card-category-indicator" , $primaryGreen);
+    @include solidBackground("&.purple .book-page-card-category-indicator" , $primaryPurple);
+
+    @include transparentBackground("&.red .image > div" , $primaryRed , 0.5);
+    @include transparentBackground("&.green .image > div" , $primaryGreen , 0.5);
+    @include transparentBackground("&.purple .image > div" , $primaryPurple , 0.5);
+
    &-category-indicator{
-        // width: 10px;
-        min-width: 100px;
+        width: 5px;
         height: 100%;
-        
-        &.red{
-            background: $primaryRed ;
-        }
-
-        &.green{
-            background: $primaryGreen;
-        }
-
-        &.purple{
-            background: $primaryPurple;
-        }
    }
 
    &-contents-container{
@@ -73,6 +68,10 @@
     .details{
         justify-content: space-between;
         height: 80%;
+
+        .book-rating{
+            gap:5px;
+        }
     }
 
     .image{
@@ -82,24 +81,20 @@
         background-size: cover;
         background-position: center;
         background-image:url("https://images.unsplash.com/photo-1685475860105-80a4ea08804a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80");
+
+        >div{
+            border-radius: inherit;
+            display: flex;
+            height: 100%;
+            place-content: center;
+            flex-wrap: wrap;
+            font-weight: 600;
+        }
     }
    }
 
    .book-page-card-contents-progress{
-
-    border-left: solid 1px rgba($gray , 0.1);
-    // padding-left: 15px;
-
-    .percentage-amount{
-        font-weight: 600;
-    }
-
-    .percent-sign{
-        font-size: 11px;
-    }
-
-    .percentage-amount{
-        font-size: 40px;
-    }
+        border-left: solid 1px rgba($gray , 0.1);
+        // padding-left: 15px;
    }
 }

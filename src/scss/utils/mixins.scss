@@ -13,15 +13,15 @@
 }
 
 
-@mixin filteredTag($prop , $color){
+@mixin solidBackground($prop , $color){
     #{$prop}{
         background: $color;
     }
 }
 
-@mixin structureBlock($prop , $color){
+@mixin transparentBackground($prop , $color , $opacity){
     #{$prop}{
-        background: rgba($color , 0.9);
+        background: rgba($color , $opacity);
     }
 }
 

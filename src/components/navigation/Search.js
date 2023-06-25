@@ -96,7 +96,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                     }
                     
                     {/* search results */}
-                    <div className={`search-dropdown-inner search-results`}>
+                    <div className={`search-dropdown-inner flex flex-column search-results`}>
                         {
                             searchedData.length >= 1 ?
                             searchedData.map(item => (item))
