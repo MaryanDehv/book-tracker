@@ -14,6 +14,7 @@ import { Outlet } from 'react-router-dom';
 import { filter } from './functions/_filtering';
 import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
 import { restructure } from './functions/_restructure';
+import LineChart from './components/LineChart';
 
 export const DataContext = React.createContext()
 const {sortBooksBasedOnStatus , getData} = filter("" , "" , bookData)
@@ -71,6 +72,17 @@ const gridConfig = [
     },
     class:"book-card-container",
     content: sortBooksBasedOnStatus("completed", bookData)
+  },
+  {
+    blockWidth: 2,
+    component: LineChart,
+    groupTitle:{
+      component: CheckIcon,
+      color: 'green',
+      name: 'completed'
+    },
+    class:"book-card-container",
+    content: [{}]
   }
 ]
 

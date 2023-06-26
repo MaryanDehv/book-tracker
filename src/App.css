@@ -1014,6 +1014,37 @@ input:focus {
   border-left: solid 1px rgba(178, 174, 174, 0.1);
 }
 
+.line-chart-container {
+  height: 200px;
+  width: 200px;
+}
+.line-chart-container .line-chart {
+  height: 100%;
+  border-left: solid 1px #FFFFFF;
+  border-bottom: solid 1px #FFFFFF;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.line-chart-container .line-chart li {
+  position: absolute;
+}
+.line-chart-container .line-chart li .data-point {
+  position: absolute;
+  background-color: white;
+  border: 2px solid lightblue;
+  border-radius: 50%;
+  height: 12px;
+  position: absolute;
+  width: 12px;
+}
+.line-chart-container .line-chart li .line {
+  position: absolute;
+  background: pink;
+  transform-origin: left bottom;
+  height: 5px;
+}
+
 .side-bar {
   position: fixed;
   width: 119px;
