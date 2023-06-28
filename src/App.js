@@ -74,7 +74,7 @@ const gridConfig = [
     content: sortBooksBasedOnStatus("completed", bookData)
   },
   {
-    blockWidth: 2,
+    blockWidth: 3,
     component: LineChart,
     groupTitle:{
       component: CheckIcon,
