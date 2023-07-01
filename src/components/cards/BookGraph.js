@@ -16,7 +16,7 @@ const BookGraph = () => {
                     <div className="bar-container" key={index}>
                         <div className="bar-mask"> 
                             <div className="bar" style={bar}>
-                                <div className="bar-data-popup">
+                                <div className="bar-data-popup graph-popup">
                                     <ul>
                                         <li className="flex v-center"> <div></div> The silent observer </li>
                                         <li className="flex v-center"> <div></div> beneath the crimson veil </li>

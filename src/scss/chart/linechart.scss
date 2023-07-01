@@ -1,33 +1,45 @@
-.line-chart-container{
-    height: 200px;
+.line-chart{
+    height: calc(100% - 25px);
     width: 100%;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-    .line-chart{
-        height: 100%;
-        border-left: solid 1px $white;
-        border-bottom: solid 1px $white;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    li{
+        .data-point {
+            position: absolute;
+            background-color: $primaryRed;
+            border: 2px solid $primaryRed;
+            border-radius: 50%;
+            height: 10px;
+            position: absolute;
+            width: 10px;
+            z-index: 1;
 
-        li{
-            .data-point {
-                position: absolute;
-                background-color: $primaryRed;
-                border: 2px solid $primaryRed;
-                border-radius: 50%;
-                height: 12px;
-                position: absolute;
-                width: 12px;
-                z-index: 1;
+            &:hover{
+                >div{
+                    display: block;
+                }
             }
-    
-            .line{
+
+            >div{
+                display: none;
+                white-space: nowrap;
                 position: absolute;
-                background: $primaryRed;
-                transform-origin: left bottom;
-                height: 3px;
+                padding: 10px;
             }
         }
+
+        .line{
+            position: absolute;
+            background: $primaryRed;
+            transform-origin: left bottom;
+            height: 3px;
+        }
+    }
+
+    .line-chart-x-axis{
+        height: 100%;
     }
 }

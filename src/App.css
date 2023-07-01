@@ -814,7 +814,6 @@ input:focus {
 }
 .graph .graph_bars-container .bar-container .bar-data-popup {
   width: fit-content;
-  border-radius: 5px;
   padding: 10px;
   top: -70px;
   right: 0;
@@ -876,6 +875,9 @@ input:focus {
   height: 100%;
   z-index: 0;
   left: -2%;
+}
+.graph .graph-popup {
+  border-radius: 5px;
 }
 
 .book-progress {
@@ -1014,33 +1016,41 @@ input:focus {
   border-left: solid 1px rgba(178, 174, 174, 0.1);
 }
 
-.line-chart-container {
-  height: 200px;
+.line-chart {
+  height: calc(100% - 25px);
   width: 100%;
-}
-.line-chart-container .line-chart {
-  height: 100%;
-  border-left: solid 1px #FFFFFF;
-  border-bottom: solid 1px #FFFFFF;
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.line-chart-container .line-chart li .data-point {
+.line-chart li .data-point {
   position: absolute;
   background-color: #FF4C4C;
   border: 2px solid #FF4C4C;
   border-radius: 50%;
-  height: 12px;
+  height: 10px;
   position: absolute;
-  width: 12px;
+  width: 10px;
   z-index: 1;
 }
-.line-chart-container .line-chart li .line {
+.line-chart li .data-point:hover > div {
+  display: block;
+}
+.line-chart li .data-point > div {
+  display: none;
+  white-space: nowrap;
+  position: absolute;
+  padding: 10px;
+}
+.line-chart li .line {
   position: absolute;
   background: #FF4C4C;
   transform-origin: left bottom;
   height: 3px;
+}
+.line-chart .line-chart-x-axis {
+  height: 100%;
 }
 
 .side-bar {
@@ -1542,10 +1552,10 @@ input:focus {
 .dark-mode .grid-item .choose-block-width {
   background: #1A1D1F;
 }
-.dark-mode .book-graph-container .bar-data-popup {
+.dark-mode .graph-popup {
   background: #111315;
 }
-.dark-mode .book-graph-container .graph-y-axis span {
+.dark-mode .graph-y-axis span {
   border-bottom: solid 1px rgba(178, 174, 174, 0.1);
 }
 .dark-mode .bookList .filter-item {
@@ -1616,10 +1626,10 @@ input:focus {
 .light-mode .grid-item .choose-block-width {
   background: #FFFFFF;
 }
-.light-mode .book-graph-container .bar-data-popup {
+.light-mode .graph-popup {
   background: #F2F2F2;
 }
-.light-mode .book-graph-container .graph-y-axis span {
+.light-mode .graph-y-axis span {
   border-bottom: solid 1px rgba(178, 174, 174, 0.1);
 }
 .light-mode .top-bar {
