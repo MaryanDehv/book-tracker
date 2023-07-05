@@ -16,3 +16,8 @@ export function resetChecked(arr , state){
 
   state.set(arr)
 }
+
+export function setModal(modal , modalType , component , title , icon , _){
+  toggle(modal);
+  modalType.set({component , title , icon , _})
+}

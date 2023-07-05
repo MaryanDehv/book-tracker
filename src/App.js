@@ -72,17 +72,6 @@ const gridConfig = [
     },
     class:"book-card-container",
     content: sortBooksBasedOnStatus("completed", bookData)
-  },
-  {
-    blockWidth: 3,
-    component: LineChart,
-    groupTitle:{
-      component: CheckIcon,
-      color: 'green',
-      name: 'completed'
-    },
-    class:"book-card-container",
-    content: [{}]
   }
 ]
 
@@ -99,7 +88,7 @@ function App() {
   const [selection , setSelection] = useState([])
   const [progressBar , setProgressBar] = useState(0);
   const [starFIlter , setStarFilter] = useState(0)
-  const [modalType , setModalType] = useState({component:AddBook})
+  const [modalType , setModalType] = useState()
   const [authors , setAuthors] = useState(bookData.authors)
   const [status , setStatus] = useState(bookData.status); // contains all possible filter options and their checked state
   const [bookCategories , setBookCategories] = useState(getData(bookData.books[0],['title' , 'image' , 'color' , 'description']));

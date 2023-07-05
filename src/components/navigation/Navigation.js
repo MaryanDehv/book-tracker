@@ -1,11 +1,11 @@
 import {Logo , ClockIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../images/icons/customIcons'
 import { themeMode } from '../../functions/_theme'
-import { toggle } from '../../functions/_helper'
 import { useContext } from 'react'
 import { DataContext } from '../../App'
 import AddBook from '../AddBook'
+import { setModal } from '../../functions/_helper'
 
-const Navigation = ({toggleModal}) => {
+const Navigation = () => {
     const {modalType , modal , themeToggle , mobileNav} = useContext(DataContext)
     
     const themeOptions = [
@@ -18,11 +18,6 @@ const Navigation = ({toggleModal}) => {
             icon: MoonIcon,
         }
     ]
-
-    function setModal(){
-        toggle(modal);
-        modalType.set({component: AddBook})
-    }
 
     const navigation = [
         {
@@ -66,10 +61,10 @@ const Navigation = ({toggleModal}) => {
                     {
                         navigation.map(item => ( <a onClick={resetMobileNav} data-clickable="true" href={item.link}><li className="uppercase button flex v-center"><span><item.icon /></span><span className="list-name">{item.name}</span></li></a>))
                     }
-                    <li className="uppercase button flex v-center red-button" onClick={setModal}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
+                    <li className="uppercase button flex v-center red-button" onClick={() => setModal(modal , modalType , AddBook , "Add Book" , AddIcon)}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
-                    <div className="side-bar-mode flex v-h-center">
+                    <div className="side-bar-mode flex v-h-center" >
                         {themeOptions.map((theme , index) => (
                             <div key={index} className={`side-bar-light flex v-h-center ${themeToggle.variable == theme.name ? 'selected' : ''}`} data-clickable="true" onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
                         ))}

@@ -1,12 +1,13 @@
-import {StackedBooksIcon } from "../../images/icons/customIcons";
+import {AddIcon, StackedBooksIcon } from "../../images/icons/customIcons";
 import BookPageCard from "../cards/BookPageCard";
-import bookData from "../../data/data";
 import SectionTitle from "../SectionTitle";
 import { useContext } from "react";
 import { DataContext } from "../../App";
+import { setModal, toggle } from "../../functions/_helper";
+import EditBook from "../EditBook";
 
 const Books = ({}) => {
-    const {modal , filteredBooks} = useContext(DataContext);
+    const {modal , filteredBooks , modalType} = useContext(DataContext);
 
     return(
         <div className="books-page-container">
@@ -14,7 +15,7 @@ const Books = ({}) => {
             <div className="books-container flex flex-column">
                 {
                   filteredBooks.variable.map((book , index) => (
-                        <BookPageCard key={index} name={book.title} rating={book.rating} category={book.status} progress={book.progress} author={book.author}/>
+                        <BookPageCard addModal={() => setModal(modal , modalType , EditBook , book.title , false , book)} key={index} name={book.title} rating={book.rating} category={book.status} progress={book.progress} author={book.author}/>
                     ))
                 }
             </div>

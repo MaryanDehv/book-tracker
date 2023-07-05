@@ -1,8 +1,8 @@
 import { StarIcon } from "../../images/icons/customIcons";
 
-const BookPageCard = ({category , progress , author , name , rating}) => {
+const BookPageCard = ({category , progress , author , name , rating , addModal}) => {
     return(
-        <div className={`book-page-card flex justify-sb v-center ${category == "completed" ? 'green' : category == "list" ? 'purple' : 'red'}`} data-clickable="true">
+        <div onClick={addModal} className={`book-page-card flex justify-sb v-center ${category == "completed" ? 'green' : category == "list" ? 'purple' : 'red'}`} data-clickable="true">
             <div className="book-page-card-inner flex v-center">
                 <div className={`book-page-card-category-indicator flex v-h-center`}>
 

@@ -1,20 +1,17 @@
 import { useContext } from "react";
-import { toggle } from "../functions/_helper";
+import { setModal, toggle } from "../functions/_helper";
 import {FilterIcon, TimesIcon} from "../images/icons/customIcons";
 import { DataContext } from "../App";
 import FilterBooks from "./FilterBooks";
 
 const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
     const {modalType , modal} = useContext(DataContext);
-    function setModal(){
-        toggle(modal);
-        modalType.set({component: FilterBooks})
-    }
+
     return(
         <div className={`section-title full-width flex v-center justify-sb red`}>
             <div className="flex h-center">
-                <div className="section-title-icon flex v-h-center"> 
-                <Icon /> </div> <h3> {title} </h3>
+            {Icon ?  <div className="section-title-icon flex v-h-center"> 
+                <Icon /> </div>  : ""} <h3> {title} </h3>
             </div>
             {
                 modalPanel ?
@@ -24,7 +21,7 @@ const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
                     </div>
                 ) : filter ?
                     (
-                        <FilterIcon func={setModal} />
+                        <FilterIcon func={() => setModal(modal , modalType , FilterBooks , "Filter" , FilterIcon)} />
                     ) : <TimesIcon />
              }
         </div>

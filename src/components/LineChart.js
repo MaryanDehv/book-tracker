@@ -19,7 +19,7 @@ const LineChart = () => {
         } , 1000)
     } , [])
 
-    const chartValues = [{value: 50},{value: 20},{value: 60},{value: 10},{value: 95},{value: 10} , {value:50}]
+    const chartValues = [{value: 57}, {value: 50},{value: 20},{value: 60},{value: 10},{value: 95},{value: 10} , {value:50}]
 
     function getXValues(max){
         let list = [];
@@ -99,10 +99,10 @@ const LineChart = () => {
                 {
                     formatLineChartData(chartValues , boardHeight , boardWidth).map((point , index) => (
                         <li>
-                            <div class="data-point" data-value={point.value}  style={{bottom:point.bottom - 8, left: point.left - 8}}>
+                            <div class="data-point" data-value={point.value}  style={{bottom:point.bottom - 5, left: point.left - 5}}>
                             <div className="graph-popup"> <span>Time:</span> <span>{point.value}</span></div>
                             </div>
-                            <div className="line" style={{width:point.hypotenuse * 1 + "px" , transform: `rotate(${point.angle * 1}deg)` , bottom: point.bottom, left: point.left}}></div>
+                            <div className="line" style={{width:point.hypotenuse * 1 + "px" , transform: `rotate(${point.angle * 1}deg)` , bottom: point.bottom, left: point.left}}> </div>
                         </li>
                     ))
                 }
