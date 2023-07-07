@@ -102,6 +102,10 @@ body{
 	display: flex;
 }
 
+.p-static{
+	position: static !important;
+}
+
 .justify-sb{
 	justify-content: space-between;
 }
@@ -173,10 +177,14 @@ svg{
 	padding: 0 20px;
 }
 
-.side-bar-content , .search , .section-title-icon , .book-progress , .book-list{
+.side-bar-content , .search , .section-title-icon , .book-progress , .book-list , .tag{
 	svg{
 		width: 15px;
 	}
+}
+
+.tag{
+	height: 15px;
 }
 
 .top-bar-inner-account{
@@ -232,6 +240,11 @@ svg{
     @include solidBackground('&.red' , $primaryRed);
     @include solidBackground('&.orange' , $primaryOrange);
     @include solidBackground('&.purple' , $primaryPurple);
+}
+
+.tag{
+	@include tag;
+	@include solidBackground('&' , $primaryRed);
 }
 
 [data-clickable="true"]{

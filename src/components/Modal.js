@@ -1,14 +1,17 @@
-import { AddIcon } from "../images/icons/customIcons";
+import { useContext } from "react";
+import { DataContext } from "../App";
 import SectionTitle from "./SectionTitle";
 
-const Modal = ({modalType: ModalType}) => {
+const Modal = () => {
+
+    const {modalType} = useContext(DataContext)
     
     return(
         <div className="modal-container">
             <div className="modal-container-inner">
-                <SectionTitle modalPanel={true} icon={ModalType.icon} title={ModalType.title}/>
+                <SectionTitle modalPanel={true} icon={modalType.variable.icon} title={modalType.variable.title}/>
                 <div className="modal-container-content">
-                    <ModalType.component props={ModalType._}/>
+                    <modalType.variable.component props={modalType.variable._}/>
                 </div>
             </div>
         </div>

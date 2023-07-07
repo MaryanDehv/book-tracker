@@ -87,6 +87,12 @@
         }
     }
 
+    .edit-book{
+        p{
+            color: $white;
+        }
+    }
+
 
     .bookList{
         .filter-item{
@@ -118,6 +124,12 @@
     .modal-container{
         background: $blackLight;
         box-shadow: 0px 0px 20px $black;
+
+        .close{
+            line{
+                stroke:$white;
+            }
+        }
     }
 
     .input-block-container{

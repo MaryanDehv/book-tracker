@@ -6,7 +6,7 @@ import AddBook from '../AddBook'
 import { setModal } from '../../functions/_helper'
 
 const Navigation = () => {
-    const {modalType , modal , themeToggle , mobileNav} = useContext(DataContext)
+    const {modalType ,themeToggle , mobileNav} = useContext(DataContext)
     
     const themeOptions = [
         {
@@ -36,10 +36,7 @@ const Navigation = () => {
             name:"Ongoing",
             link: process.env.PUBLIC_URL + "/#/books?filter=ongoing",
             icon: ClockIcon
-        },{
-            name:"Setting",
-            icon: CogIcon
-        },
+        }
     ]
 
     function resetMobileNav(){
@@ -61,7 +58,7 @@ const Navigation = () => {
                     {
                         navigation.map(item => ( <a onClick={resetMobileNav} data-clickable="true" href={item.link}><li className="uppercase button flex v-center"><span><item.icon /></span><span className="list-name">{item.name}</span></li></a>))
                     }
-                    <li className="uppercase button flex v-center red-button" onClick={() => setModal(modal , modalType , AddBook , "Add Book" , AddIcon)}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
+                    <li className="uppercase button flex v-center red-button" data-clickable="true" onClick={() => setModal(modalType , AddBook , "Add Book" , AddIcon)}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center" >

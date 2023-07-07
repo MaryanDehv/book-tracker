@@ -94,7 +94,7 @@ li {
   font-size: 11px;
 }
 
-.graph, .filter-item {
+.graph, .filter-item, .tag {
   font-size: 10px;
 }
 
@@ -530,8 +530,8 @@ input:focus {
   gap: 10px;
   margin-bottom: 10px;
 }
-.modal-container .close {
-  width: 30px;
+.modal-container .section-title .close {
+  width: 25px;
   display: block;
 }
 .modal-container .red-button {
@@ -671,7 +671,6 @@ input:focus {
   color: #B2AEAE;
 }
 .edit-book-contents p {
-  color: #FFFFFF;
   line-height: 1.2;
 }
 .edit-book-contents .heading {
@@ -1610,6 +1609,9 @@ input:focus {
 .dark-mode .graph-y-axis span {
   border-bottom: solid 1px rgba(178, 174, 174, 0.1);
 }
+.dark-mode .edit-book p {
+  color: #FFFFFF;
+}
 .dark-mode .bookList .filter-item {
   color: #FFFFFF;
 }
@@ -1629,6 +1631,9 @@ input:focus {
 .dark-mode .modal-container {
   background: #1A1D1F;
   box-shadow: 0px 0px 20px #111315;
+}
+.dark-mode .modal-container .close line {
+  stroke: #FFFFFF;
 }
 .dark-mode .input-block-container {
   background: #111315;
@@ -1729,6 +1734,12 @@ input:focus {
   background: #FFFFFF;
   box-shadow: 0px 0px 20px #F2F2F2;
 }
+.light-mode .modal-container .close line {
+  stroke: #111315;
+}
+.light-mode .edit-book p {
+  color: #111315;
+}
 .light-mode .input-block-container {
   background: #F2F2F2;
   color: #111315;
@@ -1767,6 +1778,10 @@ body {
 
 .flex {
   display: flex;
+}
+
+.p-static {
+  position: static !important;
 }
 
 .justify-sb {
@@ -1847,8 +1862,12 @@ svg g {
   padding: 0 20px;
 }
 
-.side-bar-content svg, .search svg, .section-title-icon svg, .book-progress svg, .book-list svg {
+.side-bar-content svg, .search svg, .section-title-icon svg, .book-progress svg, .book-list svg, .tag svg {
   width: 15px;
+}
+
+.tag {
+  height: 15px;
 }
 
 .top-bar-inner-account svg {
@@ -1928,6 +1947,16 @@ svg g {
 }
 .filter-item.purple {
   background: #A431F9;
+}
+
+.tag {
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
+.tag {
+  background: #FF4C4C;
 }
 
 [data-clickable=true] {

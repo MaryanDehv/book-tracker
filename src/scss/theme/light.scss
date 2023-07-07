@@ -110,6 +110,18 @@
     .modal-container{
         background: $white;
         box-shadow: 0px 0px 20px $grayLight;
+
+        .close{
+            line{
+                stroke:$black;
+            }
+        }
+    }
+
+    .edit-book{
+        p{
+            color: $black;
+        }
     }
 
     .input-block-container{

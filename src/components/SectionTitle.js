@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { setModal, toggle } from "../functions/_helper";
+import { closeModal, setModal, toggle } from "../functions/_helper";
 import {FilterIcon, TimesIcon} from "../images/icons/customIcons";
 import { DataContext } from "../App";
 import FilterBooks from "./FilterBooks";
 
-const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
-    const {modalType , modal} = useContext(DataContext);
+const SectionTitle = ({modalPanel , title , icon: Icon , filter}) => {
+    const {modalType} = useContext(DataContext);
+    
+    // todo: instead of returning close icon twice, crease function where you can pass down aciton to be used for said close icon
 
     return(
         <div className={`section-title full-width flex v-center justify-sb red`}>
@@ -17,11 +19,11 @@ const SectionTitle = ({modalPanel, title , icon: Icon , filter}) => {
                 modalPanel ?
                 (
                     <div className="filter-close-icon">
-                        <TimesIcon func={() => toggle(modal)}/>
+                        <TimesIcon  func={() => closeModal(modalType)}/>
                     </div>
                 ) : filter ?
                     (
-                        <FilterIcon func={() => setModal(modal , modalType , FilterBooks , "Filter" , FilterIcon)} />
+                        <FilterIcon func={() => setModal(modalType , FilterBooks , "Filter" , FilterIcon)}/>
                     ) : <TimesIcon />
              }
         </div>

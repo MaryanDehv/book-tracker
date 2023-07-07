@@ -8,13 +8,11 @@ import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
 import BookGraph from './components/cards/BookGraph';
 import bookData from './data/data';
-import AddBook from './components/AddBook';
 import React, { useEffect, useState} from "react";
 import { Outlet } from 'react-router-dom';
 import { filter } from './functions/_filtering';
 import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
-import { restructure } from './functions/_restructure';
-import LineChart from './components/LineChart';
+import { restructure } from './functions/_restructure'
 
 export const DataContext = React.createContext()
 const {sortBooksBasedOnStatus , getData} = filter("" , "" , bookData)
@@ -78,11 +76,13 @@ const gridConfig = [
 
 function App() {
 
+
+  // state
   const [theme , setTheme] = useState('dark')
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
   const [startRestructure , setStartRestructure] = useState(false);
-  const [modal , setModal] = useState(false)
+  // const [modal , setModal] = useState(false)
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
@@ -109,12 +109,12 @@ function App() {
   } , [selectedWidth])
 
   const contextData = {
-    modal:{variable: modal , set: setModal} , 
+    // modal:{variable: modal , set: setModal} , 
     restructureBoard: {variable: startRestructure , set: setStartRestructure},
     mobileNav: {variable: mobileNav , set: setMobileNav},
     gridLayout: {variable: gridLayout , set: setGridLayout},
     selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
-    modalType: {set: setModalType},
+    modalType: {variable:modalType , set: setModalType},
     status: {variable: status , set: setStatus},
     toggleSearch:{variable: mobileSearch , set: setMobileSearch},
     themeToggle: {variable: theme , set: setTheme},
@@ -146,7 +146,7 @@ function App() {
         <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
           <SideBar />
           <div className="main padding-l-r-2">
-            {modal ? <Modal  modalType={modalType}/> : ""}
+            {modalType ? <Modal  modalType={modalType}/> : ""}
             { 
               startRestructure
               ? (<div className="restructure-backdrop">
