@@ -1,9 +1,9 @@
-import { ArrowIcon, ArrowPlain, CheckMark, StarIcon} from "../images/icons/customIcons";
-import { check } from "../functions/_helper";
+import { ArrowIcon, ArrowPlain, CheckMark, StarIcon} from "../../images/icons/customIcons";
+import { check } from "../../functions/_helper";
 import { useContext, useRef, useState} from "react";
-import {DataContext} from '../App';
-import { filter } from "../functions/_filtering";
-import bookData from "../data/data";
+import {DataContext} from '../../App';
+import { filter } from "../../functions/_filtering";
+import bookData from "../../data/data";
 
 const FilterBooks = () => {
     const {status , authors , progressBar , ratings , modal , bookCategories , genres , filteredBooks} = useContext(DataContext);

@@ -1,10 +1,10 @@
 import {AddIcon, StackedBooksIcon } from "../../images/icons/customIcons";
 import BookPageCard from "../cards/BookPageCard";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "../headings/SectionTitle";
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import { setModal} from "../../functions/_helper";
-import EditBook from "../EditBook";
+import EditBook from "../Modal/EditBook";
 
 const Books = ({}) => {
     const {filteredBooks , modalType} = useContext(DataContext);

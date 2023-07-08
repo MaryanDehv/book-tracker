@@ -2,7 +2,7 @@ import { filter } from "./_filtering";
 
 // location -> search.js
 export function search(state , _){ 
-    const {BookCard , BookList , BookProgress, CheckIcon , ListIcon , ClockIcon} = _;
+    const {BookCard, BookList, BookProgress, SectionTitle, CheckIcon, ListIcon, ClockIcon} = _;
    
     function toggleFilterPanel(el){
       const {filterDropdown , searchDropdown} = state;
@@ -37,9 +37,7 @@ export function search(state , _){
   
         const jsx = ({component: Component , status}) => (
         <div className={`search-dropdown-inner-group ${status == "ongoing" ? "grayed" : ""}`}>
-            <div className={`section-title flex v-center ${status == "completed" ? 'green' : status == "list" ? "purple" : "orange" }`}>
-                <div className="section-title-icon flex v-h-center"> {status == "completed" ? <CheckIcon /> : status == "ongoing" ? <ClockIcon /> : <ListIcon />} </div> <h3> {status} </h3>
-            </div>
+            <SectionTitle title={status} icon={status == "ongoing" ? ClockIcon : status == "complete" ? CheckIcon : ListIcon} searchDropdown={true}/>
             <div className="section-list">
                 {
                     searchData.map((result , index)  => result.status == status ? <Component key={index} content={result} /> : "")

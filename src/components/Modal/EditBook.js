@@ -1,5 +1,5 @@
-import { ArrowIcon, StarIcon } from "../images/icons/customIcons";
-import LineChart from "./LineChart";
+import { ArrowIcon, StarIcon } from "../../images/icons/customIcons";
+import LineChart from "../charts/LineChart";
 
 const EditBook = ({props}) => {
     return(

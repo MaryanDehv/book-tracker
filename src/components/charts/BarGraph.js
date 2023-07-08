@@ -1,4 +1,4 @@
-const BookGraph = () => {
+const BarGraph = () => {
     const viewCount = [
         {height: "10%"},
         {height: "40%"},
@@ -50,4 +50,4 @@ const BookGraph = () => {
     )
 }
 
-export default BookGraph;
+export default BarGraph;

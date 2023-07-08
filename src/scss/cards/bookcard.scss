@@ -4,14 +4,21 @@
 
         .grid-item-content{
             display: flex;
-            justify-content: space-between;
+            gap:10px;
         }
     }
 
 
     &-card{
         height: 196px;
-        width: 45%;
+
+        @media only screen and (min-width: 1128px){
+            width: calc(calc(100% - 10px) / 2);
+        }
+
+        @media only screen and (min-width:651px) and (max-width: 1127px){
+            width: calc(calc(100% - 20px) / 3);
+        }
 
         @media only screen and (max-width:650px){
             width: 100%;

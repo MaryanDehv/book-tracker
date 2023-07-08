@@ -80,19 +80,6 @@
         >div{
             gap:5px;
         }
-
-        .filter-item{
-            height: 15px;
-            color: $white;
-        }
-        
-
-        svg{
-            line{
-                stroke: $white;
-                stroke-width: 2px;
-            }
-        }
     }
 
     .filter-active{

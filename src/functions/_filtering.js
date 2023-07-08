@@ -96,10 +96,16 @@ export function filter(refs , states , data){
             // if count = searchProperties meaning book meets the criteria
             if(counter == searchProperties.length) arr.push(book)
 
-            filteredBooks.set(arr)
-        })
+            if(arr.length > 0){
+                filteredBooks.set(arr)
+            } else {
+                filteredBooks.set(data.books)
+            }
+        })       
+    }
 
-       
+    function resetFilters(){
+        const {ratings, progressBar , authors  , status , genres}  = states;
     }
 
     return{

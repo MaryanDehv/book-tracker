@@ -1,9 +1,8 @@
 .top-bar{
-    height: 44px;
+    height: 24px;
     width: calc(100% - 160px);
     right: 0;
     top: 0;
-    justify-content: space-between;
     position: fixed;
     padding: 16px 0px;
     
@@ -30,7 +29,6 @@
                 gap:4px;
 
                 svg{
-                    width: 15px;
                     g{
                         stroke: $primaryRed;
                         stroke-width: 3px;

@@ -203,7 +203,7 @@ export const ListIcon = () => {
 
 export const Logo = () => {
     return(
-        <svg width="39.026336px" height="30.9958751px" viewBox="0 0 39.026336 30.9958751" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="main-logo" width="39.026336px" height="30.9958751px" viewBox="0 0 39.026336 30.9958751" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Icons" transform="translate(-55.364983, -261.403623)" fill="#D93C3C">
                     <g id="Logo" transform="translate(55.364983, 261.389246)">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SectionTitle from "../components/SectionTitle";
+import SectionTitle from "../components/headings/SectionTitle";
 
 const Grid = ({content , setWidth}) => {
     const [blockWidth , setBlockWidth] = useState();

@@ -8,6 +8,7 @@ import bookData from "../../data/data";
 import {DataContext} from "../../App"
 import { check } from "../../functions/_helper";
 import { filter } from "../../functions/_filtering";
+import SectionTitle from "../headings/SectionTitle";
 
 const Search = ({mobileDropdown , toggleMobileSearch}) => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
@@ -47,8 +48,10 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                 CheckIcon,
                 ListIcon,
                 ClockIcon,
+                SectionTitle,
                 bookData
-        });
+            }
+        );
 
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added

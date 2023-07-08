@@ -1,12 +1,12 @@
 import './App.css';
 import TopBar from './components/navigation/TopBar';
 import SideBar from './components/navigation/SideBar';
-import Modal from './components/Modal';
+import Modal from './components/Modal/Modal';
 import BookCard from './components/cards/BookCard';
 import HabitTracker from './components/cards/HabitTracker';
 import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
-import BookGraph from './components/cards/BookGraph';
+import BookGraph from './components/charts/BarGraph';
 import bookData from './data/data';
 import React, { useEffect, useState} from "react";
 import { Outlet } from 'react-router-dom';
@@ -137,16 +137,13 @@ function App() {
   function getWidth(width , parentIndex){
     setSelectedWidth({width:width, parent: parentIndex})
   }
-
-  // apply the width of the block you're moving to
-
   
   return (
      <DataContext.Provider value={contextData}>
         <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
           <SideBar />
           <div className="main padding-l-r-2">
-            {modalType ? <Modal  modalType={modalType}/> : ""}
+            {modalType ? <Modal /> : ""}
             { 
               startRestructure
               ? (<div className="restructure-backdrop">

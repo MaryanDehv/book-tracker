@@ -48,42 +48,43 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-// 
 
+// fonts
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
 // utils
-@import '../scss/utils/mixins.scss';
-@import '../scss/utils/colors.scss';
-@import '../scss/utils/button.scss';
-@import '../scss/utils/font.scss';
-@import '../scss/utils/form.scss';
-@import '../scss/utils/grid.scss';
-@import '../scss/utils/restructure.scss';
-@import '../scss/utils/modal.scss';
-@import '../scss/utils/filterbooks.scss';
-@import '../scss/utils/editbooks.scss';
+@import './utils/mixins.scss';
+@import './utils/colors.scss';
+@import './utils/button.scss';
+@import './utils/font.scss';
+@import './utils/form.scss';
+@import './utils/grid.scss';
+@import './utils/restructure.scss';
+@import './utils/modal.scss';
+@import './utils/filterbooks.scss';
+@import './utils/editbooks.scss';
+@import './helper.scss';
 
 
 // components
-@import '../scss/cards/bookcard.scss';
-@import '../scss/cards/booklist.scss';
-@import '../scss/cards/bookgraph.scss';
-@import '../scss/cards/bookprogress.scss';
-@import '../scss/cards/bookpagecard.scss';
+@import './cards/bookcard.scss';
+@import './cards/booklist.scss';
+@import './cards/bookprogress.scss';
+@import './cards/bookpagecard.scss';
 
 
 //chart
-@import '../scss/chart/linechart.scss';
+@import './chart/linechart.scss';
+@import './chart/bargraph.scss';
 
 // navigation
-@import '../scss/navigation/sidebar.scss';
-@import '../scss/navigation/topbar.scss';
-@import '../scss/navigation/search.scss';
+@import './navigation/sidebar.scss';
+@import './navigation/topbar.scss';
+@import './navigation/search.scss';
 
 // themes
-@import '../scss/theme/dark.scss';
-@import '../scss/theme/light.scss';
+@import './theme/dark.scss';
+@import './theme/light.scss';
 
 body{
     height: 100vh;
@@ -97,48 +98,6 @@ body{
 	}
 }
 
-
-.flex{
-	display: flex;
-}
-
-.p-static{
-	position: static !important;
-}
-
-.justify-sb{
-	justify-content: space-between;
-}
-
-.full-width{
-	width: 100%;
-}
-
-.flex-column{
-	flex-direction: column;
-}
-
-.v-h-center{
-	place-content: center;
-	flex-wrap: wrap;
-}
-
-.v-center{
-	align-items: center;
-}
-
-.h-center{
-	justify-content: center;
-}
-
-.opacity{
-	opacity: 0.5;
-}
-
-strong{
-	font-weight: 500;
-}
-
 svg{
 	overflow: visible;
 	g{
@@ -147,7 +106,7 @@ svg{
 }
 
 .main{
-	height: calc(100% - 76px);
+	height: calc(100% - 56px);
 	width: calc(100% - 159px);
 	position: absolute;
 	bottom:0;
@@ -165,40 +124,19 @@ svg{
     }
 }
 
-.hidden{
-	display: none;
+
+svg:not(.main-logo , :is(.filter-close-icon , .grid-item) .close , .top-bar :is(.hamburger)){
+	width: 15px;
 }
 
-.margin-l-r-20{
-	margin: 0 20px;
-}
-
-.padding-l-r-20{
-	padding: 0 20px;
-}
-
-.side-bar-content , .search , .section-title-icon , .book-progress , .book-list , .tag{
-	svg{
-		width: 15px;
-	}
-}
-
-.tag{
-	height: 15px;
-}
-
-.top-bar-inner-account{
-	svg{
-		width: 20px;
+@media only screen and (min-width: 320px) and (max-width:923px){
+	.top-bar :is(.hamburger , .search-icon , .close){
+		width: 20px !important;
 	}
 }
 
 .section-title{
 	text-transform: uppercase;
-
-	& div:nth-child(1){
-		gap:5px;
-	}
 
 	@include sectionTitle("green" , $primaryGreen);
 	@include sectionTitle("red" , $primaryRed);
@@ -240,11 +178,27 @@ svg{
     @include solidBackground('&.red' , $primaryRed);
     @include solidBackground('&.orange' , $primaryOrange);
     @include solidBackground('&.purple' , $primaryPurple);
+	color: $white;
+	svg{
+		height: fit-content;
+		line{
+			stroke: $white;
+			stroke-width: 2px;
+		}
+	}
 }
 
 .tag{
 	@include tag;
-	@include solidBackground('&' , $primaryRed);
+	&.fill{
+		@include solidBackground('&' , $primaryRed);
+	}
+
+	&.outline{
+		@include semiTransparentColouredBorderBox('&' , $gray)
+	}
+
+	height: 15px;
 }
 
 [data-clickable="true"]{
@@ -295,3 +249,4 @@ svg{
 	@include semiTransparentColouredBorderBox('& > div.purple' , $primaryPurple);
 	@include semiTransparentColouredBorderBox('& > div.gray' , $gray)
 }
+

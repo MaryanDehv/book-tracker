@@ -13,8 +13,10 @@
     .close{
         width: 20px;
         
-        line{
-            stroke: $white;
+        &:hover{
+            line{
+                stroke: $primaryRed !important;
+            }
         }
     }
 
@@ -59,7 +61,7 @@
         .grid-item-content{
             display: flex;
             flex-wrap: wrap;
-            gap:10px;
+            gap:12px;
 
             .habit-blocks{
                 height: 10px;

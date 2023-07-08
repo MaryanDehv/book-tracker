@@ -73,6 +73,13 @@
         .choose-block-width{
             background:$blackLight;
         }
+
+        .close{
+            line{
+                stroke: $white;
+            }
+        }
+    
     }
 
     .graph-popup{
@@ -160,7 +167,7 @@
 
         .choose-filter{
             color: rgba($white , 0.5);
-            border-bottom: solid 1px rgba($white , 0.2);
+            border-bottom: solid 1px rgba($white , 0.1);
         }
 
         .filter-books-group-title{

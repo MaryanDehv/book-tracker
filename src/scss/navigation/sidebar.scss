@@ -92,12 +92,14 @@
         display: none;
     }
 
-    .hamburger{
-        display: block;
-    }
+    .top-bar{
+        .hamburger{
+            display: block;
+        }
 
-    .close{
-        display: none;
+        .close{
+            display: none;
+        }
     }
     
     // clean up this
@@ -181,8 +183,6 @@
                 .side-bar-read-notice{
                     gap:5px;
                     svg{
-                        width: 10px;
-                
                         g{
                             stroke:$primaryRed;
                             stroke-width: 3px;

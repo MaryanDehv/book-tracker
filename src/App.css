@@ -162,8 +162,8 @@ input:focus {
 .grid-container .close {
   width: 20px;
 }
-.grid-container .close line {
-  stroke: #FFFFFF;
+.grid-container .close:hover line {
+  stroke: #FF4C4C !important;
 }
 .grid-container .grid-item {
   align-items: center;
@@ -196,7 +196,7 @@ input:focus {
 .grid-container .habit-tracker-container .grid-item-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 .grid-container .habit-tracker-container .grid-item-content .habit-blocks {
   height: 10px;
@@ -556,7 +556,7 @@ input:focus {
   font-size: 10px;
 }
 .filter-books .choose-filter {
-  padding: 0px 0px 20px;
+  padding: 0px 0px 10px;
   font-size: 14px;
   color: rgba(17, 19, 21, 0.5);
   border-bottom: solid 1px rgba(17, 19, 21, 0.2);
@@ -567,7 +567,8 @@ input:focus {
   height: 10px;
   margin: 0px auto;
   padding-top: 10px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-top: 0.5px solid rgba(178, 174, 174, 0.2);
+  color: #B2AEAE;
 }
 .filter-books .progress-number-line > div {
   position: relative;
@@ -582,7 +583,7 @@ input:focus {
   width: 0.5px;
   display: block;
   top: -10px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(178, 174, 174, 0.2);
 }
 .filter-books .progress-number-line > div:first-child, .filter-books .progress-number-line > div:last-child {
   position: relative;
@@ -712,16 +713,78 @@ input:focus {
   height: 100%;
 }
 
+.flex {
+  display: flex;
+}
+
+.p-static {
+  position: static !important;
+}
+
+.justify-sb {
+  justify-content: space-between;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.v-h-center {
+  place-content: center;
+  flex-wrap: wrap;
+}
+
+.v-center {
+  align-items: center;
+}
+
+.h-center {
+  justify-content: center;
+}
+
+.opacity {
+  opacity: 0.5;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+.margin-l-r-20 {
+  margin: 0 20px;
+}
+
+.padding-l-r-20 {
+  padding: 0 20px;
+}
+
 .book-card-container {
   gap: 10px;
 }
 .book-card-container .grid-item-content {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
 }
 .book-card {
   height: 196px;
-  width: 45%;
+}
+@media only screen and (min-width: 1128px) {
+  .book-card {
+    width: calc((100% - 10px) / 2);
+  }
+}
+@media only screen and (min-width: 651px) and (max-width: 1127px) {
+  .book-card {
+    width: calc((100% - 20px) / 3);
+  }
 }
 @media only screen and (max-width: 650px) {
   .book-card {
@@ -806,128 +869,6 @@ input:focus {
 }
 .book-list .book-list-genres .filter-item.orange-outline svg polyline {
   stroke: #F95731;
-}
-
-.book-graph-container .grid-item-content {
-  z-index: 0;
-}
-
-.graph_bars-container,
-.bar-container,
-.graph,
-.book-graph-container .grid-item-content {
-  position: relative;
-}
-
-.bar-data-popup,
-.bar-mask,
-.bar,
-.graph-x-axis,
-.graph-y-axis {
-  position: absolute;
-}
-
-.graph {
-  height: calc(100% - 25px);
-  width: 98%;
-  left: 2%;
-}
-.graph .graph_bars-container {
-  height: 100%;
-  width: 100%;
-  gap: 5px;
-  z-index: 1;
-}
-.graph .graph_bars-container .bar-container:nth-child(5n+1) .bar {
-  background: #00DA32 !important;
-}
-.graph .graph_bars-container .bar-container:nth-child(5n+2) .bar {
-  background: #F95731 !important;
-}
-.graph .graph_bars-container .bar-container:nth-child(5n+3) .bar {
-  background: #A431F9 !important;
-}
-.graph .graph_bars-container .bar-container:nth-child(5n+4) .bar {
-  background: #FF4C4C !important;
-}
-.graph .graph_bars-container .bar-container:nth-child(5n+5) .bar {
-  background: #359EFF !important;
-}
-.graph .graph_bars-container .bar-container {
-  width: 14.2857142857%;
-}
-.graph .graph_bars-container .bar-container .bar-data-popup {
-  display: none;
-}
-.graph .graph_bars-container .bar-container:first-child .bar-data-popup {
-  left: 0;
-}
-.graph .graph_bars-container .bar-container .bar-data-popup {
-  width: fit-content;
-  padding: 10px;
-  top: -70px;
-  right: 0;
-  z-index: 1;
-}
-.graph .graph_bars-container .bar-container .bar-data-popup ul li {
-  white-space: nowrap;
-  gap: 5px;
-}
-.graph .graph_bars-container .bar-container .bar-data-popup ul li:not(:last-child) {
-  padding-bottom: 5px;
-}
-.graph .graph_bars-container .bar-container .bar-data-popup ul li > div {
-  width: 5px;
-  height: 5px;
-  background: #FF4C4C;
-  border-radius: 1px;
-}
-.graph .graph_bars-container .bar-container .bar-mask {
-  bottom: 0;
-  width: 100%;
-  animation: increase 0.5s forwards;
-}
-@keyframes increase {
-  0% {
-    height: 0%;
-  }
-  100% {
-    height: 100%;
-  }
-}
-.graph .graph_bars-container .bar-container .bar {
-  border-radius: 8px;
-  width: 65%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0px auto;
-}
-.graph .graph_bars-container .bar-container .bar:hover .bar-data-popup {
-  display: block;
-}
-.graph .graph-x-axis, .graph .graph-y-axis {
-  color: #B2AEAE;
-  width: 100%;
-  justify-content: space-between;
-}
-.graph .graph-x-axis {
-  bottom: -20px;
-}
-.graph .graph-x-axis > span {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.graph .graph-y-axis {
-  flex-direction: column;
-  top: 0;
-  height: 100%;
-  z-index: 0;
-  left: -2%;
-}
-.graph .graph-popup {
-  border-radius: 5px;
 }
 
 .book-progress {
@@ -1060,6 +1001,7 @@ input:focus {
   height: 100%;
   place-content: center;
   flex-wrap: wrap;
+  color: #FFFFFF;
   font-weight: 600;
 }
 .book-page-card .book-page-card-contents-progress {
@@ -1101,6 +1043,128 @@ input:focus {
 }
 .line-chart .line-chart-x-axis {
   height: 100%;
+}
+
+.book-graph-container .grid-item-content {
+  z-index: 0;
+}
+
+.graph_bars-container,
+.bar-container,
+.graph,
+.book-graph-container .grid-item-content {
+  position: relative;
+}
+
+.bar-data-popup,
+.bar-mask,
+.bar,
+.graph-x-axis,
+.graph-y-axis {
+  position: absolute;
+}
+
+.graph {
+  height: calc(100% - 25px);
+  width: 98%;
+  left: 2%;
+}
+.graph .graph_bars-container {
+  height: 100%;
+  width: 100%;
+  gap: 5px;
+  z-index: 1;
+}
+.graph .graph_bars-container .bar-container:nth-child(5n+1) .bar {
+  background: #00DA32 !important;
+}
+.graph .graph_bars-container .bar-container:nth-child(5n+2) .bar {
+  background: #F95731 !important;
+}
+.graph .graph_bars-container .bar-container:nth-child(5n+3) .bar {
+  background: #A431F9 !important;
+}
+.graph .graph_bars-container .bar-container:nth-child(5n+4) .bar {
+  background: #FF4C4C !important;
+}
+.graph .graph_bars-container .bar-container:nth-child(5n+5) .bar {
+  background: #359EFF !important;
+}
+.graph .graph_bars-container .bar-container {
+  width: 14.2857142857%;
+}
+.graph .graph_bars-container .bar-container .bar-data-popup {
+  display: none;
+}
+.graph .graph_bars-container .bar-container:first-child .bar-data-popup {
+  left: 0;
+}
+.graph .graph_bars-container .bar-container .bar-data-popup {
+  width: fit-content;
+  padding: 10px;
+  top: -70px;
+  right: 0;
+  z-index: 1;
+}
+.graph .graph_bars-container .bar-container .bar-data-popup ul li {
+  white-space: nowrap;
+  gap: 5px;
+}
+.graph .graph_bars-container .bar-container .bar-data-popup ul li:not(:last-child) {
+  padding-bottom: 5px;
+}
+.graph .graph_bars-container .bar-container .bar-data-popup ul li > div {
+  width: 5px;
+  height: 5px;
+  background: #FF4C4C;
+  border-radius: 1px;
+}
+.graph .graph_bars-container .bar-container .bar-mask {
+  bottom: 0;
+  width: 100%;
+  animation: increase 0.5s forwards;
+}
+@keyframes increase {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.graph .graph_bars-container .bar-container .bar {
+  border-radius: 8px;
+  width: 65%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0px auto;
+}
+.graph .graph_bars-container .bar-container .bar:hover .bar-data-popup {
+  display: block;
+}
+.graph .graph-x-axis, .graph .graph-y-axis {
+  color: #B2AEAE;
+  width: 100%;
+  justify-content: space-between;
+}
+.graph .graph-x-axis {
+  bottom: -20px;
+}
+.graph .graph-x-axis > span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.graph .graph-y-axis {
+  flex-direction: column;
+  top: 0;
+  height: 100%;
+  z-index: 0;
+  left: -2%;
+}
+.graph .graph-popup {
+  border-radius: 5px;
 }
 
 .side-bar {
@@ -1182,10 +1246,10 @@ input:focus {
   .side-bar {
     display: none;
   }
-  .hamburger {
+  .top-bar .hamburger {
     display: block;
   }
-  .close {
+  .top-bar .close {
     display: none;
   }
   .mobile-nav .side-bar {
@@ -1259,9 +1323,6 @@ input:focus {
   .mobile-nav .side-bar-mobile-nav-user-details .side-bar-read-notice {
     gap: 5px;
   }
-  .mobile-nav .side-bar-mobile-nav-user-details .side-bar-read-notice svg {
-    width: 10px;
-  }
   .mobile-nav .side-bar-mobile-nav-user-details .side-bar-read-notice svg g {
     stroke: #FF4C4C;
     stroke-width: 3px;
@@ -1295,11 +1356,10 @@ input:focus {
   }
 }
 .top-bar {
-  height: 44px;
+  height: 24px;
   width: calc(100% - 160px);
   right: 0;
   top: 0;
-  justify-content: space-between;
   position: fixed;
   padding: 16px 0px;
 }
@@ -1317,9 +1377,6 @@ input:focus {
 }
 .top-bar-inner-account p {
   gap: 4px;
-}
-.top-bar-inner-account p svg {
-  width: 15px;
 }
 .top-bar-inner-account p svg g {
   stroke: #FF4C4C;
@@ -1427,14 +1484,6 @@ input:focus {
 }
 .search .filtered > div {
   gap: 5px;
-}
-.search .filtered .filter-item {
-  height: 15px;
-  color: #FFFFFF;
-}
-.search .filtered svg line {
-  stroke: #FFFFFF;
-  stroke-width: 2px;
 }
 .search .filter-active g {
   stroke: #359EFF;
@@ -1602,6 +1651,9 @@ input:focus {
 .dark-mode .grid-item .choose-block-width {
   background: #1A1D1F;
 }
+.dark-mode .grid-item .close line {
+  stroke: #FFFFFF;
+}
 .dark-mode .graph-popup {
   background: #111315;
   color: #FFFFFF;
@@ -1655,7 +1707,7 @@ input:focus {
 }
 .dark-mode .filter-books .choose-filter {
   color: rgba(255, 255, 255, 0.5);
-  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 }
 .dark-mode .filter-books .filter-books-group-title {
   opacity: 0.8;
@@ -1682,6 +1734,9 @@ input:focus {
 }
 .light-mode .grid-item .choose-block-width {
   background: #FFFFFF;
+}
+.light-mode .grid-item .close line {
+  stroke: #B2AEAE;
 }
 .light-mode .graph-popup {
   background: #FFFFFF;
@@ -1757,10 +1812,11 @@ input:focus {
 }
 .light-mode .filter-books .filter-item:not(.checked) {
   border: solid 0.5px #111315;
+  color: #111315;
 }
 .light-mode .filter-books .choose-filter {
   color: rgba(17, 19, 21, 0.5);
-  border-bottom: solid 1px rgba(17, 19, 21, 0.2);
+  border-bottom: solid 1px rgba(17, 19, 21, 0.1);
 }
 .light-mode .filter-books .filter-books-group-title {
   color: #B2AEAE;
@@ -1776,47 +1832,6 @@ body {
   fill: #FFDD73;
 }
 
-.flex {
-  display: flex;
-}
-
-.p-static {
-  position: static !important;
-}
-
-.justify-sb {
-  justify-content: space-between;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.v-h-center {
-  place-content: center;
-  flex-wrap: wrap;
-}
-
-.v-center {
-  align-items: center;
-}
-
-.h-center {
-  justify-content: center;
-}
-
-.opacity {
-  opacity: 0.5;
-}
-
-strong {
-  font-weight: 500;
-}
-
 svg {
   overflow: visible;
 }
@@ -1825,7 +1840,7 @@ svg g {
 }
 
 .main {
-  height: calc(100% - 76px);
+  height: calc(100% - 56px);
   width: calc(100% - 159px);
   position: absolute;
   bottom: 0;
@@ -1850,35 +1865,17 @@ svg g {
   }
 }
 
-.hidden {
-  display: none;
-}
-
-.margin-l-r-20 {
-  margin: 0 20px;
-}
-
-.padding-l-r-20 {
-  padding: 0 20px;
-}
-
-.side-bar-content svg, .search svg, .section-title-icon svg, .book-progress svg, .book-list svg, .tag svg {
+svg:not(.main-logo, :is(.filter-close-icon, .grid-item) .close, .top-bar :is(.hamburger)) {
   width: 15px;
 }
 
-.tag {
-  height: 15px;
+@media only screen and (min-width: 320px) and (max-width: 923px) {
+  .top-bar :is(.hamburger, .search-icon, .close) {
+    width: 20px !important;
+  }
 }
-
-.top-bar-inner-account svg {
-  width: 20px;
-}
-
 .section-title {
   text-transform: uppercase;
-}
-.section-title div:nth-child(1) {
-  gap: 5px;
 }
 .section-title.green .section-title-icon {
   background: rgba(0, 218, 50, 0.1);
@@ -1935,6 +1932,7 @@ svg g {
   border-radius: 20px;
   padding: 3px 10px;
   text-transform: uppercase;
+  color: #FFFFFF;
 }
 .filter-item.green {
   background: #00DA32;
@@ -1948,15 +1946,30 @@ svg g {
 .filter-item.purple {
   background: #A431F9;
 }
+.filter-item svg {
+  height: fit-content;
+}
+.filter-item svg line {
+  stroke: #FFFFFF;
+  stroke-width: 2px;
+}
 
 .tag {
   justify-content: space-between;
   border-radius: 20px;
   padding: 3px 10px;
   text-transform: uppercase;
+  height: 15px;
 }
-.tag {
+.tag.fill {
   background: #FF4C4C;
+}
+.tag.outline {
+  background: rgba(178, 174, 174, 0.3);
+  border: solid 1px #B2AEAE;
+}
+.tag.outline svg polyline {
+  stroke: #B2AEAE;
 }
 
 [data-clickable=true] {

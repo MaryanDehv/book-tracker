@@ -1,7 +1,7 @@
-import { ArrowIcon, TimesIcon } from "../images/icons/customIcons";
-import { DataContext } from "../App";
+import { ArrowIcon, TimesIcon } from "../../images/icons/customIcons";
+import { DataContext } from "../../App";
 import { useContext, useState } from "react";
-import { closeModal } from "../functions/_helper";
+import { closeModal } from "../../functions/_helper";
 
 const AddBook = () => {
 
@@ -39,7 +39,7 @@ const AddBook = () => {
                 </div>
                 <div className="input-block-container flex flex-column" style={{minHeight:"40px"}}>
                     <label>Genres</label>
-                    <div className="flex" style={{gap:"5px" , paddingTop:"10px" , flexWrap:"wrap"}}>{genres.map((genre , index) => <div key={index} className="tag flex v-center">{genre}<TimesIcon func={() => removeGenre(index)}/></div>)}<input className="p-static" type="text"  placeholder="Who is the author?" onKeyPress={addGenre}/></div>
+                    <div className="flex" style={{gap:"5px" , paddingTop:"10px" , flexWrap:"wrap"}}>{genres.map((genre , index) => <div key={index} className="tag fill flex v-center">{genre}<TimesIcon func={() => removeGenre(index)}/></div>)}<input className="p-static" type="text"  placeholder="Who is the author?" onKeyDown={addGenre}/></div>
                 </div>
                 <div className="input-block-container flex flex-column">
                     <label>Description</label>

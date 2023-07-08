@@ -1,0 +1,52 @@
+.flex{
+	display: flex;
+}
+
+.p-static{
+	position: static !important;
+}
+
+.justify-sb{
+	justify-content: space-between;
+}
+
+.full-width{
+	width: 100%;
+}
+
+.flex-column{
+	flex-direction: column;
+}
+
+.v-h-center{
+	place-content: center;
+	flex-wrap: wrap;
+}
+
+.v-center{
+	align-items: center;
+}
+
+.h-center{
+	justify-content: center;
+}
+
+.opacity{
+	opacity: 0.5;
+}
+
+strong{
+	font-weight: 500;
+}
+
+.hidden{
+	display: none;
+}
+
+.margin-l-r-20{
+	margin: 0 20px;
+}
+
+.padding-l-r-20{
+	padding: 0 20px;
+}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { DataContext } from "../App";
-import SectionTitle from "./SectionTitle";
+import { DataContext } from "../../App";
+import SectionTitle from "../headings/SectionTitle";
 
 const Modal = () => {
 

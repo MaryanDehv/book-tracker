@@ -2,7 +2,7 @@ import {Logo , ClockIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , M
 import { themeMode } from '../../functions/_theme'
 import { useContext } from 'react'
 import { DataContext } from '../../App'
-import AddBook from '../AddBook'
+import AddBook from '../Modal/AddBook'
 import { setModal } from '../../functions/_helper'
 
 const Navigation = () => {
