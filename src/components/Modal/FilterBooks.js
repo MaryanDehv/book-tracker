@@ -136,17 +136,10 @@ const FilterBooks = () => {
           <div className="choose-filter">
             Choose your filter options
           </div>
-          <div className="flex check-boxes-container">
-          {
-              bookCategories.variable.map((tag , index) => (
-                  <div data-clickable="true"  key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , bookCategories)} data-check={tag.name.toLowerCase()}>
-                      <div className={`gray`}>
-                          <CheckMark />
-                      </div>
-                      <p> {tag.name} </p>
-                  </div>
-              ))
-          }
+          <div className="select-categories-container flex flex-column">
+            {
+              bookCategories.variable.map((category, index) => <div className={`category flex justify-sb ${category.checked ? 'checked' : ''}`} data-clickable="true" onClick={(el) => check(index , bookCategories , {genre: genres , progressBar , author: authors , rating: ratings , status})}> {category.name.toUpperCase()} <CheckMark /></div>)
+            }
           </div>
           <button data-clickable="true" onClick={checkIfEmpty} className="red-button full-width"> <span className="uppercase"> Select Filters </span><ArrowIcon /> </button>
         </>

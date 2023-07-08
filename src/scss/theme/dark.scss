@@ -173,6 +173,15 @@
         .filter-books-group-title{
             opacity: 0.8;
         }
+
+        .select-categories-container{
+            .category{
+                &.checked{
+                    background:$black; 
+                }
+                // box-shadow: 0px 0px 20px rgba($black , 0.5);
+            }
+        }
     }
 
 }

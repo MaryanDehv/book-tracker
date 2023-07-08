@@ -145,4 +145,34 @@
             }
         }
     }
+
+    .select-categories-container{
+        gap:10px;
+        .category{
+            padding: 10px;
+            border:solid 1px rgba($gray , 0.2);
+            border-radius: 5px;
+            font-size: 14px;
+            color: $gray;
+            background: rgba($gray , 0.1);
+            
+            svg{
+                visibility: hidden;
+            }
+
+            &.checked{
+                border-color: $primaryRed;
+                color: $primaryRed;
+
+                svg{
+                   visibility: visible;
+                   width: 10px;
+                   polyline{
+                    stroke:$primaryRed;
+                    stroke-width:2px;
+                   }
+                }
+            }
+        }
+    }
 }

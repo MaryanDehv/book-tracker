@@ -165,5 +165,14 @@
         .filter-books-group-title{
             color: $gray;
         }
+
+        .select-categories-container{
+            .category{
+                &.checked{
+                    background: $white;
+                }
+                // box-shadow: 0px 0px 20px rgba($gray , 0.1);
+            }
+        }
     }
 }

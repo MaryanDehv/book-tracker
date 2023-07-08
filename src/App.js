@@ -82,7 +82,6 @@ function App() {
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
   const [startRestructure , setStartRestructure] = useState(false);
-  // const [modal , setModal] = useState(false)
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])

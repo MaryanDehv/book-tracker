@@ -58,6 +58,7 @@ table {
   background: #FF4C4C;
   border-radius: 5px;
   position: relative;
+  color: #FFFFFF;
 }
 .red-button * {
   color: #FFFFFF !important;
@@ -661,6 +662,32 @@ input:focus {
 .filter-books .filter-books-group .star-icon.gray path {
   fill: #B2AEAE;
   stroke: #B2AEAE;
+}
+.filter-books .select-categories-container {
+  gap: 10px;
+}
+.filter-books .select-categories-container .category {
+  padding: 10px;
+  border: solid 1px rgba(178, 174, 174, 0.2);
+  border-radius: 5px;
+  font-size: 14px;
+  color: #B2AEAE;
+  background: rgba(178, 174, 174, 0.1);
+}
+.filter-books .select-categories-container .category svg {
+  visibility: hidden;
+}
+.filter-books .select-categories-container .category.checked {
+  border-color: #FF4C4C;
+  color: #FF4C4C;
+}
+.filter-books .select-categories-container .category.checked svg {
+  visibility: visible;
+  width: 10px;
+}
+.filter-books .select-categories-container .category.checked svg polyline {
+  stroke: #FF4C4C;
+  stroke-width: 2px;
 }
 
 .edit-book-contents {
@@ -1712,6 +1739,9 @@ strong {
 .dark-mode .filter-books .filter-books-group-title {
   opacity: 0.8;
 }
+.dark-mode .filter-books .select-categories-container .category.checked {
+  background: #111315;
+}
 
 .light-mode .main {
   background: #F2F2F2;
@@ -1820,6 +1850,9 @@ strong {
 }
 .light-mode .filter-books .filter-books-group-title {
   color: #B2AEAE;
+}
+.light-mode .filter-books .select-categories-container .category.checked {
+  background: #FFFFFF;
 }
 
 body {
