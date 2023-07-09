@@ -4,6 +4,7 @@ import { useContext, useRef, useState} from "react";
 import {DataContext} from '../../App';
 import { filter } from "../../functions/_filtering";
 import bookData from "../../data/data";
+import { slider } from "../../functions/_slider";
 
 const FilterBooks = () => {
     const {status , authors , progressBar , ratings , modal , bookCategories , genres , filteredBooks} = useContext(DataContext);
@@ -19,8 +20,8 @@ const FilterBooks = () => {
     }
 
     const states = {status , authors , progressBar , modal , ratings , genres , filteredBooks};
-    const {currentPos , stopTracking , clickedButton } = filter(refs ,states).slider()
-    const {collectiveFilterData} = filter("" , states , bookData)
+    const {currentPos , stopTracking , clickedButton } = slider(refs, states)
+    const {collectiveFilterData} = filter(states , bookData)
 
     const progresAmounts = [
       0 , 25 , 50 , 75 , 100

@@ -1,35 +1,40 @@
-import { filter } from "./_filtering";
+import {getBooksByName} from "./_filtering";
+import {dataObject} from "./_helper";
 
 // location -> search.js
-export function search(state , _){ 
-    const {BookCard, BookList, BookProgress, SectionTitle, CheckIcon, ListIcon, ClockIcon} = _;
+export function search(
+    {
+        searchDropdown, 
+        searchInput,  
+        filterDropdown,
+        status
+    } , 
+    components
+    ){ 
+    const {BookCard, BookList, BookProgress, SectionTitle, CheckIcon, ListIcon, ClockIcon} = components;
    
     function toggleFilterPanel(el){
-      const {filterDropdown , searchDropdown} = state;
-      filterDropdown.set(!filterDropdown.variable)
-      if(!searchDropdown.variable) searchDropdown.set(true)
+      filterDropdown[1](!filterDropdown[0])
+      if(!searchDropdown[0]) searchDropdown[1](true)
     }
   
-    function resetSearch(mobileSearch){
-      const {searchDropdown ,filterDropdown , searchInput} = state;
-      searchDropdown.set(false)
-      filterDropdown.set(false)
-      searchInput.set("")
+    function removeSearch(mobileSearch){
+      searchDropdown[1](false)
+      filterDropdown[1](false)
+      searchInput[1]("")
       if(mobileSearch) mobileSearch(false)
     }
   
-    function updateSearch(e){
-      const {searchDropdown , searchInput} = state;
-      searchInput.set(e.target.value)
-      searchDropdown.set(true)
+    function updateSearchInput(e){
+      searchInput[1](e.target.value)
+      searchDropdown[1](true)
     }
 
-    function getBooks(searchPhrase , data){
-      return constructSearchResults(filter().filterBooksByName(searchPhrase , data))
+    function getBooks(searchPhrase){
+      return constructSearchResults(getBooksByName(searchPhrase))
     }
   
     function constructSearchResults(searchData){
-        const {status} = state;
         const filterData = [];
         const selectedFilterOptions = status.variable.filter(tag => tag.checked == true);
         let sortedSearchData = {};
@@ -45,33 +50,32 @@ export function search(state , _){
             </div>
         </div>)
   
-        const setSortedSearchData = (status , arrItem) => {
-            sortedSearchData[status] = jsx({
-                component: getComponent(status),
-                status: arrItem.status,
+        const setSortedSearchData = (book) => {
+            sortedSearchData[book.status] = jsx({
+                component: getComponent(book.status),
+                status: book.status,
             }); 
         }
   
-  
         searchData.forEach(book => {
-            const {status} = book;
-            if(!sortedSearchData[status]){
+            if(!sortedSearchData[book.status]){
                 if(filterData.length >= 1){
                     filterData.forEach(filterTag => {
-                        if(status == filterTag) setSortedSearchData(status , book)
+                        if(status == filterTag) setSortedSearchData(book)
                     })
                 } else {
-                    setSortedSearchData(status , book)
+                    setSortedSearchData(book)
                 }
             }
         })
+
         
         let convertedToArray = [];
   
         for(const key in sortedSearchData){
             convertedToArray.push(sortedSearchData[key])
         }
-  
+
         return convertedToArray;
     }
   
@@ -81,12 +85,10 @@ export function search(state , _){
         if(status == 'list') return BookList
     }
   
-  
-  
     return{
       toggleFilterPanel,
-      resetSearch,
-      updateSearch,
+      removeSearch,
+      updateSearchInput,
       getBooks
     }
   }

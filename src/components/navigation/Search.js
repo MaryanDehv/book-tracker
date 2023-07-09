@@ -4,7 +4,6 @@ import { search } from "../../functions/_search";
 import BookCard from "../cards/BookCard";
 import BookProgress from "../cards/BookProgress";
 import BookList from "../cards/BookList";
-import bookData from "../../data/data";
 import {DataContext} from "../../App"
 import { check } from "../../functions/_helper";
 import { filter } from "../../functions/_filtering";
@@ -12,35 +11,20 @@ import SectionTitle from "../headings/SectionTitle";
 
 const Search = ({mobileDropdown , toggleMobileSearch}) => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
-    const [searchDropdown , setSearchDropdown] = useState(mobileDropdown ? true : false)
-    const [searchInput , setSearchInput] = useState("")
-    const [searchedData , setSearchedData] = useState("");
-    const [filterDropdown , setFilterDropdown] = useState(false);
+    const searchDropdown = useState(mobileDropdown ? true : false)
+    const searchInput = useState("")
+    const searchedData = useState("");
+    const filterDropdown = useState(false);
     const {status} = useContext(DataContext)
 
-    const states = {
-        searchDropdown: {
-            variable: searchDropdown ,
-            set: setSearchDropdown
-        } , 
-        filterDropdown: {
-            variable: filterDropdown ,
-            set: setFilterDropdown
-        }, 
-        searchInput: {
-            variable: searchInput ,
-            set: setSearchInput
-        }, 
-        status: status,
-        searchedData: {
-            variable: searchedData,
-            set: setSearchedData
-        }
-    }
-
-    const {toggleFilterPanel, resetSearch, updateSearch, getBooks } = 
+    const {toggleFilterPanel, removeSearch, updateSearchInput, getBooks } = 
         search(
-            states,
+            {
+                searchDropdown, 
+                searchInput,  
+                filterDropdown,
+                status
+            },
             {
                 BookCard,
                 BookProgress,
@@ -48,15 +32,14 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                 CheckIcon,
                 ListIcon,
                 ClockIcon,
-                SectionTitle,
-                bookData
+                SectionTitle
             }
         );
 
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added
-        setSearchedData(getBooks(searchInput.toLowerCase().trim("") , bookData.books))
-    } , [searchInput , status.variable])
+        searchedData[1](getBooks(searchInput[0].toLowerCase().trim("")))
+    } , [searchInput[0] , status.variable])
     
     function getChecked(){
         // only return filter indicators for those that are checked
@@ -64,23 +47,23 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     }
 
     return(
-        <div className={`search ${searchDropdown ? 'search-dropdown-panel' : ''}`}>
+        <div className={`search ${searchDropdown[0] ? 'search-dropdown-panel' : ''}`}>
                 
                 {/* search input block */}
                 <div className={`search-box-container flex v-center justify-sb`}>
                     <div className="flex v-center">
-                        <div className="icon"><SearchIcon func={() => setSearchDropdown(!searchDropdown)} /></div>
-                        <input type="text" placeholder="Search your library..." value={searchInput}  onChange={updateSearch} />
+                        <div className="icon"><SearchIcon func={() => searchDropdown[1](!searchDropdown[0])} /></div>
+                        <input type="text" placeholder="Search your library..." value={searchInput[0]}  onChange={updateSearchInput} />
                     </div>
 
                     <div className="flex v-center">
-                        <div className={`filter icon ${filterDropdown ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
-                        <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => resetSearch(toggleMobileSearch ? toggleMobileSearch.set : false)}/></div>
+                        <div className={`filter icon ${filterDropdown[0] ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
+                        <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => removeSearch(toggleMobileSearch ? toggleMobileSearch.set : false)}/></div>
                     </div>
                 </div>
                 
                 {/* dropdown section */}
-                <div className={`search-dropdown ${filterDropdown ? 'filter-panel' : 'search-content-panel'}`}>
+                <div className={`search-dropdown ${filterDropdown[0] ? 'filter-panel' : 'search-content-panel'}`}>
                     
                     {/* currently active filters */}
                     {
@@ -90,7 +73,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                                 <p> Filtered </p>
                                 <div className="flex">
                                     {
-                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => filter().removeChecked(tagName , states.status)}/></div>))
+                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => filter().removeChecked(tagName , status)}/></div>))
                                     }
                                 </div>
                             </div>
@@ -113,8 +96,8 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                         <div className={`search-dropdown-inner-group flex check-boxes-container`}>
                             {
                                 status.variable.map((tag , index) => (
-                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , status)} data-check={tag.name.toLowerCase()}>
-                                        <div className={`${tag.color}`}>
+                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , status)} data-check={tag.checked}>
+                                        <div className={`gray`}>
                                             <CheckMark />
                                         </div>
                                         <p> {tag.name} </p>

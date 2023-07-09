@@ -7,15 +7,15 @@ import HabitTracker from './components/cards/HabitTracker';
 import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
 import BookGraph from './components/charts/BarGraph';
-import bookData from './data/data';
+import { getBookCategories, getGenreCategories } from './data/data';
 import React, { useEffect, useState} from "react";
 import { Outlet } from 'react-router-dom';
-import { filter } from './functions/_filtering';
+import { bookStatus} from './functions/_filtering';
 import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
 import { restructure } from './functions/_restructure'
+import { dataObject } from './functions/_helper';
 
 export const DataContext = React.createContext()
-const {sortBooksBasedOnStatus , getData} = filter("" , "" , bookData)
 
 const gridConfig = [
   {
@@ -37,7 +37,7 @@ const gridConfig = [
       name: 'ongoing'
     },
     class:"book-progress-container",
-    content:sortBooksBasedOnStatus("ongoing" , bookData)
+    content:bookStatus("ongoing")
   },{
     blockWidth:2,
     component: BookGraph,
@@ -58,7 +58,7 @@ const gridConfig = [
       name: 'list'
     },
     class:"book-list-container",
-    content:sortBooksBasedOnStatus("list" , bookData)
+    content:bookStatus("list")
   },
   {
     blockWidth: 2,
@@ -69,7 +69,7 @@ const gridConfig = [
       name: 'completed'
     },
     class:"book-card-container",
-    content: sortBooksBasedOnStatus("completed", bookData)
+    content: bookStatus("completed")
   }
 ]
 
@@ -81,19 +81,30 @@ function App() {
   const [theme , setTheme] = useState('dark')
   const [mobileNav , setMobileNav] = useState(false);
   const [mobileSearch , setMobileSearch] = useState(false);
+
+
+  // modal states
+  const [modalType , setModalType] = useState()
+
+  // dashboard layout
   const [startRestructure , setStartRestructure] = useState(false);
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
-  const [progressBar , setProgressBar] = useState(0);
-  const [starFIlter , setStarFilter] = useState(0)
-  const [modalType , setModalType] = useState()
-  const [authors , setAuthors] = useState(bookData.authors)
-  const [status , setStatus] = useState(bookData.status); // contains all possible filter options and their checked state
-  const [bookCategories , setBookCategories] = useState(getData(bookData.books[0],['title' , 'image' , 'color' , 'description']));
-  const [genres , setGenres] = useState(getData(bookData.genre))
   const [changeWidth , setChangeWidth] = useState()
-  const [filteredBooks, setFilteredBooks] = useState(bookData.books)
+
+  // filtering
+  const [authors , setAuthors] = useState(dataObject('authors'))
+  const [status , setStatus] = useState(dataObject('status')); // contains all possible filter options and their checked state
+  const [bookCategories , setBookCategories] = useState(getBookCategories());
+  const [genres , setGenres] = useState(dataObject('genre'))
+  const [starFIlter , setStarFilter] = useState(0)
+  const [progressBar , setProgressBar] = useState(0);
+
+  console.log(genres)
+
+  // remove these
+  const [filteredBooks, setFilteredBooks] = useState(dataObject('books'))
 
 
   useEffect(() => {
@@ -107,22 +118,25 @@ function App() {
     }
   } , [selectedWidth])
 
+
+  // data passed down to other components via context
   const contextData = {
-    // modal:{variable: modal , set: setModal} , 
-    restructureBoard: {variable: startRestructure , set: setStartRestructure},
     mobileNav: {variable: mobileNav , set: setMobileNav},
-    gridLayout: {variable: gridLayout , set: setGridLayout},
-    selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
     modalType: {variable:modalType , set: setModalType},
-    status: {variable: status , set: setStatus},
     toggleSearch:{variable: mobileSearch , set: setMobileSearch},
     themeToggle: {variable: theme , set: setTheme},
-    ratings: {variable: starFIlter , set: setStarFilter},
-    authors: {variable: authors , set: setAuthors},
+
+    restructureBoard: {variable: startRestructure , set: setStartRestructure},
+    gridLayout: {variable: gridLayout , set: setGridLayout},
+    selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
     selection: {variable: selection , set: setSelection},
-    progressBar: {variable: progressBar , set: setProgressBar},
+
+    authors: {variable: authors , set: setAuthors},
+    status: {variable: status , set: setStatus},
     bookCategories: {variable: bookCategories, set: setBookCategories},
     genres: {variable: genres, set: setGenres},
+    ratings: {variable: starFIlter , set: setStarFilter},
+    progressBar: {variable: progressBar , set: setProgressBar},
     filteredBooks: {variable: filteredBooks, set: setFilteredBooks}
   }
 

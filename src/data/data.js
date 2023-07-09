@@ -9,7 +9,6 @@ const bookData = {
                 genre: ["steampunk", "fantasy", "adventure"],
                 progress: 100,
                 status: "completed",
-                color: "#F95731",
                 rating: 5,
                 author: "Noah Collins"
               },
@@ -21,7 +20,6 @@ const bookData = {
                 progress: 100,
                 status: "completed",
                 rating: 3,
-                color: "#359EFF",
                 author: "Ava Barnes"
               },
               {
@@ -31,7 +29,6 @@ const bookData = {
                 progress: 60,
                 genre: ["thriller", "adventure"],
                 status: "ongoing",
-                color: "#359EFF",
                 rating: 3,
                 author: "Charlotte Davis"
               },
@@ -42,7 +39,6 @@ const bookData = {
                 progress: 40,
                 genre: ["fantasy", "steampunk"],
                 status: "ongoing",
-                color: "#359EFF",
                 rating: 2,
                 author: "Sophia Montgomery"
               },
@@ -75,7 +71,6 @@ const bookData = {
                 progress: 0,
                 genre: ["fantasy", "adventure"],
                 status: "list",
-                color: "#A431F9",
                 rating: 3,
                 author: "Liam Thompson"
               },
@@ -86,7 +81,6 @@ const bookData = {
                 progress: 60,
                 genre: ["mystery", "steampunk"],
                 status: "ongoing",
-                color: "#359EFF",
                 rating: 4,
                 author: "Noah Collins"
               },
@@ -97,19 +91,11 @@ const bookData = {
                 progress: 40,
                 genre: ["psychology", "thriller"],
                 status: "ongoing",
-                color: "#359EFF",
                 rating: 5,
                 author: "Ava Barnes"
               }
     ],
-    genre: {
-        steampunk: "red",
-        fantasy: "purple",
-        adventure: "orange",
-        psychology: "red",
-        mystery: "green",
-        thriller: "purple"
-    },
+    genre: convertToObjects(getGenreCategories() , "name"),
     authors: [
         { name: "Sophia Montgomery"},
         { name: "Ethan Ramirez"},
@@ -122,19 +108,23 @@ const bookData = {
         { name: "Charlotte Davis"},
         { name: "Oliver Mitchell"}
     ],
-    status: [
-        {
-            name: "Completed",
-            color: "green"
-        },{
-            name: "Ongoing",
-            color: "red"
-        } ,{
-            name: "List",
-            color: "purple"
-        }
-    ]
+    status: convertToObjects(getStatusCategories() , "name")
+}
 
+function convertToObjects(arr , propertyName){
+  return arr.map((cat) => ({[propertyName]: cat}))
+}
+
+export function getBookCategories(){
+  return ["progress" , "genre", "status" , "rating" , "author"].map((cat) => ({name: cat}));
+}
+
+export function getGenreCategories(){
+  return ["steampunk" , "fantasy" , "adventure" , "psychology" , "mystery", "thriller"];
+}
+
+export function getStatusCategories(){
+  return ["completed" , "ongoing" , "list"];
 }
 
 export default bookData;
