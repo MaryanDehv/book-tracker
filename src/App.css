@@ -663,6 +663,10 @@ input:focus {
   fill: #B2AEAE;
   stroke: #B2AEAE;
 }
+.filter-books .clear-filter-item {
+  font-size: 12px;
+  font-weight: 500;
+}
 .filter-books .select-categories-container {
   gap: 10px;
 }
@@ -1531,7 +1535,11 @@ strong {
 .mobile-nav.mobile-search .side-bar-content {
   display: none;
 }
-.mobile-nav.mobile-search .search {
+.mobile-nav.mobile-search .side-bar {
+  overflow-y: hidden;
+}
+.mobile-nav.mobile-search .side-bar .search {
+  height: 100%;
   position: absolute;
   top: 50px;
   width: calc(100% - 40px);
@@ -1540,19 +1548,28 @@ strong {
   right: 0;
   margin: 0px auto;
 }
-.mobile-nav.mobile-search .search-box-container {
+.mobile-nav.mobile-search .side-bar .search-box-container {
   min-width: calc(100% - 40px);
 }
-.mobile-nav.mobile-search .search-box-container .search-icon {
+.mobile-nav.mobile-search .side-bar .search-box-container .search-icon {
   display: none;
 }
-.mobile-nav.mobile-search .search .filtered {
+.mobile-nav.mobile-search .side-bar .search .filtered {
   padding-bottom: 20px;
 }
-.mobile-nav.mobile-search .search .search-dropdown {
+.mobile-nav.mobile-search .side-bar .search .search-dropdown {
   box-shadow: none !important;
   margin-top: 20px;
   padding: 0px 20px;
+  overflow-y: scroll;
+  height: calc(100% - 117px);
+}
+.mobile-nav.mobile-search .side-bar .search .search-dropdown::-webkit-scrollbar {
+  display: none;
+}
+.mobile-nav.mobile-search .side-bar .search .search-dropdown {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .top-bar .search-dropdown {
@@ -2014,22 +2031,22 @@ svg:not(.main-logo, :is(.filter-close-icon, .grid-item) .close, .top-bar :is(.ha
   gap: 20px;
 }
 
-.filter-check {
+.check {
   gap: 5px;
 }
-.filter-check > div {
+.check > div {
   position: relative;
   width: 10px;
   height: 10px;
   border-radius: 2px;
 }
-.filter-check p {
+.check p {
   text-transform: uppercase;
 }
-.filter-check svg {
+.check svg {
   display: none;
 }
-.filter-check.checked .check-mark {
+.check.checked .check-mark {
   display: block;
   position: absolute;
   width: 6px;
@@ -2037,42 +2054,42 @@ svg:not(.main-logo, :is(.filter-close-icon, .grid-item) .close, .top-bar :is(.ha
   inset: 0;
   line-height: 0.9;
 }
-.filter-check.checked .check-mark polyline {
+.check.checked .check-mark polyline {
   stroke-width: 2px;
 }
-.filter-check > div.red {
+.check > div.red {
   background: rgba(255, 76, 76, 0.3);
   border: solid 1px #FF4C4C;
 }
-.filter-check > div.red svg polyline {
+.check > div.red svg polyline {
   stroke: #FF4C4C;
 }
-.filter-check > div.green {
+.check > div.green {
   background: rgba(0, 218, 50, 0.3);
   border: solid 1px #00DA32;
 }
-.filter-check > div.green svg polyline {
+.check > div.green svg polyline {
   stroke: #00DA32;
 }
-.filter-check > div.orange {
+.check > div.orange {
   background: rgba(249, 87, 49, 0.3);
   border: solid 1px #F95731;
 }
-.filter-check > div.orange svg polyline {
+.check > div.orange svg polyline {
   stroke: #F95731;
 }
-.filter-check > div.purple {
+.check > div.purple {
   background: rgba(164, 49, 249, 0.3);
   border: solid 1px #A431F9;
 }
-.filter-check > div.purple svg polyline {
+.check > div.purple svg polyline {
   stroke: #A431F9;
 }
-.filter-check > div.gray {
+.check > div.gray {
   background: rgba(178, 174, 174, 0.3);
   border: solid 1px #B2AEAE;
 }
-.filter-check > div.gray svg polyline {
+.check > div.gray svg polyline {
   stroke: #B2AEAE;
 }
 

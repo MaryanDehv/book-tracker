@@ -101,10 +101,9 @@ function App() {
   const [starFIlter , setStarFilter] = useState(0)
   const [progressBar , setProgressBar] = useState(0);
 
-  console.log(genres)
-
   // remove these
   const [filteredBooks, setFilteredBooks] = useState(dataObject('books'))
+  const [currentFilterOptions , setCurrentFilterOptions] = useState([])
 
 
   useEffect(() => {
@@ -137,7 +136,8 @@ function App() {
     genres: {variable: genres, set: setGenres},
     ratings: {variable: starFIlter , set: setStarFilter},
     progressBar: {variable: progressBar , set: setProgressBar},
-    filteredBooks: {variable: filteredBooks, set: setFilteredBooks}
+    filteredBooks: {variable: filteredBooks, set: setFilteredBooks},
+    currentFilterOptions: {variable: currentFilterOptions, set: setCurrentFilterOptions}
   }
 
   const {rearrage , touch} = restructure(contextData)

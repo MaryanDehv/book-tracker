@@ -1,5 +1,6 @@
 import { ArrowIcon } from "../../images/icons/customIcons";
 import bookData from "../../data/data";
+import { dataObject } from "../../functions/_helper";
 
 const BookList = ({content}) => {
     return(
@@ -10,7 +11,7 @@ const BookList = ({content}) => {
                     <h5 className="uppercase"> {content.title.substring(0 , 15)}<span className="opacity">...</span></h5>
                     <div className="book-list-genres flex">
                         {
-                            content.genre.map((bookgenre , index) => (<div key={index} className={`filter-item ${bookData.genre[bookgenre]}-outline`}> {bookgenre.substring(0, 3)} </div>))
+                            content.genre.map((bookgenre , index) => (<div key={index} className={`filter-item ${dataObject('config').genres.colors[bookgenre]}-outline`}> {bookgenre.substring(0, 3)} </div>))
                         }
                     </div>
                 </div>

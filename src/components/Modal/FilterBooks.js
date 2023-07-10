@@ -2,26 +2,23 @@ import { ArrowIcon, ArrowPlain, CheckMark, StarIcon} from "../../images/icons/cu
 import { check } from "../../functions/_helper";
 import { useContext, useRef, useState} from "react";
 import {DataContext} from '../../App';
-import { filter } from "../../functions/_filtering";
-import bookData from "../../data/data";
 import { slider } from "../../functions/_slider";
+import { clearFilters, collectiveFilterData } from "../../functions/_filtering";
+import Checkboxes from "../utils/Checkboxes";
 
 const FilterBooks = () => {
-    const {status , authors , progressBar , ratings , modal , bookCategories , genres , filteredBooks} = useContext(DataContext);
+    const {status , authors , progressBar , ratings , modal , bookCategories , genres , filteredBooks , currentFilterOptions} = useContext(DataContext);
     const [categoriesSelected , setCategoriesSelected] = useState(false)
     const progressBarRef = useRef()
     const progressBarLength = useRef()
-    const progressBarPercentage = useRef()
 
     const refs = {
       progressBarRef: progressBarRef,
-      progressBarLength: progressBarLength,
-      progressBarPercentage: progressBarPercentage
+      progressBarLength: progressBarLength
     }
 
-    const states = {status , authors , progressBar , modal , ratings , genres , filteredBooks};
+    const states = {status , authors , progressBar , modal , ratings , genres , filteredBooks , currentFilterOptions};
     const {currentPos , stopTracking , clickedButton } = slider(refs, states)
-    const {collectiveFilterData} = filter(states , bookData)
 
     const progresAmounts = [
       0 , 25 , 50 , 75 , 100
@@ -36,20 +33,11 @@ const FilterBooks = () => {
             selected.includes('status') ?
             (
               <div className="filter-books-group flex flex-column justify-sb">
-                <div className="filter-books-group-title"><div className="uppercase title"> Category </div></div>
+                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Status </div> <div className="clear-filter-item" data-clickable="true" onClick={() => clearFilters(states)['status']()}> Clear Status </div></div>
                 <div className="filter-books-group-inner">
                     <div className={`filter-selection-group`}>
                         <div className={`flex check-boxes-container`}>
-                            {
-                                status.variable.map((tag , index) => (
-                                    <div data-clickable="true" key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , status)} data-check={tag.name.toLowerCase()}>
-                                        <div className={`${tag.color}`}>
-                                            <CheckMark />
-                                        </div>
-                                        <p> {tag.name} </p>
-                                    </div>
-                                ))
-                            }
+                          <Checkboxes contents={status} groupName={"status"}/>
                         </div>
                     </div>
                 </div>
@@ -60,16 +48,15 @@ const FilterBooks = () => {
             selected.includes('progress') ?
             (
             <div className="filter-books-group flex flex-column justify-sb">
-              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Progress </div><div ref={progressBarPercentage}></div></div>
+              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title flex" style={{gap:"5px"}}> <div style={{color:"#FF4C4C"}}>{progressBar.variable == false ? "0%" : progressBar.variable + "%"}</div> Progress </div><div className="clear-filter-item" data-clickable="true" onClick={() => clearFilters(states)['progress']()}> Clear Progress </div></div>
               <div className="filter-books-group-inner" onMouseUp={stopTracking} onTouchEnd={stopTracking} onMouseLeave={stopTracking}>
-                <div className="percentage-bar-container" data-clickable="true"  ref={progressBarRef} onTouchStart={clickedButton} onMouseDown={clickedButton} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ><div className="slider-bar" style={{width: "0%"}} ref={progressBarLength}><div className="slider-button"></div></div></div></div>
+                <div className="percentage-bar-container" data-clickable="true"  ref={progressBarRef} onTouchStart={clickedButton} onMouseDown={clickedButton} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ><div className="slider-bar" style={{width: progressBar.variable == false ? "0%" : progressBar.variable + "%"}} ref={progressBarLength}><div className="slider-button"></div></div></div></div>
               </div>
               <div className="progress-number-line flex justify-sb">
                 {
                   progresAmounts.map(amount => (<div  data-clickable="true" onClick={() => {
                     progressBar.set(amount);
                     progressBarLength.current.style.width = amount + "%"
-                    progressBarPercentage.current.innerHTML = amount + "%"
                   }}>{amount}%</div>))
                 }
               </div>
@@ -80,10 +67,10 @@ const FilterBooks = () => {
             selected.includes('author') ?
             (
               <div className="filter-books-group flex flex-column justify-sb authors">
-                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Author</div></div>
+                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Author</div> <div className="clear-filter-item" data-clickable="true" onClick={() => clearFilters(states)['authors']()}> Clear Authors </div> </div>
                 <div className="filter-books-group-inner flex">
                   {
-                    authors.variable.map((author , index) => (<div data-clickable="true" className={`filter-item flex v-center justify-sb red ${author.checked ? "checked" : ""}`} onClick={() => check(index , authors)}> {author.name} <CheckMark /> </div>))
+                    authors.variable.map((author , index) => (<div data-clickable="true" className={`filter-item flex v-center justify-sb red ${author.checked ? "checked" : ""}`} onClick={() => check(author.name, authors)}> {author.name} <CheckMark /> </div>))
                   }
                 </div>
               </div>
@@ -93,20 +80,11 @@ const FilterBooks = () => {
             selected.includes('genre') ?
             (
               <div className="filter-books-group flex flex-column justify-sb">
-                <div className="filter-books-group-title"><div className="uppercase title"> Genre </div></div>
+                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Genre </div><div className="clear-filter-item" data-clickable="true" onClick={() => clearFilters(states)['genres']()}> Clear Genres </div></div>
                 <div className="filter-books-group-inner">
                     <div className={`filter-selection-group`}>
                         <div className={`flex check-boxes-container`}>
-                            {
-                                genres.variable.map((tag , index) => (
-                                    <div data-clickable="true" key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , genres)} data-check={tag.name.toLowerCase()}>
-                                        <div className="gray">
-                                            <CheckMark />
-                                        </div>
-                                        <p> {tag.name} </p>
-                                    </div>
-                                ))
-                            }
+                          <Checkboxes contents={genres} groupName={"genres"}/>
                         </div>
                     </div>
                 </div>
@@ -117,7 +95,7 @@ const FilterBooks = () => {
             selected.includes('rating') ?
             (
               <div className="filter-books-group flex flex-column justify-sb">
-              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Ratings</div></div>
+              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Ratings</div><div className="clear-filter-item" data-clickable="true" onClick={() => clearFilters(states)['ratings']()}> Clear Ratings</div></div>
               <div className="filter-books-group-inner flex" style={{gap:"5px"}}>
               {
                 [...Array(5)].map((star , index) => <StarIcon name={ratings.variable < index + 1 ? "gray" : "yellow"} func={() => ratings.set(index+1)}/>)
@@ -126,7 +104,7 @@ const FilterBooks = () => {
             </div>
             ) : ""
           }          
-            <button data-clickable="true" onClick={collectiveFilterData} className="red-button full-width"> <span className="uppercase"> Show Results </span><ArrowIcon /> </button>
+            <button data-clickable="true" onClick={() => collectiveFilterData(states)} className="red-button full-width"> <span className="uppercase"> Show Results </span><ArrowIcon /> </button>
         </>
       )
     }
@@ -139,7 +117,7 @@ const FilterBooks = () => {
           </div>
           <div className="select-categories-container flex flex-column">
             {
-              bookCategories.variable.map((category, index) => <div className={`category flex justify-sb ${category.checked ? 'checked' : ''}`} data-clickable="true" onClick={(el) => check(index , bookCategories , {genre: genres , progressBar , author: authors , rating: ratings , status})}> {category.name.toUpperCase()} <CheckMark /></div>)
+              bookCategories.variable.map((category, index) => <div className={`category flex justify-sb ${category.checked ? 'checked' : ''}`} data-clickable="true" onClick={(el) => check(category.name , bookCategories , {genre: genres , progressBar , author: authors , rating: ratings , status})}> {category.name.toUpperCase()} <CheckMark /></div>)
             }
           </div>
           <button data-clickable="true" onClick={checkIfEmpty} className="red-button full-width"> <span className="uppercase"> Select Filters </span><ArrowIcon /> </button>

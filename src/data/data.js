@@ -108,10 +108,29 @@ const bookData = {
         { name: "Charlotte Davis"},
         { name: "Oliver Mitchell"}
     ],
-    status: convertToObjects(getStatusCategories() , "name")
+    status: convertToObjects(getStatusCategories() , "name"),
+    config: {
+      status: {
+        colors: {
+          "ongoing" : "red" , 
+          "list" : "purple",
+          "completed" : "green"
+        }
+      },
+      genres: {
+        colors: {
+          "steampunk" : "red",
+          "fantasy" : "purple",
+          "adventure" : "orange",
+          "psychology" : "red",
+          "mystery" : "green",
+          "thriller" : "purple"
+        }
+      }
+    }
 }
 
-function convertToObjects(arr , propertyName){
+export function convertToObjects(arr , propertyName){
   return arr.map((cat) => ({[propertyName]: cat}))
 }
 

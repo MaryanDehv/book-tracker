@@ -5,9 +5,9 @@ import BookCard from "../cards/BookCard";
 import BookProgress from "../cards/BookProgress";
 import BookList from "../cards/BookList";
 import {DataContext} from "../../App"
-import { check } from "../../functions/_helper";
-import { filter } from "../../functions/_filtering";
+import { check, dataObject } from "../../functions/_helper";
 import SectionTitle from "../headings/SectionTitle";
+import Checkboxes from "../utils/Checkboxes";
 
 const Search = ({mobileDropdown , toggleMobileSearch}) => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
@@ -73,7 +73,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                                 <p> Filtered </p>
                                 <div className="flex">
                                     {
-                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${tagName.color}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => filter().removeChecked(tagName , status)}/></div>))
+                                        getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${dataObject('config')['status'].colors[tagName.name]}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={() => check(tagName.name , status)}/></div>))
                                     }
                                 </div>
                             </div>
@@ -84,9 +84,9 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                     {/* search results */}
                     <div className={`search-dropdown-inner flex flex-column search-results`}>
                         {
-                            searchedData.length >= 1 ?
-                            searchedData.map(item => (item))
-                            : searchInput == "" ? "" : (<div className="no-results"> Nothing found for <span className="search-input">{searchInput}</span></div>)
+                            searchedData[0].length >= 1 ?
+                            searchedData[0].map(item => (item))
+                            : searchInput[0] == "" ? "" : (<div className="no-results"> Nothing found for <span className="search-input">{searchInput[0]}</span></div>)
                         }
                     </div>
 
@@ -94,16 +94,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                     {/* filter options */}
                     <div className={`search-dropdown-inner filter-selection-group`}>
                         <div className={`search-dropdown-inner-group flex check-boxes-container`}>
-                            {
-                                status.variable.map((tag , index) => (
-                                    <div key={index} className={`filter-check flex v-center ${tag.checked ? 'checked' : ''}`} onClick={(el) => check(index , status)} data-check={tag.checked}>
-                                        <div className={`gray`}>
-                                            <CheckMark />
-                                        </div>
-                                        <p> {tag.name} </p>
-                                    </div>
-                                ))
-                            }
+                           <Checkboxes contents={status} groupName={"status"}/>
                         </div>
                     </div>
 

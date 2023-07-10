@@ -1,6 +1,6 @@
 // slider for progress bar
 export function slider(refs , states){
-    const {progressBarLength , progressBarPercentage , progressBarRef} = refs;
+    const {progressBarLength , progressBarRef} = refs;
     const {progressBar} = states;
     let trackMoving;
     let elementActualPosition;
@@ -15,7 +15,6 @@ export function slider(refs , states){
         if(trackMoving){
             percent = Math.round((((el.touches ? el.touches[0].clientX : el.clientX) - progressBarRef.current.getBoundingClientRect().left) * 100) / elementActualPosition);
             if(percent >= 0 && percent <= 100){
-                progressBarPercentage.current.innerHTML = percent+ "%"
                 progressBarLength.current.style.width = percent + "%"
             }
         }
