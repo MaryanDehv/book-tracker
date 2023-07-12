@@ -1,29 +1,13 @@
 .restructure{
     &-backdrop{
-        position: fixed;
-        z-index: 2;
-        display: flex;
-        flex-wrap: wrap;
-        place-content: center;
-
-        @media only screen and (max-width: 1127px){
-            height: calc(100% - 76px);
-            overflow-y: scroll;
-        }
+        // position: fixed;
+        // z-index: 2;
+        // display: flex;
+        // flex-wrap: wrap;
+        // place-content: center;
 
         &  , &::after{
             height: calc(100% - 76px);
-            width: calc(100% - 160px);
-
-            @media only screen and (max-width:1024px) {
-                width: calc(100% - 70px);
-            
-            }
-    
-            @media only screen and (max-width:923px) {
-                width: 100%;
-            }
-               
         }
 
         .restructure-options{
@@ -47,7 +31,7 @@
         }
 
         &-inner{
-            max-width: 500px;
+            // max-width: 500px;
             min-width: 280px;
             z-index: 2;
             display: grid;

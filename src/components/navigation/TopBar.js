@@ -1,12 +1,13 @@
-import {BoardIcon,ClockIcon, HamburgerIcon, ListIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
-import { toggle } from "../../functions/_helper";
+import {AddIcon, BoardIcon,ClockIcon, HamburgerIcon, ListIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
+import { setModal, toggle } from "../../functions/_helper";
 import Search from "./Search";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
 import { useLocation } from "react-router-dom";
+import Restructure from "../Modal/Restructure";
 
 const TopBar = () => {
-    const {restructureBoard , toggleSearch , mobileNav} = useContext(DataContext);
+    const {restructureBoard , toggleSearch , mobileNav , modalType} = useContext(DataContext);
     const[boardIcon , setBoardIcon] = useState(false)
     const location = useLocation()
 
@@ -35,10 +36,6 @@ const TopBar = () => {
         if(restructureBoard.variable) restructureBoard.set(false)
     }
 
-    function toggleRestructureBoard(){
-        toggle(restructureBoard)
-        resetNav();
-    }
 
     function resetNav(){
         toggleSearch.set(false)
@@ -57,7 +54,7 @@ const TopBar = () => {
                         <div className="search-icon"><SearchIcon func={toggleMobileSearch} /></div>
                         {
                             boardIcon ?
-                            (<div className={`board ${restructureBoard.variable ? 'selected' : ''}`} ><BoardIcon func={toggleRestructureBoard} /></div>) :
+                            (<div className={`board ${restructureBoard.variable ? 'selected' : ''}`} ><BoardIcon func={() => setModal(modalType , Restructure , "Customize Dashboard" , AddIcon)} /></div>) :
                             ""
                         }
                         <div className="user"></div>

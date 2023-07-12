@@ -1,6 +1,6 @@
 export function restructure(states){
     const {gridLayout , selection} = states;
-    function rearrage({from , to}){
+    function rearrange({from , to}){
         let arr = []
 
         for(let i =  0 ; i < gridLayout.variable.length ; i++){
@@ -21,6 +21,7 @@ export function restructure(states){
     }
 
     function touch(el , i){
+        console.log("clciked")
         const target = el.target;
         if(selection.variable.length == 0){
             selection.set([i])
@@ -31,6 +32,6 @@ export function restructure(states){
 
     return{
         touch,
-        rearrage
+        rearrange
     }
 }

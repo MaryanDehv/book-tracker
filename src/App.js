@@ -7,12 +7,11 @@ import HabitTracker from './components/cards/HabitTracker';
 import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
 import BookGraph from './components/charts/BarGraph';
-import { getBookCategories, getGenreCategories } from './data/data';
+import {getBookCategories} from './data/data';
 import React, { useEffect, useState} from "react";
 import { Outlet } from 'react-router-dom';
 import { bookStatus} from './functions/_filtering';
 import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
-import { restructure } from './functions/_restructure'
 import { dataObject } from './functions/_helper';
 
 export const DataContext = React.createContext()
@@ -91,7 +90,6 @@ function App() {
   const [gridLayout , setGridLayout] = useState(gridConfig);
   const [selectedWidth , setSelectedWidth] = useState()
   const [selection , setSelection] = useState([])
-  const [changeWidth , setChangeWidth] = useState()
 
   // filtering
   const [authors , setAuthors] = useState(dataObject('authors'))
@@ -104,18 +102,6 @@ function App() {
   // remove these
   const [filteredBooks, setFilteredBooks] = useState(dataObject('books'))
   const [currentFilterOptions , setCurrentFilterOptions] = useState([])
-
-
-  useEffect(() => {
-      if(selection.length == 2) rearrage({from:selection[0] , to:selection[1]})
-  } , [selection]) 
-  
-  useEffect(() => {
-    if(selectedWidth){
-      gridLayout[selectedWidth.parent].blockWidth = selectedWidth.width;
-      setGridLayout([...gridLayout])
-    }
-  } , [selectedWidth])
 
 
   // data passed down to other components via context
@@ -139,17 +125,6 @@ function App() {
     filteredBooks: {variable: filteredBooks, set: setFilteredBooks},
     currentFilterOptions: {variable: currentFilterOptions, set: setCurrentFilterOptions}
   }
-
-  const {rearrage , touch} = restructure(contextData)
-
-
-  const gridOptions = [
-      3, 2, 1
-  ]
-
-  function getWidth(width , parentIndex){
-    setSelectedWidth({width:width, parent: parentIndex})
-  }
   
   return (
      <DataContext.Provider value={contextData}>
@@ -157,49 +132,6 @@ function App() {
           <SideBar />
           <div className="main padding-l-r-2">
             {modalType ? <Modal /> : ""}
-            { 
-              startRestructure
-              ? (<div className="restructure-backdrop">
-
-                <div className="restructure-backdrop-inner">
-                  {
-                    gridLayout.map((_ , index) =>
-                      (
-                        <div
-                          data-clickable="true"
-                          key={index} 
-                          style={{gridColumn: _.blockWidth ? `auto / span ${_.blockWidth}` : "auto"}}
-                          className={`${_.size ? _.size : ""} restructure-block-color flex flex-column ${_.groupTitle.color} ${selection.length > 0 ? index == selection[0] ? "from-selected" : index == selection[1] ? "to-selected" : "move-here": ""}`}
-                        >
-                          {
-                            changeWidth == index ?
-                            <div className="restructure-board-widths">
-                              <TimesIcon func={() => setChangeWidth()} />
-                              <div className="restructure-board-widths-inner">
-                                {
-                                  gridOptions.map(block => (<div className={_.blockWidth == block ? "current-width" : ""} data-clickable="true" data-width={block} onClick={() => getWidth(block , index)}></div>))
-                                }
-                              </div>
-                            </div> :
-                            ""
-                          }
-                          <div className="flex flex-column v-center restructure-backdrop-inner-content">
-                            <_.groupTitle.component/>
-                            <div>{_.groupTitle.name}</div>
-                          </div>
-                          <div className="flex uppercase restructure-options">
-                            <div className="flex v-h-center" data-clickable="true" data-options="order" onClick={(el) => {touch(el, index); setChangeWidth()}}></div>
-                            <div className="flex v-h-center" data-clickable="true" data-options="width" onClick={() => setChangeWidth(index)}></div>
-                          </div>
-                        </div>
-                      )
-                    )
-                  }
-                </div>
-
-              </div>)
-              : ""
-            }
             <Outlet />
           </div>
           <TopBar />

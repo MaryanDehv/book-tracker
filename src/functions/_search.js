@@ -1,5 +1,4 @@
 import {getBooksByName} from "./_filtering";
-import {dataObject} from "./_helper";
 
 // location -> search.js
 export function search(
