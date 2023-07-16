@@ -20,18 +20,6 @@ export function resetChecked(arr , state){
   state.set(arr)
 }
 
-export function getCategories(exclude){
-
-}
-
-export function setModal(modalType , component , title , icon , _){
-  modalType.set({component , title , icon , _})
-}
-
-export function closeModal(modalType){
-  modalType.set(false)
-}
-
 export function dataObject(data){
   return bookData[data];
 }

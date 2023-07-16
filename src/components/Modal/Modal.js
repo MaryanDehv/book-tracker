@@ -1,19 +1,21 @@
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import SectionTitle from "../headings/SectionTitle";
+import { useSelector } from "react-redux";
 
 const Modal = () => {
-
-    const {modalType} = useContext(DataContext)
+    const {modal} = useSelector(state => state.modal);
+    
+    console.log(modal)
     
     return(
         <>
             <div className="modal-backdrop"></div>
             <div className="modal-container">
                 <div className="modal-container-inner">
-                    <SectionTitle modalPanel={true} icon={modalType.variable.icon} title={modalType.variable.title}/>
+                    <SectionTitle modalPanel={true} icon={modal.icon} title={modal.title}/>
                     <div className="modal-container-content">
-                        <modalType.variable.component props={modalType.variable._}/>
+                        <modal.component props={modal._}/>
                     </div>
                 </div>
             </div>

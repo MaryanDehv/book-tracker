@@ -533,12 +533,6 @@ input:focus {
   gap: 20px;
   color: #FFFFFF;
 }
-.filter-books .back-to-selection {
-  padding: 5px 10px;
-  border-radius: 5px;
-  width: 115px;
-  font-size: 10px;
-}
 .filter-books .choose-filter {
   padding: 0px 0px 10px;
   font-size: 14px;
@@ -1698,14 +1692,6 @@ strong {
 .dark-mode .filter-books {
   color: #FFFFFF;
 }
-.dark-mode .filter-books .back-to-selection {
-  background: #111315;
-  color: #FFFFFF;
-  border: #B2AEAE solid 0.5px;
-}
-.dark-mode .filter-books .back-to-selection svg g {
-  stroke: #FFFFFF;
-}
 .dark-mode .filter-books .filter-item:not(.checked) {
   border: solid 0.5px #FFFFFF;
 }
@@ -1811,14 +1797,6 @@ strong {
 }
 .light-mode .filter-books {
   color: #111315;
-}
-.light-mode .filter-books .back-to-selection {
-  background: #F2F2F2;
-  color: rgba(17, 19, 21, 0.7);
-  border: rgba(17, 19, 21, 0.5) solid 0.5px;
-}
-.light-mode .filter-books .back-to-selection svg g {
-  stroke: rgba(17, 19, 21, 0.5);
 }
 .light-mode .filter-books .filter-item:not(.checked) {
   border: solid 0.5px #111315;

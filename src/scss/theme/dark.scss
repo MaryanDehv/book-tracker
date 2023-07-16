@@ -151,19 +151,6 @@
     .filter-books{
         color: $white;
 
-        .back-to-selection{
-            background: $black;
-            color: $white;
-
-            svg{
-                g{
-                    stroke: $white;
-                }
-            }
-
-            border: $gray solid 0.5px;
-        }
-
         .filter-item:not(.checked){
             border:solid 0.5px $white;
         }

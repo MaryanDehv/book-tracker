@@ -1,46 +1,31 @@
-import {AddIcon, BoardIcon,ClockIcon, HamburgerIcon, ListIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
-import { setModal, toggle } from "../../functions/_helper";
+import {AddIcon, BoardIcon,ClockIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
+import { setModal} from "../../functions/_helper";
 import Search from "./Search";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
 import { useLocation } from "react-router-dom";
 import Restructure from "../Modal/Restructure";
 
+
+import {useDispatch} from 'react-redux';
+import { toggle } from "../../redux/states/_navigation";
+import { modalType } from "../../redux/states/_modal";
+
+
 const TopBar = () => {
-    const {restructureBoard , toggleSearch , mobileNav , modalType} = useContext(DataContext);
     const[boardIcon , setBoardIcon] = useState(false)
+    
     const location = useLocation()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if(location.pathname == '/'){
             setBoardIcon(true)
         } else {
-            restructureBoard.set(false)
             setBoardIcon(false)
         }
     } , [location])
 
-
-    function toggleMobileSearch(){
-        toggle(toggleSearch)
-        if(!mobileNav.variable) mobileNav.set(true)
-        resetBoard()
-    }
-
-    function toggleMobileNav(){
-        toggle(mobileNav)
-        resetBoard()
-    }
-
-    function resetBoard(){
-        if(restructureBoard.variable) restructureBoard.set(false)
-    }
-
-
-    function resetNav(){
-        toggleSearch.set(false)
-        mobileNav.set(false);
-    }
 
 
     return(
@@ -50,11 +35,11 @@ const TopBar = () => {
                 <div className="top-bar-inner-account flex">
                     <p className="flex v-center"><ClockIcon /> <span className="opacity"> Read for </span> <strong> 5h 30m</strong> <span className="opacity">this week</span></p>
                     <div className="icons flex v-center">
-                        <div className="hamburger-icon"><HamburgerIcon func={toggleMobileNav}/><TimesIcon func={resetNav}/></div>
-                        <div className="search-icon"><SearchIcon func={toggleMobileSearch} /></div>
+                        <div className="hamburger-icon"><HamburgerIcon func={() => dispatch(toggle('mobileNav'))}/><TimesIcon func={() => dispatch(toggle('mobileNav'))}/></div>
+                        <div className="search-icon"><SearchIcon func={() => dispatch(toggle('mobileSearch'))} /></div>
                         {
                             boardIcon ?
-                            (<div className={`board ${restructureBoard.variable ? 'selected' : ''}`} ><BoardIcon func={() => setModal(modalType , Restructure , "Customize Dashboard" , AddIcon)} /></div>) :
+                            (<div className={`board`} ><BoardIcon func={() => dispatch(modalType({component: Restructure , title: "Customize Dashboard" , icon: AddIcon}))} /></div>) :
                             ""
                         }
                         <div className="user"></div>

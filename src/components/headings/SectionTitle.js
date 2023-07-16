@@ -1,13 +1,17 @@
 import { useContext } from "react";
-import { closeModal, dataObject, setModal} from "../../functions/_helper";
+import {dataObject} from "../../functions/_helper";
 import {FilterIcon, TimesIcon} from "../../images/icons/customIcons";
 import { DataContext } from "../../App";
 import FilterBooks from "../Modal/FilterBooks";
 import { clearFilters } from "../../functions/_filtering";
+import { useDispatch, useSelector } from "react-redux";
+import { modalType , closeModal} from "../../redux/states/_modal";
 
 const SectionTitle = ({modalPanel , title , icon: Icon , filter , searchDropdown}) => {
-    const {modalType , status , authors , progressBar , ratings , genres , currentFilterOptions} = useContext(DataContext);
+    const {status , authors , progressBar , ratings , genres , currentFilterOptions} = useContext(DataContext);
     const states = {status , authors , progressBar , ratings , genres , currentFilterOptions};
+    const dispatch = useDispatch();
+
     
     // todo: instead of returning close icon twice, crease function where you can pass down aciton to be used for said close icon
 
@@ -22,7 +26,7 @@ const SectionTitle = ({modalPanel , title , icon: Icon , filter , searchDropdown
                     modalPanel ?
                     (
                         <div className="filter-close-icon">
-                            <TimesIcon  func={() => closeModal(modalType)}/>
+                            <TimesIcon  func={() => dispatch(closeModal())}/>
                         </div>
                     ) : filter ?
                         (
@@ -38,7 +42,7 @@ const SectionTitle = ({modalPanel , title , icon: Icon , filter , searchDropdown
                                         ) : ""
                                     }
                                  </div>
-                                <FilterIcon func={() => setModal(modalType , FilterBooks , "Filter" , FilterIcon)}/>
+                                <FilterIcon func={() => dispatch(modalType({component: FilterBooks , title: "Filter" , icon: FilterIcon}))}/>
                             </div>
                         ) : <TimesIcon />
                     : ""

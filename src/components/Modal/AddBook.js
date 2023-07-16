@@ -1,7 +1,6 @@
 import { ArrowIcon, TimesIcon } from "../../images/icons/customIcons";
 import { DataContext } from "../../App";
 import { useContext, useState } from "react";
-import { closeModal } from "../../functions/_helper";
 
 const AddBook = () => {
 
@@ -48,7 +47,7 @@ const AddBook = () => {
                     </textarea>
                 </div>
             </form>
-            <button className="red-button full-width" onClick={() => closeModal(modalType)}> <span className="uppercase"> Add Book </span>  <ArrowIcon /></button>
+            <button className="red-button full-width"> <span className="uppercase"> Add Book </span>  <ArrowIcon /></button>
         </>
     )
 }

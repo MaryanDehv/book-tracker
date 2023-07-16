@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import ErrorPage from './components/ErrorPage';
 import Home from './components/pages/Home';
 import Books from './components/pages/Books';
+import { Provider} from 'react-redux';
+import store from './redux/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -32,7 +34,9 @@ const router = createHashRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

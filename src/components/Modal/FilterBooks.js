@@ -26,7 +26,6 @@ const FilterBooks = () => {
     function filterContents(){
       return (
         <>
-          <div data-clickable="true" className="back-to-selection flex justify-sb v-center"> <ArrowPlain /> <span className="uppercase"> Back to selection </span> </div>
               <div className="filter-books-group flex flex-column justify-sb">
                 <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Status </div> <div className="clear-filter-item" data-clickable="true" onClick={() => clearFilters(states)['status']()}> Clear Status </div></div>
                 <div className="filter-books-group-inner">

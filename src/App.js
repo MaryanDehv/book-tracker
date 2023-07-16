@@ -8,11 +8,12 @@ import BookProgress from './components/cards/BookProgress';
 import BookList from './components/cards/BookList';
 import BookGraph from './components/charts/BarGraph';
 import {getBookCategories} from './data/data';
-import React, { useEffect, useState} from "react";
+import React, {useState} from "react";
 import { Outlet } from 'react-router-dom';
 import { bookStatus} from './functions/_filtering';
-import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon, TimesIcon } from './images/icons/customIcons';
+import { AnalyticsIcon , CheckIcon , ListIcon , ClockIcon} from './images/icons/customIcons';
 import { dataObject } from './functions/_helper';
+import { useSelector } from 'react-redux';
 
 export const DataContext = React.createContext()
 
@@ -74,23 +75,6 @@ const gridConfig = [
 
 
 function App() {
-
-
-  // state
-  const [theme , setTheme] = useState('dark')
-  const [mobileNav , setMobileNav] = useState(false);
-  const [mobileSearch , setMobileSearch] = useState(false);
-
-
-  // modal states
-  const [modalType , setModalType] = useState()
-
-  // dashboard layout
-  const [startRestructure , setStartRestructure] = useState(false);
-  const [gridLayout , setGridLayout] = useState(gridConfig);
-  const [selectedWidth , setSelectedWidth] = useState()
-  const [selection , setSelection] = useState([])
-
   // filtering
   const [authors , setAuthors] = useState(dataObject('authors'))
   const [status , setStatus] = useState(dataObject('status')); // contains all possible filter options and their checked state
@@ -103,19 +87,11 @@ function App() {
   const [filteredBooks, setFilteredBooks] = useState(dataObject('books'))
   const [currentFilterOptions , setCurrentFilterOptions] = useState([])
 
+  const {modal} = useSelector(state => state.modal)
+
 
   // data passed down to other components via context
   const contextData = {
-    mobileNav: {variable: mobileNav , set: setMobileNav},
-    modalType: {variable:modalType , set: setModalType},
-    toggleSearch:{variable: mobileSearch , set: setMobileSearch},
-    themeToggle: {variable: theme , set: setTheme},
-
-    restructureBoard: {variable: startRestructure , set: setStartRestructure},
-    gridLayout: {variable: gridLayout , set: setGridLayout},
-    selectedWidth: {variable: selectedWidth , set: setSelectedWidth},
-    selection: {variable: selection , set: setSelection},
-
     authors: {variable: authors , set: setAuthors},
     status: {variable: status , set: setStatus},
     bookCategories: {variable: bookCategories, set: setBookCategories},
@@ -125,13 +101,15 @@ function App() {
     filteredBooks: {variable: filteredBooks, set: setFilteredBooks},
     currentFilterOptions: {variable: currentFilterOptions, set: setCurrentFilterOptions}
   }
-  
+
+  const {mobileNav , mobileSearch , themeMode} = useSelector(state => state.navigation)
+
   return (
      <DataContext.Provider value={contextData}>
-        <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${theme}-mode`}>
+        <div className={`App ${mobileSearch ? 'mobile-search' : ''} ${mobileNav ? 'mobile-nav' : ''} ${themeMode}-mode`}>
           <SideBar />
           <div className="main padding-l-r-2">
-            {modalType ? <Modal /> : ""}
+            {modal ? <Modal /> : ""}
             <Outlet />
           </div>
           <TopBar />

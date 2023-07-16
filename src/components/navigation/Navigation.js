@@ -1,12 +1,13 @@
 import {Logo , ClockIcon , ListIcon , CogIcon , AddIcon , CheckIcon, SunIcon , MoonIcon} from '../../images/icons/customIcons'
-import { themeMode } from '../../functions/_theme'
 import { useContext } from 'react'
 import { DataContext } from '../../App'
 import AddBook from '../Modal/AddBook'
-import { setModal } from '../../functions/_helper'
+import { useSelector , useDispatch} from 'react-redux'
+import { toggle , theme} from '../../redux/states/_navigation'
+import { modalType } from '../../redux/states/_modal'
 
 const Navigation = () => {
-    const {modalType ,themeToggle , mobileNav} = useContext(DataContext)
+    const {themeToggle , mobileNav} = useContext(DataContext)
     
     const themeOptions = [
         {
@@ -38,10 +39,11 @@ const Navigation = () => {
             icon: ClockIcon
         }
     ]
+    
 
-    function resetMobileNav(){
-        if(mobileNav.variable) mobileNav.set(false)
-    }
+    const {themeMode} = useSelector(state => state.navigation);
+    const dispatch = useDispatch()
+
 
     return(
         <>
@@ -56,14 +58,14 @@ const Navigation = () => {
             <div className="side-bar-content flex v-center">
                 <ul className="side-bar-list">
                     {
-                        navigation.map(item => ( <a onClick={resetMobileNav} data-clickable="true" href={item.link}><li className="uppercase button flex v-center"><span><item.icon /></span><span className="list-name">{item.name}</span></li></a>))
+                        navigation.map(item => ( <a data-clickable="true" href={item.link}><li className="uppercase button flex v-center"><span><item.icon /></span><span className="list-name">{item.name}</span></li></a>))
                     }
-                    <li className="uppercase button flex v-center red-button" data-clickable="true" onClick={() => setModal(modalType , AddBook , "Add Book" , AddIcon)}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
+                    <li className="uppercase button flex v-center red-button" data-clickable="true" onClick={() => dispatch(modalType({component: AddBook , title: "Add Book" , icon: AddIcon}))}><span><AddIcon /></span><span className="list-name">Add Book</span></li>
                 </ul>
                 <div className="side-bar-mode-container flex h-center">
                     <div className="side-bar-mode flex v-h-center" >
-                        {themeOptions.map((theme , index) => (
-                            <div key={index} className={`side-bar-light flex v-h-center ${themeToggle.variable == theme.name ? 'selected' : ''}`} data-clickable="true" onClick={() => themeMode(theme.name , themeToggle)}><theme.icon /></div>
+                        {themeOptions.map((mode , index) => (
+                            <div key={index} className={`side-bar-light flex ${themeMode == mode.name ? 'selected' : ""} v-h-center`} data-clickable="true" onClick={() => dispatch(theme(mode.name))}><mode.icon /></div>
                         ))}
                     </div>
                 </div>
