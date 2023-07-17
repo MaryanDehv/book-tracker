@@ -1,9 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice , current} from "@reduxjs/toolkit";
+import { convertToObjects, getStatusCategories } from "../../data/data";
+import { check, dataObject } from "../../functions/_helper";
+
 
 export const modalSlice = createSlice({
-    name: "navigation" , 
+    name: "modal" , 
     initialState: {
-       modal: false
+       modal: false,
+       status: [...dataObject('status')]
     },
     reducers: {
         modalType: (state , action) => {
@@ -11,12 +15,13 @@ export const modalSlice = createSlice({
         },
         closeModal: (state) => {
             state.modal = false
-        }
+        },
+        setFilterStatus: check
     }
 });
 
 
-export const {modalType , closeModal} = modalSlice.actions;
+export const {modalType , closeModal , setFilterStatus} = modalSlice.actions;
 
 
 export default modalSlice.reducer;

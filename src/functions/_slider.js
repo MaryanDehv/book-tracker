@@ -1,7 +1,8 @@
+import { updateFilter } from "../redux/states/_filtering";
+
 // slider for progress bar
-export function slider(refs , states){
+export function slider(refs , {dispatch}){
     const {progressBarLength , progressBarRef} = refs;
-    const {progressBar} = states;
     let trackMoving;
     let elementActualPosition;
     let percent;
@@ -22,7 +23,7 @@ export function slider(refs , states){
 
     function stopTracking(){
         trackMoving = false;
-        if(percent) progressBar.set(percent)
+        if(percent) dispatch(updateFilter({targetState: 'progress' , content: percent}))
     }    
 
     return{

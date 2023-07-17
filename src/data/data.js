@@ -95,7 +95,14 @@ const bookData = {
                 author: "Ava Barnes"
               }
     ],
-    genre: convertToObjects(getGenreCategories() , "name"),
+    genre: [
+      {name: "steampunk"} , 
+      {name: "fantasy"} , 
+      {name: "adventure"} , 
+      {name: "psychology"} , 
+      {name: "mystery"}, 
+      {name: "thriller"}
+    ],
     authors: [
         { name: "Sophia Montgomery"},
         { name: "Ethan Ramirez"},
@@ -108,7 +115,11 @@ const bookData = {
         { name: "Charlotte Davis"},
         { name: "Oliver Mitchell"}
     ],
-    status: convertToObjects(getStatusCategories() , "name"),
+    status: [
+      {name:"completed"},
+      {name: "ongoing"},
+      {name: "list"}
+    ],
     config: {
       status: {
         colors: {
@@ -117,7 +128,7 @@ const bookData = {
           "completed" : "green"
         }
       },
-      genres: {
+      genre: {
         colors: {
           "steampunk" : "red",
           "fantasy" : "purple",
@@ -142,8 +153,5 @@ export function getGenreCategories(){
   return ["steampunk" , "fantasy" , "adventure" , "psychology" , "mystery", "thriller"];
 }
 
-export function getStatusCategories(){
-  return ["completed" , "ongoing" , "list"];
-}
 
 export default bookData;

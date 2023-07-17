@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { convertToObjects, getStatusCategories } from "../../data/data";
+import { check, dataObject } from "../../functions/_helper";
 
 export const NavigationSlice = createSlice({
     name: "navigation" , 
     initialState: {
        mobileNav: false,
        mobileSearch: false,
-       themeMode: 'dark'
+       themeMode: 'dark',
+       status: [...dataObject('status')]
     },
     reducers: {
         toggle: (state , action) => {
@@ -15,12 +18,13 @@ export const NavigationSlice = createSlice({
         },
         theme: (state , action) => {
             state.themeMode = action.payload
-        }
+        },
+        setFilterStatus: check
     }
 });
 
 
-export const {toggle , theme} = NavigationSlice.actions;
+export const {toggle , theme , setFilterStatus} = NavigationSlice.actions;
 
 
 export default NavigationSlice.reducer;

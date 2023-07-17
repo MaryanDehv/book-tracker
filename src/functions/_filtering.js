@@ -2,7 +2,7 @@
 import { dataObject } from "./_helper";
 
 export function collectiveFilterData(states){
-    const {ratings, progressBar , authors  , status , genres , currentFilterOptions}  = states;
+    const {rating, progress , authors  , status , genres , currentFilterOptions}  = states;
     const selectedStatus = status.variable.filter(item => item.checked);
     const selectedAuthors = authors.variable.filter(item => item.checked);
     const selectedGenres = genres.variable.filter(item => item.checked)
@@ -12,8 +12,8 @@ export function collectiveFilterData(states){
     if(selectedStatus.length) searchArr['status'] = selectedStatus.map(({name}) => name.toLowerCase());
     if(selectedGenres.length) searchArr['genres'] = selectedGenres.map(({name}) => name);
     if(selectedAuthors.length) searchArr['authors'] = selectedAuthors.map(({name}) => name);
-    if(progressBar.variable > 0) searchArr['progress'] =  [progressBar.variable]
-    if(ratings.variable > 0) searchArr['ratings'] = [ratings.variable]
+    if(progress.variable > 0) searchArr['progress'] =  [progress.variable]
+    if(rating.variable > 0) searchArr['rating'] = [rating.variable]
 
     currentFilterOptions.set(Object.keys(searchArr))
 
@@ -39,8 +39,8 @@ export function clearFilters(states){
     }
 
     const resetProgress = () => {
-        const {progressBar} = states;
-        progressBar.set(false)
+        const {progress} = states;
+        progress.set(false)
         currentFilterOptions.set(excludeItem('progress'))
     }
 
@@ -57,9 +57,9 @@ export function clearFilters(states){
     }
 
     const resetRatings = () => {
-        const {ratings} = states;
-        ratings.set(false)
-        currentFilterOptions.set(excludeItem('ratings'))
+        const {rating} = states;
+        rating.set(false)
+        currentFilterOptions.set(excludeItem('rating'))
     }
 
     const clearAll = () => {
@@ -75,7 +75,7 @@ export function clearFilters(states){
         "status" : resetStatus,
         "authors" : resetAuthors,
         "progress" : resetProgress,
-        "ratings" : resetRatings,
+        "rating" : resetRatings,
         "genres" : resetGenres,
         "all" : clearAll
     }

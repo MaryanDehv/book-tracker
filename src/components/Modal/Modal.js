@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 const Modal = () => {
     const {modal} = useSelector(state => state.modal);
     
-    console.log(modal)
-    
     return(
         <>
             <div className="modal-backdrop"></div>

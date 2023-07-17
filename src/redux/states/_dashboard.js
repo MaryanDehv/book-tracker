@@ -66,11 +66,11 @@ export const dashboardSlice = createSlice({
             let arr = []
 
             for(let i =  0 ; i < state.boardLayout.length ; i++){
-                if(i != from && i != to){
-                    arr.push(state.boardLayout[i])
-                } else {
-                    arr.push(false)
-                }
+              if(i != from && i != to){
+                  arr.push(state.boardLayout[i])
+              } else {
+                  arr.push(false)
+              }
             }
     
             arr[from] = state.boardLayout[to];
