@@ -1,48 +1,22 @@
-import { CheckIcon, CloseIcon, FilterIcon, SearchIcon, TimesIcon , ClockIcon, ListIcon} from "../../images/icons/customIcons";
+import {CloseIcon, FilterIcon, SearchIcon, TimesIcon} from "../../images/icons/customIcons";
 import {useEffect, useState} from "react";
-import { search } from "../../functions/_search";
-import BookCard from "../cards/BookCard";
-import BookProgress from "../cards/BookProgress";
-import BookList from "../cards/BookList";
 import {dataObject } from "../../functions/_helper";
-import SectionTitle from "../headings/SectionTitle";
 import Checkboxes from "../utils/Checkboxes";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterStatus } from "../../redux/states/_navigation";
+import { filterPanel, setFilterStatus , dropdownPanel , searchInput, constructSearchResults} from "../../redux/states/_search";
 
 const Search = ({mobileDropdown , toggleMobileSearch}) => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
-    const searchDropdown = useState(mobileDropdown ? true : false)
-    const searchInput = useState("")
     const searchedData = useState("");
-    const filterDropdown = useState(false);
+
     const dispatch = useDispatch()
 
-    const {status} = useSelector(state => state.navigation);
-
-    const {toggleFilterPanel, removeSearch, updateSearchInput, getBooks } = 
-        search(
-            {
-                searchDropdown, 
-                searchInput,  
-                filterDropdown,
-                status
-            },
-            {
-                BookCard,
-                BookProgress,
-                BookList,
-                CheckIcon,
-                ListIcon,
-                ClockIcon,
-                SectionTitle
-            }
-        );
+    const {status , filter , dropdown , input , searchResults} = useSelector(state => state.search);
 
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added
-        searchedData[1](getBooks(searchInput[0].toLowerCase().trim("")))
-    } , [searchInput[0] , status])
+        dispatch(constructSearchResults())
+    } , [input , status])
     
     function getChecked(){
         // only return filter indicators for those that are checked
@@ -50,23 +24,23 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     }
 
     return(
-        <div className={`search ${searchDropdown[0] ? 'search-dropdown-panel' : ''}`}>
+        <div className={`search ${dropdown ? 'search-dropdown-panel' : ''}`}>
                 
                 {/* search input block */}
                 <div className={`search-box-container flex v-center justify-sb`}>
                     <div className="flex v-center">
-                        <div className="icon"><SearchIcon func={() => searchDropdown[1](!searchDropdown[0])} /></div>
-                        <input type="text" placeholder="Search your library..." value={searchInput[0]}  onChange={updateSearchInput} />
+                        <div className="icon"><SearchIcon func={() => dispatch(dropdownPanel('open'))} /></div>
+                        <input type="text" placeholder="Search your library..." value={input}  onChange={(el) => dispatch(searchInput(el.target.value))} />
                     </div>
 
                     <div className="flex v-center">
-                        <div className={`filter icon ${filterDropdown[0] ? 'filter-active' : ''}`}><FilterIcon func={toggleFilterPanel} /></div>
-                        <div className={`close icon ${!searchDropdown ? 'hidden' : ''}`}><CloseIcon func={() => removeSearch(toggleMobileSearch ? toggleMobileSearch.set : false)}/></div>
+                        <div className={`filter icon ${filter ? 'filter-active' : ''}`}><FilterIcon func={() => dispatch(filterPanel())} /></div>
+                        <div className={`close icon ${!dropdown ? 'hidden' : ''}`}><CloseIcon func={() => dispatch(dropdownPanel('close'))}/></div>
                     </div>
                 </div>
                 
                 {/* dropdown section */}
-                <div className={`search-dropdown ${filterDropdown[0] ? 'filter-panel' : 'search-content-panel'}`}>
+                <div className={`search-dropdown ${filter ? 'filter-panel' : 'search-content-panel'}`}>
                     
                     {/* currently active filters */}
                     {
@@ -87,9 +61,9 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                     {/* search results */}
                     <div className={`search-dropdown-inner flex flex-column search-results`}>
                         {
-                            searchedData[0].length >= 1 ?
-                            searchedData[0].map(item => (item))
-                            : searchInput[0] == "" ? "" : (<div className="no-results"> Nothing found for <span className="search-input">{searchInput[0]}</span></div>)
+                            searchResults.length >= 1 ?
+                            searchResults.map(item => (item))
+                            : input == "" ? "" : (<div className="no-results"> Nothing found for <span className="search-input">{input}</span></div>)
                         }
                     </div>
 

@@ -7,8 +7,7 @@ export const NavigationSlice = createSlice({
     initialState: {
        mobileNav: false,
        mobileSearch: false,
-       themeMode: 'dark',
-       status: [...dataObject('status')]
+       themeMode: 'dark'
     },
     reducers: {
         toggle: (state , action) => {
@@ -19,12 +18,11 @@ export const NavigationSlice = createSlice({
         theme: (state , action) => {
             state.themeMode = action.payload
         },
-        setFilterStatus: check
     }
 });
 
 
-export const {toggle , theme , setFilterStatus} = NavigationSlice.actions;
+export const {toggle , theme} = NavigationSlice.actions;
 
 
 export default NavigationSlice.reducer;
