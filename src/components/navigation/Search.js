@@ -12,6 +12,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     const dispatch = useDispatch()
 
     const {status , filter , dropdown , input , searchResults} = useSelector(state => state.search);
+    const {mobileNav} = useSelector(state => state.navigation)
 
     useEffect(() => {
         // only update search results either when a filter options is selected or new search input added
@@ -24,7 +25,7 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
     }
 
     return(
-        <div className={`search ${dropdown ? 'search-dropdown-panel' : ''}`}>
+        <div className={`search ${dropdown || mobileNav ? 'search-dropdown-panel' : ''}`}>
                 
                 {/* search input block */}
                 <div className={`search-box-container flex v-center justify-sb`}>

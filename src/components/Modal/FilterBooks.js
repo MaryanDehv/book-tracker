@@ -31,7 +31,7 @@ const FilterBooks = () => {
       return (
         <>
               <div className="filter-books-group flex flex-column justify-sb">
-                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Status </div> <div className="clear-filter-item" data-clickable="true"> Clear Status </div></div>
+                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Status </div> <div className="clear-filter-item" data-clickable="true"> Clear </div></div>
                 <div className="filter-books-group-inner">
                     <div className={`filter-selection-group`}>
                         <div className={`flex check-boxes-container`}>
@@ -43,7 +43,7 @@ const FilterBooks = () => {
 
 
             <div className="filter-books-group flex flex-column justify-sb">
-              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title flex" style={{gap:"5px"}}> <div style={{color:"#FF4C4C"}}>{progress == false ? "0%" : progress + "%"}</div> Progress </div><div className="clear-filter-item" data-clickable="true"> Clear Progress </div></div>
+              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title flex" style={{gap:"5px"}}> <div style={{color:"#FF4C4C"}}>{progress == false ? "0%" : progress + "%"}</div> Progress </div><div className="clear-filter-item" data-clickable="true"> Clear </div></div>
               <div className="filter-books-group-inner" onMouseUp={stopTracking} onTouchEnd={stopTracking} onMouseLeave={stopTracking}>
                 <div className="percentage-bar-container" data-clickable="true"  ref={progressBarRef} onTouchStart={clickedButton} onMouseDown={clickedButton} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ><div className="slider-bar" style={{width: progress == false ? "0%" : progress + "%"}} ref={progressBarLength}><div className="slider-button"></div></div></div></div>
               </div>
@@ -58,7 +58,7 @@ const FilterBooks = () => {
             </div>
 
               <div className="filter-books-group flex flex-column justify-sb authors">
-                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Author</div> <div className="clear-filter-item" data-clickable="true" > Clear Authors </div> </div>
+                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Author</div> <div className="clear-filter-item" data-clickable="true" > Clear </div> </div>
                 <div className="filter-books-group-inner flex">
                   {
                     authors.map((author , index) => (<div data-clickable="true" className={`filter-item flex v-center justify-sb red ${author.checked ? "checked" : ""}`} onClick={() => dispatch(select({name: author.name , update: 'authors'}))}> {author.name} <CheckMark /> </div>))
@@ -67,7 +67,7 @@ const FilterBooks = () => {
               </div>
 
               <div className="filter-books-group flex flex-column justify-sb">
-                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Genre </div><div className="clear-filter-item" data-clickable="true" > Clear Genres </div></div>
+                <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Genre </div><div className="clear-filter-item" data-clickable="true" > Clear</div></div>
                 <div className="filter-books-group-inner">
                     <div className={`filter-selection-group`}>
                         <div className={`flex check-boxes-container`}>
@@ -78,7 +78,7 @@ const FilterBooks = () => {
               </div>
 
               <div className="filter-books-group flex flex-column justify-sb">
-              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Ratings</div><div className="clear-filter-item" data-clickable="true"> Clear Ratings</div></div>
+              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title"> Ratings</div><div className="clear-filter-item" data-clickable="true"> Clear </div></div>
               <div className="filter-books-group-inner flex" style={{gap:"5px"}}>
               {
                 [...Array(5)].map((star , index) => <StarIcon name={rating < index + 1 ? "gray" : "yellow"} func={() => dispatch(updateFilter({targetState: 'rating' , content: index+1}))}/>)

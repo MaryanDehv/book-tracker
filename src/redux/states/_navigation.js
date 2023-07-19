@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { convertToObjects, getStatusCategories } from "../../data/data";
-import { check, dataObject } from "../../functions/_helper";
 
 export const NavigationSlice = createSlice({
     name: "navigation" , 

@@ -137,10 +137,18 @@
                 }
             }
         }
-    }
 
-    .clear-filter-item{
-        font-size: 12px;
-        font-weight: 500;
+        .clear-filter-item{
+            font-size: 12px;
+            font-weight: 500;   
+            display: none;
+        }
+
+        &:hover{
+            .clear-filter-item{
+                color: $primaryRed;
+                display: block;
+            }
+        }
     }
 }

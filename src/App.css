@@ -640,9 +640,14 @@ input:focus {
   fill: #B2AEAE;
   stroke: #B2AEAE;
 }
-.filter-books .clear-filter-item {
+.filter-books .filter-books-group .clear-filter-item {
   font-size: 12px;
   font-weight: 500;
+  display: none;
+}
+.filter-books .filter-books-group:hover .clear-filter-item {
+  color: #FF4C4C;
+  display: block;
 }
 
 .edit-book-contents {
