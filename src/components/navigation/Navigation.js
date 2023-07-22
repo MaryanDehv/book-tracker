@@ -6,9 +6,7 @@ import { useSelector , useDispatch} from 'react-redux'
 import { toggle , theme} from '../../redux/states/_navigation'
 import { modalType } from '../../redux/states/_modal'
 
-const Navigation = () => {
-    const {themeToggle , mobileNav} = useContext(DataContext)
-    
+const Navigation = () => {    
     const themeOptions = [
         {
             name: 'light',

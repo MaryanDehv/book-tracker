@@ -1,6 +1,6 @@
-export const AddIcon = () => {
+export const AddIcon = ({func}) => {
     return(
-        <svg width="39.4301806px" height="39.4301806px" viewBox="0 0 39.4301806 39.4301806" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg onClick={func} width="39.4301806px" height="39.4301806px" viewBox="0 0 39.4301806 39.4301806" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Icons" transform="translate(-203.478669, -187.921474)" stroke="#979797" strokeWidth="0.5">
                     <g id="Add" transform="translate(203.478669, 187.921474)">

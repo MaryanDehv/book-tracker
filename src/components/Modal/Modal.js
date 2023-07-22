@@ -1,17 +1,18 @@
-import { useContext } from "react";
-import { DataContext } from "../../App";
 import SectionTitle from "../headings/SectionTitle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {TimesIcon } from "../../images/icons/customIcons";
+import { closeModal } from "../../redux/states/_modal";
 
 const Modal = () => {
     const {modal} = useSelector(state => state.modal);
-    
+    const dispatch = useDispatch()
+
     return(
         <>
             <div className="modal-backdrop"></div>
             <div className="modal-container">
                 <div className="modal-container-inner">
-                    <SectionTitle modalPanel={true} icon={modal.icon} title={modal.title}/>
+                    <SectionTitle title={{icon: modal.icon , name: modal.title }} icon={TimesIcon} cb={() => dispatch(closeModal())}/>
                     <div className="modal-container-content">
                         <modal.component props={modal._}/>
                     </div>

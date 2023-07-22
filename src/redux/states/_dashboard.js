@@ -16,6 +16,7 @@ const initialBoardLayout = [
         color: 'red',
         name: 'ongoing'
       },
+      type:"ongoing books",
       class:"book-progress-container",
       content:bookStatus("ongoing")
     },{
@@ -26,6 +27,7 @@ const initialBoardLayout = [
         color: 'orange',
         name: 'reading trends'
       },
+      type:"Reading Graph",
       class:"book-graph-container",
       content:[{}]
     },
@@ -37,6 +39,7 @@ const initialBoardLayout = [
         color: 'purple',
         name: 'list'
       },
+      type:"to be read",
       class:"book-list-container",
       content:bookStatus("list")
     },
@@ -48,6 +51,7 @@ const initialBoardLayout = [
         color: 'green',
         name: 'completed'
       },
+      type:"completed books",
       class:"book-card-container",
       content: bookStatus("completed")
     }
@@ -56,45 +60,57 @@ const initialBoardLayout = [
 export const dashboardSlice = createSlice({
     name: "dashboard" , 
     initialState: {
-       restructureBoard: false,
-       boardLayout: initialBoardLayout,
-       currentSelected: []
+      restructureBoard: false,
+      boardLayout: initialBoardLayout,
+      currentSelected: [],
+      boardOptions: ["ongoing books" , "completed books" , "to be read" , "reading graph"],
+      addingBoard: false
     },
     reducers: {
         rearrange: (state , action) => {
-            const {to, from} = action.payload;
-            let arr = []
+          const {to, from} = action.payload;
+          let arr = []
 
-            for(let i =  0 ; i < state.boardLayout.length ; i++){
-              if(i != from && i != to){
-                  arr.push(state.boardLayout[i])
-              } else {
-                  arr.push(false)
-              }
+          for(let i =  0 ; i < state.boardLayout.length ; i++){
+            if(i != from && i != to){
+                arr.push(state.boardLayout[i])
+            } else {
+                arr.push(false)
             }
-    
-            arr[from] = state.boardLayout[to];
-            arr[to] = state.boardLayout[from];
+          }
+  
+          arr[from] = state.boardLayout[to];
+          arr[to] = state.boardLayout[from];
 
-            state.boardLayout = arr;
-            state.currentSelected = []
+          state.boardLayout = arr;
+          state.currentSelected = []
         },
         touch: (state , action) => {
-            const {index} = action.payload
-            if(state.currentSelected.length == 0){
-                state.currentSelected = [index]
-            } else if(state.currentSelected.length < 2 && state.currentSelected.length > 0){
-                state.currentSelected = [...state.currentSelected , index]
-            }
+          const {index} = action.payload
+          if(state.currentSelected.length == 0){
+              state.currentSelected = [index]
+          } else if(state.currentSelected.length < 2 && state.currentSelected.length > 0){
+              state.currentSelected = [...state.currentSelected , index]
+          }
         },
         updateGridWidth: (state , action) => {
-            const {width , parent} = action.payload;
-            state.boardLayout[parent].blockWidth = width
+          const {width , parent} = action.payload;
+          state.boardLayout[parent].blockWidth = width
+        },
+        removeGridItem: (state, action) => {
+          state.boardLayout = state.boardLayout.filter((item , index) => action.payload != index)
+        },
+        toggleAddBoard: (state , action) => {
+          if(action.payload == "open") state.addingBoard = true
+          if(action.payload == "close") state.addingBoard = false
+          // should update the new board
         }
     }
 });
 
+// justify why you need toggleAddBoard - later
 
-export const {rearrange , touch , updateGridWidth} = dashboardSlice.actions
+
+export const {rearrange , touch , updateGridWidth , removeGridItem , toggleAddBoard} = dashboardSlice.actions
 
 export default dashboardSlice.reducer;

@@ -25,6 +25,7 @@ export const searchSlice = createSlice({
         dropdownPanel: (state , action) => {
             if(action.payload == "close"){
                 state.dropdown = false
+                state.filter = false
                 if(state.input) state.input = "" 
             }
             if(action.payload == "open") state.dropdown = true
@@ -52,7 +53,7 @@ export const searchSlice = createSlice({
     
             const jsx = ({component: Component , status}) => (
             <div className={`search-dropdown-inner-group ${status == "ongoing" ? "grayed" : ""}`}>
-                <SectionTitle title={status} icon={status == "ongoing" ? ClockIcon : status == "complete" ? CheckIcon : ListIcon} searchDropdown={true}/>
+                <SectionTitle title={{icon: status == "ongoing" ? ClockIcon : status == "complete" ? CheckIcon : ListIcon , name: status}} icon={false} />
                 <div className="section-list">
                     {
                         searchData.map((result , index)  => result.status == status ? <Component key={index} content={result} /> : "")

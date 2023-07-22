@@ -2,7 +2,7 @@ import { updateFilter } from "../redux/states/_filtering";
 
 // slider for progress bar
 export function slider(refs , {dispatch}){
-    const {progressBarLength , progressBarRef} = refs;
+    const {progressBarLength , progressBarRef , progressBarPercentage} = refs;
     let trackMoving;
     let elementActualPosition;
     let percent;
@@ -17,6 +17,7 @@ export function slider(refs , {dispatch}){
             percent = Math.round((((el.touches ? el.touches[0].clientX : el.clientX) - progressBarRef.current.getBoundingClientRect().left) * 100) / elementActualPosition);
             if(percent >= 0 && percent <= 100){
                 progressBarLength.current.style.width = percent + "%"
+                progressBarPercentage.current.innerHTML = percent + "%"
             }
         }
     }

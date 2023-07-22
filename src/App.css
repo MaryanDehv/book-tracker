@@ -194,6 +194,36 @@ input:focus {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.grid-container .select-board {
+  padding: 10px;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  height: auto;
+  max-height: none;
+  min-height: none;
+  justify-content: space-around;
+}
+.grid-container .select-board > div {
+  width: 138.8px;
+  height: 125px;
+  background: blue;
+  flex-grow: 2;
+  border-radius: 5px;
+}
+.grid-container .select-board > div {
+  background: rgba(178, 174, 174, 0.3);
+  border: solid 1px #B2AEAE;
+}
+.grid-container .select-board > div svg polyline {
+  stroke: #B2AEAE;
+}
+.grid-container .select-board > div span {
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+  line-height: 1.2;
+}
 .grid-container .habit-tracker-container .grid-item-content {
   display: flex;
   flex-wrap: wrap;
@@ -222,6 +252,19 @@ input:focus {
   .grid-container .grid-item {
     grid-column: auto/span 3 !important;
   }
+}
+
+.add-board {
+  width: 35px;
+  height: 35px;
+  background: #FF4C4C;
+  border-radius: 5px;
+}
+.add-board svg {
+  width: 20px !important;
+}
+.add-board svg line, .add-board svg g {
+  stroke: #FFFFFF;
 }
 
 .restructure-backdrop, .restructure-backdrop::after {
@@ -826,7 +869,7 @@ strong {
 .book-list .book-list-genres .filter-item {
   justify-content: space-between;
   border-radius: 20px;
-  padding: 3px 10px;
+  padding: 3px 6px;
   text-transform: uppercase;
 }
 .book-list .book-list-genres .filter-item.red-outline {
@@ -924,6 +967,20 @@ strong {
 .book-page-card .more {
   margin-right: 20px;
 }
+.book-page-card .status {
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 3px 6px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.book-page-card .status {
+  background: rgba(178, 174, 174, 0.3);
+  border: solid 1px #B2AEAE;
+}
+.book-page-card .status svg polyline {
+  stroke: #B2AEAE;
+}
 .book-page-card-inner {
   height: 100%;
   gap: 20px;
@@ -951,7 +1008,7 @@ strong {
   height: 100%;
 }
 .book-page-card-contents-container {
-  height: 60px;
+  height: 70px;
 }
 .book-page-card-contents-container, .book-page-card-contents-container .details-container {
   gap: 20px;
@@ -1926,7 +1983,7 @@ svg:not(.main-logo, :is(.filter-close-icon, .grid-item) .close, .top-bar :is(.ha
 .filter-item {
   justify-content: space-between;
   border-radius: 20px;
-  padding: 3px 10px;
+  padding: 3px 6px;
   text-transform: uppercase;
   color: #FFFFFF;
 }
@@ -1953,7 +2010,7 @@ svg:not(.main-logo, :is(.filter-close-icon, .grid-item) .close, .top-bar :is(.ha
 .tag {
   justify-content: space-between;
   border-radius: 20px;
-  padding: 3px 10px;
+  padding: 3px 6px;
   text-transform: uppercase;
   height: 15px;
 }

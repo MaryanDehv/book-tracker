@@ -1,4 +1,4 @@
-import {StackedBooksIcon } from "../../images/icons/customIcons";
+import {FilterIcon, StackedBooksIcon } from "../../images/icons/customIcons";
 import BookPageCard from "../cards/BookPageCard";
 import SectionTitle from "../headings/SectionTitle";
 import { useContext } from "react";
@@ -6,20 +6,25 @@ import { DataContext } from "../../App";
 import EditBook from "../Modal/EditBook";
 import { modalType } from "../../redux/states/_modal";
 import { useDispatch } from "react-redux";
+import FilterBooks from "../Modal/FilterBooks";
 
 
 const Books = ({}) => {
     const {filteredBooks} = useContext(DataContext);
 
-    const dispatch = useDispatch(state => state.modal)
+    const dispatch = useDispatch();
+
+    function filter(){
+        dispatch(modalType({component: FilterBooks , title: "Filter" , icon: FilterIcon}))
+    }
 
     return(
         <div className="books-page-container">
-            <SectionTitle icon={StackedBooksIcon} title={"All Books"} filter={true}/>
+            <SectionTitle title={{icon: StackedBooksIcon , name: "All Books"}} icon={FilterIcon} cb={filter}/>
             <div className="books-container flex flex-column">
                 {
                   filteredBooks.variable.map((book , index) => (
-                        <BookPageCard addModal={() => dispatch(modalType({component: EditBook , title: book.title , icon: false , _:book}))} key={index} name={book.title} rating={book.rating} category={book.status} progress={book.progress} author={book.author}/>
+                        <BookPageCard addModal={() => dispatch(modalType({component: EditBook , title: book.title , icon: false , _:book}))} key={index} content={book}/>
                     ))
                 }
             </div>

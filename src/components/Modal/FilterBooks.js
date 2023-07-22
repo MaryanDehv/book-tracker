@@ -9,6 +9,7 @@ import { setFilterStatus } from "../../redux/states/_modal";
 const FilterBooks = () => {
     const progressBarRef = useRef()
     const progressBarLength = useRef()
+    const progressBarPercentage = useRef()
     const dispatch = useDispatch()
     const {status: filterStatus} = useSelector(state => state.modal);
 
@@ -17,7 +18,8 @@ const FilterBooks = () => {
 
     const refs = {
       progressBarRef: progressBarRef,
-      progressBarLength: progressBarLength
+      progressBarLength: progressBarLength,
+      progressBarPercentage: progressBarPercentage
     }
 
 
@@ -43,7 +45,7 @@ const FilterBooks = () => {
 
 
             <div className="filter-books-group flex flex-column justify-sb">
-              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title flex" style={{gap:"5px"}}> <div style={{color:"#FF4C4C"}}>{progress == false ? "0%" : progress + "%"}</div> Progress </div><div className="clear-filter-item" data-clickable="true"> Clear </div></div>
+              <div className="filter-books-group-title flex justify-sb"><div className="uppercase title flex" style={{gap:"5px"}}> <div style={{color:"#FF4C4C"}} ref={progressBarPercentage}>{progress == false ? "0%" : progress + "%"}</div> Progress </div><div className="clear-filter-item" data-clickable="true"> Clear </div></div>
               <div className="filter-books-group-inner" onMouseUp={stopTracking} onTouchEnd={stopTracking} onMouseLeave={stopTracking}>
                 <div className="percentage-bar-container" data-clickable="true"  ref={progressBarRef} onTouchStart={clickedButton} onMouseDown={clickedButton} onTouchMove={currentPos} onMouseMove={currentPos}><div className="progress-bar" ><div className="slider-bar" style={{width: progress == false ? "0%" : progress + "%"}} ref={progressBarLength}><div className="slider-button"></div></div></div></div>
               </div>
