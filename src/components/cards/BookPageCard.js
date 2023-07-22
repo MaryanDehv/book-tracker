@@ -1,7 +1,6 @@
 import { StarIcon } from "../../images/icons/customIcons";
 
 const BookPageCard = ({content, addModal}) => {
-    console.log(content)
     return(
         <div onClick={addModal} className={`book-page-card flex justify-sb v-center ${content.status == "completed" ? 'green' : content.status == "list" ? 'purple' : 'red'}`} data-clickable="true">
             <div className="book-page-card-inner flex v-center">

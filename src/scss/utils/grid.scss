@@ -57,33 +57,6 @@
         }
     }
 
-    .select-board{
-        padding: 10px;
-        flex-direction: row;
-        gap: 5px;
-        flex-wrap: wrap;
-        height: auto;
-        max-height: none;
-        min-height: none;
-        justify-content: space-around;
-        
-        >div{
-            width: calc(calc(307.6px / 2) - 15px);
-            height: 125px;
-            background: blue;
-            flex-grow: 2;
-            border-radius: 5px;
-            @include semiTransparentColouredBorderBox("&" , $gray);
-
-            span{
-                font-size: 12px;
-                width: 50%;
-                text-align: center;
-                line-height: 1.2;
-            }
-        }
-    }
-
     .habit-tracker-container{
         .grid-item-content{
             display: flex;
@@ -122,15 +95,43 @@
 }
 
 .add-board{
-    width: 35px;
-    height: 35px;
+    width: 18px !important;
+    height: 18px;
     background: $primaryRed;
     border-radius: 5px;
 
     svg{
-        width: 20px !important;
+        width: 10px !important;
         line , g{
             stroke: $white;
+            stroke-width: 2px;
+        }
+    }
+}
+
+.select-board{
+    padding: 10px;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+    height: auto;
+    max-height: none;
+    min-height: none;
+    justify-content: space-around;
+    
+    >div{
+        width: calc(calc(307.6px / 2) - 15px);
+        height: 125px;
+        background: blue;
+        flex-grow: 2;
+        border-radius: 5px;
+        @include semiTransparentColouredBorderBox("&" , $gray);
+
+        span{
+            font-size: 12px;
+            width: 50%;
+            text-align: center;
+            line-height: 1.2;
         }
     }
 }

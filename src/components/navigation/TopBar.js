@@ -1,8 +1,7 @@
 import {AddIcon, BoardIcon,ClockIcon, HamburgerIcon, SearchIcon, TimesIcon } from "../../images/icons/customIcons";
 import { setModal} from "../../functions/_helper";
 import Search from "./Search";
-import { useContext, useEffect, useState } from "react";
-import { DataContext } from "../../App";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Restructure from "../Modal/Restructure";
 
@@ -10,6 +9,8 @@ import Restructure from "../Modal/Restructure";
 import {useDispatch} from 'react-redux';
 import { toggle } from "../../redux/states/_navigation";
 import { modalType } from "../../redux/states/_modal";
+import { toggleAddBoard } from "../../redux/states/_dashboard";
+import SelectBoard from "../Modal/SelectBoard";
 
 
 const TopBar = () => {
@@ -39,7 +40,14 @@ const TopBar = () => {
                         <div className="search-icon"><SearchIcon func={() => dispatch(toggle('mobileSearch'))} /></div>
                         {
                             boardIcon ?
-                            (<div className={`board`} ><BoardIcon func={() => dispatch(modalType({component: Restructure , title: "Customize Dashboard" , icon: AddIcon}))} /></div>) :
+                            (
+                                <>
+                                    <div className="add-board flex v-h-center" data-clickable="true" onClick={() => dispatch(dispatch(modalType({component: SelectBoard , title: "Add board" , icon: AddIcon})))}>
+                                        <AddIcon />
+                                    </div>
+                                    <div className={`board`} ><BoardIcon func={() => dispatch(modalType({component: Restructure , title: "Customize Dashboard" , icon: AddIcon}))} /></div>
+                                </>
+                            ) :
                             ""
                         }
                         <div className="user"></div>

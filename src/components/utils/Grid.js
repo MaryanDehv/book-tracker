@@ -1,29 +1,12 @@
-import { AddIcon, TimesIcon } from "../../images/icons/customIcons";
+import { TimesIcon } from "../../images/icons/customIcons";
 import SectionTitle from "../headings/SectionTitle";
 import { removeGridItem, toggleAddBoard } from "../../redux/states/_dashboard";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch} from "react-redux";
 
 const Grid = ({content}) => {
-    const {boardOptions , addingBoard} = useSelector(state => state.dashboard)
     const dispatch = useDispatch()
 
-    function selectBoard(){
-        return (
-            <div className="select-board grid-item flex">
-                {
-                    boardOptions.map((option) => (<div className="flex v-h-center" data-clickable="true" onClick={() => dispatch(toggleAddBoard("close"))}><span>{option.toUpperCase()}</span></div>))
-                }
-            </div>
-        )
-    }
-
-
     return(
-        <>
-        <div className="add-board flex v-h-center" data-clickable="true" onClick={() => dispatch(toggleAddBoard("open"))}>
-            <AddIcon />
-        </div>
         <div className="grid-container">
             {
                 content.length > 0 ? 
@@ -46,7 +29,6 @@ const Grid = ({content}) => {
                 ""
             }
         </div>
-        </>
     )
 }
 

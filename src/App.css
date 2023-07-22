@@ -194,36 +194,6 @@ input:focus {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.grid-container .select-board {
-  padding: 10px;
-  flex-direction: row;
-  gap: 5px;
-  flex-wrap: wrap;
-  height: auto;
-  max-height: none;
-  min-height: none;
-  justify-content: space-around;
-}
-.grid-container .select-board > div {
-  width: 138.8px;
-  height: 125px;
-  background: blue;
-  flex-grow: 2;
-  border-radius: 5px;
-}
-.grid-container .select-board > div {
-  background: rgba(178, 174, 174, 0.3);
-  border: solid 1px #B2AEAE;
-}
-.grid-container .select-board > div svg polyline {
-  stroke: #B2AEAE;
-}
-.grid-container .select-board > div span {
-  font-size: 12px;
-  width: 50%;
-  text-align: center;
-  line-height: 1.2;
-}
 .grid-container .habit-tracker-container .grid-item-content {
   display: flex;
   flex-wrap: wrap;
@@ -255,16 +225,48 @@ input:focus {
 }
 
 .add-board {
-  width: 35px;
-  height: 35px;
+  width: 18px !important;
+  height: 18px;
   background: #FF4C4C;
   border-radius: 5px;
 }
 .add-board svg {
-  width: 20px !important;
+  width: 10px !important;
 }
 .add-board svg line, .add-board svg g {
   stroke: #FFFFFF;
+  stroke-width: 2px;
+}
+
+.select-board {
+  padding: 10px;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  height: auto;
+  max-height: none;
+  min-height: none;
+  justify-content: space-around;
+}
+.select-board > div {
+  width: 138.8px;
+  height: 125px;
+  background: blue;
+  flex-grow: 2;
+  border-radius: 5px;
+}
+.select-board > div {
+  background: rgba(178, 174, 174, 0.3);
+  border: solid 1px #B2AEAE;
+}
+.select-board > div svg polyline {
+  stroke: #B2AEAE;
+}
+.select-board > div span {
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .restructure-backdrop, .restructure-backdrop::after {

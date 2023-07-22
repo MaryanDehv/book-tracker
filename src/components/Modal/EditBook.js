@@ -19,10 +19,14 @@ const EditBook = ({props}) => {
                     <div className="heading flex justify-sb"><h4> Status </h4><span data-clickable="true"> Edit</span></div>
                     <p> {props.status} </p>
                 </div>
-                <div className="edit-book-contents-rating">
-                    <div className="heading flex justify-sb"> <h4> rating </h4><span data-clickable="true"> Edit</span> </div>
-                   {[...Array(props.rating)].map(star => <StarIcon />)}
-                </div>
+                {
+                    props.status == "completed" ?
+                    <div className="edit-book-contents-rating">
+                        <div className="heading flex justify-sb"> <h4> rating </h4><span data-clickable="true"> Edit</span> </div>
+                    {[...Array(props.rating)].map(star => <StarIcon />)}
+                    </div> :
+                    ""
+                }
             </div>
             <div className="edit-book-analytics">
                 <div className="edit-book-analytics-title"></div>
