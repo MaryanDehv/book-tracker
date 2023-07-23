@@ -1,5 +1,4 @@
-import { createSlice , current} from "@reduxjs/toolkit";
-import { convertToObjects, getStatusCategories } from "../../data/data";
+import { createSlice} from "@reduxjs/toolkit";
 import { check, dataObject } from "../../functions/_helper";
 
 

@@ -38,13 +38,13 @@ const BarGraph = () => {
                 <span> 28 </span>
             </div>
             <div className="graph-y-axis flex">
-                <span> 35 </span>
-                <span> 30 </span>
-                <span> 25 </span>
-                <span> 20 </span>
-                <span> 15 </span>
-                <span> 10 </span>
+                <span> 7 </span>
+                <span> 6 </span>
                 <span> 5 </span>
+                <span> 4 </span>
+                <span> 3 </span>
+                <span> 2 </span>
+                <span> 0 </span>
             </div>
         </div>
     )

@@ -29,7 +29,6 @@ const bookData = {
                 progress: 60,
                 genre: ["thriller", "adventure"],
                 status: "ongoing",
-                rating: 3,
                 author: "Charlotte Davis"
               },
               {
@@ -39,7 +38,6 @@ const bookData = {
                 progress: 40,
                 genre: ["fantasy", "steampunk"],
                 status: "ongoing",
-                rating: 2,
                 author: "Sophia Montgomery"
               },
               {
@@ -50,7 +48,6 @@ const bookData = {
                 genre: ["mystery", "steampunk"],
                 status: "list",
                 color: "#A431F9",
-                rating: 1,
                 author: "Oliver Mitchell"
               },
               {
@@ -61,7 +58,6 @@ const bookData = {
                 genre: ["mystery", "adventure"],
                 status: "list",
                 color: "#A431F9",
-                rating: 2,
                 author: "Isabella Patel"
               },
               {
@@ -71,7 +67,6 @@ const bookData = {
                 progress: 0,
                 genre: ["fantasy", "adventure"],
                 status: "list",
-                rating: 3,
                 author: "Liam Thompson"
               },
               {
@@ -81,7 +76,6 @@ const bookData = {
                 progress: 60,
                 genre: ["mystery", "steampunk"],
                 status: "ongoing",
-                rating: 4,
                 author: "Noah Collins"
               },
               {
@@ -91,7 +85,6 @@ const bookData = {
                 progress: 40,
                 genre: ["psychology", "thriller"],
                 status: "ongoing",
-                rating: 5,
                 author: "Ava Barnes"
               }
     ],

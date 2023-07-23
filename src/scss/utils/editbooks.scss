@@ -36,7 +36,7 @@
 
     &-analytics{
         position: relative;
-        height: 200px;
+        height: 245px;
         margin-top: 30px;
         &::after{
             border-radius: 5px;
@@ -48,6 +48,19 @@
             top:-15px;
             left: -10px;
             z-index: -1;
+        }
+
+        &-title{
+            padding: 7px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+
+            svg{
+                height: fit-content;
+                g,line{
+                    stroke: $primaryRed;
+                }
+            }
         }
 
         &-chart{

@@ -4,6 +4,7 @@ import dashboardReducer from './states/_dashboard'
 import modalReducer from './states/_modal'
 import filterReducer from './states/_filtering'
 import searchReducer from './states/_search'
+import addLogReducer from './states/_addLog'
 
 export default configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
         dashboard: dashboardReducer,
         modal: modalReducer,
         filter: filterReducer,
-        search: searchReducer
+        search: searchReducer,
+        log: addLogReducer
     }
 })

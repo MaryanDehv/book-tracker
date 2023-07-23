@@ -50,7 +50,7 @@ const TopBar = () => {
                             ) :
                             ""
                         }
-                        <div className="user"></div>
+ 
                     </div>
                 </div>
             </div>
