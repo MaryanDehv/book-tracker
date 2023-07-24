@@ -171,8 +171,9 @@
         background: $white;
     }
 
-    .calendar{
+    .add_log{
         background: $white;
+        box-shadow: 0px 0px 10px $grayLight;
 
         .weekdays{
             background: $grayLight;

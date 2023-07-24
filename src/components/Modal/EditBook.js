@@ -2,7 +2,7 @@ import { AddIcon, ArrowIcon, StarIcon } from "../../images/icons/customIcons";
 import { openCalendar } from "../../redux/states/_addLog";
 import LineChart from "../charts/LineChart";
 import { useDispatch, useSelector} from "react-redux";
-import Calendar from "../utils/Calendar";
+import AddLog from "../utils/AddLog";
 
 const EditBook = ({props}) => {
     const dispatch = useDispatch()
@@ -37,7 +37,7 @@ const EditBook = ({props}) => {
                 </div>
             </div>
 
-            {calendar ? <Calendar /> : ""}
+            {calendar ? <AddLog /> : ""}
 
             <button data-clickable="true" className="edit-book-analytics-view-logs uppercase red-button full-width"> View logs <ArrowIcon /></button>
         </div>

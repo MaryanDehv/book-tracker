@@ -180,8 +180,9 @@
         background: $blackLight;
     }
 
-    .calendar{
-        background: $black;
+    .add_log{
+        background: $blackLight;
+        box-shadow: 0px 0px 10px $black;
 
         .weekdays{
             background: $blackLight;
