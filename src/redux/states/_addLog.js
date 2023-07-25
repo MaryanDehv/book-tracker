@@ -8,17 +8,26 @@ export const addLogSlice = createSlice({
         date: false
     },
     reducers: {
-        openCalendar: (state) => {
-            state.calendar = !state.calendar
+        toggleCalendar: (state , action) => {
+            const task = action.payload;
+            if(task == "close"){
+                state.calendar = false
+                state.date = false
+            }
+            if(task == "open") state.calendar = true
         },
         selectedDate: (state , action) => {
             state.date = action.payload
+        },
+        saveEntry: (state) => {
+            state.calendar = false;
+            state.date = false
         }
     } 
 });
 
 
-export const {openCalendar , selectedDate} = addLogSlice.actions;
+export const {toggleCalendar , selectedDate , saveEntry} = addLogSlice.actions;
 
 
 export default addLogSlice.reducer;

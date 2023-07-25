@@ -120,9 +120,9 @@ export const CogIcon = () => {
     )
 }
 
-export const ArrowIcon = () => {
+export const ArrowIcon = ({direction}) => {
     return(
-        <svg className="arrow-icon" width="38.4012555px" height="38.4012555px" viewBox="0 0 38.4012555 38.4012555" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className="arrow-icon" style={{transform:direction == "left" ? 'rotate(180deg)' : ""}} width="38.4012555px" height="38.4012555px" viewBox="0 0 38.4012555 38.4012555" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Icons" transform="translate(-364.267197, -187.921474)" stroke="#979797" strokeWidth="0.5">
                     <g id="Group-14" transform="translate(364.267197, 187.921474)">
@@ -362,5 +362,31 @@ export const ArrowPlain = ({func}) => {
     )
 }
 
+
+export const BinIcon = ({func}) => {
+    return(
+        <svg width="15px" className="bin-icon" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            <g id="bin" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <path d="M7.5,0.25 C8.7448976,0.25 9.88836113,0.618248976 10.7843875,1.23503908 C11.5895143,1.78925742 12.1949869,2.54445659 12.48755,3.41217601 L2.51244999,3.41217601 C2.80501313,2.54445659 3.41048566,1.78925742 4.21561249,1.23503908 C5.11163887,0.618248976 6.2551024,0.25 7.5,0.25 Z" id="Combined-Shape" stroke="#979797" strokeWidth="0.5"></path>
+                <path d="M12.6444158,4.46917569 L11.1904924,14.75 L3.81183922,14.75 L2.46475948,4.46917569 L12.6444158,4.46917569 Z" id="Rectangle" stroke="#979797" strokeWidth="0.5"></path>
+                <path d="M4.68565137,13.6051101 C3.95685672,8.02680131 3.59245939,5.23764692 3.59245939,5.23764692 C3.59245939,5.23764692 4.081648,5.23764692 5.06002522,5.23764692 L5.77771957,13.6051101 L4.68565137,13.6051101 Z" id="Path-16" stroke="#979797" strokeWidth="0.5"></path>
+                <path d="M10.3155566,13.6051101 C9.58676195,8.02680131 9.22236462,5.23764692 9.22236462,5.23764692 C9.22236462,5.23764692 9.73686097,5.23764692 10.7658536,5.23764692 L11.4076248,13.6051101 L10.3155566,13.6051101 Z" id="Path-16-Copy" stroke="#979797" strokeWidth="0.5" transform="translate(10.315, 9.4214) scale(-1, 1) translate(-10.315, -9.4214)"></path>
+                <polygon id="Path-17" stroke="#979797" strokeWidth="0.5" points="6.91661097 13.6051101 8.23183452 13.6051101 8.40038028 5.23764692 6.59970391 5.23764692"></polygon>
+            </g>
+        </svg>
+    )
+}
+
+
+export const EyeIcon = ({func}) => {
+    return(
+        <svg onClick={() => func()} className="eye-icon" width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            <g id="eye" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <path d="M0.786721652,7.5 C3.0244811,5.1753719 5.26224055,4.01305785 7.5,4.01305785 C9.73775945,4.01305785 11.9755189,5.1753719 14.2132783,7.5 C11.9755189,9.8246281 9.73775945,10.9869421 7.5,10.9869421 C5.26224055,10.9869421 3.0244811,9.8246281 0.786721652,7.5 Z" id="Path-18" stroke="#979797" strokeWidth="0.5"></path>
+                <circle id="Oval" fill="#979797" cx="7.5" cy="7.5" r="2.16082359"></circle>
+            </g>
+        </svg>
+    )
+}
 
 

@@ -2,10 +2,16 @@ import SectionTitle from "../headings/SectionTitle";
 import { useDispatch, useSelector } from "react-redux";
 import {TimesIcon } from "../../images/icons/customIcons";
 import { closeModal } from "../../redux/states/_modal";
+import { useEffect } from "react";
 
 const Modal = () => {
     const {modal} = useSelector(state => state.modal);
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        console.log(modal)
+        if(!modal) console.log('closed')
+    } , [modal])
 
     return(
         <>

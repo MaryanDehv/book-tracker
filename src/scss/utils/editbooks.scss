@@ -3,6 +3,7 @@
         display: grid;
         grid-template-columns: repeat(3 , 1fr);
         gap: 20px;
+        margin-bottom: 20px;
 
         h4{
             color: $gray;
@@ -102,9 +103,16 @@
             }
         }
 
+        .back-to-calendar{
+            svg{
+                height: fit-content;
+            }
+        }
+
         .time-logged{
             .input-block-container{
                 width: 50px;
+                min-height: fit-content;
                 align-items: flex-end;
     
                 span{
@@ -124,25 +132,35 @@
         }
     }
 
+    svg{
+        height: fit-content;
+    }
+
     .calendar{    
 
         >div{
             width: 100%;
-        }
-    
-        svg{
-    
-            &:first-child{
-                transform: rotate(-180deg);
+            &:not(:last-child){
+                margin-bottom: 10px;
             }
-    
-            height: fit-content;
+        }
+        
+        .calendar-title{
+            border-bottom: solid 1px rgba($gray , 0.1);
+            padding-bottom: 10px;
+            line-height: 1.3;
+
+            p{
+                font-size: 11px;
+                color:$primaryRed;
+            }
         }
     
         .weekdays{
             justify-content: space-around;
             background: $grayLight;
             border-radius: 5px;
+            font-size: 11px;
         }
     
         .weekdays ,.months {
@@ -160,11 +178,11 @@
         .days{
             flex-wrap: wrap;
             height: calc(100%  - 60px);
-            gap: 5px;
     
             >div{
                 height: 20px;
                 border-radius: 5px;
+                margin-bottom: 5px;
     
                 &:hover{
                     &{

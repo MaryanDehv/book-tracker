@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>eye</title>
+    <g id="eye" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0.786721652,7.5 C3.0244811,5.1753719 5.26224055,4.01305785 7.5,4.01305785 C9.73775945,4.01305785 11.9755189,5.1753719 14.2132783,7.5 C11.9755189,9.8246281 9.73775945,10.9869421 7.5,10.9869421 C5.26224055,10.9869421 3.0244811,9.8246281 0.786721652,7.5 Z" id="Path-18" stroke="#979797" stroke-width="0.5"></path>
+        <circle id="Oval" fill="#979797" cx="7.5" cy="7.5" r="2.16082359"></circle>
+    </g>
+</svg>

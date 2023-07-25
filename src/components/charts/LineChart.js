@@ -1,7 +1,6 @@
-import { Component, useEffect, useRef, useState } from "react";
-import { ArrowIcon } from "../../images/icons/customIcons";
+import { useEffect, useRef, useState } from "react";
 
-const LineChart = () => {
+const LineChart = ({chartValues}) => {
 
     const [boardWidth, setBoardWidth] = useState();
     const [boardHeight, setBoardHeight] = useState();
@@ -14,18 +13,14 @@ const LineChart = () => {
 
 
     useEffect(() => {
-        setTimeout(() => {
             setBoardWidth(dimensions.current.getBoundingClientRect().width);
             setBoardHeight(dimensions.current.getBoundingClientRect().height);
-        } , 1000)
     } , [])
 
-    const chartValues = [{value: 2}, {value: 1},{value: 3},{value: 3},{value: 4},{value: 3},{value: 2},{value: 7},{value: 7},{value: 7},{value: 1},{value: 0}]
 
     function getYValues(max){
         let list = [];
         const incrementAmount = 1;
-        // 168 hours in a week
         for(let i = 0 ; i <= max ; i += incrementAmount){
             list.push(i);
         }
@@ -104,11 +99,6 @@ const LineChart = () => {
                     formatLineChartData(chartValues , boardHeight , boardWidth).map((point , index) => (
                         <li>
                             <div class="data-point" data-clickable="true" data-value={point.value}  style={{bottom:point.bottom - 5, left: point.left - 5}}>
-                            <div className="graph-popup">
-                               <div className="entry-date"> 06/04/2023</div>
-                               <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                               <span> Read More </span>
-                            </div>
                             </div>
                             <div className="line" style={{width:point.hypotenuse * 1 + "px" , transform: `rotate(${point.angle * 1}deg)` , bottom: point.bottom, left: point.left}}> </div>
                         </li>

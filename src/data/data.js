@@ -10,7 +10,8 @@ const bookData = {
                 progress: 100,
                 status: "completed",
                 rating: 5,
-                author: "Noah Collins"
+                author: "Noah Collins",
+                readingtime: [{value: 1}, {value: 2},{value: 3},{value: 2},{value: 1},{value: 4}]
               },
               {
                 title: "Echoes of Eternity",
@@ -20,7 +21,8 @@ const bookData = {
                 progress: 100,
                 status: "completed",
                 rating: 3,
-                author: "Ava Barnes"
+                author: "Ava Barnes",
+                readingtime: [{value: 3}, {value: 2},{value: 1},{value: 1},{value: 1},{value: 1},{value: 1}]
               },
               {
                 title: "The Clockwork Alchemist",
@@ -29,7 +31,8 @@ const bookData = {
                 progress: 60,
                 genre: ["thriller", "adventure"],
                 status: "ongoing",
-                author: "Charlotte Davis"
+                author: "Charlotte Davis",
+                readingtime: [{value: 3}]
               },
               {
                 title: "The Oracle's Prophecy",
@@ -38,7 +41,8 @@ const bookData = {
                 progress: 40,
                 genre: ["fantasy", "steampunk"],
                 status: "ongoing",
-                author: "Sophia Montgomery"
+                author: "Sophia Montgomery",
+                readingtime: [{value: 3}]
               },
               {
                 title: "The Silent Observer",
@@ -76,7 +80,8 @@ const bookData = {
                 progress: 60,
                 genre: ["mystery", "steampunk"],
                 status: "ongoing",
-                author: "Noah Collins"
+                author: "Noah Collins",
+                readingtime: [{value: 3} , {value: 2}]
               },
               {
                 title: "Mindscape",
@@ -85,7 +90,8 @@ const bookData = {
                 progress: 40,
                 genre: ["psychology", "thriller"],
                 status: "ongoing",
-                author: "Ava Barnes"
+                author: "Ava Barnes",
+                readingtime: [{value: 1} , {value: 1} , {value: 1}]
               }
     ],
     genre: [
