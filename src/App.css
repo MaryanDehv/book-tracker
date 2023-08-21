@@ -184,9 +184,6 @@ input:focus {
   width: 100%;
   flex-wrap: wrap;
 }
-.grid-container .grid-item .grid-item-content .book-progress:not(:last-child), .grid-container .grid-item .grid-item-content .book-list:not(:last-child) {
-  margin-bottom: 15px;
-}
 .grid-container .grid-item .grid-item-content::-webkit-scrollbar {
   display: none;
 }
@@ -227,14 +224,10 @@ input:focus {
 .add-board {
   width: 18px !important;
   height: 18px;
-  background: #FF4C4C;
   border-radius: 5px;
 }
-.add-board svg {
-  width: 10px !important;
-}
 .add-board svg line, .add-board svg g {
-  stroke: #FFFFFF;
+  stroke: #FF4C4C;
   stroke-width: 2px;
 }
 
@@ -553,7 +546,8 @@ input:focus {
   }
 }
 .modal-container-inner {
-  height: 100%;
+  padding-bottom: 30px;
+  padding-top: 10px;
 }
 .modal-container-content form {
   gap: 10px;
@@ -946,6 +940,9 @@ strong {
   display: none;
 }
 
+.book-list:hover {
+  background: rgba(178, 174, 174, 0.1);
+}
 .book-list-image {
   width: 50px;
   height: 50px;
@@ -963,6 +960,7 @@ strong {
 }
 .book-list-inner {
   width: calc(100% - 15px);
+  padding: 10px 0px 10px 5px;
   gap: 10px;
 }
 .book-list .book-list-genres {
@@ -1007,11 +1005,14 @@ strong {
 }
 
 .book-progress {
-  height: 50px;
   width: 100%;
+}
+.book-progress:hover {
+  background: rgba(178, 174, 174, 0.1);
 }
 .book-progress-inner {
   gap: 10px;
+  padding: 10px 5px;
   width: calc(100% - 15px);
 }
 .book-progress-image {
@@ -1039,6 +1040,7 @@ strong {
 }
 .book-progress-details .book-progress-bar div {
   position: absolute;
+  background: #FF4C4C;
   top: 0px;
   width: 50%;
   left: 0;
@@ -1489,7 +1491,7 @@ strong {
   .mobile-nav .hamburger {
     display: none;
   }
-  .mobile-nav .close {
+  .mobile-nav .hamburger-icon .close {
     display: block;
   }
 }
@@ -1511,7 +1513,7 @@ strong {
   align-items: center;
 }
 .top-bar-inner-account {
-  gap: 45px;
+  gap: 15px;
 }
 .top-bar-inner-account p {
   gap: 4px;
@@ -1573,12 +1575,6 @@ strong {
 .search {
   position: relative;
   left: 4px;
-}
-.search-dropdown.filter-panel .search-results {
-  display: none;
-}
-.search-dropdown:not(.filter-panel) .filter-selection-group {
-  display: none;
 }
 .search-dropdown-panel .search-box-container {
   border: solid 1px #359EFF;
@@ -1671,6 +1667,9 @@ strong {
   overflow-y: scroll;
   height: calc(100% - 117px);
 }
+.mobile-nav.mobile-search .side-bar .search .search-dropdown-inner {
+  padding-bottom: 20px;
+}
 .mobile-nav.mobile-search .side-bar .search .search-dropdown::-webkit-scrollbar {
   display: none;
 }
@@ -1700,9 +1699,6 @@ strong {
   width: calc(100% - 40px);
   padding: 0px 20px 10px;
   overflow-y: scroll;
-}
-.top-bar .search-dropdown-inner-group {
-  padding-bottom: 15px;
 }
 .top-bar .search-dropdown-inner .grayed {
   position: relative;

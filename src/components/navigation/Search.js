@@ -5,7 +5,7 @@ import Checkboxes from "../utils/Checkboxes";
 import { useDispatch, useSelector } from "react-redux";
 import { filterPanel, setFilterStatus , dropdownPanel , searchInput, constructSearchResults} from "../../redux/states/_search";
 
-const Search = ({mobileDropdown , toggleMobileSearch}) => {
+const Search = () => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
     const searchedData = useState("");
 
@@ -41,7 +41,22 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                 </div>
                 
                 {/* dropdown section */}
-                <div className={`search-dropdown ${filter ? 'filter-panel' : 'search-content-panel'}`}>
+                <div className={`search-dropdown`}>
+
+                    {
+                        filter ? 
+                        (
+                            <>
+                            {/* filter options */}
+                            <div className={`search-dropdown-inner filter-selection-group`}>
+                                <div className={`search-dropdown-inner-group flex check-boxes-container`}>
+                                <Checkboxes contents={status} check={setFilterStatus} groupName={"status"}/>
+                                </div>
+                            </div>
+                            </>
+                        ) : <></>
+                    }
+
                     
                     {/* currently active filters */}
                     {
@@ -67,15 +82,6 @@ const Search = ({mobileDropdown , toggleMobileSearch}) => {
                             : input == "" ? "" : (<div className="no-results"> Nothing found for <span className="search-input">{input}</span></div>)
                         }
                     </div>
-
-
-                    {/* filter options */}
-                    <div className={`search-dropdown-inner filter-selection-group`}>
-                        <div className={`search-dropdown-inner-group flex check-boxes-container`}>
-                           <Checkboxes contents={status} check={setFilterStatus} groupName={"status"}/>
-                        </div>
-                    </div>
-
                 </div>
         </div>
     )

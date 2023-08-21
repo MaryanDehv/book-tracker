@@ -4,7 +4,7 @@ import { dataObject } from "../../functions/_helper";
 
 const BookList = ({content}) => {
     return(
-        <div className="book-list flex justify-sb">
+        <div className="book-list flex justify-sb v-center">
             <div className="book-list-inner flex v-center">
                 <div className="book-list-image" style={{backgroundImage:`url(${content.image})`}}></div>
                 <div className="book-list-details">

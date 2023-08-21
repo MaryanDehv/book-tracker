@@ -2,7 +2,7 @@ import { ArrowIcon } from "../../images/icons/customIcons";
 
 const BookProgress = ({content}) => {
     return(
-        <div className="book-progress flex justify-sb">
+        <div className="book-progress flex justify-sb v-center">
             <div className="book-progress-inner flex v-center">
                 <div className="book-progress-image"  style={{backgroundImage:`url(${content.image})`}}>
                 </div>

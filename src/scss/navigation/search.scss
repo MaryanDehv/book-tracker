@@ -5,18 +5,6 @@
 
 
     &-dropdown{
-        &.filter-panel{
-            .search-results{
-                display: none;
-            }   
-        }
-
-        &:not(.filter-panel){
-            .filter-selection-group{
-                display: none;
-            }   
-        }
-
         &-panel{
             .search-box-container{
                 border: solid 1px $primaryBlue;
@@ -146,6 +134,10 @@
                     overflow-y: scroll;
                     height: calc(100% - 117px);
 
+                    &-inner{
+                        padding-bottom: 20px;
+                    }
+
                     @include hideScroll('&')
                 }
             }
@@ -177,10 +169,6 @@
             width: calc(100% - 40px);
             padding: 0px 20px 10px;
             overflow-y: scroll;
-
-            &-group{
-                padding-bottom: 15px;
-            }
 
             .grayed{
                 position: relative;

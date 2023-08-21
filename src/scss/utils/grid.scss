@@ -42,9 +42,9 @@
             flex-wrap: wrap;
 
 
-            .book-progress , .book-list{
-                @include cardVerticalSpacing('&' , 15px);
-            }
+            // .book-progress , .book-list{
+            //     @include cardVerticalSpacing('&' , 15px);
+            // }
     
             &::-webkit-scrollbar {
                 display: none;
@@ -97,13 +97,11 @@
 .add-board{
     width: 18px !important;
     height: 18px;
-    background: $primaryRed;
     border-radius: 5px;
 
     svg{
-        width: 10px !important;
         line , g{
-            stroke: $white;
+            stroke: $primaryRed;
             stroke-width: 2px;
         }
     }
