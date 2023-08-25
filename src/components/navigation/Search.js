@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {dataObject } from "../../functions/_helper";
 import Checkboxes from "../utils/Checkboxes";
 import { useDispatch, useSelector } from "react-redux";
-import { filterPanel, setFilterStatus , dropdownPanel , searchInput, constructSearchResults} from "../../redux/states/_search";
+import { filterPanel, setFilterStatus , dropdownPanel , searchInput, constructSearchResults, clearStatus} from "../../redux/states/_search";
 
 const Search = () => {
     // This component is being used in the sidebar component for mobile -> evaluates whether to enable dropdown functionality
@@ -63,7 +63,7 @@ const Search = () => {
                         getChecked().length >= 1 ?
                         (
                             <div className="filtered">
-                                <p> Filtered </p>
+                                <div className="flex filtered-heading justify-sb"><p> Filtered </p> <div data-clickable="true" onClick={() => dispatch(clearStatus())}> clear all filters </div></div>
                                 <div className="flex">
                                     {
                                         getChecked().map((tagName, index) => (<div key={index} className={`filter-item flex v-center ${dataObject('config')['status'].colors[tagName.name]}`} data-tag={tagName.name.toLowerCase()}> {tagName.name} <TimesIcon func={(el) => dispatch(setFilterStatus({name: tagName.name , update: 'status'}))}/></div>))

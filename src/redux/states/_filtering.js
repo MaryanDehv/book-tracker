@@ -17,7 +17,10 @@ export const FilterSlice = createSlice({
             const {content , targetState} = action.payload; 
             state[targetState] = content
         } , 
-        select: check
+        select: check,
+        // clearAllFilters: (state) => {
+
+        // } 
     }
 });
 

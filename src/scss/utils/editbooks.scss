@@ -1,4 +1,13 @@
 .edit-book{
+    
+    .genre-container{
+        flex-wrap: wrap;
+        gap:5px;
+        .filter-item{
+            width: fit-content;
+        }
+    }
+
     &-contents{
         display: grid;
         grid-template-columns: repeat(3 , 1fr);
@@ -30,7 +39,7 @@
         }
 
         &-description{
-            grid-column: 2/3;
+            grid-column: 3/4;
             grid-row: 1/3;
         }
     }

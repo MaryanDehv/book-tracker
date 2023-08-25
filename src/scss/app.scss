@@ -64,6 +64,7 @@ table {
 @import './utils/filterbooks.scss';
 @import './utils/editbooks.scss';
 @import './helper.scss';
+@import './utils/log.scss';
 
 
 // components
@@ -254,5 +255,13 @@ svg:not(.main-logo , :is(.filter-close-icon , .grid-item) .close , .top-bar :is(
 	@include semiTransparentColouredBorderBox('& > div.orange' , $primaryOrange);
 	@include semiTransparentColouredBorderBox('& > div.purple' , $primaryPurple);
 	@include semiTransparentColouredBorderBox('& > div.gray' , $gray)
+}
+
+.filter-item{
+	@include tag;
+	@include semiTransparentColouredBorderBox('&.red-outline' , $primaryRed);
+	@include semiTransparentColouredBorderBox('&.green-outline' , $primaryGreen);
+	@include semiTransparentColouredBorderBox('&.purple-outline' , $primaryPurple);
+	@include semiTransparentColouredBorderBox('&.orange-outline' , $primaryOrange);
 }
 

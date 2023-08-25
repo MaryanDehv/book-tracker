@@ -4,7 +4,6 @@ import Log from "./Log";
 
 const AddLog = () => {
     const {date} = useSelector(state => state.log)
-
     return(
         <div className="add_log">
             {date ? <Log /> : <Calendar />}

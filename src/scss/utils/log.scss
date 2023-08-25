@@ -1,0 +1,36 @@
+.logs-container{
+    gap:10px;
+    .logged-entry{
+        height: 100px;
+        background: $white;
+        padding:15px;
+        border-radius: 5px;
+    
+        &-content{
+            width: 70%;
+            overflow-y: scroll;
+    
+            @include hideScroll('&');
+        }
+    
+        &-date{
+            width: 30%;
+            align-items: center;
+            gap:4px;
+
+            .logged-entry-day{
+                color: $primaryRed;
+            }
+
+            .logged-entry-month{
+                color: $gray;
+            }
+    
+            >div{
+                width: fit-content;
+                font-weight: 600;
+                font-size: 25px;
+            }
+        }
+    }
+}

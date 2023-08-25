@@ -8,11 +8,6 @@ const Modal = () => {
     const {modal} = useSelector(state => state.modal);
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        console.log(modal)
-        if(!modal) console.log('closed')
-    } , [modal])
-
     return(
         <>
             <div className="modal-backdrop"></div>

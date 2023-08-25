@@ -58,11 +58,14 @@
     .filtered{
         height: fit-content;
 
-        p{
+        .filtered-heading{
             border-bottom: solid 0.5px rgba($gray , 0.2);
             margin-bottom: 15px;
             padding-bottom: 5px;
-            color: $gray;
+
+            p{
+                color: $gray;
+            }
         }
 
         >div{

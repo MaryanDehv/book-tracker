@@ -41,6 +41,9 @@ export const searchSlice = createSlice({
                 if(state.filter) state.filter = false
             }
         },
+        clearStatus: (state) => {
+            state.status.forEach(item => item.checked = false)
+        },
         constructSearchResults: (state) => {
             const searchData = getBooksByName(state.input);
             const filterData = [];
@@ -99,7 +102,7 @@ export const searchSlice = createSlice({
 });
 
 
-export const {setFilterStatus , filterPanel , dropdownPanel , searchInput , constructSearchResults} = searchSlice.actions;
+export const {setFilterStatus , filterPanel , dropdownPanel , searchInput , constructSearchResults , clearStatus} = searchSlice.actions;
 
 
 export default searchSlice.reducer;

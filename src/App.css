@@ -546,7 +546,6 @@ input:focus {
   }
 }
 .modal-container-inner {
-  padding-bottom: 30px;
   padding-top: 10px;
 }
 .modal-container-content form {
@@ -689,6 +688,13 @@ input:focus {
   display: block;
 }
 
+.edit-book .genre-container {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.edit-book .genre-container .filter-item {
+  width: fit-content;
+}
 .edit-book-contents {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -714,7 +720,7 @@ input:focus {
   display: block;
 }
 .edit-book-contents-description {
-  grid-column: 2/3;
+  grid-column: 3/4;
   grid-row: 1/3;
 }
 .edit-book-analytics {
@@ -895,6 +901,43 @@ strong {
   padding: 0 20px;
 }
 
+.logs-container {
+  gap: 10px;
+}
+.logs-container .logged-entry {
+  height: 100px;
+  background: #FFFFFF;
+  padding: 15px;
+  border-radius: 5px;
+}
+.logs-container .logged-entry-content {
+  width: 70%;
+  overflow-y: scroll;
+}
+.logs-container .logged-entry-content::-webkit-scrollbar {
+  display: none;
+}
+.logs-container .logged-entry-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.logs-container .logged-entry-date {
+  width: 30%;
+  align-items: center;
+  gap: 4px;
+}
+.logs-container .logged-entry-date .logged-entry-day {
+  color: #FF4C4C;
+}
+.logs-container .logged-entry-date .logged-entry-month {
+  color: #B2AEAE;
+}
+.logs-container .logged-entry-date > div {
+  width: fit-content;
+  font-weight: 600;
+  font-size: 25px;
+}
+
 .book-card-container {
   gap: 10px;
 }
@@ -968,40 +1011,6 @@ strong {
   flex-wrap: wrap;
   width: 129px;
   margin-top: 10px;
-}
-.book-list .book-list-genres .filter-item {
-  justify-content: space-between;
-  border-radius: 20px;
-  padding: 3px 6px;
-  text-transform: uppercase;
-}
-.book-list .book-list-genres .filter-item.red-outline {
-  background: rgba(255, 76, 76, 0.3);
-  border: solid 1px #FF4C4C;
-}
-.book-list .book-list-genres .filter-item.red-outline svg polyline {
-  stroke: #FF4C4C;
-}
-.book-list .book-list-genres .filter-item.green-outline {
-  background: rgba(0, 218, 50, 0.3);
-  border: solid 1px #00DA32;
-}
-.book-list .book-list-genres .filter-item.green-outline svg polyline {
-  stroke: #00DA32;
-}
-.book-list .book-list-genres .filter-item.purple-outline {
-  background: rgba(164, 49, 249, 0.3);
-  border: solid 1px #A431F9;
-}
-.book-list .book-list-genres .filter-item.purple-outline svg polyline {
-  stroke: #A431F9;
-}
-.book-list .book-list-genres .filter-item.orange-outline {
-  background: rgba(249, 87, 49, 0.3);
-  border: solid 1px #F95731;
-}
-.book-list .book-list-genres .filter-item.orange-outline svg polyline {
-  stroke: #F95731;
 }
 
 .book-progress {
@@ -1610,10 +1619,12 @@ strong {
 .search .filtered {
   height: fit-content;
 }
-.search .filtered p {
+.search .filtered .filtered-heading {
   border-bottom: solid 0.5px rgba(178, 174, 174, 0.2);
   margin-bottom: 15px;
   padding-bottom: 5px;
+}
+.search .filtered .filtered-heading p {
   color: #B2AEAE;
 }
 .search .filtered > div {
@@ -1867,6 +1878,12 @@ strong {
 .dark-mode .add_log .weekdays {
   background: #111315;
 }
+.dark-mode .logged-entry {
+  background: #111315;
+}
+.dark-mode .logged-entry-content {
+  color: #FFFFFF;
+}
 
 .light-mode .main {
   background: #F2F2F2;
@@ -1983,6 +2000,12 @@ strong {
 }
 .light-mode .add_log .weekdays {
   background: #F2F2F2;
+}
+.light-mode .logged-entry {
+  background: #F2F2F2;
+}
+.light-mode .logged-entry-content {
+  color: #111315;
 }
 
 body {
@@ -2208,6 +2231,41 @@ svg:not(.main-logo, :is(.filter-close-icon, .grid-item) .close, .top-bar :is(.ha
 }
 .check > div.gray svg polyline {
   stroke: #B2AEAE;
+}
+
+.filter-item {
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 3px 6px;
+  text-transform: uppercase;
+}
+.filter-item.red-outline {
+  background: rgba(255, 76, 76, 0.3);
+  border: solid 1px #FF4C4C;
+}
+.filter-item.red-outline svg polyline {
+  stroke: #FF4C4C;
+}
+.filter-item.green-outline {
+  background: rgba(0, 218, 50, 0.3);
+  border: solid 1px #00DA32;
+}
+.filter-item.green-outline svg polyline {
+  stroke: #00DA32;
+}
+.filter-item.purple-outline {
+  background: rgba(164, 49, 249, 0.3);
+  border: solid 1px #A431F9;
+}
+.filter-item.purple-outline svg polyline {
+  stroke: #A431F9;
+}
+.filter-item.orange-outline {
+  background: rgba(249, 87, 49, 0.3);
+  border: solid 1px #F95731;
+}
+.filter-item.orange-outline svg polyline {
+  stroke: #F95731;
 }
 
 /*# sourceMappingURL=App.css.map */

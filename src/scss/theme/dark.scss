@@ -189,4 +189,11 @@
         }
     }
 
+    .logged-entry{
+        background: $black;
+        &-content{
+            color: $white;
+        }
+    }
+
 }
